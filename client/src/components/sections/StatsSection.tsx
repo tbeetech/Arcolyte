@@ -47,7 +47,7 @@ function StatCard({ value, suffix, label, sub }: (typeof stats)[0]) {
         {count}{suffix}
       </div>
       <p className="font-orbitron text-sm text-neon-yellow mb-1">{label}</p>
-      <p className="text-gray-400 text-xs">{sub}</p>
+      <p className="text-foreground text-xs">{sub}</p>
     </div>
   );
 }
@@ -60,7 +60,7 @@ export default function StatsSection() {
           <h2 className="font-orbitron font-bold text-3xl md:text-4xl mb-4 gradient-text">
             By the Numbers
           </h2>
-          <p className="text-gray-300 max-w-2xl mx-auto">
+          <p className="text-foreground max-w-2xl mx-auto">
             Real results from real systems, proof over promises.
           </p>
         </div>

@@ -35,8 +35,8 @@ export default function CourseCard({
         <Icon className="w-8 h-8 text-white" />
       </div>
       <h3 className={`font-orbitron text-xl font-bold mb-3 text-${color}`}>{title}</h3>
-      <p className="text-gray-300 mb-4">{description}</p>
-      <div className="text-sm text-gray-400 mb-4">{courseCount}</div>
+      <p className="text-foreground mb-4">{description}</p>
+      <div className="text-sm text-foreground mb-4">{courseCount}</div>
       <CyberButton 
         size="sm"
         className={`w-full text-${color}`}

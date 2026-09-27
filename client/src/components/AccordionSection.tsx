@@ -11,7 +11,7 @@ const solutions = [
 
 export default function AccordionSection() {
   return (
-    <section className="py-16 px-6 text-white bg-space-black">
+    <section className="py-16 px-6 text-white bg-background">
       <h2 className="text-2xl font-semibold text-center mb-8">
         Specialized Solutions
       </h2>
@@ -21,7 +21,7 @@ export default function AccordionSection() {
             <summary className="cursor-pointer font-medium">
               {s.title} <span className="text-yellow-400">({s.price})</span>
             </summary>
-            <p className="mt-2 text-gray-300">
+            <p className="mt-2 text-foreground">
               Custom {s.title.toLowerCase()} tailored to your needs.
             </p>
           </details>

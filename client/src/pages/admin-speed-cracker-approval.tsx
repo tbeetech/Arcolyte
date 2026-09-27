@@ -138,7 +138,7 @@ export default function AdminSpeedCrackerApprovalPage() {
         <Button
           size="sm"
           variant="outline"
-          className="border-gray-700 text-gray-300"
+          className="border-gray-700 text-foreground"
           onClick={() => {
             queryClient.invalidateQueries({ queryKey: ["/api/speed-cracker/all-pending"] });
           }}
@@ -149,7 +149,7 @@ export default function AdminSpeedCrackerApprovalPage() {
 
         {selectedItems.size > 0 && (
           <>
-            <span className="text-sm text-gray-400">{selectedItems.size} selected</span>
+            <span className="text-sm text-foreground">{selectedItems.size} selected</span>
             <Button
               size="sm"
               className="bg-green-600 hover:bg-green-500 text-white"
@@ -174,20 +174,20 @@ export default function AdminSpeedCrackerApprovalPage() {
       </div>
 
       {isLoading ? (
-        <div className="flex items-center gap-2 text-gray-400">
+        <div className="flex items-center gap-2 text-foreground">
           <Loader2 className="w-4 h-4 animate-spin" />
           <span className="text-sm">Loading content queue…</span>
         </div>
       ) : filtered.length === 0 ? (
         <div className="text-center py-16 bg-gray-900 rounded-xl border border-gray-700">
-          <CheckSquare className="w-12 h-12 text-gray-600 mx-auto mb-3" />
+          <CheckSquare className="w-12 h-12 text-foreground mx-auto mb-3" />
           <p className="text-white font-medium">Queue is clear!</p>
-          <p className="text-sm text-gray-400 mt-1">No pending content to review.</p>
+          <p className="text-sm text-foreground mt-1">No pending content to review.</p>
         </div>
       ) : (
         <div className="space-y-3">
           {/* Header row */}
-          <div className="flex items-center gap-3 px-4 text-xs text-gray-500 uppercase tracking-wider">
+          <div className="flex items-center gap-3 px-4 text-xs text-foreground uppercase tracking-wider">
             <input
               type="checkbox"
               checked={selectedItems.size === filtered.length && filtered.length > 0}
@@ -214,7 +214,7 @@ export default function AdminSpeedCrackerApprovalPage() {
                 />
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 flex-wrap mb-1">
-                    <span className="text-[10px] px-1.5 py-0.5 rounded bg-gray-800 text-gray-400">{item.sourcePlatform}</span>
+                    <span className="text-[10px] px-1.5 py-0.5 rounded bg-gray-800 text-foreground">{item.sourcePlatform}</span>
                     <span className="text-[10px] px-1.5 py-0.5 rounded bg-blue-500/20 text-blue-400">{item.mediaType}</span>
                     {item.aiQualityScore != null && (
                       <span className="text-[10px] px-1.5 py-0.5 rounded bg-green-500/20 text-green-400">
@@ -226,14 +226,14 @@ export default function AdminSpeedCrackerApprovalPage() {
                     {item.aiRewrittenTitle || item.originalTitle || "Untitled"}
                   </p>
                   {item.aiRewrittenContent && (
-                    <p className="text-xs text-gray-400 mt-1 line-clamp-2">{item.aiRewrittenContent}</p>
+                    <p className="text-xs text-foreground mt-1 line-clamp-2">{item.aiRewrittenContent}</p>
                   )}
                   <div className="flex items-center gap-2 mt-2 flex-wrap">
                     {item.aiGeneratedHashtags.slice(0, 4).map((tag) => (
                       <span key={tag} className="text-[10px] text-cyan-400">#{tag}</span>
                     ))}
                   </div>
-                  <p className="text-[10px] text-gray-500 mt-1">
+                  <p className="text-[10px] text-foreground mt-1">
                     {format(new Date(item.createdAt), "MMM d, yyyy HH:mm")}
                   </p>
                 </div>
@@ -283,7 +283,7 @@ export default function AdminSpeedCrackerApprovalPage() {
                     <Button
                       size="sm"
                       variant="ghost"
-                      className="text-gray-400 h-7 text-xs px-2 w-full"
+                      className="text-foreground h-7 text-xs px-2 w-full"
                     >
                       <ExternalLink className="w-3 h-3 mr-1" />
                       Source

@@ -20,12 +20,12 @@ const trendData = [
 ];
 
 const trendCards = [
-  { label: "AI / LLMs", score: 95, color: "#22c55e", insight: "Generative AI is reshaping every industry. ARCOLYTE TECHNOLOGIES builds custom AI integrations on GPT-4, Claude & Gemini." },
-  { label: "No-Code Tools", score: 80, color: "#22c55e", insight: "No-code automation reduces time-to-market by 60%. We pair no-code with custom dev for optimal speed." },
-  { label: "Cybersecurity", score: 88, color: "#00E5FF", insight: "Cyber threats grew 38% YoY. Every ARCOLYTE TECHNOLOGIES solution includes security-by-design principles." },
-  { label: "Cloud Native", score: 85, color: "#9C27B0", insight: "Cloud-native architecture cuts infrastructure costs up to 40% while delivering infinite scalability." },
-  { label: "Edge Computing", score: 68, color: "#4CAF50", insight: "Processing data closer to the source reduces latency, key for real-time AI decision-making." },
-  { label: "IoT", score: 55, color: "#2196F3", insight: "Connected devices generating actionable business data. We design IoT data pipelines for smart operations." },
+  { label: "AI / LLMs", score: 95, insight: "Generative AI is reshaping every industry. ARCOLYTE TECHNOLOGIES builds custom AI integrations on GPT-4, Claude & Gemini." },
+  { label: "No-Code Tools", score: 80, insight: "No-code automation reduces time-to-market by 60%. We pair no-code with custom dev for optimal speed." },
+  { label: "Cybersecurity", score: 88, insight: "Cyber threats grew 38% YoY. Every ARCOLYTE TECHNOLOGIES solution includes security-by-design principles." },
+  { label: "Cloud Native", score: 85, insight: "Cloud-native architecture cuts infrastructure costs up to 40% while delivering infinite scalability." },
+  { label: "Edge Computing", score: 68, insight: "Processing data closer to the source reduces latency, key for real-time AI decision-making." },
+  { label: "IoT", score: 55, insight: "Connected devices generating actionable business data. We design IoT data pipelines for smart operations." },
 ];
 
 export default function TechTrendsSection() {
@@ -43,71 +43,72 @@ export default function TechTrendsSection() {
   }, []);
 
   return (
-    <section id="tech-trends" className="page-section py-20">
+    <section id="tech-trends" className="py-24 bg-background">
       <div className="container mx-auto px-6" ref={ref}>
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-neon-purple/30 text-neon-purple text-sm font-orbitron mb-4">
+        <div className="text-center mb-16 max-w-3xl mx-auto">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 border border-border text-foreground text-sm uppercase tracking-widest font-semibold mb-6">
             <Activity className="w-4 h-4" /> Feature 4 of 12
           </div>
-          <h2 className="font-orbitron font-bold text-3xl md:text-4xl mb-4 gradient-text">
+          <h2 className="font-bold text-4xl md:text-5xl mb-6 text-foreground tracking-tight uppercase">
             Tech Trends Radar
           </h2>
-          <p className="text-gray-300 max-w-2xl mx-auto">
+          <p className="text-foreground text-lg leading-relaxed">
             Stay ahead of the curve. Here's where the digital world is heading, and how ARCOLYTE TECHNOLOGIES helps you ride every wave.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-10 items-center max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
           {/* Radar Chart */}
-          <div className={`transition-all duration-1000 ${visible ? "opacity-100 scale-100" : "opacity-0 scale-90"}`}>
+          <div className={`transition-all duration-1000 p-8 border border-border bg-card ${visible ? "opacity-100 scale-100" : "opacity-0 scale-90"}`}>
             <ResponsiveContainer width="100%" height={350}>
-              <RadarChart cx="50%" cy="50%" outerRadius="75%" data={trendData}>
-                <PolarGrid stroke="rgba(34,197,94,0.15)" />
+              <RadarChart cx="50%" cy="50%" outerRadius="70%" data={trendData}>
+                <PolarGrid stroke="currentColor" className="text-border" />
                 <PolarAngleAxis
                   dataKey="subject"
-                  tick={{ fill: "#aaa", fontSize: 11, fontFamily: "Orbitron" }}
+                  tick={{ fill: "currentColor", fontSize: 11, fontWeight: "bold" }}
+                  className="text-foreground font-sans uppercase tracking-wider"
                 />
                 <Radar
                   name="Tech Adoption"
                   dataKey="A"
-                  stroke="#22c55e"
-                  fill="#22c55e"
-                  fillOpacity={0.25}
+                  stroke="currentColor"
+                  fill="currentColor"
+                  fillOpacity={0.15}
                   strokeWidth={2}
+                  className="text-foreground"
                 />
               </RadarChart>
             </ResponsiveContainer>
-            <p className="text-center text-xs text-gray-500 font-orbitron mt-2">Industry adoption score (0–100)</p>
+            <p className="text-center text-xs text-foreground font-bold uppercase tracking-widest mt-4">Industry adoption score (0–100)</p>
           </div>
 
           {/* Cards */}
-          <div className="space-y-3">
+          <div className="space-y-4">
             {trendCards.map((card, i) => (
               <button
                 key={card.label}
                 onClick={() => setActiveCard(i)}
-                className={`w-full text-left p-4 rounded-xl border transition-all duration-200 ${
+                className={`w-full text-left p-5 border transition-all duration-200 rounded-none block ${
                   activeCard === i
-                    ? "border-galactic-orange/50 bg-galactic-orange/5"
-                    : "border-white/10 hover:border-white/20"
+                    ? "border-foreground bg-foreground text-background shadow-lg"
+                    : "border-border text-foreground hover:bg-muted"
                 }`}
               >
-                <div className="flex items-center justify-between mb-2">
-                  <span className="font-orbitron text-sm text-white">{card.label}</span>
-                  <span className="font-orbitron text-xs" style={{ color: card.color }}>{card.score}%</span>
+                <div className="flex items-center justify-between mb-3">
+                  <span className={`font-bold uppercase tracking-wider text-sm ${activeCard === i ? "text-background" : "text-foreground"}`}>{card.label}</span>
+                  <span className={`font-black text-sm ${activeCard === i ? "text-background" : "text-foreground"}`}>{card.score}%</span>
                 </div>
-                <div className="h-1.5 bg-space-dark rounded-full overflow-hidden">
+                <div className={`h-1.5 w-full bg-muted overflow-hidden ${activeCard === i ? "bg-background/30" : "bg-muted"}`}>
                   <div
-                    className={`h-full rounded-full transition-all duration-700`}
+                    className={`h-full transition-all duration-700 ${activeCard === i ? "bg-background" : "bg-foreground"}`}
                     style={{
                       width: visible ? `${card.score}%` : "0%",
-                      background: card.color,
                       transitionDelay: `${i * 100}ms`,
                     }}
                   />
                 </div>
                 {activeCard === i && (
-                  <p className="text-gray-400 text-xs mt-2 leading-relaxed">{card.insight}</p>
+                  <p className="text-background text-sm mt-4 leading-relaxed font-medium">{card.insight}</p>
                 )}
               </button>
             ))}

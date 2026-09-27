@@ -13,15 +13,15 @@ const demoSteps = [
       <div className="space-y-3 p-4">
         <div className="flex items-center gap-3 p-3 bg-galactic-orange/10 border border-galactic-orange/20 rounded-lg animate-pulse">
           <div className="w-2 h-2 rounded-full bg-galactic-green" />
-          <span className="text-xs font-orbitron text-gray-300">New lead captured → CRM updated → Welcome email sent</span>
+          <span className="text-xs font-orbitron text-foreground">New lead captured → CRM updated → Welcome email sent</span>
         </div>
         <div className="flex items-center gap-3 p-3 bg-neon-cyan/10 border border-neon-cyan/20 rounded-lg" style={{ animationDelay: "0.5s" }}>
           <div className="w-2 h-2 rounded-full bg-neon-cyan" />
-          <span className="text-xs font-orbitron text-gray-300">WhatsApp message received → AI replies in {'<'}2s</span>
+          <span className="text-xs font-orbitron text-foreground">WhatsApp message received → AI replies in {'<'}2s</span>
         </div>
         <div className="flex items-center gap-3 p-3 bg-neon-yellow/10 border border-neon-yellow/20 rounded-lg">
           <div className="w-2 h-2 rounded-full bg-neon-yellow" />
-          <span className="text-xs font-orbitron text-gray-300">Social post scheduled → 10 platform variants created</span>
+          <span className="text-xs font-orbitron text-foreground">Social post scheduled → 10 platform variants created</span>
         </div>
         <div className="text-center mt-2">
           <span className="text-galactic-green text-xs font-orbitron">✓ 3 workflows running • 0 manual steps needed</span>
@@ -46,8 +46,8 @@ const demoSteps = [
           <div key={i} className={`flex ${msg.sender === "user" ? "justify-end" : "justify-start"}`}>
             <div className={`max-w-[80%] px-3 py-2 rounded-xl text-xs ${
               msg.sender === "user"
-                ? "bg-galactic-orange/20 text-gray-200 border border-galactic-orange/20"
-                : "bg-neon-cyan/10 text-gray-300 border border-neon-cyan/20"
+                ? "bg-galactic-orange/20 text-foreground border border-galactic-orange/20"
+                : "bg-neon-cyan/10 text-foreground border border-neon-cyan/20"
             }`}>
               {msg.text}
             </div>
@@ -73,7 +73,7 @@ const demoSteps = [
             <div key={label} className="p-2 bg-neon-yellow/5 border border-neon-yellow/20 rounded-lg text-center">
               <div className="font-orbitron font-bold text-sm text-neon-yellow">{value}</div>
               <div className="text-galactic-green text-xs">{delta}</div>
-              <div className="text-gray-500 text-xs mt-0.5">{label}</div>
+              <div className="text-foreground text-xs mt-0.5">{label}</div>
             </div>
           ))}
         </div>
@@ -82,7 +82,7 @@ const demoSteps = [
             <div key={i} className="flex-1 rounded-t" style={{ height: `${h}%`, background: `rgba(34, 197, 94, ${0.2 + i * 0.08})` }} />
           ))}
         </div>
-        <p className="text-center text-xs text-gray-500 mt-2 font-orbitron">7-day leads trend</p>
+        <p className="text-center text-xs text-foreground mt-2 font-orbitron">7-day leads trend</p>
       </div>
     ),
   },
@@ -105,7 +105,7 @@ const demoSteps = [
           const sub = Object.values(rest)[0];
           return (
             <div key={label} className="flex items-center justify-between p-2 bg-neon-purple/5 border border-neon-purple/10 rounded-lg">
-              <span className="text-xs text-gray-300 font-orbitron"><span className="mr-2">{icon}</span>{label}</span>
+              <span className="text-xs text-foreground font-orbitron"><span className="mr-2">{icon}</span>{label}</span>
               <span className="text-neon-purple text-xs font-orbitron">{sub}</span>
             </div>
           );
@@ -131,7 +131,7 @@ export default function LiveDemoSection() {
           <h2 className="font-orbitron font-bold text-3xl md:text-4xl mb-4 gradient-text">
             Live Platform Demo
           </h2>
-          <p className="text-gray-300 max-w-2xl mx-auto">
+          <p className="text-foreground max-w-2xl mx-auto">
             See ARCOLYTE TECHNOLOGIES in action before you commit. Explore automation workflows, AI chat, analytics, and the full platform.
           </p>
         </div>
@@ -148,8 +148,8 @@ export default function LiveDemoSection() {
                   onClick={() => { setActiveDemo(step.id); setPlaying(false); }}
                   className={`w-full text-left p-4 rounded-xl border transition-all ${
                     isActive
-                      ? `${step.border}/50 bg-space-dark/80 ${step.color}`
-                      : "border-white/10 text-gray-400 hover:border-white/20 hover:text-white"
+                      ? `${step.border}/50 bg-card/80 ${step.color}`
+                      : "border-border text-foreground hover:border-border hover:text-white"
                   }`}
                 >
                   <div className="flex items-center gap-2">
@@ -171,7 +171,7 @@ export default function LiveDemoSection() {
           {/* Preview window */}
           <div className={`md:col-span-2 glass-effect rounded-2xl border ${active.border}/30 overflow-hidden`}>
             {/* Window chrome */}
-            <div className="flex items-center gap-2 px-4 py-3 border-b border-white/10">
+            <div className="flex items-center gap-2 px-4 py-3 border-b border-border">
               <div className="w-2.5 h-2.5 rounded-full bg-galactic-red/60" />
               <div className="w-2.5 h-2.5 rounded-full bg-neon-yellow/60" />
               <div className="w-2.5 h-2.5 rounded-full bg-galactic-green/60" />

@@ -1,4 +1,4 @@
-﻿import Navigation from "@/components/Navigation";
+import Navigation from "@/components/Navigation";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import ServiceComparisonSection from "@/components/sections/ServiceComparisonSection";
@@ -6,8 +6,8 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 
 export default function FeatureServiceComparisonPage() {
   return (
-    <div className="min-h-screen bg-space-black text-white">
-      <title>Service Comparison — ARCOLYTE TECHNOLOGIES</title>
+    <div className="min-h-screen bg-background text-white">
+      <title>Service Comparison � ARCOLYTE TECHNOLOGIES</title>
       <Navigation />
       <main className="pt-20">
         <ServiceComparisonSection />

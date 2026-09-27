@@ -102,7 +102,7 @@ function MetricCard({ icon: Icon, label, value, suffix, sub, color, border, deci
         {count}{suffix}
       </div>
       <p className="font-orbitron text-xs text-white mb-1">{label}</p>
-      <p className="text-gray-500 text-xs">{sub}</p>
+      <p className="text-foreground text-xs">{sub}</p>
     </div>
   );
 }
@@ -118,7 +118,7 @@ export default function InvestorMetricsSection() {
           <h2 className="font-orbitron font-bold text-3xl md:text-4xl mb-4 gradient-text">
             Investor KPI Dashboard
           </h2>
-          <p className="text-gray-300 max-w-2xl mx-auto">
+          <p className="text-foreground max-w-2xl mx-auto">
             Transparent metrics that prove traction. We build in public because our numbers tell the story better than slides ever could.
           </p>
         </div>
@@ -137,10 +137,10 @@ export default function InvestorMetricsSection() {
               { label: "Target ARR", value: "$1M+", sub: "By Q4 2025" },
               { label: "Equity Offered", value: "10–15%", sub: "Negotiable" },
             ].map(({ label, value, sub }) => (
-              <div key={label} className="p-3 rounded-xl bg-space-dark/60">
+              <div key={label} className="p-3 rounded-xl bg-card/60">
                 <div className="font-orbitron font-black text-xl gradient-text">{value}</div>
                 <p className="font-orbitron text-xs text-galactic-gold mt-1">{label}</p>
-                <p className="text-gray-500 text-xs">{sub}</p>
+                <p className="text-foreground text-xs">{sub}</p>
               </div>
             ))}
           </div>

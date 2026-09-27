@@ -92,7 +92,7 @@ export default function CaseStudiesSection() {
           <h2 className="font-bold text-3xl sm:text-4xl md:text-5xl mb-6 tracking-tight text-foreground">
             Proof of Impact
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
+          <p className="text-foreground max-w-2xl mx-auto text-lg">
             Real projects delivering measurable results across industries.
           </p>
         </div>
@@ -103,13 +103,13 @@ export default function CaseStudiesSection() {
               className="flex flex-col border border-border p-6 bg-card transition-shadow hover:shadow-lg"
               data-testid={`case-study-${slug}`}
             >
-              <span className="text-xs font-semibold uppercase tracking-widest mb-4 block text-muted-foreground">
+              <span className="text-xs font-semibold uppercase tracking-widest mb-4 block text-foreground">
                 {category}
               </span>
               <h3 className="font-bold text-xl mb-3 text-foreground leading-snug">
                 {title}
               </h3>
-              <p className="text-muted-foreground text-sm mb-8 leading-relaxed flex-grow">
+              <p className="text-foreground text-sm mb-8 leading-relaxed flex-grow">
                 {detail}
               </p>
               <div className="flex items-center justify-between pt-4 border-t border-border mt-auto">
@@ -121,7 +121,7 @@ export default function CaseStudiesSection() {
                     href={link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-foreground hover:text-muted-foreground transition-colors"
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-foreground hover:text-foreground transition-colors"
                   >
                     {linkType === "app" ? (
                       <>Access <Smartphone className="w-3 h-3" /></>

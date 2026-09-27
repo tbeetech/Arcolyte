@@ -1,4 +1,4 @@
-﻿import { useState } from "react";
+import { useState } from "react";
 import { UserCheck, ArrowRight, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -78,7 +78,7 @@ export default function MentorshipSection() {
           <h2 className="font-orbitron font-bold text-3xl md:text-4xl mb-4 gradient-text">
             Mentorship Network
           </h2>
-          <p className="text-gray-300 max-w-2xl mx-auto">
+          <p className="text-foreground max-w-2xl mx-auto">
             Connect with experienced digital practitioners who've been exactly where you are. Get personalised guidance, not generic advice.
           </p>
         </div>
@@ -106,14 +106,14 @@ export default function MentorshipSection() {
                   <Star className="w-3.5 h-3.5 text-neon-yellow fill-neon-yellow" />
                   <span className="font-orbitron text-xs text-neon-yellow">{mentor.rating}</span>
                 </div>
-                <span className="text-gray-500 text-xs">{mentor.sessions} sessions</span>
-                <div className={`ml-auto px-2 py-0.5 rounded-full text-xs font-orbitron ${mentor.available ? "bg-galactic-green/10 text-galactic-green border border-galactic-green/30" : "bg-gray-800 text-gray-500 border border-gray-700"}`}>
+                <span className="text-foreground text-xs">{mentor.sessions} sessions</span>
+                <div className={`ml-auto px-2 py-0.5 rounded-full text-xs font-orbitron ${mentor.available ? "bg-galactic-green/10 text-galactic-green border border-galactic-green/30" : "bg-gray-800 text-foreground border border-gray-700"}`}>
                   {mentor.available ? "Available" : "Booked"}
                 </div>
               </div>
 
               {/* Bio */}
-              <p className="text-gray-400 text-xs leading-relaxed mb-3">{mentor.bio}</p>
+              <p className="text-foreground text-xs leading-relaxed mb-3">{mentor.bio}</p>
 
               {/* Expertise tags */}
               <div className="flex flex-wrap gap-1.5 mb-4">
@@ -132,11 +132,11 @@ export default function MentorshipSection() {
                     ? "bg-galactic-green/20 text-galactic-green border border-galactic-green/30"
                     : mentor.available
                     ? `bg-gradient-to-r from-galactic-orange/20 to-galactic-gold/20 text-white hover:from-galactic-orange/40 hover:to-galactic-gold/40 border ${mentor.border}/20`
-                    : "bg-space-dark text-gray-600 border border-gray-700 cursor-not-allowed"
+                    : "bg-card text-foreground border border-gray-700 cursor-not-allowed"
                 }`}
               >
                 {requested.includes(mentor.id)
-                  ? "✓ Request Sent!"
+                  ? "? Request Sent!"
                   : mentor.available
                   ? <><ArrowRight className="w-3.5 h-3.5 mr-1" /> Request Session</>
                   : "Currently Unavailable"
@@ -148,7 +148,7 @@ export default function MentorshipSection() {
 
         <div className="text-center mt-10 glass-effect max-w-2xl mx-auto p-6 rounded-2xl border border-galactic-orange/20">
           <h3 className="font-orbitron font-bold text-white mb-2">Become a Mentor</h3>
-          <p className="text-gray-400 text-sm mb-4">Share your expertise, build your personal brand, and earn while helping the community grow.</p>
+          <p className="text-foreground text-sm mb-4">Share your expertise, build your personal brand, and earn while helping the community grow.</p>
           <Button className="bg-gradient-to-r from-galactic-orange to-galactic-gold text-space-black font-orbitron font-bold text-xs">
             Apply to Mentor Program
           </Button>

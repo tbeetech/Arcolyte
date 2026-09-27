@@ -44,7 +44,7 @@ export default function GlobalImpactSection() {
           <h2 className="font-orbitron font-bold text-3xl md:text-4xl mb-4 gradient-text">
             Global Impact Map
           </h2>
-          <p className="text-gray-300 max-w-2xl mx-auto">
+          <p className="text-foreground max-w-2xl mx-auto">
             Born in Africa, built for the world. ARCOLYTE TECHNOLOGIES serves clients across {regions.length} countries and counting.
           </p>
         </div>
@@ -93,10 +93,10 @@ export default function GlobalImpactSection() {
                     </div>
                     {/* Tooltip */}
                     {hovered === region.name && (
-                      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 px-2 py-1 bg-space-dark border border-galactic-orange/40 rounded-lg text-xs font-orbitron whitespace-nowrap z-20">
+                      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 px-2 py-1 bg-card border border-galactic-orange/40 rounded-lg text-xs font-orbitron whitespace-nowrap z-20">
                         <span className="mr-1">{region.flag}</span>
                         <span className="text-white">{region.name}</span>
-                        <span className="text-gray-400 ml-1">({region.clients} clients)</span>
+                        <span className="text-foreground ml-1">({region.clients} clients)</span>
                       </div>
                     )}
                   </div>
@@ -110,7 +110,7 @@ export default function GlobalImpactSection() {
             {regions.slice(0, 14).map((region) => (
               <div
                 key={region.name}
-                className="text-center p-2 rounded-xl border border-white/10 hover:border-galactic-orange/30 transition-colors group"
+                className="text-center p-2 rounded-xl border border-border hover:border-galactic-orange/30 transition-colors group"
               >
                 <div className="text-xl mb-1">{region.flag}</div>
                 <div className="font-orbitron text-xs text-white">{region.name}</div>
@@ -120,7 +120,7 @@ export default function GlobalImpactSection() {
           </div>
 
           <div className="text-center mt-6">
-            <p className="font-orbitron text-gray-400 text-sm">
+            <p className="font-orbitron text-foreground text-sm">
               <span className="text-galactic-orange font-bold text-lg">{totalClients}+</span> clients across{" "}
               <span className="text-galactic-orange font-bold">{regions.length}</span> countries
             </p>

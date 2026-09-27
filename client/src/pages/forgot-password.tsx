@@ -1,4 +1,4 @@
-ï»¿import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "wouter";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
@@ -76,19 +76,19 @@ export default function ForgotPasswordPage() {
                 <CheckCircle className="w-6 h-6 text-galactic-orange" />
               </div>
               <h2 className="text-white font-orbitron font-bold text-lg">Password Updated!</h2>
-              <p className="text-white/60 text-sm">
-                Your password has been reset. Redirecting to sign inâ€¦
+              <p className="text-foreground text-sm">
+                Your password has been reset. Redirecting to sign in…
               </p>
               <Link href="/auth">
                 <Button className="bg-gradient-to-r from-galactic-orange to-galactic-gold text-space-black font-orbitron font-bold text-sm mt-2">
-                  Sign In â†’
+                  Sign In ?
                 </Button>
               </Link>
             </div>
           ) : (
             <>
               <h2 className="text-white font-orbitron font-bold text-lg mb-1">Reset Password</h2>
-              <p className="text-white/50 text-xs mb-6">
+              <p className="text-foreground text-xs mb-6">
                 Enter your email and choose a new password.
               </p>
               <form onSubmit={handleSubmit} className="space-y-4">
@@ -159,7 +159,7 @@ export default function ForgotPasswordPage() {
                       minLength={6}
                       className={`h-10 border-galactic-orange/20 text-white text-sm pr-10${passwordMismatch ? " border-red-500" : ""}`}
                       style={{ background: "rgba(0,0,0,0.6)" }}
-                      placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
+                      placeholder="••••••••"
                     />
                     <button
                       type="button"
@@ -179,7 +179,7 @@ export default function ForgotPasswordPage() {
                   disabled={loading}
                   className="w-full h-10 bg-gradient-to-r from-galactic-orange to-galactic-gold text-space-black font-orbitron font-bold text-sm transition-all mt-2 hover:shadow-[0_0_25px_rgba(34,197,94,0.4)]"
                 >
-                  {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : "Reset Password â†’"}
+                  {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : "Reset Password ?"}
                 </Button>
               </form>
               <div className="mt-4 text-center">

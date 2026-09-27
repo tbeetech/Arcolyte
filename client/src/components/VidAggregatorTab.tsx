@@ -44,7 +44,7 @@ function fmtDate(iso: string | null): string {
 
 function StateIndicator({ running, paused, cycleRunning }: Pick<VidAggregatorStatus, "running" | "paused" | "cycleRunning">) {
   if (!running) return (
-    <span className="flex items-center gap-1.5 text-gray-400 text-sm font-medium">
+    <span className="flex items-center gap-1.5 text-foreground text-sm font-medium">
       <span className="w-2.5 h-2.5 rounded-full bg-gray-500 inline-block" /> Stopped
     </span>
   );
@@ -126,7 +126,7 @@ export default function VidAggregatorTab() {
 
   if (!status) {
     return (
-      <div className="glass-effect rounded-xl p-10 text-center text-muted-foreground">
+      <div className="glass-effect rounded-xl p-10 text-center text-foreground">
         <AlertCircle className="w-10 h-10 text-galactic-orange/40 mx-auto mb-3" />
         <p>Could not load vid aggregator status.</p>
         <Button size="sm" variant="ghost" onClick={() => refetch()} className="mt-3 text-galactic-orange">
@@ -150,7 +150,7 @@ export default function VidAggregatorTab() {
             </div>
             <div>
               <h2 className="text-lg font-orbitron font-bold text-neon-cyan">Vid Aggregator</h2>
-              <p className="text-muted-foreground text-xs mt-0.5">Scrapes tech YouTube channels &amp; auto-populates Vlog</p>
+              <p className="text-foreground text-xs mt-0.5">Scrapes tech YouTube channels &amp; auto-populates Vlog</p>
             </div>
           </div>
           <div className="flex items-center gap-3">
@@ -171,12 +171,12 @@ export default function VidAggregatorTab() {
             <div key={label} className="bg-muted rounded-xl p-4 text-center border border-border">
               <Icon className={`w-5 h-5 ${color} mx-auto mb-1`} />
               <p className={`text-xl font-orbitron font-bold ${color}`}>{value}</p>
-              <p className="text-muted-foreground text-[11px] mt-0.5">{label}</p>
+              <p className="text-foreground text-[11px] mt-0.5">{label}</p>
             </div>
           ))}
         </div>
 
-        <div className="text-muted-foreground text-xs mb-5">
+        <div className="text-foreground text-xs mb-5">
           Last run: <span className="text-foreground">{fmtDate(status.lastRun)}</span>
           <span className="ml-3">→</span>
           <a href="/vlog" target="_blank" rel="noopener noreferrer" className="ml-2 text-neon-cyan hover:underline inline-flex items-center gap-1">
@@ -232,7 +232,7 @@ export default function VidAggregatorTab() {
                 <Video className="w-4 h-4 text-neon-cyan flex-shrink-0" />
                 <div className="min-w-0">
                   <p className="text-foreground text-sm font-medium truncate">{ch.name}</p>
-                  <p className="text-muted-foreground text-[11px]">
+                  <p className="text-foreground text-[11px]">
                     {ch.lastFetched ? `Last: ${fmtDate(ch.lastFetched)}` : "Not yet fetched"}
                   </p>
                 </div>
@@ -245,7 +245,7 @@ export default function VidAggregatorTab() {
                 )}
                 {ch.enabled
                   ? <CheckCircle2 className="w-4 h-4 text-green-400" />
-                  : <AlertCircle  className="w-4 h-4 text-muted-foreground" />
+                  : <AlertCircle  className="w-4 h-4 text-foreground" />
                 }
               </div>
             </div>
@@ -266,7 +266,7 @@ export default function VidAggregatorTab() {
               onChange={(e) => { setPollMinutes(Number(e.target.value)); setConfigDirty(true); }}
               className="border-neon-cyan/30 text-foreground text-sm h-9"
             />
-            <p className="text-muted-foreground text-[11px] mt-1">Current: {fmtMs(status.pollIntervalMs)}</p>
+            <p className="text-foreground text-[11px] mt-1">Current: {fmtMs(status.pollIntervalMs)}</p>
           </div>
           <div>
             <Label className="text-neon-cyan/80 font-orbitron text-xs mb-1.5 block">Max Videos per Channel</Label>
@@ -275,7 +275,7 @@ export default function VidAggregatorTab() {
               onChange={(e) => { setMaxVideos(Number(e.target.value)); setConfigDirty(true); }}
               className="border-neon-cyan/30 text-foreground text-sm h-9"
             />
-            <p className="text-muted-foreground text-[11px] mt-1">Currently {status.maxVideosPerChannel} per channel.</p>
+            <p className="text-foreground text-[11px] mt-1">Currently {status.maxVideosPerChannel} per channel.</p>
           </div>
         </div>
         <Button

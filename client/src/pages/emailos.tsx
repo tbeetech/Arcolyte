@@ -166,7 +166,7 @@ function StepIndicator({ current }: { current: number }) {
                   ? "bg-neon-cyan/20 border border-neon-cyan text-neon-cyan"
                   : done
                   ? "bg-galactic-green/10 border border-galactic-green/50 text-galactic-green"
-                  : "border border-white/10 text-gray-500"
+                  : "border border-border text-foreground"
               }`}
             >
               {done ? <CheckCircle className="w-3 h-3" /> : <Icon className="w-3 h-3" />}
@@ -340,7 +340,7 @@ function OnboardingWizard({ onComplete }: { onComplete: (org: Org) => void }) {
   }
 
   return (
-    <div className="min-h-screen bg-space-black text-white">
+    <div className="min-h-screen bg-background text-white">
       <Navigation />
       <div className="container mx-auto px-6 pt-28 pb-20 max-w-3xl">
         <StepIndicator current={step} />
@@ -354,10 +354,10 @@ function OnboardingWizard({ onComplete }: { onComplete: (org: Org) => void }) {
                 <Mail className="w-10 h-10 text-neon-cyan" />
               </div>
               <h1 className="font-orbitron font-black text-3xl gradient-text mb-3">Welcome to EmailOS 👋</h1>
-              <p className="text-gray-300 mb-2 max-w-lg mx-auto">
+              <p className="text-foreground mb-2 max-w-lg mx-auto">
                 You're about to set up your very own <span className="text-neon-cyan font-semibold">email marketing account</span>. It takes less than 2 minutes and no technical knowledge is required.
               </p>
-              <p className="text-gray-500 text-sm mb-8 max-w-lg mx-auto">
+              <p className="text-foreground text-sm mb-8 max-w-lg mx-auto">
                 Manage your contacts, design campaigns, schedule sends, and track who opens your emails, all in one place.
               </p>
               <div className="flex flex-wrap gap-3 justify-center mb-8">
@@ -378,32 +378,32 @@ function OnboardingWizard({ onComplete }: { onComplete: (org: Org) => void }) {
                 <Building2 className="w-8 h-8 text-galactic-orange" />
                 <div>
                   <h2 className="font-orbitron font-bold text-2xl gradient-text">Name Your Email Account</h2>
-                  <p className="text-gray-400 text-sm">This is just for you, so you can find your account easily.</p>
+                  <p className="text-foreground text-sm">This is just for you, so you can find your account easily.</p>
                 </div>
               </div>
               <div className="space-y-4 mb-8">
                 <div>
-                  <label className="block text-sm font-orbitron text-gray-300 mb-2">Account Name *</label>
+                  <label className="block text-sm font-orbitron text-foreground mb-2">Account Name *</label>
                   <input
                     value={orgName}
                     onChange={e => setOrgName(e.target.value)}
                     placeholder="e.g. My Newsletter, Acme Marketing, Sarah's Shop"
-                    className="w-full bg-space-dark border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-galactic-orange/60 font-orbitron text-sm"
+                    className="w-full bg-card border border-border rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-galactic-orange/60 font-orbitron text-sm"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-orbitron text-gray-300 mb-2">Your Website or Brand Domain *</label>
+                  <label className="block text-sm font-orbitron text-foreground mb-2">Your Website or Brand Domain *</label>
                   <input
                     value={orgDomain}
                     onChange={e => setOrgDomain(e.target.value)}
                     placeholder="e.g. yourbusiness.com or mystore.co"
-                    className="w-full bg-space-dark border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-galactic-orange/60 font-orbitron text-sm"
+                    className="w-full bg-card border border-border rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-galactic-orange/60 font-orbitron text-sm"
                   />
-                  <p className="text-gray-500 text-xs mt-1">Your emails will be sent on behalf of this domain so recipients recognise you.</p>
+                  <p className="text-foreground text-xs mt-1">Your emails will be sent on behalf of this domain so recipients recognise you.</p>
                 </div>
               </div>
               <div className="flex gap-3">
-                <Button variant="outline" onClick={() => setStep(0)} className="border-white/10 text-gray-400 font-orbitron">
+                <Button variant="outline" onClick={() => setStep(0)} className="border-border text-foreground font-orbitron">
                   <ArrowLeft className="w-4 h-4 mr-2" /> Back
                 </Button>
                 <Button onClick={handleOrgSubmit} disabled={loading} className="flex-1 bg-galactic-orange text-space-black font-orbitron font-bold hover:bg-galactic-gold">
@@ -421,7 +421,7 @@ function OnboardingWizard({ onComplete }: { onComplete: (org: Org) => void }) {
                 <Layers className="w-8 h-8 text-neon-purple" />
                 <div>
                   <h2 className="font-orbitron font-bold text-2xl gradient-text">Choose Your Plan</h2>
-                  <p className="text-gray-400 text-sm">You can upgrade or downgrade anytime.</p>
+                  <p className="text-foreground text-sm">You can upgrade or downgrade anytime.</p>
                 </div>
               </div>
               <div className="grid md:grid-cols-3 gap-4 mb-6">
@@ -436,7 +436,7 @@ function OnboardingWizard({ onComplete }: { onComplete: (org: Org) => void }) {
                       }`}
                     >
                       {tier.badge && (
-                        <div className={`absolute -top-2.5 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full text-xs font-orbitron font-bold bg-space-black border ${tier.border} ${tier.color}`}>
+                        <div className={`absolute -top-2.5 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full text-xs font-orbitron font-bold bg-background border ${tier.border} ${tier.color}`}>
                           {tier.badge}
                         </div>
                       )}
@@ -444,11 +444,11 @@ function OnboardingWizard({ onComplete }: { onComplete: (org: Org) => void }) {
                       <h3 className={`font-orbitron font-bold text-base ${tier.color} mb-1`}>{tier.name}</h3>
                       <div className="flex items-baseline gap-1 mb-4">
                         <span className="font-orbitron font-black text-2xl text-white">{tier.price}</span>
-                        <span className="text-gray-500 text-xs font-orbitron">{tier.priceNote}</span>
+                        <span className="text-foreground text-xs font-orbitron">{tier.priceNote}</span>
                       </div>
                       <ul className="space-y-1.5">
                         {tier.features.slice(0, 4).map(f => (
-                          <li key={f} className="flex items-center gap-1.5 text-xs text-gray-300">
+                          <li key={f} className="flex items-center gap-1.5 text-xs text-foreground">
                             <CheckCircle className={`w-3 h-3 ${tier.color} shrink-0`} />
                             {f}
                           </li>
@@ -459,14 +459,14 @@ function OnboardingWizard({ onComplete }: { onComplete: (org: Org) => void }) {
                       </ul>
                       {loading && selectedTier === tier.id && (
                         <div className="mt-3 flex justify-center">
-                          <Loader2 className="w-4 h-4 animate-spin text-gray-400" />
+                          <Loader2 className="w-4 h-4 animate-spin text-foreground" />
                         </div>
                       )}
                     </div>
                   );
                 })}
               </div>
-              <Button variant="outline" onClick={() => setStep(1)} className="border-white/10 text-gray-400 font-orbitron">
+              <Button variant="outline" onClick={() => setStep(1)} className="border-border text-foreground font-orbitron">
                 <ArrowLeft className="w-4 h-4 mr-2" /> Back
               </Button>
             </motion.div>
@@ -479,31 +479,31 @@ function OnboardingWizard({ onComplete }: { onComplete: (org: Org) => void }) {
                 <Users className="w-8 h-8 text-galactic-green" />
                 <div>
                   <h2 className="font-orbitron font-bold text-2xl gradient-text">Create Your First List</h2>
-                  <p className="text-gray-400 text-sm">A list is a segmented group of contacts. You can add contacts later.</p>
+                  <p className="text-foreground text-sm">A list is a segmented group of contacts. You can add contacts later.</p>
                 </div>
               </div>
               <div className="space-y-4 mb-8">
                 <div>
-                  <label className="block text-sm font-orbitron text-gray-300 mb-2">List Name *</label>
+                  <label className="block text-sm font-orbitron text-foreground mb-2">List Name *</label>
                   <input
                     value={listName}
                     onChange={e => setListName(e.target.value)}
                     placeholder="e.g. Weekly Newsletter Subscribers"
-                    className="w-full bg-space-dark border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-galactic-green/60 font-orbitron text-sm"
+                    className="w-full bg-card border border-border rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-galactic-green/60 font-orbitron text-sm"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-orbitron text-gray-300 mb-2">Description (optional)</label>
+                  <label className="block text-sm font-orbitron text-foreground mb-2">Description (optional)</label>
                   <input
                     value={listDesc}
                     onChange={e => setListDesc(e.target.value)}
                     placeholder="e.g. Subscribers who opted in via the blog signup form"
-                    className="w-full bg-space-dark border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-galactic-green/60 font-orbitron text-sm"
+                    className="w-full bg-card border border-border rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-galactic-green/60 font-orbitron text-sm"
                   />
                 </div>
               </div>
               <div className="flex gap-3">
-                <Button variant="outline" onClick={handleListSkip} className="border-white/10 text-gray-400 font-orbitron text-sm">
+                <Button variant="outline" onClick={handleListSkip} className="border-border text-foreground font-orbitron text-sm">
                   Skip for now
                 </Button>
                 <Button onClick={handleListCreate} disabled={loading} className="flex-1 bg-galactic-green text-space-black font-orbitron font-bold hover:bg-galactic-green/80">
@@ -521,7 +521,7 @@ function OnboardingWizard({ onComplete }: { onComplete: (org: Org) => void }) {
                 <Send className="w-8 h-8 text-neon-purple" />
                 <div>
                   <h2 className="font-orbitron font-bold text-2xl gradient-text">Create Your First Campaign</h2>
-                  <p className="text-gray-400 text-sm">A draft campaign you can edit and schedule later.</p>
+                  <p className="text-foreground text-sm">A draft campaign you can edit and schedule later.</p>
                 </div>
               </div>
               {lists.length === 0 && (
@@ -531,37 +531,37 @@ function OnboardingWizard({ onComplete }: { onComplete: (org: Org) => void }) {
               )}
               <div className="space-y-4 mb-8">
                 <div>
-                  <label className="block text-sm font-orbitron text-gray-300 mb-2">Subject Line *</label>
+                  <label className="block text-sm font-orbitron text-foreground mb-2">Subject Line *</label>
                   <input
                     value={campaignSubject}
                     onChange={e => setCampaignSubject(e.target.value)}
                     placeholder="e.g. 🎉 Our Big Summer Sale, Don't Miss It!"
-                    className="w-full bg-space-dark border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-neon-purple/60 font-orbitron text-sm"
+                    className="w-full bg-card border border-border rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-neon-purple/60 font-orbitron text-sm"
                   />
                 </div>
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-sm font-orbitron text-gray-300 mb-2">From Name *</label>
+                    <label className="block text-sm font-orbitron text-foreground mb-2">From Name *</label>
                     <input
                       value={campaignFrom}
                       onChange={e => setCampaignFrom(e.target.value)}
                       placeholder="e.g. The ARCOLYTE TECHNOLOGIES Team"
-                      className="w-full bg-space-dark border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-neon-purple/60 font-orbitron text-sm"
+                      className="w-full bg-card border border-border rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-neon-purple/60 font-orbitron text-sm"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-orbitron text-gray-300 mb-2">From Email *</label>
+                    <label className="block text-sm font-orbitron text-foreground mb-2">From Email *</label>
                     <input
                       value={campaignEmail}
                       onChange={e => setCampaignEmail(e.target.value)}
                       placeholder="e.g. hello@yourdomain.com"
-                      className="w-full bg-space-dark border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-neon-purple/60 font-orbitron text-sm"
+                      className="w-full bg-card border border-border rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-neon-purple/60 font-orbitron text-sm"
                     />
                   </div>
                 </div>
               </div>
               <div className="flex gap-3">
-                <Button variant="outline" onClick={handleCampaignSkip} className="border-white/10 text-gray-400 font-orbitron text-sm">
+                <Button variant="outline" onClick={handleCampaignSkip} className="border-border text-foreground font-orbitron text-sm">
                   Skip for now
                 </Button>
                 <Button onClick={handleCampaignCreate} disabled={loading || lists.length === 0} className="flex-1 bg-neon-purple text-white font-orbitron font-bold hover:bg-neon-purple/80">
@@ -579,10 +579,10 @@ function OnboardingWizard({ onComplete }: { onComplete: (org: Org) => void }) {
                 <Zap className="w-12 h-12 text-galactic-orange" />
               </div>
               <h2 className="font-orbitron font-black text-3xl gradient-text mb-3">You're All Set! 🎉</h2>
-              <p className="text-gray-300 mb-2 max-w-md mx-auto">
+              <p className="text-foreground mb-2 max-w-md mx-auto">
                 Your EmailOS account is ready. Head to your dashboard to add contacts, create beautiful campaigns, and start sending!
               </p>
-              <p className="text-gray-500 text-sm mb-8 max-w-md mx-auto">
+              <p className="text-foreground text-sm mb-8 max-w-md mx-auto">
                 Everything is private and secure, only you have access to your account.
               </p>
               <div className="flex flex-wrap gap-3 justify-center mb-8">
@@ -813,7 +813,7 @@ function EmailOSDashboard({ org: initialOrg }: { org: Org }) {
   const INDUSTRIES = ["General","Technology","Marketing","Ecommerce","Finance","Health","Education","SaaS","Retail","Travel","Food","Fashion","Real Estate","Fitness","Beauty","B2B","Crypto","AI","Gaming","Media","Consulting"];
 
   return (
-    <div className="min-h-screen bg-space-black text-white">
+    <div className="min-h-screen bg-background text-white">
       <Navigation />
       <div className="container mx-auto px-6 pt-28 pb-16 max-w-7xl">
 
@@ -823,7 +823,7 @@ function EmailOSDashboard({ org: initialOrg }: { org: Org }) {
             <Mail className="w-8 h-8 text-neon-cyan" />
             <div>
               <h1 className="text-3xl font-orbitron font-bold gradient-text">{org.orgName}</h1>
-              <p className="text-gray-400 text-sm">{org.orgDomain}</p>
+              <p className="text-foreground text-sm">{org.orgDomain}</p>
             </div>
           </div>
           <div className={`flex items-center gap-2 px-4 py-2 rounded-xl border ${tierDef.border}/40 ${tierDef.color} glass-effect`}>
@@ -833,7 +833,7 @@ function EmailOSDashboard({ org: initialOrg }: { org: Org }) {
         </div>
 
         {/* Tabs */}
-        <div className="flex gap-1 mb-8 p-1 bg-space-dark/60 rounded-xl border border-white/10 w-fit">
+        <div className="flex gap-1 mb-8 p-1 bg-card/60 rounded-xl border border-border w-fit">
           {tabs.map(tab => {
             const Icon = tab.icon;
             return (
@@ -843,7 +843,7 @@ function EmailOSDashboard({ org: initialOrg }: { org: Org }) {
                 className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-orbitron transition-all ${
                   activeTab === tab.id
                     ? "bg-neon-cyan/20 text-neon-cyan border border-neon-cyan/40"
-                    : "text-gray-400 hover:text-gray-200"
+                    : "text-foreground hover:text-foreground"
                 }`}
               >
                 <Icon className="w-4 h-4" />
@@ -872,17 +872,17 @@ function EmailOSDashboard({ org: initialOrg }: { org: Org }) {
                     const Icon = stat.icon;
                     const pct = stat.max ? Math.min(100, Math.round((stat.value / stat.max) * 100)) : null;
                     return (
-                      <div key={stat.label} className="glass-effect p-5 rounded-2xl border border-white/10">
+                      <div key={stat.label} className="glass-effect p-5 rounded-2xl border border-border">
                         <div className="flex items-center justify-between mb-3">
                           <Icon className={`w-5 h-5 ${stat.color}`} />
                           {pct !== null && (
-                            <span className={`text-xs font-orbitron ${pct > 80 ? "text-red-400" : "text-gray-500"}`}>{pct}%</span>
+                            <span className={`text-xs font-orbitron ${pct > 80 ? "text-red-400" : "text-foreground"}`}>{pct}%</span>
                           )}
                         </div>
                         <div className={`font-orbitron font-black text-2xl ${stat.color} mb-1`}>
                           {stat.value.toLocaleString()}
                         </div>
-                        <div className="text-gray-400 text-xs font-orbitron">{stat.label}</div>
+                        <div className="text-foreground text-xs font-orbitron">{stat.label}</div>
                         {stat.max && (
                           <div className="mt-2 h-1 bg-white/5 rounded-full overflow-hidden">
                             <div
@@ -915,19 +915,19 @@ function EmailOSDashboard({ org: initialOrg }: { org: Org }) {
                       <div className={`font-orbitron font-black text-lg ${tierDef.color}`}>
                         {org.maxContacts >= 999_999_999 ? "âˆž" : org.maxContacts.toLocaleString()}
                       </div>
-                      <div className="text-gray-500 text-xs font-orbitron">Max Contacts</div>
+                      <div className="text-foreground text-xs font-orbitron">Max Contacts</div>
                     </div>
                     <div className="text-center">
                       <div className={`font-orbitron font-black text-lg ${tierDef.color}`}>
                         {org.maxEmailsPerMonth >= 999_999_999 ? "âˆž" : org.maxEmailsPerMonth.toLocaleString()}
                       </div>
-                      <div className="text-gray-500 text-xs font-orbitron">Emails / Month</div>
+                      <div className="text-foreground text-xs font-orbitron">Emails / Month</div>
                     </div>
                     <div className="text-center">
                       <div className={`font-orbitron font-black text-lg ${tierDef.color}`}>
                         {org.maxActiveCampaigns >= 999 ? "âˆž" : org.maxActiveCampaigns}
                       </div>
-                      <div className="text-gray-500 text-xs font-orbitron">Active Campaigns</div>
+                      <div className="text-foreground text-xs font-orbitron">Active Campaigns</div>
                     </div>
                   </div>
                 </div>
@@ -949,16 +949,16 @@ function EmailOSDashboard({ org: initialOrg }: { org: Org }) {
                   <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
                     <div className="glass-effect w-full max-w-lg rounded-2xl border border-neon-cyan/30 p-6">
                       <h3 className="font-orbitron font-bold text-lg text-neon-cyan mb-4">Create Campaign</h3>
-                      <p className="text-gray-400 text-xs font-orbitron mb-4">
+                      <p className="text-foreground text-xs font-orbitron mb-4">
                         Use <span className="text-neon-cyan">{"{{firstName}}"}</span>, <span className="text-neon-cyan">{"{{lastName}}"}</span>, <span className="text-neon-cyan">{"{{email}}"}</span> in subject or body for dynamic personalisation.
                       </p>
                       <div className="space-y-3 mb-5">
                         <div>
-                          <label className="block text-xs font-orbitron text-gray-400 mb-1">List *</label>
+                          <label className="block text-xs font-orbitron text-foreground mb-1">List *</label>
                           <select
                             value={campListId}
                             onChange={e => setCampListId(e.target.value)}
-                            className="w-full bg-space-dark border border-white/10 rounded-xl px-3 py-2 text-white font-orbitron text-sm focus:outline-none focus:border-neon-cyan/60"
+                            className="w-full bg-card border border-border rounded-xl px-3 py-2 text-white font-orbitron text-sm focus:outline-none focus:border-neon-cyan/60"
                           >
                             <option value=""> Select a list </option>
                             {lists.map(l => (
@@ -967,30 +967,30 @@ function EmailOSDashboard({ org: initialOrg }: { org: Org }) {
                           </select>
                         </div>
                         <div>
-                          <label className="block text-xs font-orbitron text-gray-400 mb-1">Subject Line *</label>
-                          <input value={campSubject} onChange={e => setCampSubject(e.target.value)} placeholder="e.g. Hey {{firstName}}, check this out!" className="w-full bg-space-dark border border-white/10 rounded-xl px-3 py-2 text-white placeholder-gray-600 font-orbitron text-sm focus:outline-none focus:border-neon-cyan/60" />
+                          <label className="block text-xs font-orbitron text-foreground mb-1">Subject Line *</label>
+                          <input value={campSubject} onChange={e => setCampSubject(e.target.value)} placeholder="e.g. Hey {{firstName}}, check this out!" className="w-full bg-card border border-border rounded-xl px-3 py-2 text-white placeholder-gray-600 font-orbitron text-sm focus:outline-none focus:border-neon-cyan/60" />
                         </div>
                         <div className="grid grid-cols-2 gap-3">
                           <div>
-                            <label className="block text-xs font-orbitron text-gray-400 mb-1">From Name *</label>
-                            <input value={campFromName} onChange={e => setCampFromName(e.target.value)} placeholder="Your Name" className="w-full bg-space-dark border border-white/10 rounded-xl px-3 py-2 text-white placeholder-gray-600 font-orbitron text-sm focus:outline-none focus:border-neon-cyan/60" />
+                            <label className="block text-xs font-orbitron text-foreground mb-1">From Name *</label>
+                            <input value={campFromName} onChange={e => setCampFromName(e.target.value)} placeholder="Your Name" className="w-full bg-card border border-border rounded-xl px-3 py-2 text-white placeholder-gray-600 font-orbitron text-sm focus:outline-none focus:border-neon-cyan/60" />
                           </div>
                           <div>
-                            <label className="block text-xs font-orbitron text-gray-400 mb-1">From Email *</label>
-                            <input value={campFromEmail} onChange={e => setCampFromEmail(e.target.value)} placeholder="you@example.com" className="w-full bg-space-dark border border-white/10 rounded-xl px-3 py-2 text-white placeholder-gray-600 font-orbitron text-sm focus:outline-none focus:border-neon-cyan/60" />
+                            <label className="block text-xs font-orbitron text-foreground mb-1">From Email *</label>
+                            <input value={campFromEmail} onChange={e => setCampFromEmail(e.target.value)} placeholder="you@example.com" className="w-full bg-card border border-border rounded-xl px-3 py-2 text-white placeholder-gray-600 font-orbitron text-sm focus:outline-none focus:border-neon-cyan/60" />
                           </div>
                         </div>
                         <div>
-                          <label className="block text-xs font-orbitron text-gray-400 mb-1">Email Body (HTML) *</label>
-                          <textarea value={campHtmlBody} onChange={e => setCampHtmlBody(e.target.value)} rows={4} placeholder="<p>Hello {{firstName}}, welcome to our campaign!</p>" className="w-full bg-space-dark border border-white/10 rounded-xl px-3 py-2 text-white placeholder-gray-600 font-orbitron text-sm focus:outline-none focus:border-neon-cyan/60 resize-y" />
+                          <label className="block text-xs font-orbitron text-foreground mb-1">Email Body (HTML) *</label>
+                          <textarea value={campHtmlBody} onChange={e => setCampHtmlBody(e.target.value)} rows={4} placeholder="<p>Hello {{firstName}}, welcome to our campaign!</p>" className="w-full bg-card border border-border rounded-xl px-3 py-2 text-white placeholder-gray-600 font-orbitron text-sm focus:outline-none focus:border-neon-cyan/60 resize-y" />
                         </div>
                         <div>
-                          <label className="block text-xs font-orbitron text-gray-400 mb-1">Schedule (optional, leave blank to save as draft)</label>
-                          <input type="datetime-local" value={campScheduledAt} onChange={e => setCampScheduledAt(e.target.value)} className="w-full bg-space-dark border border-white/10 rounded-xl px-3 py-2 text-white font-orbitron text-sm focus:outline-none focus:border-neon-cyan/60" />
+                          <label className="block text-xs font-orbitron text-foreground mb-1">Schedule (optional, leave blank to save as draft)</label>
+                          <input type="datetime-local" value={campScheduledAt} onChange={e => setCampScheduledAt(e.target.value)} className="w-full bg-card border border-border rounded-xl px-3 py-2 text-white font-orbitron text-sm focus:outline-none focus:border-neon-cyan/60" />
                         </div>
                       </div>
                       <div className="flex gap-3">
-                        <Button variant="outline" onClick={() => setShowCreateCampaign(false)} className="border-white/10 text-gray-400 font-orbitron text-sm">Cancel</Button>
+                        <Button variant="outline" onClick={() => setShowCreateCampaign(false)} className="border-border text-foreground font-orbitron text-sm">Cancel</Button>
                         <Button onClick={handleCreateCampaign} disabled={creatingCampaign} className="flex-1 bg-neon-cyan text-space-black font-orbitron font-bold text-sm">
                           {creatingCampaign ? <Loader2 className="w-4 h-4 animate-spin mr-2" /> : <Send className="w-4 h-4 mr-2" />}
                           {campScheduledAt ? "Schedule Campaign" : "Save as Draft"}
@@ -1001,9 +1001,9 @@ function EmailOSDashboard({ org: initialOrg }: { org: Org }) {
                 )}
 
                 {campaigns.length === 0 ? (
-                  <div className="glass-effect p-10 rounded-2xl border border-white/10 text-center">
-                    <Send className="w-10 h-10 text-gray-600 mx-auto mb-3" />
-                    <p className="text-gray-500 font-orbitron text-sm mb-4">No campaigns yet. Create your first one!</p>
+                  <div className="glass-effect p-10 rounded-2xl border border-border text-center">
+                    <Send className="w-10 h-10 text-foreground mx-auto mb-3" />
+                    <p className="text-foreground font-orbitron text-sm mb-4">No campaigns yet. Create your first one!</p>
                     <Button size="sm" onClick={() => setShowCreateCampaign(true)} className="bg-neon-cyan/20 border border-neon-cyan/40 text-neon-cyan font-orbitron text-xs hover:bg-neon-cyan/30">
                       <Plus className="w-3 h-3 mr-1" /> New Campaign
                     </Button>
@@ -1011,17 +1011,17 @@ function EmailOSDashboard({ org: initialOrg }: { org: Org }) {
                 ) : (
                   <div className="space-y-3">
                     {campaigns.map(c => (
-                      <div key={c._id} className="glass-effect p-5 rounded-2xl border border-white/10 flex flex-wrap items-center justify-between gap-4">
+                      <div key={c._id} className="glass-effect p-5 rounded-2xl border border-border flex flex-wrap items-center justify-between gap-4">
                         <div className="flex-1 min-w-0">
                           <p className="font-orbitron font-bold text-sm text-white truncate">{c.subject}</p>
-                          <p className="text-gray-500 text-xs font-orbitron">{c.fromName} &lt;{c.fromEmail}&gt;</p>
+                          <p className="text-foreground text-xs font-orbitron">{c.fromName} &lt;{c.fromEmail}&gt;</p>
                         </div>
-                        <div className="flex items-center gap-3 text-xs font-orbitron text-gray-400 flex-wrap">
+                        <div className="flex items-center gap-3 text-xs font-orbitron text-foreground flex-wrap">
                           <span className={`px-2 py-0.5 rounded-full border ${
                             c.status === "sent" ? "border-galactic-green/40 text-galactic-green" :
                             c.status === "scheduled" ? "border-neon-cyan/40 text-neon-cyan" :
                             c.status === "sending" ? "border-galactic-orange/40 text-galactic-orange animate-pulse" :
-                            "border-white/10 text-gray-500"
+                            "border-border text-foreground"
                           }`}>{c.status}</span>
                           <span><Send className="w-3 h-3 inline mr-1" />{c.totalSent.toLocaleString()} sent</span>
                           <span><MousePointerClick className="w-3 h-3 inline mr-1" />{c.totalOpens} opens</span>
@@ -1064,16 +1064,16 @@ function EmailOSDashboard({ org: initialOrg }: { org: Org }) {
                       <h3 className="font-orbitron font-bold text-lg text-galactic-green mb-4">Create Email List</h3>
                       <div className="space-y-3 mb-5">
                         <div>
-                          <label className="block text-xs font-orbitron text-gray-400 mb-1">List Name *</label>
-                          <input value={newListName} onChange={e => setNewListName(e.target.value)} placeholder="e.g. Newsletter Subscribers" className="w-full bg-space-dark border border-white/10 rounded-xl px-3 py-2 text-white placeholder-gray-600 font-orbitron text-sm focus:outline-none focus:border-galactic-green/60" />
+                          <label className="block text-xs font-orbitron text-foreground mb-1">List Name *</label>
+                          <input value={newListName} onChange={e => setNewListName(e.target.value)} placeholder="e.g. Newsletter Subscribers" className="w-full bg-card border border-border rounded-xl px-3 py-2 text-white placeholder-gray-600 font-orbitron text-sm focus:outline-none focus:border-galactic-green/60" />
                         </div>
                         <div>
-                          <label className="block text-xs font-orbitron text-gray-400 mb-1">Description (optional)</label>
-                          <input value={newListDesc} onChange={e => setNewListDesc(e.target.value)} placeholder="e.g. Opted-in blog subscribers" className="w-full bg-space-dark border border-white/10 rounded-xl px-3 py-2 text-white placeholder-gray-600 font-orbitron text-sm focus:outline-none focus:border-galactic-green/60" />
+                          <label className="block text-xs font-orbitron text-foreground mb-1">Description (optional)</label>
+                          <input value={newListDesc} onChange={e => setNewListDesc(e.target.value)} placeholder="e.g. Opted-in blog subscribers" className="w-full bg-card border border-border rounded-xl px-3 py-2 text-white placeholder-gray-600 font-orbitron text-sm focus:outline-none focus:border-galactic-green/60" />
                         </div>
                       </div>
                       <div className="flex gap-3">
-                        <Button variant="outline" onClick={() => setShowCreateList(false)} className="border-white/10 text-gray-400 font-orbitron text-sm">Cancel</Button>
+                        <Button variant="outline" onClick={() => setShowCreateList(false)} className="border-border text-foreground font-orbitron text-sm">Cancel</Button>
                         <Button onClick={handleCreateList} disabled={creatingList} className="flex-1 bg-galactic-green text-space-black font-orbitron font-bold text-sm">
                           {creatingList ? <Loader2 className="w-4 h-4 animate-spin mr-2" /> : <Plus className="w-4 h-4 mr-2" />}
                           Create List
@@ -1088,27 +1088,27 @@ function EmailOSDashboard({ org: initialOrg }: { org: Org }) {
                   <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
                     <div className="glass-effect w-full max-w-md rounded-2xl border border-neon-cyan/30 p-6">
                       <h3 className="font-orbitron font-bold text-lg text-neon-cyan mb-2">Fetch Public Leads</h3>
-                      <p className="text-gray-400 text-xs font-orbitron mb-4">
+                      <p className="text-foreground text-xs font-orbitron mb-4">
                         Aggregates prospective contacts from publicly available marketing sources, Clearbit company directory, Google News RSS, and RandomUser.me. Leads are tagged "aggregated-lead" for easy filtering.
                       </p>
                       <div className="space-y-3 mb-5">
                         <div>
-                          <label className="block text-xs font-orbitron text-gray-400 mb-1">Industry / Niche</label>
-                          <select value={aggIndustry} onChange={e => setAggIndustry(e.target.value)} className="w-full bg-space-dark border border-white/10 rounded-xl px-3 py-2 text-white font-orbitron text-sm focus:outline-none focus:border-neon-cyan/60">
+                          <label className="block text-xs font-orbitron text-foreground mb-1">Industry / Niche</label>
+                          <select value={aggIndustry} onChange={e => setAggIndustry(e.target.value)} className="w-full bg-card border border-border rounded-xl px-3 py-2 text-white font-orbitron text-sm focus:outline-none focus:border-neon-cyan/60">
                             {INDUSTRIES.map(ind => <option key={ind} value={ind}>{ind}</option>)}
                           </select>
                         </div>
                         <div>
-                          <label className="block text-xs font-orbitron text-gray-400 mb-1">Keywords (comma-separated, optional)</label>
-                          <input value={aggKeywords} onChange={e => setAggKeywords(e.target.value)} placeholder="e.g. email marketing, newsletter, B2B" className="w-full bg-space-dark border border-white/10 rounded-xl px-3 py-2 text-white placeholder-gray-600 font-orbitron text-sm focus:outline-none focus:border-neon-cyan/60" />
+                          <label className="block text-xs font-orbitron text-foreground mb-1">Keywords (comma-separated, optional)</label>
+                          <input value={aggKeywords} onChange={e => setAggKeywords(e.target.value)} placeholder="e.g. email marketing, newsletter, B2B" className="w-full bg-card border border-border rounded-xl px-3 py-2 text-white placeholder-gray-600 font-orbitron text-sm focus:outline-none focus:border-neon-cyan/60" />
                         </div>
                         <div>
-                          <label className="block text-xs font-orbitron text-gray-400 mb-1">Number of Leads (up to your plan capacity)</label>
-                          <input type="number" min={1} value={aggCount} onChange={e => setAggCount(Math.max(1, Number(e.target.value) || 1))} className="w-full bg-space-dark border border-white/10 rounded-xl px-3 py-2 text-white font-orbitron text-sm focus:outline-none focus:border-neon-cyan/60" />
+                          <label className="block text-xs font-orbitron text-foreground mb-1">Number of Leads (up to your plan capacity)</label>
+                          <input type="number" min={1} value={aggCount} onChange={e => setAggCount(Math.max(1, Number(e.target.value) || 1))} className="w-full bg-card border border-border rounded-xl px-3 py-2 text-white font-orbitron text-sm focus:outline-none focus:border-neon-cyan/60" />
                         </div>
                       </div>
                       <div className="flex gap-3">
-                        <Button variant="outline" onClick={() => setAggregateListId(null)} className="border-white/10 text-gray-400 font-orbitron text-sm">Cancel</Button>
+                        <Button variant="outline" onClick={() => setAggregateListId(null)} className="border-border text-foreground font-orbitron text-sm">Cancel</Button>
                         <Button onClick={handleAggregateLeads} disabled={aggregating} className="flex-1 bg-neon-cyan text-space-black font-orbitron font-bold text-sm">
                           {aggregating ? <Loader2 className="w-4 h-4 animate-spin mr-2" /> : <RefreshCw className="w-4 h-4 mr-2" />}
                           {aggregating ? "Fetching Leads…" : "Fetch Leads"}
@@ -1119,9 +1119,9 @@ function EmailOSDashboard({ org: initialOrg }: { org: Org }) {
                 )}
 
                 {lists.length === 0 ? (
-                  <div className="glass-effect p-10 rounded-2xl border border-white/10 text-center">
-                    <Users className="w-10 h-10 text-gray-600 mx-auto mb-3" />
-                    <p className="text-gray-500 font-orbitron text-sm mb-4">No lists yet. Create your first list to get started.</p>
+                  <div className="glass-effect p-10 rounded-2xl border border-border text-center">
+                    <Users className="w-10 h-10 text-foreground mx-auto mb-3" />
+                    <p className="text-foreground font-orbitron text-sm mb-4">No lists yet. Create your first list to get started.</p>
                     <Button size="sm" onClick={() => setShowCreateList(true)} className="bg-galactic-green/20 border border-galactic-green/40 text-galactic-green font-orbitron text-xs hover:bg-galactic-green/30">
                       <Plus className="w-3 h-3 mr-1" /> New List
                     </Button>
@@ -1129,7 +1129,7 @@ function EmailOSDashboard({ org: initialOrg }: { org: Org }) {
                 ) : (
                   <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     {lists.map(list => (
-                      <div key={list._id} className="glass-effect p-5 rounded-2xl border border-white/10 flex flex-col gap-3">
+                      <div key={list._id} className="glass-effect p-5 rounded-2xl border border-border flex flex-col gap-3">
                         <div className="flex items-start justify-between">
                           <Users className="w-5 h-5 text-galactic-green mt-0.5" />
                           <button onClick={() => handleDeleteList(list._id)} className="text-red-500/50 hover:text-red-400 transition-colors">
@@ -1138,11 +1138,11 @@ function EmailOSDashboard({ org: initialOrg }: { org: Org }) {
                         </div>
                         <div>
                           <h3 className="font-orbitron font-bold text-sm text-white mb-1">{list.name}</h3>
-                          {list.description && <p className="text-gray-500 text-xs">{list.description}</p>}
+                          {list.description && <p className="text-foreground text-xs">{list.description}</p>}
                         </div>
                         <div className="font-orbitron font-black text-galactic-green text-xl">
                           {list.contactCount.toLocaleString()}
-                          <span className="text-gray-500 text-xs ml-1">contacts</span>
+                          <span className="text-foreground text-xs ml-1">contacts</span>
                         </div>
                         <div className="flex gap-2">
                           <Button
@@ -1171,40 +1171,40 @@ function EmailOSDashboard({ org: initialOrg }: { org: Org }) {
                 {viewingList && (
                   <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
                     <div className="bg-[#0a0a14] w-full max-w-3xl max-h-[80vh] rounded-2xl border border-galactic-green/30 flex flex-col overflow-hidden">
-                      <div className="flex items-center justify-between px-6 py-4 border-b border-white/10">
+                      <div className="flex items-center justify-between px-6 py-4 border-b border-border">
                         <div>
                           <h3 className="font-orbitron font-bold text-lg text-galactic-green">{viewingList.name}</h3>
-                          <p className="text-gray-400 text-xs font-orbitron mt-0.5">{viewingList.contactCount.toLocaleString()} contact{viewingList.contactCount !== 1 ? "s" : ""}</p>
+                          <p className="text-foreground text-xs font-orbitron mt-0.5">{viewingList.contactCount.toLocaleString()} contact{viewingList.contactCount !== 1 ? "s" : ""}</p>
                         </div>
-                        <button onClick={() => setViewingList(null)} className="text-gray-500 hover:text-white transition-colors">
+                        <button onClick={() => setViewingList(null)} className="text-foreground hover:text-white transition-colors">
                           <X className="w-5 h-5" />
                         </button>
                       </div>
                       <div className="overflow-auto flex-1">
                         {(!viewingList.contacts || viewingList.contacts.length === 0) ? (
-                          <div className="flex flex-col items-center justify-center py-16 text-gray-500">
+                          <div className="flex flex-col items-center justify-center py-16 text-foreground">
                             <Users className="w-10 h-10 mb-3 opacity-30" />
                             <p className="font-orbitron text-sm">No leads yet in this list.</p>
-                            <p className="text-xs text-gray-600 mt-1">Use "Fetch Leads" to add contacts.</p>
+                            <p className="text-xs text-foreground mt-1">Use "Fetch Leads" to add contacts.</p>
                           </div>
                         ) : (
                           <table className="w-full text-xs font-orbitron">
-                            <thead className="sticky top-0 bg-[#0a0a14] border-b border-white/10">
+                            <thead className="sticky top-0 bg-[#0a0a14] border-b border-border">
                               <tr>
-                                <th className="text-left px-4 py-3 text-gray-400 font-medium">Email</th>
-                                <th className="text-left px-4 py-3 text-gray-400 font-medium">First Name</th>
-                                <th className="text-left px-4 py-3 text-gray-400 font-medium">Last Name</th>
-                                <th className="text-left px-4 py-3 text-gray-400 font-medium">Tags</th>
-                                <th className="text-left px-4 py-3 text-gray-400 font-medium">Status</th>
-                                <th className="text-left px-4 py-3 text-gray-400 font-medium">Joined</th>
+                                <th className="text-left px-4 py-3 text-foreground font-medium">Email</th>
+                                <th className="text-left px-4 py-3 text-foreground font-medium">First Name</th>
+                                <th className="text-left px-4 py-3 text-foreground font-medium">Last Name</th>
+                                <th className="text-left px-4 py-3 text-foreground font-medium">Tags</th>
+                                <th className="text-left px-4 py-3 text-foreground font-medium">Status</th>
+                                <th className="text-left px-4 py-3 text-foreground font-medium">Joined</th>
                               </tr>
                             </thead>
                             <tbody className="divide-y divide-white/5">
                               {viewingList.contacts.map((c, i) => (
                                 <tr key={i} className="hover:bg-white/3 transition-colors">
                                   <td className="px-4 py-2.5 text-white">{c.email}</td>
-                                  <td className="px-4 py-2.5 text-gray-300">{c.firstName || <span className="text-gray-600">—</span>}</td>
-                                  <td className="px-4 py-2.5 text-gray-300">{c.lastName || <span className="text-gray-600">—</span>}</td>
+                                  <td className="px-4 py-2.5 text-foreground">{c.firstName || <span className="text-foreground">—</span>}</td>
+                                  <td className="px-4 py-2.5 text-foreground">{c.lastName || <span className="text-foreground">—</span>}</td>
                                   <td className="px-4 py-2.5">
                                     <div className="flex flex-wrap gap-1">
                                       {(c.tags ?? []).map(t => (
@@ -1217,15 +1217,15 @@ function EmailOSDashboard({ org: initialOrg }: { org: Org }) {
                                       {c.unsubscribed ? "Unsub" : "Active"}
                                     </span>
                                   </td>
-                                  <td className="px-4 py-2.5 text-gray-500">{new Date(c.subscribedAt).toLocaleDateString()}</td>
+                                  <td className="px-4 py-2.5 text-foreground">{new Date(c.subscribedAt).toLocaleDateString()}</td>
                                 </tr>
                               ))}
                             </tbody>
                           </table>
                         )}
                       </div>
-                      <div className="px-6 py-3 border-t border-white/10 flex justify-end">
-                        <Button variant="outline" onClick={() => setViewingList(null)} className="border-white/10 text-gray-400 font-orbitron text-sm">Close</Button>
+                      <div className="px-6 py-3 border-t border-border flex justify-end">
+                        <Button variant="outline" onClick={() => setViewingList(null)} className="border-border text-foreground font-orbitron text-sm">Close</Button>
                       </div>
                     </div>
                   </div>
@@ -1236,16 +1236,16 @@ function EmailOSDashboard({ org: initialOrg }: { org: Org }) {
             {/* â”€â”€ Settings / Upgrade â”€â”€ */}
             {activeTab === "settings" && (
               <div className="space-y-6">
-                <div className="glass-effect p-6 rounded-2xl border border-white/10">
+                <div className="glass-effect p-6 rounded-2xl border border-border">
                   <h2 className="font-orbitron font-bold text-lg text-white mb-1">Organisation</h2>
-                  <p className="text-gray-400 text-sm mb-4">Your organisation details.</p>
+                  <p className="text-foreground text-sm mb-4">Your organisation details.</p>
                   <div className="grid grid-cols-2 gap-4 text-sm">
                     <div>
-                      <div className="text-gray-500 font-orbitron text-xs mb-1">Name</div>
+                      <div className="text-foreground font-orbitron text-xs mb-1">Name</div>
                       <div className="text-white font-orbitron">{org.orgName}</div>
                     </div>
                     <div>
-                      <div className="text-gray-500 font-orbitron text-xs mb-1">Domain</div>
+                      <div className="text-foreground font-orbitron text-xs mb-1">Domain</div>
                       <div className="text-white font-orbitron">{org.orgDomain}</div>
                     </div>
                   </div>
@@ -1260,7 +1260,7 @@ function EmailOSDashboard({ org: initialOrg }: { org: Org }) {
                       return (
                         <div key={tier.id} className={`glass-effect p-6 rounded-2xl border ${isCurrent ? tier.border : `${tier.border}/20`} relative`}>
                           {isCurrent && (
-                            <div className={`absolute -top-2.5 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full text-xs font-orbitron font-bold bg-space-black border ${tier.border} ${tier.color}`}>
+                            <div className={`absolute -top-2.5 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full text-xs font-orbitron font-bold bg-background border ${tier.border} ${tier.color}`}>
                               Current
                             </div>
                           )}
@@ -1268,11 +1268,11 @@ function EmailOSDashboard({ org: initialOrg }: { org: Org }) {
                           <h3 className={`font-orbitron font-bold text-base ${tier.color} mb-1`}>{tier.name}</h3>
                           <div className="flex items-baseline gap-1 mb-4">
                             <span className="font-orbitron font-black text-2xl text-white">{tier.price}</span>
-                            <span className="text-gray-500 text-xs font-orbitron">{tier.priceNote}</span>
+                            <span className="text-foreground text-xs font-orbitron">{tier.priceNote}</span>
                           </div>
                           <ul className="space-y-1.5 mb-5">
                             {tier.features.slice(0, 5).map(f => (
-                              <li key={f} className="flex items-center gap-1.5 text-xs text-gray-300">
+                              <li key={f} className="flex items-center gap-1.5 text-xs text-foreground">
                                 <CheckCircle className={`w-3 h-3 ${tier.color} shrink-0`} />
                                 {f}
                               </li>
@@ -1318,7 +1318,7 @@ export default function EmailOSPage() {
   // Loading
   if (isLoading || checkingOrg) {
     return (
-      <div className="min-h-screen bg-space-black flex items-center justify-center">
+      <div className="min-h-screen bg-background flex items-center justify-center">
         <Loader2 className="w-10 h-10 animate-spin text-neon-cyan" />
       </div>
     );
@@ -1327,7 +1327,7 @@ export default function EmailOSPage() {
   // Not logged in, prompt to create an account
   if (!user) {
     return (
-      <div className="min-h-screen bg-space-black text-white">
+      <div className="min-h-screen bg-background text-white">
         <Navigation />
         <div className="container mx-auto px-6 pt-24 pb-20 max-w-2xl">
           <motion.div
@@ -1352,11 +1352,11 @@ export default function EmailOSPage() {
               <h1 className="font-orbitron font-black text-3xl md:text-4xl gradient-text mb-3">
                 Send Beautiful Emails to Thousands of People
               </h1>
-              <p className="text-gray-300 max-w-lg mx-auto mb-2 leading-relaxed">
+              <p className="text-foreground max-w-lg mx-auto mb-2 leading-relaxed">
                 EmailOS is your personal email marketing tool, available exclusively on ARCOLYTE TECHNOLOGIES.
                 Grow your audience, design stunning campaigns, and track every open and click, no technical skills needed.
               </p>
-              <p className="text-gray-500 text-sm max-w-md mx-auto mb-8">
+              <p className="text-foreground text-sm max-w-md mx-auto mb-8">
                 Create a free account in under 30 seconds. No credit card required. Your Starter plan is free forever.
               </p>
 
@@ -1370,7 +1370,7 @@ export default function EmailOSPage() {
                   { icon: RefreshCw,       label: "Scheduled sending" },
                   { icon: CheckCircle,     label: "Private & secure" },
                 ].map(({ icon: Icon, label }) => (
-                  <div key={label} className="flex items-center gap-2 px-3 py-2 glass-effect rounded-xl border border-white/10 text-sm text-gray-300">
+                  <div key={label} className="flex items-center gap-2 px-3 py-2 glass-effect rounded-xl border border-border text-sm text-foreground">
                     <Icon className="w-4 h-4 text-neon-cyan shrink-0" />
                     <span className="font-orbitron text-xs">{label}</span>
                   </div>
@@ -1391,7 +1391,7 @@ export default function EmailOSPage() {
                 </Link>
               </div>
 
-              <p className="text-gray-600 text-xs mt-5 font-orbitron">
+              <p className="text-foreground text-xs mt-5 font-orbitron">
                 By creating an account you agree to our Terms of Service. EmailOS is exclusively available on ARCOLYTE TECHNOLOGIES and is linked to your personal account.
               </p>
             </div>
@@ -1400,7 +1400,7 @@ export default function EmailOSPage() {
           {/* Mini feature reminder */}
           <div className="mt-6 text-center">
             <Link href="/feature/emailos">
-              <span className="text-gray-500 text-xs font-orbitron hover:text-neon-cyan transition-colors underline underline-offset-2 cursor-pointer">
+              <span className="text-foreground text-xs font-orbitron hover:text-neon-cyan transition-colors underline underline-offset-2 cursor-pointer">
                 Learn more about EmailOS →
               </span>
             </Link>

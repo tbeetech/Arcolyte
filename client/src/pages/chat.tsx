@@ -418,7 +418,7 @@ export default function ChatPage() {
 
   if (authLoading) {
     return (
-      <div className="min-h-screen bg-space-black flex items-center justify-center">
+      <div className="min-h-screen bg-background flex items-center justify-center">
         <Loader2 className="w-10 h-10 animate-spin text-galactic-orange" />
       </div>
     );
@@ -426,10 +426,10 @@ export default function ChatPage() {
 
   if (!user) {
     return (
-      <div className="min-h-screen bg-space-black text-white">
+      <div className="min-h-screen bg-background text-white">
         <Navigation />
         <div className="container mx-auto px-6 pt-28 text-center">
-          <p className="text-gray-400 mb-4">Sign in to use the chat.</p>
+          <p className="text-foreground mb-4">Sign in to use the chat.</p>
           <Link href="/auth">
             <Button className="bg-galactic-orange text-space-black font-orbitron">Sign In</Button>
           </Link>
@@ -448,12 +448,12 @@ export default function ChatPage() {
           <Search className="w-4 h-4" /> Find People
         </h3>
         <div className="relative">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-foreground" />
           <Input
             placeholder="Search users…"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-9 bg-space-dark border-galactic-orange/30 text-white text-sm focus:border-galactic-orange"
+            className="pl-9 bg-card border-galactic-orange/30 text-white text-sm focus:border-galactic-orange"
           />
         </div>
         {searchQuery.length >= 2 && (
@@ -461,7 +461,7 @@ export default function ChatPage() {
             {searchResults
               .filter((u) => u.id !== user.id)
               .map((u) => (
-                <div key={u.id} className="flex items-center justify-between p-2 rounded bg-space-dark">
+                <div key={u.id} className="flex items-center justify-between p-2 rounded bg-card">
                   <div className="flex items-center gap-2 min-w-0">
                     <Avatar className="w-7 h-7">
                       <AvatarImage src={u.avatarUrl || ""} />
@@ -498,7 +498,7 @@ export default function ChatPage() {
                 </div>
               ))}
             {searchResults.filter((u) => u.id !== user.id).length === 0 && (
-              <p className="text-gray-500 text-xs text-center py-2">No users found</p>
+              <p className="text-foreground text-xs text-center py-2">No users found</p>
             )}
           </div>
         )}
@@ -512,7 +512,7 @@ export default function ChatPage() {
           </h3>
           <div className="space-y-2 max-h-40 overflow-y-auto">
             {friendRequests.map((req) => (
-              <div key={req.id} className="flex items-center justify-between p-2 rounded bg-space-dark">
+              <div key={req.id} className="flex items-center justify-between p-2 rounded bg-card">
                 <span className="text-sm text-white truncate">Request #{req.id.slice(-6)}</span>
                 <div className="flex gap-1">
                   <Button
@@ -569,12 +569,12 @@ export default function ChatPage() {
               </div>
               <div className="min-w-0 flex-1">
                 <p className="text-sm text-white font-medium truncate">{u.displayName || u.username}</p>
-                <p className={`text-xs truncate ${unreadCounts[u.id] ? "text-white font-medium" : "text-gray-500"}`}>
+                <p className={`text-xs truncate ${unreadCounts[u.id] ? "text-white font-medium" : "text-foreground"}`}>
                   {lastMessage.content}
                 </p>
               </div>
               {lastMessage.createdAt && (
-                <span className="text-[10px] text-gray-600 shrink-0">
+                <span className="text-[10px] text-foreground shrink-0">
                   {format(new Date(lastMessage.createdAt), "HH:mm")}
                 </span>
               )}
@@ -601,12 +601,12 @@ export default function ChatPage() {
                 </Avatar>
                 <div className="min-w-0">
                   <p className="text-sm text-white font-medium truncate">{f.displayName || f.username}</p>
-                  <p className="text-xs text-gray-500">Friend</p>
+                  <p className="text-xs text-foreground">Friend</p>
                 </div>
               </button>
             ))}
           {conversations.length === 0 && friends.length === 0 && (
-            <p className="text-gray-500 text-xs text-center py-4">
+            <p className="text-foreground text-xs text-center py-4">
               Add friends to start chatting
             </p>
           )}
@@ -622,11 +622,11 @@ export default function ChatPage() {
       {selectedUser ? (
         <>
           {/* Header */}
-          <div className="p-4 border-b border-white/10 flex items-center gap-3">
+          <div className="p-4 border-b border-border flex items-center gap-3">
             {isMobile && (
               <button
                 onClick={handleBack}
-                className="text-gray-400 hover:text-white mr-1 shrink-0"
+                className="text-foreground hover:text-white mr-1 shrink-0"
                 aria-label="Back to conversations"
               >
                 <ArrowLeft className="w-5 h-5" />
@@ -646,7 +646,7 @@ export default function ChatPage() {
                   {selectedUser.displayName || selectedUser.username}
                 </p>
               </Link>
-              <p className="text-xs text-gray-400">
+              <p className="text-xs text-foreground">
                 {selectedUserIsTyping ? (
                   <span className="text-galactic-orange animate-pulse">typing…</span>
                 ) : (
@@ -680,7 +680,7 @@ export default function ChatPage() {
                     {!isMe && hoveredMessageId === msg.id && (
                       <button
                         onClick={() => setReplyingTo(msg)}
-                        className="text-gray-500 hover:text-galactic-orange transition-colors mb-1 shrink-0 p-1"
+                        className="text-foreground hover:text-galactic-orange transition-colors mb-1 shrink-0 p-1"
                         title="Reply"
                       >
                         <Reply className="w-4 h-4" />
@@ -701,8 +701,8 @@ export default function ChatPage() {
                         <div
                           className={`mb-2 px-2 py-1 rounded text-xs border-l-2 ${
                             isMe
-                              ? "border-space-black/40 bg-space-black/20 text-space-black/70"
-                              : "border-galactic-orange/50 bg-white/5 text-gray-400"
+                              ? "border-space-black/40 bg-background/20 text-space-black/70"
+                              : "border-galactic-orange/50 bg-white/5 text-foreground"
                           }`}
                         >
                           <span className="font-semibold">
@@ -717,7 +717,7 @@ export default function ChatPage() {
                       <p>{msg.content}</p>
 
                       <div className={`flex items-center gap-1 mt-1 ${isMe ? "justify-end" : ""}`}>
-                        <span className={`text-xs ${isMe ? "text-space-black/60" : "text-gray-500"}`}>
+                        <span className={`text-xs ${isMe ? "text-space-black/60" : "text-foreground"}`}>
                           {format(new Date(msg.createdAt), "HH:mm")}
                         </span>
                         {/* Read receipt icon */}
@@ -736,7 +736,7 @@ export default function ChatPage() {
                     {isMe && hoveredMessageId === msg.id && (
                       <button
                         onClick={() => setReplyingTo(msg)}
-                        className="text-gray-500 hover:text-galactic-orange transition-colors mb-1 shrink-0 p-1"
+                        className="text-foreground hover:text-galactic-orange transition-colors mb-1 shrink-0 p-1"
                         title="Reply"
                       >
                         <Reply className="w-4 h-4" />
@@ -763,7 +763,7 @@ export default function ChatPage() {
 
           {/* Reply preview */}
           {replyingTo && (
-            <div className="px-4 py-2 border-t border-white/10 bg-white/5 flex items-center justify-between gap-2">
+            <div className="px-4 py-2 border-t border-border bg-white/5 flex items-center justify-between gap-2">
               <div className="flex items-center gap-2 min-w-0">
                 <Reply className="w-4 h-4 text-galactic-orange shrink-0" />
                 <div className="min-w-0">
@@ -773,12 +773,12 @@ export default function ChatPage() {
                       ? "yourself"
                       : selectedUser?.displayName || selectedUser?.username || "Unknown"}
                   </p>
-                  <p className="text-xs text-gray-400 truncate">{replyingTo.content}</p>
+                  <p className="text-xs text-foreground truncate">{replyingTo.content}</p>
                 </div>
               </div>
               <button
                 onClick={() => setReplyingTo(null)}
-                className="text-gray-500 hover:text-white shrink-0 p-1"
+                className="text-foreground hover:text-white shrink-0 p-1"
                 title="Cancel reply"
               >
                 <X className="w-4 h-4" />
@@ -787,7 +787,7 @@ export default function ChatPage() {
           )}
 
           {/* Input area */}
-          <div className="p-3 md:p-4 border-t border-white/10 flex gap-2 md:gap-3">
+          <div className="p-3 md:p-4 border-t border-border flex gap-2 md:gap-3">
             <Input
               value={messageText}
               onChange={(e) => handleMessageInput(e.target.value)}
@@ -798,7 +798,7 @@ export default function ChatPage() {
                   handleSend();
                 }
               }}
-              className="flex-1 bg-space-dark border-galactic-orange/30 text-white focus:border-galactic-orange text-base md:text-sm"
+              className="flex-1 bg-card border-galactic-orange/30 text-white focus:border-galactic-orange text-base md:text-sm"
             />
             <Button
               onClick={handleSend}
@@ -817,7 +817,7 @@ export default function ChatPage() {
         <div className="flex-1 flex items-center justify-center flex-col gap-4 text-center px-8">
           <MessageCircle className="w-16 h-16 text-galactic-orange/30" />
           <h2 className="text-xl font-orbitron text-galactic-orange/60">Select a conversation</h2>
-          <p className="text-gray-500 text-sm">
+          <p className="text-foreground text-sm">
             Search for any user and tap the Message button to chat directly, or add them as a friend first.
           </p>
         </div>
@@ -828,7 +828,7 @@ export default function ChatPage() {
   // ── Layout ─────────────────────────────────────────────────────────────────
 
   return (
-    <div className="min-h-screen bg-space-black text-white">
+    <div className="min-h-screen bg-background text-white">
       <Navigation />
       <div className="container mx-auto px-3 md:px-4 pt-20 pb-4 h-screen flex flex-col">
         {isMobile ? (

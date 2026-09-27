@@ -67,7 +67,7 @@ export default function AdminSpeedCrackerPage() {
     { label: "Active Campaigns", value: stats?.activeCampaigns ?? 0, icon: GitBranch, color: "text-green-400", bg: "bg-green-500/10 border-green-500/20" },
     { label: "Pending Approval", value: stats?.pendingContent ?? 0, icon: CheckSquare, color: "text-yellow-400", bg: "bg-yellow-500/10 border-yellow-500/20" },
     { label: "Published Content", value: stats?.publishedContent ?? 0, icon: TrendingUp, color: "text-blue-400", bg: "bg-blue-500/10 border-blue-500/20" },
-    { label: "Total Campaigns", value: stats?.totalCampaigns ?? 0, icon: Zap, color: "text-gray-400", bg: "bg-gray-500/10 border-gray-500/20" },
+    { label: "Total Campaigns", value: stats?.totalCampaigns ?? 0, icon: Zap, color: "text-foreground", bg: "bg-gray-500/10 border-gray-500/20" },
     { label: "Vlog Posts", value: stats?.totalVlogs ?? 0, icon: Video, color: "text-purple-400", bg: "bg-purple-500/10 border-purple-500/20" },
     { label: "Published Vlogs", value: stats?.publishedVlogs ?? 0, icon: FileText, color: "text-cyan-400", bg: "bg-cyan-500/10 border-cyan-500/20" },
   ];
@@ -100,7 +100,7 @@ export default function AdminSpeedCrackerPage() {
 
       {/* Stats */}
       {statsLoading ? (
-        <div className="flex items-center gap-2 text-gray-400 mb-6">
+        <div className="flex items-center gap-2 text-foreground mb-6">
           <Loader2 className="w-4 h-4 animate-spin" />
           <span className="text-sm">Loading stats…</span>
         </div>
@@ -112,7 +112,7 @@ export default function AdminSpeedCrackerPage() {
                 <Icon className={`w-5 h-5 ${color}`} />
               </div>
               <p className={`text-2xl font-bold ${color}`}>{value.toLocaleString()}</p>
-              <p className="text-xs text-gray-400 mt-1">{label}</p>
+              <p className="text-xs text-foreground mt-1">{label}</p>
             </div>
           ))}
         </div>
@@ -121,28 +121,28 @@ export default function AdminSpeedCrackerPage() {
       {/* Recent activity */}
       <div className="bg-gray-900 border border-gray-700 rounded-xl p-5">
         <div className="flex items-center gap-2 mb-4">
-          <Clock className="w-4 h-4 text-gray-400" />
+          <Clock className="w-4 h-4 text-foreground" />
           <h2 className="text-sm font-semibold text-white">Recent Admin Activity</h2>
         </div>
         {logsLoading ? (
-          <div className="flex items-center gap-2 text-gray-400">
+          <div className="flex items-center gap-2 text-foreground">
             <Loader2 className="w-4 h-4 animate-spin" />
             <span className="text-sm">Loading activity…</span>
           </div>
         ) : logs.length === 0 ? (
-          <p className="text-sm text-gray-500">No activity recorded yet.</p>
+          <p className="text-sm text-foreground">No activity recorded yet.</p>
         ) : (
           <div className="space-y-2">
             {logs.map((log) => (
               <div key={log.id} className="flex items-start justify-between py-2 border-b border-gray-800 last:border-0">
                 <div>
                   <span className="text-xs font-medium text-white">{log.adminName}</span>
-                  <span className="text-xs text-gray-400 ml-1">{ACTION_LABELS[log.action] ?? log.action}</span>
+                  <span className="text-xs text-foreground ml-1">{ACTION_LABELS[log.action] ?? log.action}</span>
                   {log.targetType && (
-                    <span className="ml-1 text-[10px] px-1.5 py-0.5 rounded bg-gray-800 text-gray-400">{log.targetType}</span>
+                    <span className="ml-1 text-[10px] px-1.5 py-0.5 rounded bg-gray-800 text-foreground">{log.targetType}</span>
                   )}
                 </div>
-                <span className="text-[10px] text-gray-500 whitespace-nowrap ml-4">
+                <span className="text-[10px] text-foreground whitespace-nowrap ml-4">
                   {format(new Date(log.createdAt), "MMM d, HH:mm")}
                 </span>
               </div>

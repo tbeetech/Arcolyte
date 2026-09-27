@@ -71,7 +71,7 @@ const PILLAR_COLORS: Record<string, string> = {  "code-snippet":   "bg-cyan-500/
   "performance":    "bg-yellow-500/20 text-yellow-400 border-yellow-500/30",
   "security":       "bg-red-500/20 text-red-400 border-red-500/30",
   "tool-discovery": "bg-blue-500/20 text-blue-400 border-blue-500/30",
-  "career-mindset": "bg-gray-500/20 text-gray-400 border-gray-500/30",
+  "career-mindset": "bg-gray-500/20 text-foreground border-gray-500/30",
   "frontend":       "bg-pink-500/20 text-pink-400 border-pink-500/30",
   "api-design":     "bg-emerald-500/20 text-emerald-400 border-emerald-500/30",
 };
@@ -241,7 +241,7 @@ export default function AdminDevTipsPage() {
           <div key={label} className={`rounded-xl border p-4 ${bg}`}>
             <div className="flex items-center gap-2 mb-2">
               <Icon className={`w-4 h-4 ${color}`} />
-              <span className="text-xs text-gray-400">{label}</span>
+              <span className="text-xs text-foreground">{label}</span>
             </div>
             <p className={`text-2xl font-bold ${color}`}>{value}</p>
           </div>
@@ -257,12 +257,12 @@ export default function AdminDevTipsPage() {
               <span
                 className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase ${
                   statusLoading
-                    ? "bg-gray-700 text-gray-400"
+                    ? "bg-gray-700 text-foreground"
                     : status?.running && !status.paused
                     ? "bg-green-500/20 text-green-400"
                     : status?.paused
                     ? "bg-yellow-500/20 text-yellow-400"
-                    : "bg-gray-700 text-gray-400"
+                    : "bg-gray-700 text-foreground"
                 }`}
               >
                 {statusLoading ? "…" : status?.running && !status.paused ? "Running" : status?.paused ? "Paused" : "Stopped"}
@@ -273,7 +273,7 @@ export default function AdminDevTipsPage() {
                 </span>
               )}
             </div>
-            <div className="text-xs text-gray-500 space-x-4">
+            <div className="text-xs text-foreground space-x-4">
               {status?.lastRun && (
                 <span>Last run: {format(new Date(status.lastRun), "MMM d, HH:mm")}</span>
               )}
@@ -354,7 +354,7 @@ export default function AdminDevTipsPage() {
               className={`px-3 py-1 rounded-full text-xs font-medium transition-all ${
                 statusFilter === s
                   ? "bg-cyan-500/20 text-cyan-400 border border-cyan-500/30"
-                  : "text-gray-500 hover:text-gray-300"
+                  : "text-foreground hover:text-foreground"
               }`}
             >
               {s ? s.charAt(0).toUpperCase() + s.slice(1) : "All"}
@@ -363,11 +363,11 @@ export default function AdminDevTipsPage() {
         </div>
 
         {postsLoading ? (
-          <div className="p-8 text-center text-gray-500 text-sm">Loading…</div>
+          <div className="p-8 text-center text-foreground text-sm">Loading…</div>
         ) : !postsData?.posts.length ? (
           <div className="p-8 text-center">
-            <Lightbulb className="w-10 h-10 text-gray-700 mx-auto mb-3" />
-            <p className="text-gray-500 text-sm">No posts yet. Click "Generate Now" to create your first dev tip.</p>
+            <Lightbulb className="w-10 h-10 text-foreground mx-auto mb-3" />
+            <p className="text-foreground text-sm">No posts yet. Click "Generate Now" to create your first dev tip.</p>
           </div>
         ) : (
           <div className="divide-y divide-gray-800">
@@ -379,19 +379,19 @@ export default function AdminDevTipsPage() {
                     <div className="flex items-center gap-2 flex-wrap mb-1">
                       <span
                         className={`px-2 py-0.5 rounded-full text-[10px] font-bold border uppercase ${
-                          PILLAR_COLORS[post.pillar] ?? "bg-gray-700 text-gray-300 border-gray-600"
+                          PILLAR_COLORS[post.pillar] ?? "bg-gray-700 text-foreground border-gray-600"
                         }`}
                       >
                         {PILLAR_LABELS[post.pillar] ?? post.pillar}
                       </span>
                       <span
                         className={`px-2 py-0.5 rounded-full text-[10px] font-bold border uppercase ${
-                          STATUS_BADGE[post.status] ?? "bg-gray-700 text-gray-300 border-gray-600"
+                          STATUS_BADGE[post.status] ?? "bg-gray-700 text-foreground border-gray-600"
                         }`}
                       >
                         {post.status}
                       </span>
-                      <span className="text-[10px] text-gray-500 uppercase bg-gray-800 px-2 py-0.5 rounded">
+                      <span className="text-[10px] text-foreground uppercase bg-gray-800 px-2 py-0.5 rounded">
                         {post.format}
                       </span>
                     </div>
@@ -400,10 +400,10 @@ export default function AdminDevTipsPage() {
                     <p className="text-sm font-semibold text-white mb-1 truncate">{post.title}</p>
 
                     {/* Caption preview */}
-                    <p className="text-xs text-gray-400 line-clamp-2 mb-2">{post.caption}</p>
+                    <p className="text-xs text-foreground line-clamp-2 mb-2">{post.caption}</p>
 
                     {/* Platforms + date */}
-                    <div className="flex items-center gap-2 flex-wrap text-[10px] text-gray-500">
+                    <div className="flex items-center gap-2 flex-wrap text-[10px] text-foreground">
                       {post.platforms.map((p) => (
                         <span key={p} className="bg-gray-800 px-1.5 py-0.5 rounded capitalize">{p}</span>
                       ))}
@@ -429,7 +429,7 @@ export default function AdminDevTipsPage() {
                     <Button
                       size="icon"
                       variant="ghost"
-                      className="w-7 h-7 text-gray-500 hover:text-cyan-400"
+                      className="w-7 h-7 text-foreground hover:text-cyan-400"
                       title="Preview SVG card"
                       onClick={() => setPreviewPostId(previewPostId === post._id ? null : post._id)}
                     >
@@ -440,7 +440,7 @@ export default function AdminDevTipsPage() {
                       <Button
                         size="icon"
                         variant="ghost"
-                        className="w-7 h-7 text-gray-500 hover:text-green-400"
+                        className="w-7 h-7 text-foreground hover:text-green-400"
                         title="Approve"
                         onClick={() => postMutation.mutate({ id: post._id, action: "approve" })}
                         disabled={postMutation.isPending}
@@ -453,7 +453,7 @@ export default function AdminDevTipsPage() {
                       <Button
                         size="icon"
                         variant="ghost"
-                        className="w-7 h-7 text-gray-500 hover:text-red-400"
+                        className="w-7 h-7 text-foreground hover:text-red-400"
                         title="Reject"
                         onClick={() => postMutation.mutate({ id: post._id, action: "reject" })}
                         disabled={postMutation.isPending}
@@ -466,7 +466,7 @@ export default function AdminDevTipsPage() {
                       <Button
                         size="icon"
                         variant="ghost"
-                        className="w-7 h-7 text-gray-500 hover:text-blue-400"
+                        className="w-7 h-7 text-foreground hover:text-blue-400"
                         title="Publish now"
                         onClick={() => postMutation.mutate({ id: post._id, action: "publish" })}
                         disabled={postMutation.isPending}
@@ -478,7 +478,7 @@ export default function AdminDevTipsPage() {
                     <Button
                       size="icon"
                       variant="ghost"
-                      className="w-7 h-7 text-gray-500 hover:text-red-400"
+                      className="w-7 h-7 text-foreground hover:text-red-400"
                       title="Delete"
                       onClick={() => deleteMutation.mutate(post._id)}
                       disabled={deleteMutation.isPending}
@@ -492,7 +492,7 @@ export default function AdminDevTipsPage() {
                 {previewPostId === post._id && (
                   <div className="mt-3 rounded-lg overflow-hidden border border-gray-700 bg-gray-950">
                     <div className="flex items-center justify-between px-3 py-2 border-b border-gray-800">
-                      <span className="text-xs text-gray-400">Card Preview</span>
+                      <span className="text-xs text-foreground">Card Preview</span>
                       <div className="flex gap-2">
                         <a
                           href={`/api/admin/dev-tips/posts/${post._id}/preview.svg`}
@@ -527,14 +527,14 @@ export default function AdminDevTipsPage() {
         {/* Pagination */}
         {totalPages > 1 && (
           <div className="flex items-center justify-between px-4 py-3 border-t border-gray-800">
-            <span className="text-xs text-gray-500">
+            <span className="text-xs text-foreground">
               {postsData?.total ?? 0} posts · Page {page} of {totalPages}
             </span>
             <div className="flex gap-2">
               <Button
                 size="sm"
                 variant="outline"
-                className="border-gray-700 text-gray-400 h-7 px-2"
+                className="border-gray-700 text-foreground h-7 px-2"
                 onClick={() => setPage((p) => Math.max(1, p - 1))}
                 disabled={page === 1}
               >
@@ -543,7 +543,7 @@ export default function AdminDevTipsPage() {
               <Button
                 size="sm"
                 variant="outline"
-                className="border-gray-700 text-gray-400 h-7 px-2"
+                className="border-gray-700 text-foreground h-7 px-2"
                 onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
                 disabled={page === totalPages}
               >

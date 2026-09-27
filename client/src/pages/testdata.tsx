@@ -1,4 +1,4 @@
-ï»¿import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback } from "react";
 import Navigation from "@/components/Navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -76,8 +76,8 @@ export default function TestDataPage() {
   const isConnected = result?.ok === true;
 
   return (
-    <div className="min-h-screen bg-space-black text-white">
-      <title>Database Connectivity Test â€” ARCOLYTE TECHNOLOGIES</title>
+    <div className="min-h-screen bg-background text-white">
+      <title>Database Connectivity Test — ARCOLYTE TECHNOLOGIES</title>
       <Navigation />
 
       <main className="pt-24 pb-16 container mx-auto px-4 max-w-2xl">
@@ -89,7 +89,7 @@ export default function TestDataPage() {
           <h1 className="font-orbitron text-2xl font-bold text-galactic-orange tracking-wider mb-2">
             DATABASE CONNECTIVITY TEST
           </h1>
-          <p className="text-white/50 text-sm">
+          <p className="text-foreground text-sm">
             Live diagnostic for the MongoDB connection at{" "}
             <span className="text-galactic-orange/80 font-mono">ARCOLYTE TECHNOLOGIES.biz/testdata</span>
           </p>
@@ -123,21 +123,21 @@ export default function TestDataPage() {
               }`}
             >
               {status === "loading"
-                ? "Running connectivity testâ€¦"
+                ? "Running connectivity test…"
                 : isConnected
                 ? "Database is CONNECTED"
                 : "Database is UNREACHABLE"}
             </p>
             {lastChecked && (
-              <p className="text-white/40 text-xs mt-0.5">
-                Last checked: {lastChecked.toLocaleTimeString()} Â· automatically refreshes every 30s
+              <p className="text-foreground text-xs mt-0.5">
+                Last checked: {lastChecked.toLocaleTimeString()} · automatically refreshes every 30s
               </p>
             )}
           </div>
           <Button
             size="sm"
             variant="outline"
-            className="ml-auto border-white/20 text-white/70 hover:bg-white/10 font-orbitron text-xs"
+            className="ml-auto border-border text-foreground hover:bg-white/10 font-orbitron text-xs"
             onClick={runTest}
             disabled={status === "loading"}
           >
@@ -165,16 +165,16 @@ export default function TestDataPage() {
         {result && (
           <div className="grid gap-4">
             {/* Connection State */}
-            <Card className="bg-white/5 border-white/10">
+            <Card className="bg-white/5 border-border">
               <CardHeader className="pb-2 pt-4 px-5">
-                <CardTitle className="flex items-center gap-2 text-sm font-orbitron text-white/80 tracking-wider">
+                <CardTitle className="flex items-center gap-2 text-sm font-orbitron text-foreground tracking-wider">
                   <Wifi className="w-4 h-4 text-galactic-orange" />
                   CONNECTION STATE
                 </CardTitle>
               </CardHeader>
               <CardContent className="px-5 pb-4 grid grid-cols-2 gap-3 text-sm">
                 <div>
-                  <p className="text-white/40 text-xs mb-1">State</p>
+                  <p className="text-foreground text-xs mb-1">State</p>
                   <Badge
                     variant="outline"
                     className={
@@ -187,11 +187,11 @@ export default function TestDataPage() {
                   </Badge>
                 </div>
                 <div>
-                  <p className="text-white/40 text-xs mb-1">Ready State Code</p>
-                  <span className="font-mono text-white/80">{result.database.readyState}</span>
+                  <p className="text-foreground text-xs mb-1">Ready State Code</p>
+                  <span className="font-mono text-foreground">{result.database.readyState}</span>
                 </div>
                 <div>
-                  <p className="text-white/40 text-xs mb-1">MONGODB_URI set</p>
+                  <p className="text-foreground text-xs mb-1">MONGODB_URI set</p>
                   <Badge
                     variant="outline"
                     className={
@@ -204,8 +204,8 @@ export default function TestDataPage() {
                   </Badge>
                 </div>
                 <div>
-                  <p className="text-white/40 text-xs mb-1">Collections</p>
-                  <span className="font-mono text-white/80">
+                  <p className="text-foreground text-xs mb-1">Collections</p>
+                  <span className="font-mono text-foreground">
                     {result.collections !== null ? result.collections : ""}
                   </span>
                 </div>
@@ -213,16 +213,16 @@ export default function TestDataPage() {
             </Card>
 
             {/* Ping */}
-            <Card className="bg-white/5 border-white/10">
+            <Card className="bg-white/5 border-border">
               <CardHeader className="pb-2 pt-4 px-5">
-                <CardTitle className="flex items-center gap-2 text-sm font-orbitron text-white/80 tracking-wider">
+                <CardTitle className="flex items-center gap-2 text-sm font-orbitron text-foreground tracking-wider">
                   <Clock className="w-4 h-4 text-galactic-orange" />
                   PING
                 </CardTitle>
               </CardHeader>
               <CardContent className="px-5 pb-4 grid grid-cols-2 gap-3 text-sm">
                 <div>
-                  <p className="text-white/40 text-xs mb-1">Result</p>
+                  <p className="text-foreground text-xs mb-1">Result</p>
                   <Badge
                     variant="outline"
                     className={
@@ -235,14 +235,14 @@ export default function TestDataPage() {
                   </Badge>
                 </div>
                 <div>
-                  <p className="text-white/40 text-xs mb-1">Latency</p>
-                  <span className="font-mono text-white/80">
+                  <p className="text-foreground text-xs mb-1">Latency</p>
+                  <span className="font-mono text-foreground">
                     {result.ping.latencyMs !== null ? `${result.ping.latencyMs} ms` : ""}
                   </span>
                 </div>
                 {result.ping.error && (
                   <div className="col-span-2">
-                    <p className="text-white/40 text-xs mb-1">Error</p>
+                    <p className="text-foreground text-xs mb-1">Error</p>
                     <p className="font-mono text-red-300 text-xs break-all">{result.ping.error}</p>
                   </div>
                 )}
@@ -250,29 +250,29 @@ export default function TestDataPage() {
             </Card>
 
             {/* Server info */}
-            <Card className="bg-white/5 border-white/10">
+            <Card className="bg-white/5 border-border">
               <CardHeader className="pb-2 pt-4 px-5">
-                <CardTitle className="flex items-center gap-2 text-sm font-orbitron text-white/80 tracking-wider">
+                <CardTitle className="flex items-center gap-2 text-sm font-orbitron text-foreground tracking-wider">
                   <Server className="w-4 h-4 text-galactic-orange" />
                   SERVER INFO
                 </CardTitle>
               </CardHeader>
               <CardContent className="px-5 pb-4 grid grid-cols-2 gap-3 text-sm">
                 <div>
-                  <p className="text-white/40 text-xs mb-1">Host</p>
-                  <span className="font-mono text-white/80 text-xs break-all">
+                  <p className="text-foreground text-xs mb-1">Host</p>
+                  <span className="font-mono text-foreground text-xs break-all">
                     {result.database.host ?? ""}
                   </span>
                 </div>
                 <div>
-                  <p className="text-white/40 text-xs mb-1">Database</p>
-                  <span className="font-mono text-white/80 text-xs">
+                  <p className="text-foreground text-xs mb-1">Database</p>
+                  <span className="font-mono text-foreground text-xs">
                     {result.database.name ?? ""}
                   </span>
                 </div>
                 <div className="col-span-2">
-                  <p className="text-white/40 text-xs mb-1">Timestamp (server)</p>
-                  <span className="font-mono text-white/60 text-xs">{result.timestamp}</span>
+                  <p className="text-foreground text-xs mb-1">Timestamp (server)</p>
+                  <span className="font-mono text-foreground text-xs">{result.timestamp}</span>
                 </div>
               </CardContent>
             </Card>
@@ -280,8 +280,8 @@ export default function TestDataPage() {
         )}
 
         {/* Footer hint */}
-        <p className="text-white/25 text-xs text-center mt-8">
-          This page is for diagnostic use only Â· No credentials are exposed
+        <p className="text-foreground text-xs text-center mt-8">
+          This page is for diagnostic use only · No credentials are exposed
         </p>
       </main>
     </div>

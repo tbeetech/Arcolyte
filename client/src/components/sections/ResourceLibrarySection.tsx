@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { BookOpen, Download, FileText, Video, BarChart2, Code2, Clock } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 const resources = [
   {
@@ -10,8 +9,6 @@ const resources = [
     description: "A 40-page guide on automating your first 5 business workflows with free and low-cost tools.",
     category: "E-Book",
     downloads: "2.1K",
-    color: "text-galactic-orange",
-    border: "border-galactic-orange",
     tag: "Most Downloaded",
     pdfUrl: "/african-startup-automation-bible.pdf",
     pdfName: "african-startup-automation-bible.pdf",
@@ -23,8 +20,6 @@ const resources = [
     description: "A ready-to-use template to score your business's current digital capabilities.",
     category: "Template",
     downloads: "1.4K",
-    color: "text-neon-cyan",
-    border: "border-neon-cyan",
     tag: null,
     pdfUrl: "/digital-maturity-assessment-template.pdf",
     pdfName: "digital-maturity-assessment-template.pdf",
@@ -36,8 +31,6 @@ const resources = [
     description: "50 battle-tested prompts for marketing, HR, sales, support, and operations, copy, paste, profit.",
     category: "Cheat Sheet",
     downloads: "3.7K",
-    color: "text-neon-yellow",
-    border: "border-neon-yellow",
     tag: "Free",
     pdfUrl: "/ai-prompt-playbook-smes.pdf",
     pdfName: "ai-prompt-playbook-smes.pdf",
@@ -49,8 +42,6 @@ const resources = [
     description: "A 45-minute video walkthrough on building a WhatsApp AI responder using Manychat + GPT.",
     category: "Video",
     downloads: "980",
-    color: "text-neon-purple",
-    border: "border-neon-purple",
     tag: null,
     pdfUrl: null,
     pdfName: null,
@@ -63,8 +54,6 @@ const resources = [
     description: "A 12-slide pitch deck structure used by funded African tech startups, editable Canva template.",
     category: "Template",
     downloads: "1.8K",
-    color: "text-galactic-green",
-    border: "border-galactic-green",
     tag: "Investor Ready",
     pdfUrl: "/investor-pitch-deck-framework.pdf",
     pdfName: "investor-pitch-deck-framework.pdf",
@@ -76,8 +65,6 @@ const resources = [
     description: "Step-by-step guide to getting the maximum value from every feature on the platform.",
     category: "Guide",
     downloads: "760",
-    color: "text-galactic-gold",
-    border: "border-galactic-gold",
     tag: null,
     pdfUrl: "/arcolytetech-platform-onboarding-guide.pdf",
     pdfName: "arcolytetech-platform-onboarding-guide.pdf",
@@ -88,34 +75,33 @@ const categories = ["All", "E-Book", "Template", "Cheat Sheet", "Video", "Guide"
 
 export default function ResourceLibrarySection() {
   const [filter, setFilter] = useState("All");
-
   const filtered = filter === "All" ? resources : resources.filter(r => r.category === filter);
 
   return (
-    <section id="resources" className="page-section py-20">
+    <section id="resources" className="py-24 bg-background">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-galactic-green/30 text-galactic-green text-sm font-orbitron mb-4">
+        <div className="text-center mb-16 max-w-3xl mx-auto">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 border border-border text-foreground text-sm uppercase tracking-widest font-semibold mb-6">
             <BookOpen className="w-4 h-4" /> Free Resources
           </div>
-          <h2 className="font-orbitron font-bold text-3xl md:text-4xl mb-4 gradient-text">
+          <h2 className="font-bold text-4xl md:text-5xl mb-6 text-foreground tracking-tight uppercase">
             Free Resource Library
           </h2>
-          <p className="text-gray-300 max-w-2xl mx-auto">
+          <p className="text-foreground text-lg leading-relaxed">
             Practical guides, templates, and courses, completely free. Because education is the foundation of transformation.
           </p>
         </div>
 
         {/* Filter tabs */}
-        <div className="flex flex-wrap justify-center gap-2 mb-8">
+        <div className="flex flex-wrap justify-center gap-3 mb-12">
           {categories.map(cat => (
             <button
               key={cat}
               onClick={() => setFilter(cat)}
-              className={`px-4 py-1.5 rounded-full border font-orbitron text-xs transition-all ${
+              className={`px-6 py-2 border text-sm font-semibold transition-colors uppercase tracking-wider rounded-none ${
                 filter === cat
-                  ? "border-galactic-orange bg-galactic-orange/20 text-galactic-orange"
-                  : "border-white/10 text-gray-400 hover:border-white/20 hover:text-white"
+                  ? "bg-black text-white border-black dark:bg-white dark:text-black dark:border-white"
+                  : "bg-background text-foreground border-border hover:bg-muted"
               }`}
             >
               {cat}
@@ -123,43 +109,45 @@ export default function ResourceLibrarySection() {
           ))}
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {filtered.map((resource) => {
             const Icon = resource.icon;
             return (
               <div
                 key={resource.id}
-                className={`glass-effect p-6 rounded-2xl border ${resource.border}/20 hover:${resource.border}/40 transition-all group relative`}
+                className="bg-card border border-border p-8 flex flex-col hover:shadow-lg transition-shadow rounded-none relative"
               >
                 {resource.tag && (
-                  <span className={`absolute top-4 right-4 text-xs font-orbitron px-2 py-0.5 rounded-full border ${resource.border}/30 ${resource.color} bg-transparent`}>
+                  <span className="absolute top-6 right-6 text-[10px] uppercase tracking-wider font-bold px-3 py-1 border border-border bg-muted text-foreground">
                     {resource.tag}
                   </span>
                 )}
-                <div className={`w-10 h-10 rounded-xl flex items-center justify-center mb-4 border ${resource.border}/20`}>
-                  <Icon className={`w-5 h-5 ${resource.color}`} />
+                <div className="w-12 h-12 flex items-center justify-center border border-border bg-muted mb-6">
+                  <Icon className="w-6 h-6 text-foreground" />
                 </div>
-                <div className="flex items-center gap-2 mb-2">
-                  <span className={`text-xs font-orbitron px-2 py-0.5 rounded-full border ${resource.border}/20 ${resource.color}`}>
+                
+                <div className="flex flex-wrap items-center gap-3 mb-4">
+                  <span className="text-xs uppercase font-bold tracking-widest text-foreground border-b-2 border-foreground pb-0.5">
                     {resource.category}
                   </span>
-                  <span className="text-xs text-gray-500 font-orbitron">{resource.downloads} downloads</span>
+                  <span className="text-xs text-foreground font-medium">{resource.downloads} downloads</span>
                 </div>
-                <h3 className="font-orbitron font-bold text-sm text-white mb-2 leading-snug">{resource.title}</h3>
-                <p className="text-gray-400 text-xs leading-relaxed mb-4">{resource.description}</p>
+                
+                <h3 className="font-bold text-xl text-foreground mb-3 leading-tight">{resource.title}</h3>
+                <p className="text-foreground text-sm leading-relaxed mb-8 flex-1">{resource.description}</p>
 
                 {resource.comingSoon ? (
-                  <div className={`w-full flex items-center justify-center gap-2 py-2.5 rounded-lg border ${resource.border}/20 bg-neon-purple/5`}>
-                    <Clock className="w-3.5 h-3.5 text-neon-purple" />
-                    <span className="font-orbitron text-xs text-neon-purple">Coming Soon</span>
+                  <div className="w-full flex items-center justify-center gap-2 py-4 border border-border bg-muted">
+                    <Clock className="w-4 h-4 text-foreground" />
+                    <span className="font-bold text-xs uppercase tracking-wider text-foreground">Coming Soon</span>
                   </div>
                 ) : (
                   <a
                     href={resource.pdfUrl!}
                     download={resource.pdfName!}
-                    className={`w-full flex items-center justify-center gap-1.5 py-2.5 rounded-lg font-orbitron text-xs transition-all bg-gradient-to-r from-galactic-orange/15 to-galactic-gold/15 text-white hover:from-galactic-orange/30 hover:to-galactic-gold/30 border ${resource.border}/20`}
+                    className="w-full flex items-center justify-center gap-2 py-4 bg-black text-white hover:bg-zinc-800 dark:bg-white dark:text-black dark:hover:bg-zinc-200 font-bold text-xs uppercase tracking-wider transition-colors rounded-none"
                   >
-                    <Download className="w-3.5 h-3.5" /> Free Download
+                    <Download className="w-4 h-4" /> Free Download
                   </a>
                 )}
               </div>
@@ -170,4 +158,3 @@ export default function ResourceLibrarySection() {
     </section>
   );
 }
-

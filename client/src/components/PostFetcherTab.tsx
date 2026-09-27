@@ -209,14 +209,14 @@ export default function PostFetcherTab() {
           <h2 className="text-lg font-orbitron font-bold text-galactic-orange">
             Post Fetcher &amp; Re-poster
           </h2>
-          <p className="text-gray-400 text-xs mt-0.5">
+          <p className="text-foreground text-xs mt-0.5">
             Fetch the latest tech articles from Dev.to and publish them to Arcolyte Technologies
           </p>
         </div>
       </div>
 
       {/* Controls */}
-      <div className="bg-space-dark rounded-xl p-5 mb-6 border border-galactic-orange/10">
+      <div className="bg-card rounded-xl p-5 mb-6 border border-galactic-orange/10">
         {/* Topics */}
         <div className="mb-4">
           <Label className="text-galactic-orange font-orbitron text-xs mb-2 block">
@@ -244,7 +244,7 @@ export default function PostFetcherTab() {
               onChange={(e) => setTopicInput(e.target.value)}
               onKeyDown={(e) => { if (e.key === "Enter") { e.preventDefault(); addTopic(); } }}
               placeholder="Add topic (e.g. typescript, ai, cloud)"
-              className="bg-space-black border-galactic-orange/20 text-white text-sm h-9 flex-1"
+              className="bg-background border-galactic-orange/20 text-white text-sm h-9 flex-1"
             />
             <Button
               type="button"
@@ -271,7 +271,7 @@ export default function PostFetcherTab() {
               max={30}
               value={count}
               onChange={(e) => setCount(Math.min(30, Math.max(1, Number(e.target.value))))}
-              className="bg-space-black border-galactic-orange/20 text-white text-sm h-9 w-24"
+              className="bg-background border-galactic-orange/20 text-white text-sm h-9 w-24"
             />
           </div>
           <Button
@@ -286,7 +286,7 @@ export default function PostFetcherTab() {
             )}
           </Button>
           {visible.length > 0 && (
-            <span className="text-gray-400 text-xs">
+            <span className="text-foreground text-xs">
               {visible.length} suggestion{visible.length !== 1 ? "s" : ""} ready
             </span>
           )}
@@ -327,7 +327,7 @@ export default function PostFetcherTab() {
 
       {/* Edit Dialog */}
       <Dialog open={editOpen} onOpenChange={setEditOpen}>
-        <DialogContent className="bg-space-dark border-galactic-orange/20 text-white max-w-2xl max-h-[90vh] overflow-y-auto">
+        <DialogContent className="bg-card border-galactic-orange/20 text-white max-w-2xl max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle className="font-orbitron text-galactic-orange text-base flex items-center gap-2">
               <Pencil className="w-4 h-4" /> Edit Before Posting
@@ -345,7 +345,7 @@ export default function PostFetcherTab() {
                   // Only auto-sync the slug when the user hasn't manually edited it
                   slug: slugManuallyEdited ? s.slug : slugify(e.target.value),
                 }))}
-                className="bg-space-black border-galactic-orange/20 text-white mt-1 text-sm"
+                className="bg-background border-galactic-orange/20 text-white mt-1 text-sm"
               />
             </div>
             <div>
@@ -356,7 +356,7 @@ export default function PostFetcherTab() {
                   setSlugManuallyEdited(true);
                   setEditState((s) => ({ ...s, slug: e.target.value }));
                 }}
-                className="bg-space-black border-galactic-orange/20 text-white mt-1 text-sm font-mono"
+                className="bg-background border-galactic-orange/20 text-white mt-1 text-sm font-mono"
                 placeholder="auto-generated-slug"
               />
             </div>
@@ -365,7 +365,7 @@ export default function PostFetcherTab() {
               <Textarea
                 value={editState.excerpt}
                 onChange={(e) => setEditState((s) => ({ ...s, excerpt: e.target.value }))}
-                className="bg-space-black border-galactic-orange/20 text-white mt-1 text-sm resize-none"
+                className="bg-background border-galactic-orange/20 text-white mt-1 text-sm resize-none"
                 rows={2}
               />
             </div>
@@ -374,7 +374,7 @@ export default function PostFetcherTab() {
               <Textarea
                 value={editState.content}
                 onChange={(e) => setEditState((s) => ({ ...s, content: e.target.value }))}
-                className="bg-space-black border-galactic-orange/20 text-white mt-1 text-sm resize-y font-mono"
+                className="bg-background border-galactic-orange/20 text-white mt-1 text-sm resize-y font-mono"
                 rows={8}
               />
             </div>
@@ -384,7 +384,7 @@ export default function PostFetcherTab() {
                 <Input
                   value={editState.category}
                   onChange={(e) => setEditState((s) => ({ ...s, category: e.target.value }))}
-                  className="bg-space-black border-galactic-orange/20 text-white mt-1 text-sm"
+                  className="bg-background border-galactic-orange/20 text-white mt-1 text-sm"
                   placeholder="e.g. javascript"
                 />
               </div>
@@ -393,7 +393,7 @@ export default function PostFetcherTab() {
                 <Input
                   value={editState.tags}
                   onChange={(e) => setEditState((s) => ({ ...s, tags: e.target.value }))}
-                  className="bg-space-black border-galactic-orange/20 text-white mt-1 text-sm"
+                  className="bg-background border-galactic-orange/20 text-white mt-1 text-sm"
                   placeholder="e.g. react, node, ai"
                 />
               </div>
@@ -403,7 +403,7 @@ export default function PostFetcherTab() {
               <Input
                 value={editState.coverImage}
                 onChange={(e) => setEditState((s) => ({ ...s, coverImage: e.target.value }))}
-                className="bg-space-black border-galactic-orange/20 text-white mt-1 text-sm"
+                className="bg-background border-galactic-orange/20 text-white mt-1 text-sm"
                 placeholder="https://..."
               />
               {editState.coverImage && (
@@ -421,7 +421,7 @@ export default function PostFetcherTab() {
             <Button
               variant="ghost"
               onClick={() => setEditOpen(false)}
-              className="text-gray-400 hover:text-white"
+              className="text-foreground hover:text-white"
             >
               Cancel
             </Button>
@@ -455,7 +455,7 @@ function SuggestionCard({ suggestion, isPosting, onDiscard, onEdit, onPost }: Su
   const [imgError, setImgError] = useState(false);
 
   return (
-    <div className="bg-space-dark rounded-xl border border-galactic-orange/10 overflow-hidden flex flex-col group hover:border-galactic-orange/30 transition-colors">
+    <div className="bg-card rounded-xl border border-galactic-orange/10 overflow-hidden flex flex-col group hover:border-galactic-orange/30 transition-colors">
       {/* Cover Image */}
       <div className="relative h-36 bg-galactic-orange/5 flex-shrink-0">
         {suggestion.coverImage && !imgError ? (
@@ -471,7 +471,7 @@ function SuggestionCard({ suggestion, isPosting, onDiscard, onEdit, onPost }: Su
           </div>
         )}
         {/* Source badge */}
-        <span className="absolute top-2 left-2 bg-space-black/70 text-galactic-orange text-[10px] font-orbitron px-2 py-0.5 rounded-full border border-galactic-orange/20">
+        <span className="absolute top-2 left-2 bg-background/70 text-galactic-orange text-[10px] font-orbitron px-2 py-0.5 rounded-full border border-galactic-orange/20">
           {suggestion.source}
         </span>
         {/* External link */}
@@ -479,7 +479,7 @@ function SuggestionCard({ suggestion, isPosting, onDiscard, onEdit, onPost }: Su
           href={suggestion.sourceUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="absolute top-2 right-2 bg-space-black/70 text-gray-400 hover:text-galactic-gold p-1 rounded-full border border-white/10 transition-colors"
+          className="absolute top-2 right-2 bg-background/70 text-foreground hover:text-galactic-gold p-1 rounded-full border border-border transition-colors"
           title="Open original article"
           onClick={(e) => e.stopPropagation()}
         >
@@ -492,7 +492,7 @@ function SuggestionCard({ suggestion, isPosting, onDiscard, onEdit, onPost }: Su
         <p className="text-white text-sm font-semibold leading-snug line-clamp-2 mb-1.5 group-hover:text-galactic-gold transition-colors">
           {suggestion.title}
         </p>
-        <p className="text-gray-400 text-xs leading-relaxed line-clamp-3 mb-2 flex-1">
+        <p className="text-foreground text-xs leading-relaxed line-clamp-3 mb-2 flex-1">
           {suggestion.excerpt}
         </p>
 
@@ -511,7 +511,7 @@ function SuggestionCard({ suggestion, isPosting, onDiscard, onEdit, onPost }: Su
         )}
 
         {/* Author */}
-        <p className="text-gray-500 text-[10px] mb-3 truncate">
+        <p className="text-foreground text-[10px] mb-3 truncate">
           By {suggestion.author}
         </p>
 

@@ -92,7 +92,7 @@ export default function AchievementBadges({ earnedBadgeIds = [], compact = false
         <div className="flex items-center gap-2 mb-4">
           <Trophy className="w-4 h-4 text-neon-yellow" />
           <h3 className="font-orbitron font-bold text-sm text-neon-yellow">Achievements</h3>
-          <span className="text-xs text-gray-500 font-orbitron ml-auto">{earned.length}/{BADGE_DEFINITIONS.length} earned</span>
+          <span className="text-xs text-foreground font-orbitron ml-auto">{earned.length}/{BADGE_DEFINITIONS.length} earned</span>
         </div>
       )}
       <div className={`flex flex-wrap gap-3 ${compact ? "" : ""}`}>
@@ -106,18 +106,18 @@ export default function AchievementBadges({ earnedBadgeIds = [], compact = false
               className={`group relative flex flex-col items-center gap-1 p-3 rounded-xl border transition-all ${
                 isEarned
                   ? `${badge.bg} ${badge.border} cursor-default`
-                  : "border-white/5 bg-space-dark/40 opacity-40 grayscale cursor-not-allowed"
+                  : "border-white/5 bg-card/40 opacity-40 grayscale cursor-not-allowed"
               } ${compact ? "w-10 h-10 p-2 justify-center" : "w-16"}`}
             >
-              <Icon className={`${compact ? "w-5 h-5" : "w-6 h-6"} ${isEarned ? badge.color : "text-gray-600"}`} />
+              <Icon className={`${compact ? "w-5 h-5" : "w-6 h-6"} ${isEarned ? badge.color : "text-foreground"}`} />
               {!compact && (
-                <span className={`font-orbitron text-xs text-center leading-tight ${isEarned ? badge.color : "text-gray-600"}`}>
+                <span className={`font-orbitron text-xs text-center leading-tight ${isEarned ? badge.color : "text-foreground"}`}>
                   {badge.title}
                 </span>
               )}
               {/* Tooltip for compact mode */}
               {compact && isEarned && (
-                <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-space-dark border border-galactic-orange/30 rounded text-xs font-orbitron text-white whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity z-10 pointer-events-none">
+                <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-card border border-galactic-orange/30 rounded text-xs font-orbitron text-white whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity z-10 pointer-events-none">
                   {badge.title}
                 </div>
               )}

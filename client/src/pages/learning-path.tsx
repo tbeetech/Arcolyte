@@ -1,4 +1,4 @@
-﻿import { useState } from "react";
+import { useState } from "react";
 import { Link } from "wouter";
 import Navigation from "@/components/Navigation";
 import { Button } from "@/components/ui/button";
@@ -107,8 +107,8 @@ export default function LearningPathPage() {
   };
 
   return (
-    <div className="min-h-screen bg-space-black text-white">
-      <title>Learning Path Recommender — ARCOLYTE TECHNOLOGIES</title>
+    <div className="min-h-screen bg-background text-white">
+      <title>Learning Path Recommender � ARCOLYTE TECHNOLOGIES</title>
       <Navigation />
       <main className="pt-24 pb-20 container mx-auto px-6">
         <div className="text-center mb-10">
@@ -118,7 +118,7 @@ export default function LearningPathPage() {
           <h1 className="font-orbitron font-bold text-3xl md:text-5xl gradient-text mb-4">
             Learning Path Recommender
           </h1>
-          <p className="text-gray-300 max-w-2xl mx-auto">
+          <p className="text-foreground max-w-2xl mx-auto">
             Answer 3 quick questions and get a personalised learning roadmap with curated courses and services matched to your exact goals.
           </p>
         </div>
@@ -128,11 +128,11 @@ export default function LearningPathPage() {
             <div className="glass-effect p-8 rounded-2xl border border-galactic-orange/20">
               {/* Progress */}
               <div className="mb-6">
-                <div className="flex justify-between text-xs font-orbitron text-gray-400 mb-2">
+                <div className="flex justify-between text-xs font-orbitron text-foreground mb-2">
                   <span>Step {step + 1} of {questions.length}</span>
                   <span>{Math.round(progress)}%</span>
                 </div>
-                <div className="h-2 bg-space-dark rounded-full overflow-hidden">
+                <div className="h-2 bg-card rounded-full overflow-hidden">
                   <div
                     className="h-full bg-gradient-to-r from-galactic-orange to-galactic-gold transition-all duration-500 rounded-full"
                     style={{ width: `${progress}%` }}
@@ -150,14 +150,14 @@ export default function LearningPathPage() {
                     className={`w-full text-left p-4 rounded-xl border transition-all duration-200 font-orbitron text-sm ${
                       answers[questions[step].id] === opt.path
                         ? "border-galactic-orange bg-galactic-orange/15 text-white"
-                        : "border-white/10 hover:border-galactic-orange/40 text-gray-300 hover:text-white"
+                        : "border-border hover:border-galactic-orange/40 text-foreground hover:text-white"
                     }`}
                   >
                     <div className="flex items-center gap-3">
                       {answers[questions[step].id] === opt.path ? (
                         <CheckCircle className="w-4 h-4 text-galactic-orange flex-shrink-0" />
                       ) : (
-                        <ArrowRight className="w-4 h-4 text-gray-600 flex-shrink-0" />
+                        <ArrowRight className="w-4 h-4 text-foreground flex-shrink-0" />
                       )}
                       {opt.text}
                     </div>
@@ -168,9 +168,9 @@ export default function LearningPathPage() {
               {step > 0 && (
                 <button
                   onClick={() => setStep(s => s - 1)}
-                  className="mt-4 text-gray-500 hover:text-gray-300 font-orbitron text-xs transition-colors"
+                  className="mt-4 text-foreground hover:text-foreground font-orbitron text-xs transition-colors"
                 >
-                  â† Back
+                  ← Back
                 </button>
               )}
             </div>
@@ -181,21 +181,21 @@ export default function LearningPathPage() {
                   <div className="w-16 h-16 rounded-full bg-galactic-orange/20 border-2 border-galactic-orange flex items-center justify-center mx-auto mb-4">
                     <BookOpen className="w-8 h-8 text-galactic-orange" />
                   </div>
-                  <p className="font-orbitron text-xs text-gray-500 mb-1">Your Recommended Path</p>
+                  <p className="font-orbitron text-xs text-foreground mb-1">Your Recommended Path</p>
                   <h2 className={`font-orbitron font-black text-2xl ${rec.color} mb-2`}>{rec.title}</h2>
-                  <p className="text-gray-300 text-sm max-w-md mx-auto leading-relaxed">{rec.description}</p>
+                  <p className="text-foreground text-sm max-w-md mx-auto leading-relaxed">{rec.description}</p>
                 </div>
 
                 <h3 className="font-orbitron text-sm text-neon-yellow mb-3">Recommended Courses</h3>
                 <div className="space-y-3 mb-6">
                   {rec.courses.map((course, i) => (
-                    <div key={course.name} className="flex items-center gap-4 p-3 rounded-xl border border-white/10 hover:border-galactic-orange/30 transition-colors">
+                    <div key={course.name} className="flex items-center gap-4 p-3 rounded-xl border border-border hover:border-galactic-orange/30 transition-colors">
                       <div className="w-8 h-8 rounded-full bg-galactic-orange/20 flex items-center justify-center flex-shrink-0">
                         <span className="font-orbitron font-bold text-xs text-galactic-orange">{i + 1}</span>
                       </div>
                       <div className="flex-1">
                         <p className="font-orbitron text-sm text-white">{course.name}</p>
-                        <p className="text-gray-500 text-xs">{course.duration} • {course.level}</p>
+                        <p className="text-foreground text-xs">{course.duration} � {course.level}</p>
                       </div>
                       <span className="text-xs font-orbitron text-galactic-green border border-galactic-green/30 px-2 py-0.5 rounded-full">Free</span>
                     </div>
@@ -203,12 +203,12 @@ export default function LearningPathPage() {
                 </div>
 
                 <div className="p-4 rounded-xl border border-galactic-orange/30 bg-galactic-orange/5 mb-6">
-                  <p className="text-xs font-orbitron text-gray-400 mb-1">Recommended Service</p>
+                  <p className="text-xs font-orbitron text-foreground mb-1">Recommended Service</p>
                   <p className="font-orbitron font-bold text-galactic-orange">{rec.service}</p>
                 </div>
 
                 <div className="flex gap-3">
-                  <Button onClick={reset} variant="ghost" className="text-gray-400 font-orbitron text-xs flex-1">
+                  <Button onClick={reset} variant="ghost" className="text-foreground font-orbitron text-xs flex-1">
                     <RotateCcw className="w-4 h-4 mr-1" /> Retake
                   </Button>
                   <Link href="/contact">

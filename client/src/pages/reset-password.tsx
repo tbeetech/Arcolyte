@@ -1,4 +1,4 @@
-ï»¿import { useState } from "react";
+import { useState } from "react";
 import { useParams, useLocation, Link } from "wouter";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
@@ -68,19 +68,19 @@ export default function ResetPasswordPage() {
                 <CheckCircle className="w-6 h-6 text-galactic-orange" />
               </div>
               <h2 className="text-white font-orbitron font-bold text-lg">Password Updated!</h2>
-              <p className="text-white/60 text-sm">
-                Your password has been reset. Redirecting to sign inâ€¦
+              <p className="text-foreground text-sm">
+                Your password has been reset. Redirecting to sign in…
               </p>
               <Link href="/auth">
                 <Button className="bg-gradient-to-r from-galactic-orange to-galactic-gold text-space-black font-orbitron font-bold text-sm mt-2">
-                  Sign In â†’
+                  Sign In ?
                 </Button>
               </Link>
             </div>
           ) : (
             <>
               <h2 className="text-white font-orbitron font-bold text-lg mb-1">New Password</h2>
-              <p className="text-white/50 text-xs mb-6">Choose a strong password for your account.</p>
+              <p className="text-foreground text-xs mb-6">Choose a strong password for your account.</p>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="space-y-1.5 input-glow">
                   <Label
@@ -120,7 +120,7 @@ export default function ResetPasswordPage() {
                     minLength={6}
                     className={`h-10 border-galactic-orange/20 text-white text-sm ${passwordMismatch ? "border-red-500" : ""}`}
                     style={{ background: "rgba(0,0,0,0.6)" }}
-                    placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
+                    placeholder="••••••••"
                   />
                   {passwordMismatch && (
                     <p className="text-red-400 text-xs mt-1">Passwords do not match</p>
@@ -131,7 +131,7 @@ export default function ResetPasswordPage() {
                   disabled={loading}
                   className="w-full h-10 bg-gradient-to-r from-galactic-orange to-galactic-gold text-space-black font-orbitron font-bold text-sm transition-all mt-2 hover:shadow-[0_0_25px_rgba(34,197,94,0.4)]"
                 >
-                  {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : "Set New Password â†’"}
+                  {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : "Set New Password ?"}
                 </Button>
               </form>
             </>

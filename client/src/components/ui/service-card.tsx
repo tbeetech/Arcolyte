@@ -28,8 +28,8 @@ export default function ServiceCard({
         <Icon className="w-8 h-8 text-white" />
       </div>
       <h3 className="font-orbitron text-xl font-bold mb-3 text-galactic-orange">{title}</h3>
-      <p className="text-gray-300 mb-4">{description}</p>
-      <ul className="text-sm text-gray-400 space-y-1">
+      <p className="text-foreground mb-4">{description}</p>
+      <ul className="text-sm text-foreground space-y-1">
         {features.map((feature, index) => (
           <li key={index}>• {feature}</li>
         ))}

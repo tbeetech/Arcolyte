@@ -1,4 +1,4 @@
-﻿import { useState } from "react";
+import { useState } from "react";
 import { Link } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
 import Navigation from "@/components/Navigation";
@@ -28,7 +28,7 @@ import {
   Bot,
 } from "lucide-react";
 
-// â”€â”€â”€ Feature highlights data â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── Feature highlights data ─────────────────────────────────────────────────
 
 const coreCapabilities = [
   {
@@ -71,7 +71,7 @@ const coreCapabilities = [
     color: "text-neon-cyan",
     border: "border-neon-cyan",
     title: "AI Agentic Workflow Builder",
-    desc: "10-step guided wizard: choose industry → content type → sources → timeline → destinations → AI mode → frequency → approval mode → review → launch.",
+    desc: "10-step guided wizard: choose industry ? content type ? sources ? timeline ? destinations ? AI mode ? frequency ? approval mode ? review ? launch.",
   },
   {
     icon: Filter,
@@ -127,18 +127,18 @@ const useCases = [
   { label: "Affiliate Marketers", icon: BarChart3 },
 ];
 
-// â”€â”€â”€ Component â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── Component ────────────────────────────────────────────────────────────────
 
 export default function FeatureSportaPage() {
   const [activeIndustry, setActiveIndustry] = useState(0);
 
   return (
-    <div className="min-h-screen bg-space-black text-white">
-      <title>SPORTA — AI Social Media Aggregator & Publisher | ARCOLYTE TECHNOLOGIES</title>
+    <div className="min-h-screen bg-background text-white">
+      <title>SPORTA � AI Social Media Aggregator & Publisher | ARCOLYTE TECHNOLOGIES</title>
       <Navigation />
 
       <main className="pt-20">
-        {/* â”€â”€ Hero â”€â”€ */}
+        {/* ── Hero ── */}
         <section className="relative overflow-hidden py-24 px-6">
           <div className="absolute inset-0 bg-gradient-to-br from-galactic-orange/5 via-neon-purple/5 to-neon-cyan/5 pointer-events-none" />
           <div className="container mx-auto max-w-5xl text-center relative z-10">
@@ -156,7 +156,7 @@ export default function FeatureSportaPage() {
               <p className="text-xl md:text-2xl text-neon-cyan font-orbitron font-semibold mb-6">
                 AI Agentic Social Media Aggregator, Reshaper &amp; Mass Publisher
               </p>
-              <p className="text-gray-300 max-w-3xl mx-auto text-lg leading-relaxed mb-10">
+              <p className="text-foreground max-w-3xl mx-auto text-lg leading-relaxed mb-10">
                 An enterprise-grade automation platform that aggregates public content from 17+ platforms,
                 reshapes it with AI, and mass-publishes to all your social channels and website, on autopilot.
               </p>
@@ -171,7 +171,7 @@ export default function FeatureSportaPage() {
                 ].map(({ label, value }) => (
                   <div key={label} className="px-4 py-3 glass-effect rounded-xl border border-galactic-orange/20 text-center">
                     <div className="font-orbitron font-black text-galactic-orange text-2xl">{value}</div>
-                    <div className="text-gray-400 text-xs font-orbitron whitespace-nowrap">{label}</div>
+                    <div className="text-foreground text-xs font-orbitron whitespace-nowrap">{label}</div>
                   </div>
                 ))}
               </div>
@@ -191,7 +191,7 @@ export default function FeatureSportaPage() {
           </div>
         </section>
 
-        {/* â”€â”€ Core Capabilities â”€â”€ */}
+        {/* ── Core Capabilities ── */}
         <section className="py-20 px-6">
           <div className="container mx-auto max-w-7xl">
             <div className="text-center mb-14">
@@ -201,7 +201,7 @@ export default function FeatureSportaPage() {
               <h2 className="font-orbitron font-bold text-4xl gradient-text mb-4">
                 Everything a Content Machine Needs
               </h2>
-              <p className="text-gray-400 max-w-2xl mx-auto">
+              <p className="text-foreground max-w-2xl mx-auto">
                 SPORTA is not a simple scraper, it's an AI-powered publishing ecosystem built for agencies, brands, and media companies.
               </p>
             </div>
@@ -221,7 +221,7 @@ export default function FeatureSportaPage() {
                       <Icon className={`w-6 h-6 ${cap.color}`} />
                     </div>
                     <h3 className="font-orbitron font-bold text-white text-sm mb-2">{cap.title}</h3>
-                    <p className="text-gray-400 text-sm leading-relaxed">{cap.desc}</p>
+                    <p className="text-foreground text-sm leading-relaxed">{cap.desc}</p>
                   </motion.div>
                 );
               })}
@@ -229,8 +229,8 @@ export default function FeatureSportaPage() {
           </div>
         </section>
 
-        {/* â”€â”€ 10-Step Workflow â”€â”€ */}
-        <section className="py-20 px-6 bg-space-dark/40">
+        {/* ── 10-Step Workflow ── */}
+        <section className="py-20 px-6 bg-card/40">
           <div className="container mx-auto max-w-6xl">
             <div className="text-center mb-14">
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-neon-purple/30 text-neon-purple text-sm font-orbitron mb-4">
@@ -239,7 +239,7 @@ export default function FeatureSportaPage() {
               <h2 className="font-orbitron font-bold text-4xl gradient-text mb-4">
                 10-Step Campaign Builder
               </h2>
-              <p className="text-gray-400 max-w-2xl mx-auto">
+              <p className="text-foreground max-w-2xl mx-auto">
                 A wizard-guided automation setup that takes you from zero to a fully-running content machine in minutes.
               </p>
             </div>
@@ -267,7 +267,7 @@ export default function FeatureSportaPage() {
           </div>
         </section>
 
-        {/* â”€â”€ Industries â”€â”€ */}
+        {/* ── Industries ── */}
         <section className="py-20 px-6">
           <div className="container mx-auto max-w-6xl">
             <div className="text-center mb-12">
@@ -277,7 +277,7 @@ export default function FeatureSportaPage() {
               <h2 className="font-orbitron font-bold text-4xl gradient-text mb-4">
                 25 Industries Supported
               </h2>
-              <p className="text-gray-400 max-w-2xl mx-auto">
+              <p className="text-foreground max-w-2xl mx-auto">
                 SPORTA ships with pre-configured intelligence for 25 industries, plus a "Custom" mode for anything else.
               </p>
             </div>
@@ -293,27 +293,27 @@ export default function FeatureSportaPage() {
                   className={`px-4 py-2 rounded-xl border text-sm font-orbitron font-semibold transition-all ${
                     activeIndustry === i
                       ? "bg-galactic-orange text-space-black border-galactic-orange shadow-[0_0_15px_rgba(34,197,94,0.4)]"
-                      : "border-galactic-orange/20 text-gray-300 hover:border-galactic-orange/50 hover:text-white glass-effect"
+                      : "border-galactic-orange/20 text-foreground hover:border-galactic-orange/50 hover:text-white glass-effect"
                   }`}
                 >
                   {industry}
                 </motion.button>
               ))}
-              <span className="px-4 py-2 rounded-xl border border-dashed border-galactic-orange/30 text-gray-500 text-sm font-orbitron">
+              <span className="px-4 py-2 rounded-xl border border-dashed border-galactic-orange/30 text-foreground text-sm font-orbitron">
                 + Custom
               </span>
             </div>
           </div>
         </section>
 
-        {/* â”€â”€ Who It's For â”€â”€ */}
-        <section className="py-20 px-6 bg-space-dark/40">
+        {/* ── Who It's For ── */}
+        <section className="py-20 px-6 bg-card/40">
           <div className="container mx-auto max-w-6xl">
             <div className="text-center mb-12">
               <h2 className="font-orbitron font-bold text-4xl gradient-text mb-4">
                 Built for Professionals
               </h2>
-              <p className="text-gray-400 max-w-xl mx-auto">
+              <p className="text-foreground max-w-xl mx-auto">
                 Whether you're a solo creator or an enterprise agency, SPORTA scales with you.
               </p>
             </div>
@@ -338,7 +338,7 @@ export default function FeatureSportaPage() {
           </div>
         </section>
 
-        {/* â”€â”€ Performance & Security â”€â”€ */}
+        {/* ── Performance & Security ── */}
         <section className="py-20 px-6">
           <div className="container mx-auto max-w-6xl">
             <div className="grid md:grid-cols-2 gap-10">
@@ -361,7 +361,7 @@ export default function FeatureSportaPage() {
                   ].map((item) => (
                     <div key={item} className="flex items-center gap-3">
                       <CheckCircle className="w-4 h-4 text-galactic-green flex-shrink-0" />
-                      <span className="text-gray-300 text-sm">{item}</span>
+                      <span className="text-foreground text-sm">{item}</span>
                     </div>
                   ))}
                 </div>
@@ -385,7 +385,7 @@ export default function FeatureSportaPage() {
                   ].map((item) => (
                     <div key={item} className="flex items-center gap-3">
                       <CheckCircle className="w-4 h-4 text-neon-purple flex-shrink-0" />
-                      <span className="text-gray-300 text-sm">{item}</span>
+                      <span className="text-foreground text-sm">{item}</span>
                     </div>
                   ))}
                 </div>
@@ -394,7 +394,7 @@ export default function FeatureSportaPage() {
           </div>
         </section>
 
-        {/* â”€â”€ CTA â”€â”€ */}
+        {/* ── CTA ── */}
         <section className="py-20 px-6 bg-gradient-to-b from-transparent to-space-dark/60">
           <div className="container mx-auto max-w-2xl text-center">
             <div className="w-20 h-20 rounded-full bg-gradient-to-br from-galactic-orange to-galactic-gold flex items-center justify-center mx-auto mb-6 shadow-[0_0_40px_rgba(34,197,94,0.5)]">
@@ -403,7 +403,7 @@ export default function FeatureSportaPage() {
             <h2 className="font-orbitron font-black text-4xl gradient-text mb-4">
               Ready to Automate?
             </h2>
-            <p className="text-gray-400 mb-8 leading-relaxed">
+            <p className="text-foreground mb-8 leading-relaxed">
               Launch your first SPORTA campaign from the admin dashboard and watch your content machine come alive.
             </p>
             <div className="flex justify-center gap-4 flex-wrap">
@@ -421,7 +421,7 @@ export default function FeatureSportaPage() {
           </div>
         </section>
 
-        {/* â”€â”€ Back nav â”€â”€ */}
+        {/* ── Back nav ── */}
         <div className="container mx-auto px-6 py-10 text-center border-t border-galactic-orange/10">
           <Link href="/features">
             <Button variant="outline" className="border-galactic-orange/40 text-galactic-orange font-orbitron text-xs hover:bg-galactic-orange/10">

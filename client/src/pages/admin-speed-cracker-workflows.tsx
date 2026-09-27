@@ -13,7 +13,7 @@ import { format } from "date-fns";
 import type { SportaCampaign } from "../../../shared/schema";
 
 const STATUS_CONFIG: Record<string, { label: string; color: string }> = {
-  draft: { label: "Draft", color: "bg-gray-500/20 text-gray-400 border-gray-500/30" },
+  draft: { label: "Draft", color: "bg-gray-500/20 text-foreground border-gray-500/30" },
   active: { label: "Active", color: "bg-green-500/20 text-green-400 border-green-500/30" },
   paused: { label: "Paused", color: "bg-yellow-500/20 text-yellow-400 border-yellow-500/30" },
   completed: { label: "Completed", color: "bg-blue-500/20 text-blue-400 border-blue-500/30" },
@@ -68,12 +68,12 @@ export default function AdminSpeedCrackerWorkflowsPage() {
   return (
     <SpeedCrackerLayout title="Workflows" subtitle="Manage content aggregation campaigns">
       <div className="flex items-center justify-between mb-6">
-        <p className="text-sm text-gray-400">{campaigns.length} workflow{campaigns.length !== 1 ? "s" : ""}</p>
+        <p className="text-sm text-foreground">{campaigns.length} workflow{campaigns.length !== 1 ? "s" : ""}</p>
         <div className="flex gap-2">
           <Button
             size="sm"
             variant="outline"
-            className="border-gray-700 text-gray-300 hover:text-white"
+            className="border-gray-700 text-foreground hover:text-white"
             onClick={() => queryClient.invalidateQueries({ queryKey: ["/api/sporta/campaigns"] })}
           >
             <RefreshCw className="w-3.5 h-3.5 mr-1.5" />
@@ -91,15 +91,15 @@ export default function AdminSpeedCrackerWorkflowsPage() {
       </div>
 
       {isLoading ? (
-        <div className="flex items-center gap-2 text-gray-400">
+        <div className="flex items-center gap-2 text-foreground">
           <Loader2 className="w-4 h-4 animate-spin" />
           <span className="text-sm">Loading workflows…</span>
         </div>
       ) : campaigns.length === 0 ? (
         <div className="text-center py-16 bg-gray-900 rounded-xl border border-gray-700">
-          <GitBranch className="w-12 h-12 text-gray-600 mx-auto mb-3" />
+          <GitBranch className="w-12 h-12 text-foreground mx-auto mb-3" />
           <p className="text-white font-medium mb-1">No workflows yet</p>
-          <p className="text-sm text-gray-400 mb-4">Create a SPORTA campaign to get started.</p>
+          <p className="text-sm text-foreground mb-4">Create a SPORTA campaign to get started.</p>
           <Button
             size="sm"
             className="bg-yellow-500 hover:bg-yellow-400 text-black font-semibold"
@@ -123,7 +123,7 @@ export default function AdminSpeedCrackerWorkflowsPage() {
                         {cfg.label}
                       </span>
                     </div>
-                    <div className="flex items-center gap-3 text-xs text-gray-400 flex-wrap">
+                    <div className="flex items-center gap-3 text-xs text-foreground flex-wrap">
                       <span className="flex items-center gap-1">
                         <GitBranch className="w-3 h-3" />
                         {c.industry}
@@ -144,10 +144,10 @@ export default function AdminSpeedCrackerWorkflowsPage() {
                     </div>
                     <div className="flex flex-wrap gap-1 mt-2">
                       {c.contentTypes.slice(0, 3).map((t) => (
-                        <span key={t} className="text-[10px] px-1.5 py-0.5 rounded bg-gray-800 text-gray-400">{t}</span>
+                        <span key={t} className="text-[10px] px-1.5 py-0.5 rounded bg-gray-800 text-foreground">{t}</span>
                       ))}
                       {c.contentTypes.length > 3 && (
-                        <span className="text-[10px] px-1.5 py-0.5 rounded bg-gray-800 text-gray-400">+{c.contentTypes.length - 3}</span>
+                        <span className="text-[10px] px-1.5 py-0.5 rounded bg-gray-800 text-foreground">+{c.contentTypes.length - 3}</span>
                       )}
                     </div>
                   </div>

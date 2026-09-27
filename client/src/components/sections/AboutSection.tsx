@@ -5,7 +5,7 @@ export default function AboutSection() {
         <h2 className="font-bold text-3xl sm:text-4xl md:text-5xl mb-8 tracking-tight text-foreground uppercase">
           About Us
         </h2>
-        <div className="space-y-6 text-lg sm:text-xl text-muted-foreground leading-relaxed font-serif">
+        <div className="space-y-6 text-lg sm:text-xl text-foreground leading-relaxed font-serif">
           <p>
             At ARCOLYTE TECHNOLOGIES, we believe that the next era of business will be defined by intelligence and speed. We partner with bold founders and enterprises to build the infrastructure of tomorrow.
           </p>

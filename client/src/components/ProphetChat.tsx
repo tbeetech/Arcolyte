@@ -103,7 +103,7 @@ function formatProphetMessage(content: string): ReactNode {
         const bulletMatch = trimmed.match(/^[-*]\s+(.*)/);
         if (bulletMatch) {
           return (
-            <div key={li} className="flex gap-2 items-start ml-2 text-sm text-foreground/90">
+            <div key={li} className="flex gap-2 items-start ml-2 text-sm text-foreground">
               <span className="shrink-0">•</span>
               <span>{parseInline(bulletMatch[1], `${li}`)}</span>
             </div>
@@ -114,7 +114,7 @@ function formatProphetMessage(content: string): ReactNode {
         const numMatch = trimmed.match(/^(\d+)\.\s+(.*)/);
         if (numMatch) {
           return (
-            <div key={li} className="flex gap-2 items-start ml-2 text-sm text-foreground/90">
+            <div key={li} className="flex gap-2 items-start ml-2 text-sm text-foreground">
               <span className="shrink-0">{numMatch[1]}.</span>
               <span>{parseInline(numMatch[2], `${li}`)}</span>
             </div>
@@ -122,7 +122,7 @@ function formatProphetMessage(content: string): ReactNode {
         }
 
         return (
-          <p key={li} className={`text-sm text-foreground/90 ${li > 0 ? "mt-1" : ""}`}>
+          <p key={li} className={`text-sm text-foreground ${li > 0 ? "mt-1" : ""}`}>
             {parseInline(line, `${li}`)}
           </p>
         );
@@ -309,7 +309,7 @@ export default function ProphetChat() {
                   PROPHET AI
                 </span>
               </div>
-              <div className="flex items-center gap-2 text-foreground/60">
+              <div className="flex items-center gap-2 text-foreground">
                 <button
                   aria-label={fullscreen ? "Exit fullscreen" : "Fullscreen"}
                   className="p-1 rounded hover:bg-black/5 hover:text-foreground transition-colors"
@@ -355,7 +355,7 @@ export default function ProphetChat() {
                       msg.role === "user" ? "self-end items-end" : "self-start items-start"
                     }`}
                   >
-                    <span className="text-[10px] uppercase font-semibold tracking-wider text-muted-foreground mb-1">
+                    <span className="text-[10px] uppercase font-semibold tracking-wider text-foreground mb-1">
                       {msg.role === "user" ? "You" : "Prophet"}
                     </span>
                     <div
@@ -371,12 +371,12 @@ export default function ProphetChat() {
                 ))}
                 {loading && (
                   <div className="flex flex-col self-start items-start max-w-[85%]">
-                    <span className="text-[10px] uppercase font-semibold tracking-wider text-muted-foreground mb-1">
+                    <span className="text-[10px] uppercase font-semibold tracking-wider text-foreground mb-1">
                       Prophet
                     </span>
                     <div className="flex items-center gap-2 px-4 py-3 bg-muted text-foreground border border-border">
-                      <Loader2 className="w-4 h-4 animate-spin text-muted-foreground" />
-                      <span className="text-xs text-muted-foreground tracking-wide uppercase">
+                      <Loader2 className="w-4 h-4 animate-spin text-foreground" />
+                      <span className="text-xs text-foreground tracking-wide uppercase">
                         Processing
                       </span>
                     </div>
@@ -386,7 +386,7 @@ export default function ProphetChat() {
                 {/* Starter questions */}
                 {starterQuestions.length > 0 && !loading && (
                   <div className="flex flex-col gap-2 mt-2">
-                    <p className="text-[10px] font-semibold tracking-widest text-muted-foreground uppercase mb-1">
+                    <p className="text-[10px] font-semibold tracking-widest text-foreground uppercase mb-1">
                       Suggested Questions
                     </p>
                     {starterQuestions.map((q) => (
@@ -417,7 +417,7 @@ export default function ProphetChat() {
                   maxLength={2000}
                   disabled={loading}
                   data-testid="prophet-chat-input"
-                  className="flex-1 bg-transparent outline-none text-sm placeholder:text-muted-foreground text-foreground"
+                  className="flex-1 bg-transparent outline-none text-sm placeholder:text-foreground text-foreground"
                 />
                 <Button
                   size="icon"
@@ -427,7 +427,7 @@ export default function ProphetChat() {
                   className={`w-9 h-9 shrink-0 rounded-none transition-colors ${
                     input.trim()
                       ? "bg-foreground text-background hover:bg-muted-foreground"
-                      : "bg-muted text-muted-foreground"
+                      : "bg-muted text-foreground"
                   }`}
                 >
                   <Send className="w-4 h-4" />

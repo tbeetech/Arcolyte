@@ -1,4 +1,4 @@
-﻿import { Cross, Wifi, Zap, Church, BookOpen, Radio } from "lucide-react";
+import { Cross, Wifi, Zap, Church, BookOpen, Radio } from "lucide-react";
 
 const godInclinedPrinciples = [
   {
@@ -87,7 +87,7 @@ export default function KingdomPrinciplesSection() {
           <h2 className="font-orbitron font-bold text-2xl sm:text-3xl md:text-4xl mb-4 gradient-text">
             God-Inclined Project Methodology
           </h2>
-          <p className="text-gray-300 max-w-2xl mx-auto text-sm sm:text-base">
+          <p className="text-foreground max-w-2xl mx-auto text-sm sm:text-base">
             Our work is grounded in faith-first thinking. Every project, feature, and partnership is measured against Kingdom values 
             excellence, integrity, and purpose-driven impact.
           </p>
@@ -101,7 +101,7 @@ export default function KingdomPrinciplesSection() {
                 <Icon className={`w-5 h-5 ${color}`} />
               </div>
               <h4 className={`font-orbitron font-bold text-sm mb-2 ${color}`}>{title}</h4>
-              <p className="text-gray-400 text-sm leading-relaxed">{body}</p>
+              <p className="text-foreground text-sm leading-relaxed">{body}</p>
             </div>
           ))}
         </div>
@@ -115,7 +115,7 @@ export default function KingdomPrinciplesSection() {
             <h3 className="font-orbitron font-bold text-xl sm:text-2xl gradient-text mb-2">
               Enhancing the Church with Digital Innovation
             </h3>
-            <p className="text-gray-400 text-sm max-w-xl mx-auto">
+            <p className="text-foreground text-sm max-w-xl mx-auto">
               We believe the Church deserves world-class digital infrastructure. From live-streaming Sunday services
               to async discipleship platforms, we build technology that serves the Body of Christ.
             </p>
@@ -127,7 +127,7 @@ export default function KingdomPrinciplesSection() {
                   <Icon className="w-5 h-5 text-galactic-gold" />
                 </div>
                 <h4 className="font-orbitron text-sm font-bold text-galactic-gold mb-2">{title}</h4>
-                <p className="text-gray-400 text-xs leading-relaxed">{desc}</p>
+                <p className="text-foreground text-xs leading-relaxed">{desc}</p>
               </div>
             ))}
           </div>
@@ -143,19 +143,19 @@ export default function KingdomPrinciplesSection() {
             <h3 className="font-orbitron font-bold text-xl sm:text-2xl gradient-text mb-2">
               Always On. Never Blocking.
             </h3>
-            <p className="text-gray-400 text-sm max-w-xl mx-auto">
+            <p className="text-foreground text-sm max-w-xl mx-auto">
               ARCOLYTE TECHNOLOGIES's platform is built on an asynchronous, event-driven foundation, delivering real-time
               experiences for chat, notifications, dashboards, and content, with zero downtime for your users.
             </p>
           </div>
           <div className="grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
             {realtimePillars.map(({ label, desc, badge, color, badgeColor }) => (
-              <div key={label} className="glass-effect p-6 rounded-2xl border border-white/10 hover:border-galactic-green/30 transition-all text-center">
+              <div key={label} className="glass-effect p-6 rounded-2xl border border-border hover:border-galactic-green/30 transition-all text-center">
                 <span className={`inline-block px-3 py-1 rounded-full border text-xs font-orbitron font-bold mb-4 ${badgeColor}`}>
                   {badge}
                 </span>
                 <h4 className={`font-orbitron font-bold text-sm mb-2 ${color}`}>{label}</h4>
-                <p className="text-gray-400 text-xs leading-relaxed">{desc}</p>
+                <p className="text-foreground text-xs leading-relaxed">{desc}</p>
               </div>
             ))}
           </div>

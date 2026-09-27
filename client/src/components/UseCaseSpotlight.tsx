@@ -63,7 +63,7 @@ export default function UseCaseSpotlight() {
                       <p className="text-xs font-orbitron text-galactic-orange/70 uppercase tracking-widest mb-1">
                         Problem
                       </p>
-                      <p className="text-gray-200 text-sm leading-relaxed">{uc.problem}</p>
+                      <p className="text-foreground text-sm leading-relaxed">{uc.problem}</p>
                     </div>
                   </div>
 
@@ -76,7 +76,7 @@ export default function UseCaseSpotlight() {
                       <p className="text-xs font-orbitron text-galactic-orange/70 uppercase tracking-widest mb-1">
                         Solution
                       </p>
-                      <p className="text-gray-200 text-sm leading-relaxed">{uc.solution}</p>
+                      <p className="text-foreground text-sm leading-relaxed">{uc.solution}</p>
                     </div>
                   </div>
 

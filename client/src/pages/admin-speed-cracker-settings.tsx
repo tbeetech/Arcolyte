@@ -65,7 +65,7 @@ export default function AdminSpeedCrackerSettingsPage() {
           <div className="flex items-center justify-between">
             <div>
               <Label className="text-white text-sm">NSFW Filter</Label>
-              <p className="text-xs text-gray-400">Automatically filter out explicit content</p>
+              <p className="text-xs text-foreground">Automatically filter out explicit content</p>
             </div>
             <Switch
               checked={settings.enableNsfwFilter}
@@ -75,7 +75,7 @@ export default function AdminSpeedCrackerSettingsPage() {
           <div className="flex items-center justify-between">
             <div>
               <Label className="text-white text-sm">Duplicate Filter</Label>
-              <p className="text-xs text-gray-400">Prevent the same content from being published twice</p>
+              <p className="text-xs text-foreground">Prevent the same content from being published twice</p>
             </div>
             <Switch
               checked={settings.enableDuplicateFilter}
@@ -101,7 +101,7 @@ export default function AdminSpeedCrackerSettingsPage() {
           <div className="flex items-center justify-between">
             <div>
               <Label className="text-white text-sm">Enable AI Reshaping</Label>
-              <p className="text-xs text-gray-400">Use Gemini AI to rewrite content automatically</p>
+              <p className="text-xs text-foreground">Use Gemini AI to rewrite content automatically</p>
             </div>
             <Switch
               checked={settings.enableAiReshaping}
@@ -111,7 +111,7 @@ export default function AdminSpeedCrackerSettingsPage() {
           <div className="flex items-center justify-between">
             <div>
               <Label className="text-white text-sm">SEO Optimization</Label>
-              <p className="text-xs text-gray-400">Add SEO-friendly titles, meta descriptions and keywords</p>
+              <p className="text-xs text-foreground">Add SEO-friendly titles, meta descriptions and keywords</p>
             </div>
             <Switch
               checked={settings.enableSeoOptimization}
@@ -121,7 +121,7 @@ export default function AdminSpeedCrackerSettingsPage() {
           <div className="flex items-center justify-between">
             <div>
               <Label className="text-white text-sm">Viral Optimization</Label>
-              <p className="text-xs text-gray-400">Optimize content for maximum engagement and virality</p>
+              <p className="text-xs text-foreground">Optimize content for maximum engagement and virality</p>
             </div>
             <Switch
               checked={settings.enableViralOptimization}
@@ -130,7 +130,7 @@ export default function AdminSpeedCrackerSettingsPage() {
           </div>
           <div>
             <Label className="text-white text-sm">Default Rewrite Intensity</Label>
-            <p className="text-xs text-gray-400 mb-2">1 = light touch, 10 = full rewrite</p>
+            <p className="text-xs text-foreground mb-2">1 = light touch, 10 = full rewrite</p>
             <div className="flex items-center gap-3">
               <input
                 type="range"
@@ -152,7 +152,7 @@ export default function AdminSpeedCrackerSettingsPage() {
           <div className="flex items-center justify-between">
             <div>
               <Label className="text-white text-sm">Auto-create Blog Draft</Label>
-              <p className="text-xs text-gray-400">Automatically create a blog draft when content is approved</p>
+              <p className="text-xs text-foreground">Automatically create a blog draft when content is approved</p>
             </div>
             <Switch
               checked={settings.publishToBlogByDefault}
@@ -162,7 +162,7 @@ export default function AdminSpeedCrackerSettingsPage() {
           <div className="flex items-center justify-between">
             <div>
               <Label className="text-white text-sm">Auto-create Vlog Entry</Label>
-              <p className="text-xs text-gray-400">Automatically create a vlog entry for video content</p>
+              <p className="text-xs text-foreground">Automatically create a vlog entry for video content</p>
             </div>
             <Switch
               checked={settings.publishToVlogByDefault}
@@ -190,7 +190,7 @@ export default function AdminSpeedCrackerSettingsPage() {
           <div className="flex items-center justify-between">
             <div>
               <Label className="text-white text-sm">Notify on Pending Content</Label>
-              <p className="text-xs text-gray-400">Send admin notification when content is queued for review</p>
+              <p className="text-xs text-foreground">Send admin notification when content is queued for review</p>
             </div>
             <Switch
               checked={settings.notifyOnPending}

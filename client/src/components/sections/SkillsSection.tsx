@@ -47,7 +47,7 @@ export default function SkillsSection() {
             <h2 className="font-orbitron font-bold text-3xl md:text-4xl lg:text-5xl mb-6 text-glow text-cyber-blue">
               SKILLS ACADEMY
             </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-foreground max-w-3xl mx-auto">
               Loading our comprehensive learning platform...
             </p>
           </div>
@@ -97,7 +97,7 @@ export default function SkillsSection() {
                 <h3 className="font-orbitron text-2xl md:text-3xl font-bold mb-4 gradient-text" data-testid="featured-course-title">
                   {featuredCourse.title}
                 </h3>
-                <p className="text-gray-300 mb-6" data-testid="featured-course-description">
+                <p className="text-foreground mb-6" data-testid="featured-course-description">
                   {featuredCourse.description}
                 </p>
                 <div className="space-y-2 mb-6">
@@ -113,7 +113,7 @@ export default function SkillsSection() {
                     ${(featuredCourse.price / 100).toFixed(0)}
                   </span>
                   {featuredCourse.originalPrice && (
-                    <span className="text-lg text-gray-400 line-through" data-testid="featured-course-original-price">
+                    <span className="text-lg text-foreground line-through" data-testid="featured-course-original-price">
                       ${(featuredCourse.originalPrice / 100).toFixed(0)}
                     </span>
                   )}

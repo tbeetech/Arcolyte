@@ -1,4 +1,4 @@
-ï»¿import { useState } from "react";
+import { useState } from "react";
 import { Link } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 import Navigation from "@/components/Navigation";
@@ -33,7 +33,7 @@ export default function VlogPage() {
   const rest = filtered.slice(1);
 
   return (
-    <div className="min-h-screen bg-space-black text-white">
+    <div className="min-h-screen bg-background text-white">
       <Navigation />
 
       <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
@@ -44,17 +44,17 @@ export default function VlogPage() {
             <span className="text-xs uppercase tracking-widest text-neon-cyan font-semibold">ARCOLYTE TECHNOLOGIES Vlog</span>
           </div>
           <h1 className="text-3xl md:text-4xl font-black text-white mb-2">Video Hub</h1>
-          <p className="text-gray-400 text-base">Curated videos, tutorials, and insights from across the tech world.</p>
+          <p className="text-foreground text-base">Curated videos, tutorials, and insights from across the tech world.</p>
         </div>
 
         {/* Search & filters */}
         <div className="flex flex-wrap items-center gap-3 mb-8">
           <div className="relative flex-1 min-w-[200px] max-w-sm">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-foreground" />
             <Input
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search vlogsâ€¦"
+              placeholder="Search vlogs…"
               className="pl-9 bg-gray-900 border-gray-700 text-white"
             />
           </div>
@@ -62,7 +62,7 @@ export default function VlogPage() {
             <button
               onClick={() => setSelectedCategory(null)}
               className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
-                !selectedCategory ? "bg-neon-cyan text-black" : "bg-gray-800 text-gray-300 hover:bg-gray-700"
+                !selectedCategory ? "bg-neon-cyan text-black" : "bg-gray-800 text-foreground hover:bg-gray-700"
               }`}
             >
               All
@@ -72,7 +72,7 @@ export default function VlogPage() {
                 key={cat}
                 onClick={() => setSelectedCategory(cat === selectedCategory ? null : cat)}
                 className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
-                  selectedCategory === cat ? "bg-neon-cyan text-black" : "bg-gray-800 text-gray-300 hover:bg-gray-700"
+                  selectedCategory === cat ? "bg-neon-cyan text-black" : "bg-gray-800 text-foreground hover:bg-gray-700"
                 }`}
               >
                 {cat}
@@ -87,9 +87,9 @@ export default function VlogPage() {
           </div>
         ) : filtered.length === 0 ? (
           <div className="text-center py-16">
-            <Video className="w-12 h-12 text-gray-700 mx-auto mb-3" />
+            <Video className="w-12 h-12 text-foreground mx-auto mb-3" />
             <p className="text-white font-medium mb-1">No videos found</p>
-            <p className="text-sm text-gray-400">Try adjusting your search or check back soon.</p>
+            <p className="text-sm text-foreground">Try adjusting your search or check back soon.</p>
           </div>
         ) : (
           <>
@@ -102,7 +102,7 @@ export default function VlogPage() {
                       <img src={featured.thumbnail} alt={featured.title} className="w-full h-full object-cover" />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center">
-                        <Video className="w-16 h-16 text-gray-700" />
+                        <Video className="w-16 h-16 text-foreground" />
                       </div>
                     )}
                     <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/20 transition-colors">
@@ -120,18 +120,18 @@ export default function VlogPage() {
                   <div className="p-5">
                     <div className="flex items-center gap-2 mb-2 flex-wrap">
                       <span className="text-xs text-neon-cyan font-medium">{featured.category}</span>
-                      <span className="text-gray-600">Â·</span>
-                      <span className="text-xs text-gray-400 flex items-center gap-1">
+                      <span className="text-foreground">·</span>
+                      <span className="text-xs text-foreground flex items-center gap-1">
                         <Calendar className="w-3 h-3" />
                         {format(new Date(featured.createdAt), "MMMM d, yyyy")}
                       </span>
                     </div>
                     <h2 className="text-xl font-bold text-white mb-2 group-hover:text-neon-cyan transition-colors">{featured.title}</h2>
-                    <p className="text-gray-400 text-sm line-clamp-2">{featured.description}</p>
+                    <p className="text-foreground text-sm line-clamp-2">{featured.description}</p>
                     {featured.tags.length > 0 && (
                       <div className="flex flex-wrap gap-1.5 mt-3">
                         {featured.tags.slice(0, 4).map((tag) => (
-                          <span key={tag} className="flex items-center gap-1 text-[11px] text-gray-500">
+                          <span key={tag} className="flex items-center gap-1 text-[11px] text-foreground">
                             <Tag className="w-2.5 h-2.5" />
                             {tag}
                           </span>
@@ -154,7 +154,7 @@ export default function VlogPage() {
                           <img src={vlog.thumbnail} alt={vlog.title} className="w-full h-full object-cover" />
                         ) : (
                           <div className="w-full h-full flex items-center justify-center">
-                            <Video className="w-10 h-10 text-gray-700" />
+                            <Video className="w-10 h-10 text-foreground" />
                           </div>
                         )}
                         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/30">
@@ -169,7 +169,7 @@ export default function VlogPage() {
                       <div className="p-4 flex-1 flex flex-col">
                         <span className="text-[10px] text-neon-cyan font-medium mb-1">{vlog.category}</span>
                         <h3 className="text-sm font-semibold text-white mb-1 line-clamp-2 group-hover:text-neon-cyan transition-colors flex-1">{vlog.title}</h3>
-                        <p className="text-xs text-gray-500">{format(new Date(vlog.createdAt), "MMM d, yyyy")}</p>
+                        <p className="text-xs text-foreground">{format(new Date(vlog.createdAt), "MMM d, yyyy")}</p>
                       </div>
                     </div>
                   </Link>

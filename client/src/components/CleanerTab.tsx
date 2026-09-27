@@ -58,7 +58,7 @@ export default function CleanerTab() {
             <h2 className="text-lg font-orbitron font-bold text-galactic-orange">
               Cleaner &amp; Corrector
             </h2>
-            <p className="text-gray-400 text-xs mt-0.5">
+            <p className="text-foreground text-xs mt-0.5">
               Mandatory sanitisation middleware between the news-fetching bot and the database
             </p>
           </div>
@@ -66,13 +66,13 @@ export default function CleanerTab() {
 
         {/* How it works */}
         <div className="space-y-3 mb-6">
-          <div className="flex gap-3 bg-space-dark rounded-xl p-4 border border-galactic-orange/10">
+          <div className="flex gap-3 bg-card rounded-xl p-4 border border-galactic-orange/10">
             <div className="w-7 h-7 rounded-full bg-green-500/15 flex items-center justify-center flex-shrink-0 mt-0.5">
               <CheckCircle2 className="w-4 h-4 text-green-400" />
             </div>
             <div>
               <p className="text-white text-sm font-semibold mb-0.5">Synchronous Filter, The Gate</p>
-              <p className="text-gray-400 text-xs leading-relaxed">
+              <p className="text-foreground text-xs leading-relaxed">
                 Runs automatically on every "Fetch Now" action and scheduled bot cycle.
                 Intercepts raw RSS data, strips stray HTML tags from title &amp; excerpt,
                 decodes HTML entities (&amp;amp;, &amp;mdash;, &#x27;, …) and normalises
@@ -81,13 +81,13 @@ export default function CleanerTab() {
             </div>
           </div>
 
-          <div className="flex gap-3 bg-space-dark rounded-xl p-4 border border-galactic-orange/10">
+          <div className="flex gap-3 bg-card rounded-xl p-4 border border-galactic-orange/10">
             <div className="w-7 h-7 rounded-full bg-blue-500/15 flex items-center justify-center flex-shrink-0 mt-0.5">
               <DatabaseZap className="w-4 h-4 text-blue-400" />
             </div>
             <div>
               <p className="text-white text-sm font-semibold mb-0.5">Manual Audit, The Scanner</p>
-              <p className="text-gray-400 text-xs leading-relaxed">
+              <p className="text-foreground text-xs leading-relaxed">
                 Admin-triggered deep scan of every post already in the database.
                 Retroactively fixes double-encoded entities, leftover HTML snippets,
                 and typographic artifacts, updating only records that actually changed.
@@ -97,15 +97,15 @@ export default function CleanerTab() {
         </div>
 
         {/* What the cleaner handles */}
-        <div className="bg-space-dark rounded-xl p-4 border border-white/5 mb-6">
+        <div className="bg-card rounded-xl p-4 border border-white/5 mb-6">
           <p className="text-galactic-orange text-xs font-orbitron font-bold mb-2 flex items-center gap-1.5">
             <Info className="w-3.5 h-3.5" /> Sanitisation rules applied
           </p>
-          <ul className="text-gray-400 text-xs space-y-1 list-disc list-inside">
-            <li>Strip raw HTML tags from <strong className="text-gray-300">title</strong> and <strong className="text-gray-300">excerpt</strong> fields</li>
+          <ul className="text-foreground text-xs space-y-1 list-disc list-inside">
+            <li>Strip raw HTML tags from <strong className="text-foreground">title</strong> and <strong className="text-foreground">excerpt</strong> fields</li>
             <li>Decode named entities: <code className="text-galactic-orange/80">&amp;amp;</code> → &amp;, <code className="text-galactic-orange/80">&amp;mdash;</code> → , <code className="text-galactic-orange/80">&amp;hellip;</code> → …</li>
             <li>Decode numeric entities: <code className="text-galactic-orange/80">&amp;#160;</code> and <code className="text-galactic-orange/80">&amp;#x2019;</code></li>
-            <li>Fix double-encoded entities in <strong className="text-gray-300">content</strong> HTML (<code className="text-galactic-orange/80">&amp;amp;amp;</code> → <code className="text-galactic-orange/80">&amp;amp;</code>)</li>
+            <li>Fix double-encoded entities in <strong className="text-foreground">content</strong> HTML (<code className="text-galactic-orange/80">&amp;amp;amp;</code> → <code className="text-galactic-orange/80">&amp;amp;</code>)</li>
             <li>Replace typographic entities with real Unicode glyphs (, –, …, ', ', ", ")</li>
             <li>Collapse excessive blank lines between block elements in content</li>
             <li>Normalise whitespace: trim leading/trailing spaces &amp; collapse runs</li>
@@ -126,7 +126,7 @@ export default function CleanerTab() {
             )}
           </Button>
           {auditMutation.isPending && (
-            <span className="text-gray-400 text-xs animate-pulse">
+            <span className="text-foreground text-xs animate-pulse">
               Scanning all posts, this may take a moment…
             </span>
           )}
@@ -146,9 +146,9 @@ export default function CleanerTab() {
               { label: "Unchanged",    value: lastResult.unchanged,  color: "text-blue-400" },
               { label: "Errors",       value: lastResult.errors,     color: "text-red-400" },
             ].map(({ label, value, color }) => (
-              <div key={label} className="bg-space-dark rounded-xl p-4 text-center border border-white/5">
+              <div key={label} className="bg-card rounded-xl p-4 text-center border border-white/5">
                 <p className={`text-2xl font-orbitron font-bold ${color}`}>{value}</p>
-                <p className="text-gray-500 text-[11px] mt-0.5">{label}</p>
+                <p className="text-foreground text-[11px] mt-0.5">{label}</p>
               </div>
             ))}
           </div>

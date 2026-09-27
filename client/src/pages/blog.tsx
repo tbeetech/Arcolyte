@@ -55,7 +55,7 @@ export default function BlogPage() {
   const rest = filtered.slice(1);
 
   return (
-    <div className="min-h-screen bg-space-black text-white">
+    <div className="min-h-screen bg-background text-white">
       <Navigation />
 
       {/* Hero header */}
@@ -74,7 +74,7 @@ export default function BlogPage() {
           <h1 className="text-5xl md:text-6xl font-orbitron font-black gradient-text mb-4 animate-slide-up">
             Tech Blog
           </h1>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto mb-8">
+          <p className="text-foreground text-lg max-w-2xl mx-auto mb-8">
             Insights, tutorials, and deep dives into the technology shaping our future.
           </p>
           {user && (
@@ -92,7 +92,7 @@ export default function BlogPage() {
         {/* Search + Filters */}
         <div className="flex flex-col md:flex-row gap-3 mb-10">
           <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-foreground" />
             <Input
               placeholder="Search posts, tags…"
               value={search}
@@ -107,7 +107,7 @@ export default function BlogPage() {
               className={`badge-neon transition-all ${
                 selectedCategory === null
                   ? "badge-orange"
-                  : "border-white/15 text-gray-400 hover:border-galactic-orange/30 hover:text-galactic-orange"
+                  : "border-white/15 text-foreground hover:border-galactic-orange/30 hover:text-galactic-orange"
               }`}
             >
               All
@@ -119,7 +119,7 @@ export default function BlogPage() {
                 className={`badge-neon transition-all ${
                   selectedCategory === cat
                     ? "badge-orange"
-                    : "border-white/15 text-gray-400 hover:border-galactic-orange/30 hover:text-galactic-orange"
+                    : "border-white/15 text-foreground hover:border-galactic-orange/30 hover:text-galactic-orange"
                 }`}
               >
                 {cat}
@@ -138,8 +138,8 @@ export default function BlogPage() {
             <div className="w-16 h-16 rounded-2xl bg-galactic-orange/10 border border-galactic-orange/20 flex items-center justify-center mx-auto mb-4">
               <PenLine className="w-7 h-7 text-galactic-orange/50" />
             </div>
-            <p className="text-gray-400 text-lg mb-2">No posts found.</p>
-            <p className="text-gray-600 text-sm mb-6">
+            <p className="text-foreground text-lg mb-2">No posts found.</p>
+            <p className="text-foreground text-sm mb-6">
               {search ? "Try a different search term." : "Be the first to write something."}
             </p>
             {user && (
@@ -183,8 +183,8 @@ export default function BlogPage() {
                     <h2 className="text-2xl md:text-3xl font-orbitron font-bold text-white mb-3 group-hover:text-galactic-orange transition-colors line-clamp-2">
                       {featured.title}
                     </h2>
-                    <p className="text-gray-400 text-sm line-clamp-3 flex-1">{featured.excerpt}</p>
-                    <div className="mt-4 pt-4 border-t border-white/10 flex items-center justify-between text-xs text-gray-500">
+                    <p className="text-foreground text-sm line-clamp-3 flex-1">{featured.excerpt}</p>
+                    <div className="mt-4 pt-4 border-t border-border flex items-center justify-between text-xs text-foreground">
                       <span className="flex items-center gap-1">
                         <User className="w-3 h-3" />
                         <Link href={`/profile/${featured.authorId}`} onClick={(e) => e.stopPropagation()}>
@@ -235,10 +235,10 @@ export default function BlogPage() {
                       <h2 className="text-base font-orbitron font-bold text-white mb-2 group-hover:text-galactic-orange transition-colors line-clamp-2">
                         {post.title}
                       </h2>
-                      <p className="text-gray-400 text-sm line-clamp-3 flex-1 leading-relaxed">
+                      <p className="text-foreground text-sm line-clamp-3 flex-1 leading-relaxed">
                         {post.excerpt}
                       </p>
-                      <div className="mt-4 pt-4 border-t border-white/5 flex items-center justify-between text-xs text-gray-600">
+                      <div className="mt-4 pt-4 border-t border-white/5 flex items-center justify-between text-xs text-foreground">
                         <span className="flex items-center gap-1">
                           <User className="w-3 h-3" /> {post.authorName}
                         </span>

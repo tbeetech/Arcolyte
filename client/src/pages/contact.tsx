@@ -49,12 +49,12 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-space-black text-white">
+    <div className="min-h-screen bg-background text-white">
       <Navigation />
       <main className="pt-24 pb-20">
         <div className="container mx-auto px-6 text-center mb-12">
           <h1 className="font-orbitron font-bold text-4xl gradient-text mb-4">Get In Touch</h1>
-          <p className="text-gray-300 max-w-xl mx-auto">
+          <p className="text-foreground max-w-xl mx-auto">
             Send us a message or book a call on our calendar. We respond within 24 hours.
           </p>
         </div>
@@ -164,11 +164,11 @@ export default function ContactPage() {
                   <CalendarDays className="w-5 h-5 text-galactic-green" />
                 </div>
                 <div>
-                  <p className="text-xs text-gray-500 font-orbitron uppercase tracking-widest">Book a Call</p>
+                  <p className="text-xs text-foreground font-orbitron uppercase tracking-widest">Book a Call</p>
                   <p className="text-white text-sm font-semibold">Schedule via Calendly</p>
                 </div>
               </div>
-              <p className="text-gray-400 text-xs mb-4 leading-relaxed">
+              <p className="text-foreground text-xs mb-4 leading-relaxed">
                 Pick a time that works for you. 30-minute discovery calls to understand your project.
               </p>
               <a
@@ -190,8 +190,8 @@ export default function ContactPage() {
                     <Mail className="w-5 h-5 text-neon-yellow" />
                   </div>
                   <div>
-                    <p className="text-xs text-gray-500 font-orbitron uppercase tracking-widest">Email</p>
-                    <p className="text-gray-200 text-sm group-hover:text-neon-yellow transition-colors break-all">{CONTACT_EMAIL}</p>
+                    <p className="text-xs text-foreground font-orbitron uppercase tracking-widest">Email</p>
+                    <p className="text-foreground text-sm group-hover:text-neon-yellow transition-colors break-all">{CONTACT_EMAIL}</p>
                   </div>
                 </a>
                 <a href="https://wa.me/2348122536647" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
@@ -199,14 +199,14 @@ export default function ContactPage() {
                     <MessageCircle className="w-5 h-5 text-neon-yellow" />
                   </div>
                   <div>
-                    <p className="text-xs text-gray-500 font-orbitron uppercase tracking-widest">WhatsApp</p>
-                    <p className="text-gray-200 text-sm group-hover:text-neon-yellow transition-colors">Chat with us on WhatsApp</p>
+                    <p className="text-xs text-foreground font-orbitron uppercase tracking-widest">WhatsApp</p>
+                    <p className="text-foreground text-sm group-hover:text-neon-yellow transition-colors">Chat with us on WhatsApp</p>
                   </div>
                 </a>
               </div>
             </div>
             <div className="glass-effect p-5 rounded-xl border border-galactic-gold/20">
-              <p className="text-gray-300 text-sm leading-relaxed">
+              <p className="text-foreground text-sm leading-relaxed">
                 📍 Available for remote projects worldwide<br />
                 ⏱ Typical response within <span className="text-neon-yellow font-semibold">24 hours</span>
               </p>

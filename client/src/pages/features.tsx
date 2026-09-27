@@ -129,7 +129,7 @@ export default function FeaturesPage() {
           <h1 className="font-bold text-4xl md:text-6xl mb-6 tracking-tight">
             13 Investor-Ready Features
           </h1>
-          <p className="text-muted-foreground max-w-3xl mx-auto text-lg leading-relaxed mb-8">
+          <p className="text-foreground max-w-3xl mx-auto text-lg leading-relaxed mb-8">
             ARCOLYTE TECHNOLOGIES isn't just a service agency, it's an interactive digital ecosystem. Every feature below is live, built, and designed to attract users, retain community, and demonstrate platform value to investors.
           </p>
           <div className="flex flex-wrap justify-center gap-4 mb-6">
@@ -141,7 +141,7 @@ export default function FeaturesPage() {
             ].map(({ label, value }) => (
               <div key={label} className="px-5 py-3 bg-muted border border-border rounded-none">
                 <div className="font-bold text-foreground text-xl mb-1">{value}</div>
-                <div className="text-muted-foreground text-xs uppercase tracking-wider font-semibold">{label}</div>
+                <div className="text-foreground text-xs uppercase tracking-wider font-semibold">{label}</div>
               </div>
             ))}
           </div>
@@ -161,11 +161,11 @@ export default function FeaturesPage() {
                     <div className="w-10 h-10 border border-border flex items-center justify-center bg-muted rounded-none">
                       <Icon className="w-5 h-5 text-foreground" />
                     </div>
-                    <span className="font-black text-2xl text-muted-foreground/30">{feature.number}</span>
+                    <span className="font-black text-2xl text-foreground">{feature.number}</span>
                   </div>
 
                   <h3 className="font-bold text-lg text-foreground mb-2">{feature.title}</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed mb-4 flex-1">{feature.description}</p>
+                  <p className="text-foreground text-sm leading-relaxed mb-4 flex-1">{feature.description}</p>
 
                   <div className="flex flex-wrap gap-2 mb-6">
                     {feature.tags.map(tag => (
@@ -195,7 +195,7 @@ export default function FeaturesPage() {
             <h2 className="font-bold text-3xl mb-4 text-foreground tracking-tight">
               Ready to Invest or Partner?
             </h2>
-            <p className="text-muted-foreground mb-8 max-w-xl mx-auto text-lg">
+            <p className="text-foreground mb-8 max-w-xl mx-auto text-lg">
               ARCOLYTE TECHNOLOGIES is raising investment to scale these features globally. Book a call with the founder or request the full investor deck.
             </p>
             <div className="flex flex-wrap justify-center gap-4">

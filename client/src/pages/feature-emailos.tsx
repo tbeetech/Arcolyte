@@ -1,4 +1,4 @@
-﻿import { useState } from "react";
+import { useState } from "react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import Navigation from "@/components/Navigation";
@@ -25,7 +25,7 @@ import {
   MousePointerClick,
 } from "lucide-react";
 
-// â”€â”€â”€ Data â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── Data ────────────────────────────────────────────────────────────────────
 
 const coreCapabilities = [
   {
@@ -179,7 +179,7 @@ const whyEmailOS = [
   { label: "Exclusive to ARCOLYTE TECHNOLOGIES", icon: Shield },
 ];
 
-// â”€â”€â”€ Component â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── Component ───────────────────────────────────────────────────────────────
 
 export default function FeatureEmailOSPage() {
   const [activeTier, setActiveTier] = useState(1);
@@ -189,13 +189,13 @@ export default function FeatureEmailOSPage() {
   const launchHref = user ? "/emailos" : "/auth?redirect=/emailos&tab=register";
 
   return (
-    <div className="min-h-screen bg-space-black text-white">
-      <title>EmailOS — Email Marketing for Everyone | ARCOLYTE TECHNOLOGIES</title>
+    <div className="min-h-screen bg-background text-white">
+      <title>EmailOS � Email Marketing for Everyone | ARCOLYTE TECHNOLOGIES</title>
       <Navigation />
 
       <main className="pt-20">
 
-        {/* â”€â”€ Hero â”€â”€ */}
+        {/* ── Hero ── */}
         <section className="relative overflow-hidden py-24 px-6">
           <div className="absolute inset-0 bg-gradient-to-br from-neon-cyan/5 via-galactic-orange/5 to-neon-purple/5 pointer-events-none" />
           <div className="container mx-auto max-w-5xl text-center relative z-10">
@@ -213,7 +213,7 @@ export default function FeatureEmailOSPage() {
               <p className="text-xl md:text-2xl text-neon-cyan font-orbitron font-semibold mb-6">
                 Email Marketing Made Simple
               </p>
-              <p className="text-gray-300 max-w-3xl mx-auto text-lg leading-relaxed mb-10">
+              <p className="text-foreground max-w-3xl mx-auto text-lg leading-relaxed mb-10">
                 Send beautiful emails to thousands of people, grow your audience, and see your results in real time.
                 No technical skills needed, if you can type, you can run a campaign.
                 EmailOS is exclusively available on ARCOLYTE TECHNOLOGIES.
@@ -222,14 +222,14 @@ export default function FeatureEmailOSPage() {
                 {[
                   { label: "Free Contacts", value: "500" },
                   { label: "Pro Contacts", value: "10K" },
-                  { label: "Smart Scheduling", value: "✓" },
+                  { label: "Smart Scheduling", value: "?" },
                   { label: "Open Tracking", value: "Live" },
                   { label: "A/B Testing", value: "Pro+" },
                   { label: "Exclusive to", value: "ARCOLYTE TECHNOLOGIES" },
                 ].map(({ label, value }) => (
                   <div key={label} className="px-4 py-3 glass-effect rounded-xl border border-neon-cyan/20 text-center">
                     <div className="font-orbitron font-black text-neon-cyan text-2xl">{value}</div>
-                    <div className="text-gray-400 text-xs font-orbitron whitespace-nowrap">{label}</div>
+                    <div className="text-foreground text-xs font-orbitron whitespace-nowrap">{label}</div>
                   </div>
                 ))}
               </div>
@@ -249,7 +249,7 @@ export default function FeatureEmailOSPage() {
           </div>
         </section>
 
-        {/* â”€â”€ Core Capabilities â”€â”€ */}
+        {/* ── Core Capabilities ── */}
         <section className="py-20 px-6">
           <div className="container mx-auto max-w-7xl">
             <div className="text-center mb-14">
@@ -259,7 +259,7 @@ export default function FeatureEmailOSPage() {
               <h2 className="font-orbitron font-bold text-4xl gradient-text mb-4">
                 Everything You Need to Grow
               </h2>
-              <p className="text-gray-400 max-w-2xl mx-auto">
+              <p className="text-foreground max-w-2xl mx-auto">
                 EmailOS gives you all the tools to reach your audience, nurture your subscribers, and grow your business, without any technical know-how.
               </p>
             </div>
@@ -279,7 +279,7 @@ export default function FeatureEmailOSPage() {
                       <Icon className={`w-6 h-6 ${cap.color}`} />
                     </div>
                     <h3 className="font-orbitron font-bold text-white text-sm mb-2">{cap.title}</h3>
-                    <p className="text-gray-400 text-sm leading-relaxed">{cap.desc}</p>
+                    <p className="text-foreground text-sm leading-relaxed">{cap.desc}</p>
                   </motion.div>
                 );
               })}
@@ -287,8 +287,8 @@ export default function FeatureEmailOSPage() {
           </div>
         </section>
 
-        {/* â”€â”€ Pricing Tiers â”€â”€ */}
-        <section className="py-20 px-6 bg-space-dark/40">
+        {/* ── Pricing Tiers ── */}
+        <section className="py-20 px-6 bg-card/40">
           <div className="container mx-auto max-w-6xl">
             <div className="text-center mb-14">
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-neon-cyan/30 text-neon-cyan text-sm font-orbitron mb-4">
@@ -297,7 +297,7 @@ export default function FeatureEmailOSPage() {
               <h2 className="font-orbitron font-bold text-4xl gradient-text mb-4">
                 Choose Your Plan
               </h2>
-              <p className="text-gray-400 max-w-2xl mx-auto">
+              <p className="text-foreground max-w-2xl mx-auto">
                 Start free and scale as you grow. Every tier is powered by the same core infrastructure.
               </p>
             </div>
@@ -326,13 +326,13 @@ export default function FeatureEmailOSPage() {
                     <h3 className={`font-orbitron font-black text-lg ${tier.color} mb-1`}>{tier.name}</h3>
                     <div className="flex items-baseline gap-1">
                       <span className="font-orbitron font-black text-4xl text-white">{tier.price}</span>
-                      <span className="text-gray-400 text-sm font-orbitron">{tier.priceNote}</span>
+                      <span className="text-foreground text-sm font-orbitron">{tier.priceNote}</span>
                     </div>
                   </div>
 
                   <ul className="space-y-2.5 flex-1 mb-6">
                     {Object.values(tier.limits).filter(Boolean).map((feat) => (
-                      <li key={feat!} className="flex items-start gap-2 text-sm text-gray-300">
+                      <li key={feat!} className="flex items-start gap-2 text-sm text-foreground">
                         <CheckCircle className={`w-4 h-4 mt-0.5 shrink-0 ${tier.color}`} />
                         <span>{feat}</span>
                       </li>
@@ -352,7 +352,7 @@ export default function FeatureEmailOSPage() {
           </div>
         </section>
 
-        {/* â”€â”€ Why EmailOS â”€â”€ */}
+        {/* ── Why EmailOS ── */}
         <section className="py-20 px-6">
           <div className="container mx-auto max-w-5xl">
             <div className="text-center mb-12">
@@ -362,7 +362,7 @@ export default function FeatureEmailOSPage() {
               <h2 className="font-orbitron font-bold text-4xl gradient-text mb-4">
                 Built for Everyone, Not Just Tech People
               </h2>
-              <p className="text-gray-400 max-w-2xl mx-auto">
+              <p className="text-foreground max-w-2xl mx-auto">
                 EmailOS is exclusive to ARCOLYTE TECHNOLOGIES. It's designed so anyone, from first-time senders to seasoned marketers, can run powerful email campaigns with confidence.
               </p>
             </div>
@@ -379,7 +379,7 @@ export default function FeatureEmailOSPage() {
                     className="flex items-center gap-2 px-4 py-2 glass-effect rounded-xl border border-neon-purple/20 hover:border-neon-purple/50 transition-all"
                   >
                     <Icon className="w-4 h-4 text-neon-purple" />
-                    <span className="text-sm font-orbitron text-gray-300">{item.label}</span>
+                    <span className="text-sm font-orbitron text-foreground">{item.label}</span>
                   </motion.div>
                 );
               })}
@@ -387,15 +387,15 @@ export default function FeatureEmailOSPage() {
           </div>
         </section>
 
-        {/* â”€â”€ Exclusive Platform Note â”€â”€ */}
-        <section className="py-16 px-6 bg-space-dark/40">
+        {/* ── Exclusive Platform Note ── */}
+        <section className="py-16 px-6 bg-card/40">
           <div className="container mx-auto max-w-3xl text-center">
             <div className="glass-effect p-10 rounded-3xl border border-neon-cyan/20">
               <Mail className="w-12 h-12 text-neon-cyan mx-auto mb-5" />
               <blockquote className="font-orbitron font-bold text-2xl gradient-text mb-4">
                 "Your Audience. Your Campaigns. Your Results."
               </blockquote>
-              <p className="text-gray-400 leading-relaxed">
+              <p className="text-foreground leading-relaxed">
                 EmailOS lives exclusively inside ARCOLYTE TECHNOLOGIES. Your contacts, campaigns, and analytics are private to your account and protected at all times.
                 Whether you're sending your first newsletter or your ten-thousandth, EmailOS keeps it simple.
               </p>
@@ -403,14 +403,14 @@ export default function FeatureEmailOSPage() {
           </div>
         </section>
 
-        {/* â”€â”€ CTA â”€â”€ */}
+        {/* ── CTA ── */}
         <section className="py-20 px-6">
           <div className="container mx-auto max-w-3xl text-center">
             <div className="glass-effect p-10 rounded-3xl border border-galactic-orange/30">
               <h2 className="font-orbitron font-bold text-3xl gradient-text mb-4">
                 Ready to Send Your First Campaign?
               </h2>
-              <p className="text-gray-300 mb-6 max-w-xl mx-auto">
+              <p className="text-foreground mb-6 max-w-xl mx-auto">
                 Start free today. No credit card. No technical setup. Create your account and send your first email in minutes.
               </p>
               <div className="flex flex-wrap justify-center gap-4">

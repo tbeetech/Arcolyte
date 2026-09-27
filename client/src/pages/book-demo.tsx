@@ -4,7 +4,7 @@ const calendly = import.meta.env.VITE_CALENDLY_URL || "https://calendly.com";
 
 export default function BookDemoPage() {
   return (
-    <div className="min-h-screen bg-space-black text-white">
+    <div className="min-h-screen bg-background text-white">
       <Navigation />
       <div className="max-w-3xl mx-auto py-16 px-6">
         <iframe

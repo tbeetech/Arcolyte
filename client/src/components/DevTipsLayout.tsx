@@ -27,11 +27,11 @@ export default function DevTipsLayout({ children, title, subtitle }: Props) {
 
   if (!user || user.role !== "admin") {
     return (
-      <div className="min-h-screen bg-space-black flex items-center justify-center">
+      <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center space-y-4">
           <ShieldAlert className="w-16 h-16 text-red-500 mx-auto" />
           <h1 className="text-2xl font-bold text-white">Access Denied</h1>
-          <p className="text-gray-400">This area is restricted to Arcolyte Technologies administrators only.</p>
+          <p className="text-foreground">This area is restricted to Arcolyte Technologies administrators only.</p>
           <Link href="/dashboard">
             <span className="text-neon-cyan underline cursor-pointer">Go to Dashboard</span>
           </Link>
@@ -41,7 +41,7 @@ export default function DevTipsLayout({ children, title, subtitle }: Props) {
   }
 
   return (
-    <div className="min-h-screen bg-space-black text-white flex">
+    <div className="min-h-screen bg-background text-white flex">
       {/* Sidebar */}
       <aside className="w-64 flex-shrink-0 bg-gray-950 border-r border-gray-800 flex flex-col">
         {/* Logo */}
@@ -53,7 +53,7 @@ export default function DevTipsLayout({ children, title, subtitle }: Props) {
               </div>
               <div>
                 <p className="font-bold text-sm text-white leading-none">DEV TIPS BOT</p>
-                <p className="text-[10px] text-gray-500 uppercase tracking-wider">Admin Only</p>
+                <p className="text-[10px] text-foreground uppercase tracking-wider">Admin Only</p>
               </div>
             </div>
           </Link>
@@ -70,7 +70,7 @@ export default function DevTipsLayout({ children, title, subtitle }: Props) {
                     "flex items-center gap-3 px-3 py-2 rounded-lg text-sm cursor-pointer transition-all",
                     isActive
                       ? "bg-cyan-500/20 text-cyan-400 border border-cyan-500/30"
-                      : "text-gray-400 hover:text-white hover:bg-gray-800"
+                      : "text-foreground hover:text-white hover:bg-gray-800"
                   )}
                 >
                   <Icon className="w-4 h-4 flex-shrink-0" />
@@ -103,7 +103,7 @@ export default function DevTipsLayout({ children, title, subtitle }: Props) {
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-lg font-bold text-white">{title}</h1>
-              {subtitle && <p className="text-sm text-gray-400 mt-0.5">{subtitle}</p>}
+              {subtitle && <p className="text-sm text-foreground mt-0.5">{subtitle}</p>}
             </div>
             <div className="flex items-center gap-2">
               <span className="px-2 py-1 text-[10px] font-bold uppercase bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 rounded">

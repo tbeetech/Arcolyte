@@ -58,7 +58,7 @@ function fmtDate(iso: string | null): string {
 function StateIndicator({ running, paused, cycleRunning }: Pick<BotStatus, "running" | "paused" | "cycleRunning">) {
   if (!running) {
     return (
-      <span className="flex items-center gap-1.5 text-gray-400 text-sm font-medium">
+      <span className="flex items-center gap-1.5 text-foreground text-sm font-medium">
         <span className="w-2.5 h-2.5 rounded-full bg-gray-500 inline-block" />
         Stopped
       </span>
@@ -181,7 +181,7 @@ export default function BotWorkerTab() {
 
   if (!botStatus) {
     return (
-      <div className="glass-effect rounded-xl p-10 text-center text-gray-400">
+      <div className="glass-effect rounded-xl p-10 text-center text-foreground">
         <AlertCircle className="w-10 h-10 text-galactic-orange/40 mx-auto mb-3" />
         <p>Could not load bot status. Make sure the bot worker is configured.</p>
         <Button size="sm" variant="ghost" onClick={() => refetch()} className="mt-3 text-galactic-orange">
@@ -206,7 +206,7 @@ export default function BotWorkerTab() {
             </div>
             <div>
               <h2 className="text-lg font-orbitron font-bold text-galactic-orange">Bot Worker</h2>
-              <p className="text-gray-400 text-xs mt-0.5">RSS auto-poster status &amp; controls</p>
+              <p className="text-foreground text-xs mt-0.5">RSS auto-poster status &amp; controls</p>
             </div>
           </div>
           <div className="flex items-center gap-3">
@@ -251,16 +251,16 @@ export default function BotWorkerTab() {
               label: "Feeds Active",
             },
           ].map(({ icon: Icon, color, value, label }) => (
-            <div key={label} className="bg-space-dark rounded-xl p-4 text-center border border-white/5">
+            <div key={label} className="bg-card rounded-xl p-4 text-center border border-white/5">
               <Icon className={`w-5 h-5 ${color} mx-auto mb-1`} />
               <p className={`text-xl font-orbitron font-bold ${color}`}>{value}</p>
-              <p className="text-gray-500 text-[11px] mt-0.5">{label}</p>
+              <p className="text-foreground text-[11px] mt-0.5">{label}</p>
             </div>
           ))}
         </div>
 
-        <div className="text-gray-500 text-xs mb-5">
-          Last run: <span className="text-gray-300">{fmtDate(botStatus.lastRun)}</span>
+        <div className="text-foreground text-xs mb-5">
+          Last run: <span className="text-foreground">{fmtDate(botStatus.lastRun)}</span>
         </div>
 
         {/* Control buttons */}
@@ -350,7 +350,7 @@ export default function BotWorkerTab() {
           {botStatus.feeds.map((feed) => (
             <div
               key={feed.name}
-              className="flex items-center justify-between bg-space-dark rounded-xl px-4 py-3 border border-white/5"
+              className="flex items-center justify-between bg-card rounded-xl px-4 py-3 border border-white/5"
             >
               <div className="flex items-center gap-3 min-w-0">
                 <Switch
@@ -361,7 +361,7 @@ export default function BotWorkerTab() {
                 />
                 <div className="min-w-0">
                   <p className="text-white text-sm font-medium truncate">{feed.name}</p>
-                  <p className="text-gray-500 text-[11px]">
+                  <p className="text-foreground text-[11px]">
                     {feed.lastFetched ? (
                       <>Last: {fmtDate(feed.lastFetched)}</>
                     ) : (
@@ -379,7 +379,7 @@ export default function BotWorkerTab() {
                 {feedToggles[feed.name] ?? feed.enabled ? (
                   <CheckCircle2 className="w-4 h-4 text-green-400 flex-shrink-0" />
                 ) : (
-                  <AlertCircle className="w-4 h-4 text-gray-500 flex-shrink-0" />
+                  <AlertCircle className="w-4 h-4 text-foreground flex-shrink-0" />
                 )}
               </div>
             </div>
@@ -408,9 +408,9 @@ export default function BotWorkerTab() {
                 setPollMinutes(Number(e.target.value));
                 setConfigDirty(true);
               }}
-              className="bg-space-dark border-galactic-orange/20 text-white text-sm h-9"
+              className="bg-card border-galactic-orange/20 text-white text-sm h-9"
             />
-            <p className="text-gray-500 text-[11px] mt-1">
+            <p className="text-foreground text-[11px] mt-1">
               Min 0.5 min (30 s). Current: {fmtMs(botStatus.pollIntervalMs)}
             </p>
           </div>
@@ -428,9 +428,9 @@ export default function BotWorkerTab() {
                 setMaxArticles(Number(e.target.value));
                 setConfigDirty(true);
               }}
-              className="bg-space-dark border-galactic-orange/20 text-white text-sm h-9"
+              className="bg-card border-galactic-orange/20 text-white text-sm h-9"
             />
-            <p className="text-gray-500 text-[11px] mt-1">
+            <p className="text-foreground text-[11px] mt-1">
               1–100. Currently {botStatus.maxArticlesPerFeed} per feed.
             </p>
           </div>

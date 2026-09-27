@@ -4,7 +4,6 @@ import { Wrench, CheckSquare, Square, ChevronDown, ChevronUp, Lightbulb } from "
 const toolkitCategories = [
   {
     category: "Digital Presence",
-    color: "text-galactic-orange",
     icon: "🌐",
     items: [
       { id: "d1", text: "Professional website with mobile-first design", tip: "First impressions happen in 3 seconds. ARCOLYTE TECHNOLOGIES builds conversion-optimised sites." },
@@ -15,7 +14,6 @@ const toolkitCategories = [
   },
   {
     category: "Automation & AI",
-    color: "text-neon-cyan",
     icon: "🤖",
     items: [
       { id: "a1", text: "Lead capture form with automated follow-up", tip: "Speed-to-lead within 5 minutes increases conversion by 9x." },
@@ -26,7 +24,6 @@ const toolkitCategories = [
   },
   {
     category: "Content & Growth",
-    color: "text-neon-yellow",
     icon: "📣",
     items: [
       { id: "c1", text: "Content calendar planned 4 weeks ahead", tip: "Consistent posting increases organic reach by 3x." },
@@ -37,7 +34,6 @@ const toolkitCategories = [
   },
   {
     category: "Security & Compliance",
-    color: "text-galactic-green",
     icon: "🔒",
     items: [
       { id: "s1", text: "Two-factor authentication on all accounts", tip: "2FA blocks 99.9% of automated attacks." },
@@ -60,96 +56,96 @@ export default function StartupToolkitSection() {
   const toggle = (id: string) => setChecked(prev => ({ ...prev, [id]: !prev[id] }));
 
   return (
-    <section id="startup-toolkit" className="page-section py-20">
+    <section id="startup-toolkit" className="py-24 bg-background">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-galactic-orange/30 text-galactic-orange text-sm font-orbitron mb-4">
+        <div className="text-center mb-16 max-w-3xl mx-auto">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 border border-border text-foreground text-sm uppercase tracking-widest font-semibold mb-6">
             <Wrench className="w-4 h-4" /> Feature 10 of 12
           </div>
-          <h2 className="font-orbitron font-bold text-3xl md:text-4xl mb-4 gradient-text">
+          <h2 className="font-bold text-4xl md:text-5xl mb-6 text-foreground tracking-tight uppercase">
             Startup Digital Toolkit
           </h2>
-          <p className="text-gray-300 max-w-2xl mx-auto">
+          <p className="text-foreground text-lg leading-relaxed">
             The 16-point digital readiness checklist every growing business needs. Tick each box, click for expert tips.
           </p>
         </div>
 
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           {/* Progress */}
-          <div className="glass-effect p-5 rounded-2xl border border-galactic-orange/20 mb-6">
-            <div className="flex items-center justify-between mb-2">
-              <span className="font-orbitron text-sm text-white">Digital Readiness Score</span>
-              <span className="font-orbitron font-bold text-galactic-orange">{progressPct}%</span>
+          <div className="p-8 border border-border bg-card mb-8 rounded-none">
+            <div className="flex items-center justify-between mb-4">
+              <span className="font-bold text-sm uppercase tracking-wider text-foreground">Digital Readiness Score</span>
+              <span className="font-black text-2xl text-foreground">{progressPct}%</span>
             </div>
-            <div className="h-3 bg-space-dark rounded-full overflow-hidden mb-2">
+            <div className="h-2 bg-muted w-full mb-4">
               <div
-                className="h-full bg-gradient-to-r from-galactic-orange to-galactic-gold rounded-full transition-all duration-500"
+                className="h-full bg-foreground transition-all duration-500"
                 style={{ width: `${progressPct}%` }}
               />
             </div>
-            <p className="text-xs text-gray-500 font-orbitron">
+            <p className="text-xs text-foreground font-semibold uppercase tracking-wider">
               {totalChecked}/{totalItems} items complete
-              {progressPct === 100 && " 🎉 You're fully digital-ready!"}
-              {progressPct >= 50 && progressPct < 100 && ", You're halfway there, keep going!"}
-              {progressPct < 50 && ", ARCOLYTE TECHNOLOGIES can help you close every gap"}
+              {progressPct === 100 && " — You're fully digital-ready!"}
+              {progressPct >= 50 && progressPct < 100 && " — You're halfway there, keep going!"}
+              {progressPct < 50 && " — ARCOLYTE TECHNOLOGIES can help you close every gap"}
             </p>
           </div>
 
           {/* Accordion categories */}
-          <div className="space-y-4">
+          <div className="space-y-6">
             {toolkitCategories.map(cat => {
               const catChecked = cat.items.filter(i => checked[i.id]).length;
               const isOpen = openCategory === cat.category;
               return (
-                <div key={cat.category} className="glass-effect rounded-2xl border border-white/10 overflow-hidden">
+                <div key={cat.category} className="border border-border bg-card rounded-none overflow-hidden">
                   <button
                     onClick={() => setOpenCategory(isOpen ? null : cat.category)}
-                    className="w-full flex items-center justify-between p-5 hover:bg-white/5 transition-colors"
+                    className="w-full flex items-center justify-between p-6 hover:bg-muted transition-colors"
                   >
-                    <div className="flex items-center gap-3">
-                      <span className="text-2xl">{cat.icon}</span>
+                    <div className="flex items-center gap-4">
+                      <span className="text-3xl">{cat.icon}</span>
                       <div className="text-left">
-                        <p className={`font-orbitron font-bold text-sm ${cat.color}`}>{cat.category}</p>
-                        <p className="text-gray-500 text-xs">{catChecked}/{cat.items.length} complete</p>
+                        <p className="font-bold text-lg uppercase tracking-wider text-foreground mb-1">{cat.category}</p>
+                        <p className="text-foreground text-xs font-semibold uppercase tracking-widest">{catChecked}/{cat.items.length} complete</p>
                       </div>
                     </div>
-                    <div className="flex items-center gap-3">
-                      <div className="w-20 h-1.5 bg-space-dark rounded-full overflow-hidden">
+                    <div className="flex items-center gap-6">
+                      <div className="w-32 h-1 bg-muted hidden sm:block">
                         <div
-                          className="h-full bg-galactic-orange rounded-full transition-all duration-300"
+                          className="h-full bg-foreground transition-all duration-300"
                           style={{ width: `${(catChecked / cat.items.length) * 100}%` }}
                         />
                       </div>
-                      {isOpen ? <ChevronUp className="w-4 h-4 text-gray-400" /> : <ChevronDown className="w-4 h-4 text-gray-400" />}
+                      {isOpen ? <ChevronUp className="w-5 h-5 text-foreground" /> : <ChevronDown className="w-5 h-5 text-foreground" />}
                     </div>
                   </button>
 
                   {isOpen && (
-                    <div className="px-5 pb-5 space-y-3">
+                    <div className="p-6 pt-2 space-y-4 border-t border-border">
                       {cat.items.map(item => (
-                        <div key={item.id}>
+                        <div key={item.id} className="p-4 border border-border hover:border-foreground transition-colors">
                           <div
-                            className="flex items-start gap-3 cursor-pointer group"
+                            className="flex items-start gap-4 cursor-pointer group"
                             onClick={() => toggle(item.id)}
                           >
                             {checked[item.id] ? (
-                              <CheckSquare className="w-5 h-5 text-galactic-green flex-shrink-0 mt-0.5" />
+                              <CheckSquare className="w-6 h-6 text-foreground flex-shrink-0 mt-0.5" />
                             ) : (
-                              <Square className="w-5 h-5 text-gray-600 flex-shrink-0 mt-0.5 group-hover:text-gray-400 transition-colors" />
+                              <Square className="w-6 h-6 text-foreground opacity-50 flex-shrink-0 mt-0.5 group-hover:opacity-100 transition-opacity" />
                             )}
-                            <span className={`text-sm leading-relaxed transition-colors ${checked[item.id] ? "text-gray-500 line-through" : "text-gray-200 group-hover:text-white"}`}>
+                            <span className={`text-base font-medium leading-relaxed transition-colors ${checked[item.id] ? "text-foreground opacity-50 line-through" : "text-foreground"}`}>
                               {item.text}
                             </span>
                             <button
                               onClick={(e) => { e.stopPropagation(); setActiveTip(activeTip === item.id ? null : item.id); }}
-                              className="ml-auto flex-shrink-0"
+                              className="ml-auto flex-shrink-0 p-1"
                             >
-                              <Lightbulb className={`w-4 h-4 transition-colors ${activeTip === item.id ? "text-neon-yellow" : "text-gray-600 hover:text-neon-yellow"}`} />
+                              <Lightbulb className={`w-5 h-5 transition-colors ${activeTip === item.id ? "text-foreground" : "text-foreground opacity-30 hover:opacity-100"}`} />
                             </button>
                           </div>
                           {activeTip === item.id && (
-                            <div className="ml-8 mt-2 p-3 rounded-lg bg-neon-yellow/5 border border-neon-yellow/20 text-xs text-gray-300 leading-relaxed">
-                              💡 {item.tip}
+                            <div className="ml-10 mt-4 p-4 bg-muted border border-border text-sm text-foreground leading-relaxed font-medium">
+                              <strong>EXPERT TIP:</strong> {item.tip}
                             </div>
                           )}
                         </div>

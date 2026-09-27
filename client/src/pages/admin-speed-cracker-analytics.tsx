@@ -86,7 +86,7 @@ export default function AdminSpeedCrackerAnalyticsPage() {
   return (
     <SpeedCrackerLayout title="Analytics" subtitle="System-wide performance and activity overview">
       {statsLoading ? (
-        <div className="flex items-center gap-2 text-gray-400 mb-6">
+        <div className="flex items-center gap-2 text-foreground mb-6">
           <Loader2 className="w-4 h-4 animate-spin" />
           <span className="text-sm">Loading…</span>
         </div>
@@ -95,7 +95,7 @@ export default function AdminSpeedCrackerAnalyticsPage() {
           {/* Key metrics */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
             {[
-              { label: "Total Campaigns", value: stats.totalCampaigns, icon: Zap, color: "text-gray-400", bg: "bg-gray-500/10 border-gray-500/20" },
+              { label: "Total Campaigns", value: stats.totalCampaigns, icon: Zap, color: "text-foreground", bg: "bg-gray-500/10 border-gray-500/20" },
               { label: "Active Campaigns", value: stats.activeCampaigns, icon: TrendingUp, color: "text-green-400", bg: "bg-green-500/10 border-green-500/20" },
               { label: "Published Content", value: stats.publishedContent, icon: CheckCircle, color: "text-blue-400", bg: "bg-blue-500/10 border-blue-500/20" },
               { label: "Publish Success Rate", value: `${publishRate}%`, icon: BarChart3, color: "text-purple-400", bg: "bg-purple-500/10 border-purple-500/20" },
@@ -103,7 +103,7 @@ export default function AdminSpeedCrackerAnalyticsPage() {
               <div key={label} className={`p-4 rounded-xl border ${bg}`}>
                 <Icon className={`w-5 h-5 ${color} mb-2`} />
                 <p className={`text-2xl font-bold ${color}`}>{value}</p>
-                <p className="text-xs text-gray-400 mt-1">{label}</p>
+                <p className="text-xs text-foreground mt-1">{label}</p>
               </div>
             ))}
           </div>
@@ -111,7 +111,7 @@ export default function AdminSpeedCrackerAnalyticsPage() {
           {/* Content pipeline breakdown */}
           <div className="bg-gray-900 border border-gray-700 rounded-xl p-5 mb-6">
             <h3 className="text-sm font-semibold text-white mb-4 flex items-center gap-2">
-              <BarChart3 className="w-4 h-4 text-gray-400" />
+              <BarChart3 className="w-4 h-4 text-foreground" />
               Content Pipeline
             </h3>
             <div className="space-y-3">
@@ -122,7 +122,7 @@ export default function AdminSpeedCrackerAnalyticsPage() {
                 { label: "Vlog Posts (published)", value: stats.publishedVlogs, color: "bg-purple-500", max: stats.totalVlogs || 1 },
               ].map(({ label, value, color, max }) => (
                 <div key={label}>
-                  <div className="flex justify-between text-xs text-gray-400 mb-1">
+                  <div className="flex justify-between text-xs text-foreground mb-1">
                     <span>{label}</span>
                     <span className="text-white font-medium">{value}</span>
                   </div>
@@ -142,16 +142,16 @@ export default function AdminSpeedCrackerAnalyticsPage() {
       {/* Campaign performance table */}
       <div className="bg-gray-900 border border-gray-700 rounded-xl p-5 mb-6">
         <h3 className="text-sm font-semibold text-white mb-4 flex items-center gap-2">
-          <Zap className="w-4 h-4 text-gray-400" />
+          <Zap className="w-4 h-4 text-foreground" />
           Campaign Performance
         </h3>
         {campaigns.length === 0 ? (
-          <p className="text-sm text-gray-500">No campaigns yet.</p>
+          <p className="text-sm text-foreground">No campaigns yet.</p>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-xs">
               <thead>
-                <tr className="border-b border-gray-800 text-gray-500 text-left">
+                <tr className="border-b border-gray-800 text-foreground text-left">
                   <th className="pb-2 pr-4">Campaign</th>
                   <th className="pb-2 pr-4">Industry</th>
                   <th className="pb-2 pr-4">Status</th>
@@ -164,15 +164,15 @@ export default function AdminSpeedCrackerAnalyticsPage() {
                 {campaigns.map((c) => (
                   <tr key={c.id} className="border-b border-gray-800/50 last:border-0">
                     <td className="py-2 pr-4 text-white font-medium truncate max-w-[160px]">{c.name}</td>
-                    <td className="py-2 pr-4 text-gray-400">{c.industry}</td>
+                    <td className="py-2 pr-4 text-foreground">{c.industry}</td>
                     <td className="py-2 pr-4">
                       <span className={`px-1.5 py-0.5 rounded text-[10px] font-medium ${
                         c.status === "active" ? "bg-green-500/20 text-green-400"
                           : c.status === "paused" ? "bg-yellow-500/20 text-yellow-400"
-                          : "bg-gray-700 text-gray-400"
+                          : "bg-gray-700 text-foreground"
                       }`}>{c.status}</span>
                     </td>
-                    <td className="py-2 pr-4 text-gray-400">{c.postsAggregated}</td>
+                    <td className="py-2 pr-4 text-foreground">{c.postsAggregated}</td>
                     <td className="py-2 pr-4 text-green-400">{c.postsPublished}</td>
                     <td className="py-2 text-red-400">{c.postsRejected}</td>
                   </tr>
@@ -187,7 +187,7 @@ export default function AdminSpeedCrackerAnalyticsPage() {
       {topActions.length > 0 && (
         <div className="bg-gray-900 border border-gray-700 rounded-xl p-5 mb-6">
           <h3 className="text-sm font-semibold text-white mb-4 flex items-center gap-2">
-            <TrendingUp className="w-4 h-4 text-gray-400" />
+            <TrendingUp className="w-4 h-4 text-foreground" />
             Top Admin Actions
           </h3>
           <div className="space-y-2">
@@ -195,8 +195,8 @@ export default function AdminSpeedCrackerAnalyticsPage() {
               const Icon = ACTION_ICON[action] ?? Clock;
               return (
                 <div key={action} className="flex items-center gap-3">
-                  <Icon className="w-3.5 h-3.5 text-gray-500 flex-shrink-0" />
-                  <span className="text-xs text-gray-400 flex-1">{action.replace(/speed_cracker\.|admin\./, "").replace(/\./g, " › ")}</span>
+                  <Icon className="w-3.5 h-3.5 text-foreground flex-shrink-0" />
+                  <span className="text-xs text-foreground flex-1">{action.replace(/speed_cracker\.|admin\./, "").replace(/\./g, " › ")}</span>
                   <span className="text-xs font-bold text-white">{count}</span>
                 </div>
               );
@@ -208,25 +208,25 @@ export default function AdminSpeedCrackerAnalyticsPage() {
       {/* Recent audit log */}
       <div className="bg-gray-900 border border-gray-700 rounded-xl p-5">
         <h3 className="text-sm font-semibold text-white mb-4 flex items-center gap-2">
-          <Clock className="w-4 h-4 text-gray-400" />
+          <Clock className="w-4 h-4 text-foreground" />
           Full Audit Log (last 200 entries)
         </h3>
         {logsLoading ? (
-          <div className="flex items-center gap-2 text-gray-400">
+          <div className="flex items-center gap-2 text-foreground">
             <Loader2 className="w-4 h-4 animate-spin" />
             <span className="text-sm">Loading…</span>
           </div>
         ) : logs.length === 0 ? (
-          <p className="text-sm text-gray-500">No logs yet.</p>
+          <p className="text-sm text-foreground">No logs yet.</p>
         ) : (
           <div className="space-y-1 max-h-80 overflow-y-auto">
             {logs.map((log) => (
               <div key={log.id} className="flex items-center gap-3 py-1.5 border-b border-gray-800/50 last:border-0 text-xs">
-                <span className="text-gray-500 whitespace-nowrap w-28 flex-shrink-0">
+                <span className="text-foreground whitespace-nowrap w-28 flex-shrink-0">
                   {format(new Date(log.createdAt), "MM/dd HH:mm")}
                 </span>
                 <span className="text-purple-400 font-medium w-20 flex-shrink-0 truncate">{log.adminName}</span>
-                <span className="text-gray-400 flex-1 truncate">{log.action}</span>
+                <span className="text-foreground flex-1 truncate">{log.action}</span>
               </div>
             ))}
           </div>

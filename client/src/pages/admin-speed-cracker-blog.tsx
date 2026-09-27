@@ -53,7 +53,7 @@ export default function AdminSpeedCrackerBlogPage() {
   return (
     <SpeedCrackerLayout title="Blog Manager" subtitle="Manage blog posts created by Speed Cracker workflows">
       <div className="flex items-center justify-between mb-6">
-        <div className="flex gap-4 text-sm text-gray-400">
+        <div className="flex gap-4 text-sm text-foreground">
           <span>{published.length} published</span>
           <span>{drafts.length} drafts</span>
         </div>
@@ -66,15 +66,15 @@ export default function AdminSpeedCrackerBlogPage() {
       </div>
 
       {isLoading ? (
-        <div className="flex items-center gap-2 text-gray-400">
+        <div className="flex items-center gap-2 text-foreground">
           <Loader2 className="w-4 h-4 animate-spin" />
           <span className="text-sm">Loading posts…</span>
         </div>
       ) : posts.length === 0 ? (
         <div className="text-center py-16 bg-gray-900 rounded-xl border border-gray-700">
-          <FileText className="w-12 h-12 text-gray-600 mx-auto mb-3" />
+          <FileText className="w-12 h-12 text-foreground mx-auto mb-3" />
           <p className="text-white font-medium">No blog posts yet</p>
-          <p className="text-sm text-gray-400 mt-1">Use the Approval Center to auto-create posts from aggregated content.</p>
+          <p className="text-sm text-foreground mt-1">Use the Approval Center to auto-create posts from aggregated content.</p>
         </div>
       ) : (
         <div className="space-y-2">
@@ -83,15 +83,15 @@ export default function AdminSpeedCrackerBlogPage() {
               <div className="flex items-start justify-between gap-4">
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 flex-wrap mb-1">
-                    <span className="text-[10px] px-1.5 py-0.5 rounded bg-gray-800 text-gray-400">{post.category}</span>
+                    <span className="text-[10px] px-1.5 py-0.5 rounded bg-gray-800 text-foreground">{post.category}</span>
                     {post.published ? (
                       <span className="text-[10px] px-1.5 py-0.5 rounded bg-green-500/20 text-green-400 border border-green-500/30">Published</span>
                     ) : (
-                      <span className="text-[10px] px-1.5 py-0.5 rounded bg-gray-700 text-gray-400">Draft</span>
+                      <span className="text-[10px] px-1.5 py-0.5 rounded bg-gray-700 text-foreground">Draft</span>
                     )}
                   </div>
                   <p className="text-sm font-medium text-white truncate">{post.title}</p>
-                  <p className="text-xs text-gray-400 mt-0.5">{post.authorName} · {format(new Date(post.createdAt), "MMM d, yyyy")}</p>
+                  <p className="text-xs text-foreground mt-0.5">{post.authorName} · {format(new Date(post.createdAt), "MMM d, yyyy")}</p>
                   <div className="flex flex-wrap gap-1 mt-1">
                     {post.tags.slice(0, 4).map((tag) => (
                       <span key={tag} className="text-[10px] text-cyan-400">#{tag}</span>
@@ -100,7 +100,7 @@ export default function AdminSpeedCrackerBlogPage() {
                 </div>
                 <div className="flex gap-1.5 flex-shrink-0 flex-wrap justify-end">
                   <Link href={`/blog/edit/${post.id}`}>
-                    <Button size="sm" variant="outline" className="border-gray-700 text-gray-300 h-7 text-xs px-2">
+                    <Button size="sm" variant="outline" className="border-gray-700 text-foreground h-7 text-xs px-2">
                       <Edit3 className="w-3 h-3 mr-1" />
                       Edit
                     </Button>
@@ -116,7 +116,7 @@ export default function AdminSpeedCrackerBlogPage() {
                     {post.published ? "Unpublish" : "Publish"}
                   </Button>
                   <a href={`/blog/${post.slug}`} target="_blank" rel="noopener noreferrer">
-                    <Button size="sm" variant="ghost" className="text-gray-400 h-7 text-xs px-2">
+                    <Button size="sm" variant="ghost" className="text-foreground h-7 text-xs px-2">
                       <ExternalLink className="w-3 h-3" />
                     </Button>
                   </a>

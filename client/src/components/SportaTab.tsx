@@ -153,7 +153,7 @@ const defaultWizard: WizardData = {
 
 function StatusBadge({ status }: { status: string }) {
   const map: Record<string, string> = {
-    draft: "bg-gray-500/20 text-gray-400 border-gray-500/30",
+    draft: "bg-gray-500/20 text-foreground border-gray-500/30",
     active: "bg-green-500/20 text-green-400 border-green-500/30",
     paused: "bg-yellow-500/20 text-yellow-400 border-yellow-500/30",
     completed: "bg-blue-500/20 text-blue-400 border-blue-500/30",
@@ -165,20 +165,20 @@ function StatusBadge({ status }: { status: string }) {
     failed: "bg-red-500/20 text-red-400 border-red-500/30",
   };
   return (
-    <Badge className={`${map[status] ?? "bg-white/10 text-gray-300 border-white/20"} text-xs capitalize`}>
+    <Badge className={`${map[status] ?? "bg-white/10 text-foreground border-border"} text-xs capitalize`}>
       {status}
     </Badge>
   );
 }
 
 function ScoreBar({ value, color }: { value?: number; color: string }) {
-  if (value === undefined) return <span className="text-gray-500 text-xs"></span>;
+  if (value === undefined) return <span className="text-foreground text-xs"></span>;
   return (
     <div className="flex items-center gap-2">
       <div className="flex-1 h-1.5 bg-white/10 rounded-full overflow-hidden">
         <div className={`h-full ${color} rounded-full`} style={{ width: `${value}%` }} />
       </div>
-      <span className="text-xs text-gray-400 w-7 text-right">{value}</span>
+      <span className="text-xs text-foreground w-7 text-right">{value}</span>
     </div>
   );
 }
@@ -209,13 +209,13 @@ function mediaTypeColor(mediaType: string): string {
     Articles: "bg-blue-500/20 text-blue-400 border-blue-500/30",
     Tutorials: "bg-cyan-500/20 text-cyan-400 border-cyan-500/30",
     Reviews: "bg-yellow-500/20 text-yellow-400 border-yellow-500/30",
-    Threads: "bg-gray-500/20 text-gray-300 border-gray-500/30",
+    Threads: "bg-gray-500/20 text-foreground border-gray-500/30",
     Podcasts: "bg-green-500/20 text-green-400 border-green-500/30",
-    Memes: "bg-gray-500/20 text-gray-400 border-gray-500/30",
+    Memes: "bg-gray-500/20 text-foreground border-gray-500/30",
     Images: "bg-teal-500/20 text-teal-400 border-teal-500/30",
     Quotes: "bg-indigo-500/20 text-indigo-400 border-indigo-500/30",
   };
-  return map[mediaType] ?? "bg-white/10 text-gray-300 border-white/10";
+  return map[mediaType] ?? "bg-white/10 text-foreground border-border";
 }
 
 // Inline video preview component
@@ -286,7 +286,7 @@ function MultiSelectGrid<T extends string>({
 }) {
   return (
     <div>
-      <p className="text-gray-400 text-xs font-orbitron mb-2">{label}</p>
+      <p className="text-foreground text-xs font-orbitron mb-2">{label}</p>
       <div className="flex flex-wrap gap-2">
         {options.map((opt) => {
           const active = selected.includes(opt);
@@ -298,7 +298,7 @@ function MultiSelectGrid<T extends string>({
               className={`px-3 py-1.5 rounded-lg text-xs font-orbitron font-semibold border transition-all ${
                 active
                   ? "bg-galactic-orange text-space-black border-galactic-orange"
-                  : "border-galactic-orange/20 text-gray-400 hover:border-galactic-orange/50 hover:text-white glass-effect"
+                  : "border-galactic-orange/20 text-foreground hover:border-galactic-orange/50 hover:text-white glass-effect"
               }`}
             >
               {opt}
@@ -384,7 +384,7 @@ function CampaignWizard({ onComplete, onCancel }: { onComplete: () => void; onCa
           <Zap className="w-5 h-5 text-galactic-orange" />
           <h2 className="text-lg font-orbitron font-bold text-galactic-orange">New Campaign</h2>
         </div>
-        <span className="text-xs text-gray-400 font-orbitron">Step {step}/{TOTAL_STEPS}</span>
+        <span className="text-xs text-foreground font-orbitron">Step {step}/{TOTAL_STEPS}</span>
       </div>
 
       {/* Progress bar */}
@@ -392,7 +392,7 @@ function CampaignWizard({ onComplete, onCancel }: { onComplete: () => void; onCa
         {stepLabels.map((label, i) => (
           <div key={label} className="flex-1">
             <div className={`h-1 rounded-full transition-all ${i + 1 <= step ? "bg-galactic-orange" : "bg-white/10"}`} />
-            <p className={`text-[9px] font-orbitron mt-1 truncate ${i + 1 === step ? "text-galactic-orange" : "text-gray-600"}`}>{label}</p>
+            <p className={`text-[9px] font-orbitron mt-1 truncate ${i + 1 === step ? "text-galactic-orange" : "text-foreground"}`}>{label}</p>
           </div>
         ))}
       </div>
@@ -405,7 +405,7 @@ function CampaignWizard({ onComplete, onCancel }: { onComplete: () => void; onCa
           <div className="space-y-5">
             <div>
               <h3 className="font-orbitron font-bold text-white mb-0.5 text-sm">Your Industry</h3>
-              <p className="text-gray-500 text-xs mb-3">Pick the niche SPORTA should focus on.</p>
+              <p className="text-foreground text-xs mb-3">Pick the niche SPORTA should focus on.</p>
               <div className="flex flex-wrap gap-1.5">
                 {INDUSTRIES.map((ind) => (
                   <button
@@ -415,7 +415,7 @@ function CampaignWizard({ onComplete, onCancel }: { onComplete: () => void; onCa
                     className={`px-2.5 py-1 rounded-lg text-[11px] font-orbitron font-semibold border transition-all ${
                       data.industry === ind
                         ? "bg-galactic-orange text-space-black border-galactic-orange"
-                        : "border-galactic-orange/20 text-gray-400 hover:border-galactic-orange/50 glass-effect"
+                        : "border-galactic-orange/20 text-foreground hover:border-galactic-orange/50 glass-effect"
                     }`}
                   >
                     {ind}
@@ -425,7 +425,7 @@ function CampaignWizard({ onComplete, onCancel }: { onComplete: () => void; onCa
             </div>
             <div>
               <h3 className="font-orbitron font-bold text-white mb-0.5 text-sm">Content Types</h3>
-              <p className="text-gray-500 text-xs mb-3">What types of content should SPORTA find? (select all that apply)</p>
+              <p className="text-foreground text-xs mb-3">What types of content should SPORTA find? (select all that apply)</p>
               <div className="flex flex-wrap gap-1.5">
                 {CONTENT_TYPES.map((ct) => (
                   <button
@@ -435,7 +435,7 @@ function CampaignWizard({ onComplete, onCancel }: { onComplete: () => void; onCa
                     className={`px-2.5 py-1 rounded-lg text-[11px] font-orbitron font-semibold border transition-all ${
                       data.contentTypes.includes(ct)
                         ? "bg-galactic-orange text-space-black border-galactic-orange"
-                        : "border-galactic-orange/20 text-gray-400 hover:border-galactic-orange/50 glass-effect"
+                        : "border-galactic-orange/20 text-foreground hover:border-galactic-orange/50 glass-effect"
                     }`}
                   >
                     {ct}
@@ -444,12 +444,12 @@ function CampaignWizard({ onComplete, onCancel }: { onComplete: () => void; onCa
               </div>
             </div>
             <div>
-              <Label className="text-gray-400 font-orbitron text-xs mb-1 block">Campaign name (optional)</Label>
+              <Label className="text-foreground font-orbitron text-xs mb-1 block">Campaign name (optional)</Label>
               <Input
                 value={data.name}
                 onChange={(e) => set("name", e.target.value)}
                 placeholder={`SPORTA – ${data.industry || "My Campaign"}`}
-                className="bg-space-dark border-galactic-orange/20 text-white text-sm h-9"
+                className="bg-card border-galactic-orange/20 text-white text-sm h-9"
               />
             </div>
           </div>
@@ -460,7 +460,7 @@ function CampaignWizard({ onComplete, onCancel }: { onComplete: () => void; onCa
           <div className="space-y-5">
             <div>
               <h3 className="font-orbitron font-bold text-white mb-0.5 text-sm">Source Platforms</h3>
-              <p className="text-gray-500 text-xs mb-3">Where should SPORTA pull content from?</p>
+              <p className="text-foreground text-xs mb-3">Where should SPORTA pull content from?</p>
               <MultiSelectGrid
                 label=""
                 options={PLATFORMS}
@@ -470,21 +470,21 @@ function CampaignWizard({ onComplete, onCancel }: { onComplete: () => void; onCa
             </div>
             <div className="grid sm:grid-cols-2 gap-3">
               <div>
-                <Label className="text-gray-400 font-orbitron text-xs mb-1 block">Target keywords (comma-separated)</Label>
+                <Label className="text-foreground font-orbitron text-xs mb-1 block">Target keywords (comma-separated)</Label>
                 <Input
                   value={data.keywords}
                   onChange={(e) => set("keywords", e.target.value)}
                   placeholder="AI, startup, innovation…"
-                  className="bg-space-dark border-galactic-orange/20 text-white text-sm h-9"
+                  className="bg-card border-galactic-orange/20 text-white text-sm h-9"
                 />
               </div>
               <div>
-                <Label className="text-gray-400 font-orbitron text-xs mb-1 block">Banned keywords (optional)</Label>
+                <Label className="text-foreground font-orbitron text-xs mb-1 block">Banned keywords (optional)</Label>
                 <Input
                   value={data.bannedKeywords}
                   onChange={(e) => set("bannedKeywords", e.target.value)}
                   placeholder="spam, nsfw…"
-                  className="bg-space-dark border-galactic-orange/20 text-white text-sm h-9"
+                  className="bg-card border-galactic-orange/20 text-white text-sm h-9"
                 />
               </div>
             </div>
@@ -496,7 +496,7 @@ function CampaignWizard({ onComplete, onCancel }: { onComplete: () => void; onCa
           <div className="space-y-5">
             <div>
               <h3 className="font-orbitron font-bold text-white mb-0.5 text-sm">Publishing Destinations</h3>
-              <p className="text-gray-500 text-xs mb-3">Where should reshaped content be posted?</p>
+              <p className="text-foreground text-xs mb-3">Where should reshaped content be posted?</p>
               <MultiSelectGrid
                 label=""
                 options={PUBLISHING_DESTINATIONS}
@@ -506,7 +506,7 @@ function CampaignWizard({ onComplete, onCancel }: { onComplete: () => void; onCa
             </div>
             <div>
               <h3 className="font-orbitron font-bold text-white mb-0.5 text-sm">AI Transformation Mode</h3>
-              <p className="text-gray-500 text-xs mb-3">How should SPORTA reshape the content?</p>
+              <p className="text-foreground text-xs mb-3">How should SPORTA reshape the content?</p>
               <div className="flex flex-wrap gap-1.5">
                 {AI_MODES.map((mode) => (
                   <button
@@ -516,7 +516,7 @@ function CampaignWizard({ onComplete, onCancel }: { onComplete: () => void; onCa
                     className={`px-2.5 py-1 rounded-lg text-[11px] font-orbitron font-semibold border transition-all ${
                       data.aiMode === mode
                         ? "bg-neon-purple text-white border-neon-purple"
-                        : "border-neon-purple/20 text-gray-400 hover:border-neon-purple/50 glass-effect"
+                        : "border-neon-purple/20 text-foreground hover:border-neon-purple/50 glass-effect"
                     }`}
                   >
                     {mode}
@@ -533,7 +533,7 @@ function CampaignWizard({ onComplete, onCancel }: { onComplete: () => void; onCa
                     className={`flex items-center gap-3 p-3 rounded-xl border cursor-pointer transition-all ${
                       data.approvalMode === value
                         ? "border-galactic-orange bg-galactic-orange/10"
-                        : "border-white/10 hover:border-galactic-orange/30 glass-effect"
+                        : "border-border hover:border-galactic-orange/30 glass-effect"
                     }`}
                   >
                     <input
@@ -545,7 +545,7 @@ function CampaignWizard({ onComplete, onCancel }: { onComplete: () => void; onCa
                     />
                     <div>
                       <p className="text-white font-orbitron font-semibold text-xs">{label}</p>
-                      <p className="text-gray-500 text-[10px] mt-0.5">
+                      <p className="text-foreground text-[10px] mt-0.5">
                         {value === "manual" && "Every post needs your approval."}
                         {value === "semi_automatic" && "High-scoring posts auto-approved; others need review."}
                         {value === "fully_automatic" && "All posts publish automatically."}
@@ -572,7 +572,7 @@ function CampaignWizard({ onComplete, onCancel }: { onComplete: () => void; onCa
                     className={`px-2.5 py-1 rounded-lg text-[11px] font-orbitron font-semibold border transition-all ${
                       data.postingFrequency === opt
                         ? "bg-galactic-green text-space-black border-galactic-green"
-                        : "border-galactic-green/20 text-gray-400 hover:border-galactic-green/50 glass-effect"
+                        : "border-galactic-green/20 text-foreground hover:border-galactic-green/50 glass-effect"
                     }`}
                   >
                     {opt}
@@ -582,7 +582,7 @@ function CampaignWizard({ onComplete, onCancel }: { onComplete: () => void; onCa
             </div>
             <div className="grid sm:grid-cols-2 gap-3">
               <div>
-                <Label className="text-gray-400 font-orbitron text-xs mb-1 block">Content freshness</Label>
+                <Label className="text-foreground font-orbitron text-xs mb-1 block">Content freshness</Label>
                 <div className="flex flex-wrap gap-1.5">
                   {TIMELINE_OPTIONS.map((opt) => (
                     <button
@@ -592,7 +592,7 @@ function CampaignWizard({ onComplete, onCancel }: { onComplete: () => void; onCa
                       className={`px-2 py-1 rounded-md text-[10px] font-orbitron border transition-all ${
                         data.timelinePreference === opt
                           ? "bg-neon-cyan text-space-black border-neon-cyan"
-                          : "border-neon-cyan/20 text-gray-400 hover:border-neon-cyan/50 glass-effect"
+                          : "border-neon-cyan/20 text-foreground hover:border-neon-cyan/50 glass-effect"
                       }`}
                     >
                       {opt}
@@ -601,12 +601,12 @@ function CampaignWizard({ onComplete, onCancel }: { onComplete: () => void; onCa
                 </div>
               </div>
               <div>
-                <Label className="text-gray-400 font-orbitron text-xs mb-1 block">Hashtags (optional)</Label>
+                <Label className="text-foreground font-orbitron text-xs mb-1 block">Hashtags (optional)</Label>
                 <Input
                   value={data.hashtags}
                   onChange={(e) => set("hashtags", e.target.value)}
                   placeholder="#tech, #ai…"
-                  className="bg-space-dark border-galactic-orange/20 text-white text-sm h-9"
+                  className="bg-card border-galactic-orange/20 text-white text-sm h-9"
                 />
               </div>
             </div>
@@ -618,7 +618,7 @@ function CampaignWizard({ onComplete, onCancel }: { onComplete: () => void; onCa
                 { key: "enableDuplicateFilter" as const, label: "Duplicate Filter" },
               ].map(({ key, label }) => (
                 <div key={key} className="flex items-center justify-between">
-                  <Label className="text-gray-400 font-orbitron text-xs">{label}</Label>
+                  <Label className="text-foreground font-orbitron text-xs">{label}</Label>
                   <Switch checked={data[key] as boolean} onCheckedChange={(v) => set(key, v)} className="data-[state=checked]:bg-galactic-orange" />
                 </div>
               ))}
@@ -642,26 +642,26 @@ function CampaignWizard({ onComplete, onCancel }: { onComplete: () => void; onCa
                 { label: "Approval", value: APPROVAL_MODES.find((m) => m.value === data.approvalMode)?.label ?? "" },
               ].map(({ label, value }) => (
                 <div key={label} className="flex items-start gap-2">
-                  <span className="text-gray-500 font-orbitron text-[10px] w-24 flex-shrink-0">{label}:</span>
+                  <span className="text-foreground font-orbitron text-[10px] w-24 flex-shrink-0">{label}:</span>
                   <span className="text-white text-[11px] flex-1">{value}</span>
                 </div>
               ))}
             </div>
             <div className="flex items-center gap-3 p-4 rounded-xl bg-galactic-orange/5 border border-galactic-orange/20">
               <CheckCircle className="w-5 h-5 text-galactic-orange flex-shrink-0" />
-              <p className="text-gray-300 text-xs">Everything looks good! Click <strong className="text-galactic-orange">Launch</strong> to activate your campaign.</p>
+              <p className="text-foreground text-xs">Everything looks good! Click <strong className="text-galactic-orange">Launch</strong> to activate your campaign.</p>
             </div>
           </div>
         )}
       </div>
 
       {/* Navigation */}
-      <div className="flex items-center justify-between mt-7 pt-4 border-t border-white/10">
+      <div className="flex items-center justify-between mt-7 pt-4 border-t border-border">
         <Button
           variant="ghost"
           size="sm"
           onClick={() => (step === 1 ? onCancel() : setStep((s) => s - 1))}
-          className="text-gray-400 hover:text-white font-orbitron text-xs"
+          className="text-foreground hover:text-white font-orbitron text-xs"
         >
           <ArrowLeft className="w-3 h-3 mr-1" /> {step === 1 ? "Cancel" : "Back"}
         </Button>
@@ -820,7 +820,7 @@ function SharePopover({ item, publishingDestinations = [] }: { item: SportaConte
         <Share2 className="w-3 h-3 mr-1" /> Share
       </Button>
       {open && (
-        <div className="absolute right-0 top-9 z-50 w-56 bg-[#0c0c18] border border-white/10 rounded-xl shadow-xl p-2">
+        <div className="absolute right-0 top-9 z-50 w-56 bg-[#0c0c18] border border-border rounded-xl shadow-xl p-2">
           {preferred.length > 0 && (
             <p className="text-[10px] text-galactic-orange px-2 mb-1.5 font-orbitron">Your target platforms</p>
           )}
@@ -849,7 +849,7 @@ function SharePopover({ item, publishingDestinations = [] }: { item: SportaConte
           ))}
           <div className="border-t border-white/5 mt-1.5 pt-1.5">
             <button
-              className="flex items-center gap-2 px-2 py-1.5 rounded-lg hover:bg-white/5 text-xs text-gray-300 w-full transition-colors"
+              className="flex items-center gap-2 px-2 py-1.5 rounded-lg hover:bg-white/5 text-xs text-foreground w-full transition-colors"
               onClick={copyCaption}
             >
               <TrendingUp className="w-3 h-3 opacity-70" />
@@ -954,7 +954,7 @@ function ContentQueuePanel({ campaignId, campaignName, publishingDestinations = 
   return (
     <div>
       <div className="flex items-center justify-between mb-4">
-        <p className="text-gray-400 text-sm">
+        <p className="text-foreground text-sm">
           Content queue for <span className="text-white font-semibold">{campaignName}</span>
         </p>
         <div className="flex items-center gap-2">
@@ -976,10 +976,10 @@ function ContentQueuePanel({ campaignId, campaignName, publishingDestinations = 
         </div>
       </div>
       {items.length === 0 ? (
-        <div className="text-center py-12 text-gray-500">
+        <div className="text-center py-12 text-foreground">
           <AlertCircle className="w-10 h-10 mx-auto mb-3 text-galactic-orange/20" />
           <p className="text-sm">No content in queue yet.</p>
-          <p className="text-xs text-gray-600 mt-1">Click <strong className="text-galactic-orange">Aggregate Now</strong> to pull up to 100 postable items.</p>
+          <p className="text-xs text-foreground mt-1">Click <strong className="text-galactic-orange">Aggregate Now</strong> to pull up to 100 postable items.</p>
         </div>
       ) : (
         <div className="space-y-3">
@@ -989,7 +989,7 @@ function ContentQueuePanel({ campaignId, campaignName, publishingDestinations = 
             const displayTitle = item.aiRewrittenTitle ?? item.originalTitle ?? "Untitled";
             const displayContent = item.aiRewrittenContent ?? item.originalContent;
             return (
-              <div key={item.id} className="bg-space-dark rounded-xl border border-white/5 hover:border-galactic-orange/20 transition-all overflow-hidden">
+              <div key={item.id} className="bg-card rounded-xl border border-white/5 hover:border-galactic-orange/20 transition-all overflow-hidden">
                 {/* Thumbnail strip — shown for non-video or collapsed video */}
                 {item.originalThumbnail && !isVideo && (
                   <div className="w-full h-32 overflow-hidden bg-black/20 relative">
@@ -1004,7 +1004,7 @@ function ContentQueuePanel({ campaignId, campaignName, publishingDestinations = 
                         if (placeholder) placeholder.style.display = "flex";
                       }}
                     />
-                    <div className="absolute inset-0 items-center justify-center bg-space-dark/80 text-gray-600 text-xs hidden">
+                    <div className="absolute inset-0 items-center justify-center bg-card/80 text-foreground text-xs hidden">
                       <Eye className="w-5 h-5 opacity-30 mr-1" /> Image unavailable
                     </div>
                   </div>
@@ -1013,7 +1013,7 @@ function ContentQueuePanel({ campaignId, campaignName, publishingDestinations = 
                   <div className="flex items-start justify-between gap-3">
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 mb-1 flex-wrap">
-                        <Badge className="bg-white/10 text-gray-300 border-white/10 text-[10px]">{item.sourcePlatform}</Badge>
+                        <Badge className="bg-white/10 text-foreground border-border text-[10px]">{item.sourcePlatform}</Badge>
                         <Badge className={`text-[10px] ${mediaTypeColor(item.mediaType)}`}>
                           {isVideo && <Film className="w-2.5 h-2.5 mr-0.5 inline" />}
                           {item.mediaType}
@@ -1022,26 +1022,26 @@ function ContentQueuePanel({ campaignId, campaignName, publishingDestinations = 
                       </div>
                       <p className="text-white text-sm font-semibold line-clamp-2">{displayTitle}</p>
                       {displayContent && (
-                        <p className={`text-gray-500 text-xs mt-1 ${expanded ? "" : "line-clamp-2"}`}>{displayContent}</p>
+                        <p className={`text-foreground text-xs mt-1 ${expanded ? "" : "line-clamp-2"}`}>{displayContent}</p>
                       )}
                       {item.originalAuthor && (
-                        <p className="text-gray-600 text-[10px] mt-1">From: {item.originalAuthor}</p>
+                        <p className="text-foreground text-[10px] mt-1">From: {item.originalAuthor}</p>
                       )}
                       <div className="grid grid-cols-2 gap-x-6 gap-y-1 mt-2">
                         <div>
-                          <p className="text-gray-600 text-[10px] mb-0.5">Quality</p>
+                          <p className="text-foreground text-[10px] mb-0.5">Quality</p>
                           <ScoreBar value={item.aiQualityScore} color="bg-galactic-green" />
                         </div>
                         <div>
-                          <p className="text-gray-600 text-[10px] mb-0.5">Viral</p>
+                          <p className="text-foreground text-[10px] mb-0.5">Viral</p>
                           <ScoreBar value={item.aiViralScore} color="bg-galactic-orange" />
                         </div>
                         <div>
-                          <p className="text-gray-600 text-[10px] mb-0.5">Engagement</p>
+                          <p className="text-foreground text-[10px] mb-0.5">Engagement</p>
                           <ScoreBar value={item.aiEngagementPrediction} color="bg-neon-cyan" />
                         </div>
                         <div>
-                          <p className="text-gray-600 text-[10px] mb-0.5">Confidence</p>
+                          <p className="text-foreground text-[10px] mb-0.5">Confidence</p>
                           <ScoreBar value={item.aiConfidenceScore} color="bg-neon-purple" />
                         </div>
                       </div>
@@ -1116,7 +1116,7 @@ function ContentQueuePanel({ campaignId, campaignName, publishingDestinations = 
                         size="sm"
                         variant="ghost"
                         onClick={() => toggleExpand(item.id)}
-                        className="text-gray-400 hover:text-white h-7 px-2"
+                        className="text-foreground hover:text-white h-7 px-2"
                         title={expanded ? "Collapse" : "Expand details"}
                       >
                         {expanded ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
@@ -1227,7 +1227,7 @@ export default function SportaTab() {
                 size="sm"
                 variant="ghost"
                 onClick={() => setSelectedCampaignId(null)}
-                className="text-gray-400 hover:text-white h-7 px-2 font-orbitron text-xs"
+                className="text-foreground hover:text-white h-7 px-2 font-orbitron text-xs"
               >
                 <ArrowLeft className="w-3 h-3 mr-1" /> Campaigns
               </Button>
@@ -1273,9 +1273,9 @@ export default function SportaTab() {
               { label: "Aggregated", value: selectedCampaign.postsAggregated, color: "text-blue-400" },
               { label: "Published", value: selectedCampaign.postsPublished, color: "text-green-400" },
             ].map(({ label, value, color }) => (
-              <div key={label} className="bg-space-dark rounded-xl p-3 text-center border border-white/5">
+              <div key={label} className="bg-card rounded-xl p-3 text-center border border-white/5">
                 <p className={`text-lg font-orbitron font-bold ${color}`}>{value}</p>
-                <p className="text-gray-500 text-[11px] mt-0.5">{label}</p>
+                <p className="text-foreground text-[11px] mt-0.5">{label}</p>
               </div>
             ))}
           </div>
@@ -1308,7 +1308,7 @@ export default function SportaTab() {
           <div key={label} className="glass-effect rounded-xl p-4 text-center border border-white/5">
             <Icon className={`w-5 h-5 ${color} mx-auto mb-1`} />
             <p className={`text-xl font-orbitron font-bold ${color}`}>{value}</p>
-            <p className="text-gray-500 text-[11px] mt-0.5">{label}</p>
+            <p className="text-foreground text-[11px] mt-0.5">{label}</p>
           </div>
         ))}
       </div>
@@ -1322,7 +1322,7 @@ export default function SportaTab() {
             </div>
             <div className="min-w-0">
               <h2 className="text-base font-orbitron font-bold text-galactic-orange">SPORTA Campaigns</h2>
-              <p className="text-gray-500 text-xs">AI-powered social media automation</p>
+              <p className="text-foreground text-xs">AI-powered social media automation</p>
             </div>
           </div>
           <div className="flex items-center gap-2">
@@ -1353,8 +1353,8 @@ export default function SportaTab() {
             <div className="w-16 h-16 rounded-full bg-galactic-orange/10 flex items-center justify-center mx-auto mb-4">
               <Zap className="w-8 h-8 text-galactic-orange/40" />
             </div>
-            <p className="text-gray-400 font-orbitron font-semibold text-sm mb-1">No Campaigns Yet</p>
-            <p className="text-gray-600 text-xs mb-4">Create your first SPORTA automation campaign to get started.</p>
+            <p className="text-foreground font-orbitron font-semibold text-sm mb-1">No Campaigns Yet</p>
+            <p className="text-foreground text-xs mb-4">Create your first SPORTA automation campaign to get started.</p>
             <Button
               size="sm"
               onClick={() => setShowWizard(true)}
@@ -1368,7 +1368,7 @@ export default function SportaTab() {
             {campaigns.map((campaign) => (
               <div
                 key={campaign.id}
-                className="flex items-center justify-between p-4 bg-space-dark rounded-xl border border-white/5 hover:border-galactic-orange/20 transition-all cursor-pointer group"
+                className="flex items-center justify-between p-4 bg-card rounded-xl border border-white/5 hover:border-galactic-orange/20 transition-all cursor-pointer group"
                 onClick={() => setSelectedCampaignId(campaign.id)}
               >
                 <div className="flex-1 min-w-0 mr-3">
@@ -1376,14 +1376,14 @@ export default function SportaTab() {
                     <span className="text-white font-semibold text-sm truncate max-w-[160px]">{campaign.name}</span>
                     <StatusBadge status={campaign.status} />
                   </div>
-                  <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-xs text-gray-500">
+                  <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-xs text-foreground">
                     <span className="text-galactic-orange">{campaign.industry}</span>
                     <span>·</span>
                     <span className="truncate max-w-[80px]">{campaign.aiMode}</span>
                     <span>·</span>
                     <span>{campaign.approvalMode.replace("_", " ")}</span>
                   </div>
-                  <div className="flex flex-wrap items-center gap-x-3 gap-y-0.5 mt-1.5 text-[11px] text-gray-600">
+                  <div className="flex flex-wrap items-center gap-x-3 gap-y-0.5 mt-1.5 text-[11px] text-foreground">
                     <span><span className="text-blue-400">{campaign.postsAggregated}</span> aggregated</span>
                     <span><span className="text-green-400">{campaign.postsPublished}</span> published</span>
                     <span><span className="text-red-400">{campaign.postsRejected}</span> rejected</span>
@@ -1420,7 +1420,7 @@ export default function SportaTab() {
                   >
                     <Trash2 className="w-3.5 h-3.5" />
                   </Button>
-                  <ArrowRight className="w-4 h-4 text-gray-600 group-hover:text-galactic-orange transition-colors" />
+                  <ArrowRight className="w-4 h-4 text-foreground group-hover:text-galactic-orange transition-colors" />
                 </div>
               </div>
             ))}
@@ -1442,7 +1442,7 @@ export default function SportaTab() {
             { icon: Shield, label: "Full Approval Oversight", color: "text-galactic-green" },
             { icon: BarChart3, label: "Real-time Analytics", color: "text-galactic-gold" },
           ].map(({ icon: Icon, label, color }) => (
-            <div key={label} className="flex items-center gap-2 text-sm text-gray-400">
+            <div key={label} className="flex items-center gap-2 text-sm text-foreground">
               <Icon className={`w-4 h-4 ${color} flex-shrink-0`} />
               {label}
             </div>

@@ -1,4 +1,4 @@
-﻿import { useState } from "react";
+import { useState } from "react";
 import { Trophy, Calendar, Users, ArrowRight, Flame } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
@@ -85,7 +85,7 @@ export default function ChallengesSection() {
           <h2 className="font-orbitron font-bold text-3xl md:text-4xl mb-4 gradient-text">
             Community Challenges
           </h2>
-          <p className="text-gray-300 max-w-2xl mx-auto">
+          <p className="text-foreground max-w-2xl mx-auto">
             Build real skills, compete for prizes, and get noticed by the ARCOLYTE TECHNOLOGIES network. New challenges every month.
           </p>
         </div>
@@ -112,14 +112,14 @@ export default function ChallengesSection() {
               </div>
 
               <h3 className={`font-orbitron font-bold text-base ${challenge.color} mb-2`}>{challenge.title}</h3>
-              <p className="text-gray-400 text-sm leading-relaxed mb-4">{challenge.description}</p>
+              <p className="text-foreground text-sm leading-relaxed mb-4">{challenge.description}</p>
 
-              <div className="p-3 rounded-lg bg-space-dark/60 mb-4">
-                <p className="text-xs font-orbitron text-gray-500 mb-0.5">Prize</p>
+              <div className="p-3 rounded-lg bg-card/60 mb-4">
+                <p className="text-xs font-orbitron text-foreground mb-0.5">Prize</p>
                 <p className="text-sm text-white font-orbitron">{challenge.prize}</p>
               </div>
 
-              <div className="flex items-center justify-between text-xs text-gray-400 font-orbitron mb-4">
+              <div className="flex items-center justify-between text-xs text-foreground font-orbitron mb-4">
                 <span className="flex items-center gap-1"><Users className="w-3.5 h-3.5" /> {challenge.participants} participants</span>
                 <span className="flex items-center gap-1"><Calendar className="w-3.5 h-3.5" /> {challenge.daysLeft} days left</span>
               </div>
@@ -132,7 +132,7 @@ export default function ChallengesSection() {
                     : `bg-gradient-to-r from-galactic-orange/20 to-galactic-gold/20 text-white hover:from-galactic-orange/40 hover:to-galactic-gold/40 border ${challenge.border}/30`
                 }`}
               >
-                {joined.includes(challenge.id) ? "✓ Joined!" : "Join Challenge"} {!joined.includes(challenge.id) && <ArrowRight className="w-3.5 h-3.5 ml-1" />}
+                {joined.includes(challenge.id) ? "? Joined!" : "Join Challenge"} {!joined.includes(challenge.id) && <ArrowRight className="w-3.5 h-3.5 ml-1" />}
               </Button>
             </div>
           ))}

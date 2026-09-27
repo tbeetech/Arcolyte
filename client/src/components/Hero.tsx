@@ -7,18 +7,16 @@ export default function Hero() {
       <div className="container mx-auto px-6 lg:px-12 z-10">
         <div className="max-w-5xl">
           <div className="mb-6 flex items-center gap-4">
-            <span className="text-xs font-semibold tracking-widest uppercase text-muted-foreground">
-              Arcolyte Technologies
-            </span>
+            <img src="/arcolytelogo.png" alt="Arcolyte Technologies" className="h-12 w-auto object-contain" />
             <div className="h-px bg-border flex-1 max-w-[100px]" />
           </div>
 
           <h1 className="font-sans font-bold text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tighter leading-[1.05] mb-8 text-foreground">
             Solving Intelligence.<br />
-            <span className="text-muted-foreground">Advancing Humanity.</span>
+            <span className="text-foreground">Advancing Humanity.</span>
           </h1>
 
-          <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-3xl mb-12 leading-relaxed">
+          <p className="text-lg sm:text-xl md:text-2xl text-foreground max-w-3xl mb-12 leading-relaxed">
             We are building safe, robust AI systems and scalable automation infrastructure to empower businesses worldwide. Our mission is to accelerate the transition to an intelligent future.
           </p>
 

@@ -193,7 +193,7 @@ export default function BlogPostPage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-space-black flex items-center justify-center">
+      <div className="min-h-screen bg-background flex items-center justify-center">
         <Loader2 className="w-10 h-10 animate-spin text-galactic-orange" />
       </div>
     );
@@ -201,7 +201,7 @@ export default function BlogPostPage() {
 
   if (error || !post) {
     return (
-      <div className="min-h-screen bg-space-black text-foreground">
+      <div className="min-h-screen bg-background text-foreground">
         <Navigation />
         <div className="container mx-auto px-6 pt-28 text-center">
           <h1 className="text-3xl font-orbitron font-bold text-galactic-orange mb-4">Post Not Found</h1>
@@ -216,7 +216,7 @@ export default function BlogPostPage() {
   }
 
   return (
-    <div className="min-h-screen bg-space-black text-foreground">
+    <div className="min-h-screen bg-background text-foreground">
       <Navigation />
       <article className="container mx-auto px-6 pt-28 pb-16 max-w-3xl">
         {/* Back link */}
@@ -245,7 +245,7 @@ export default function BlogPostPage() {
           {post.title}
         </h1>
 
-        <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground mb-6 pb-6 border-b border-border">
+        <div className="flex flex-wrap items-center gap-6 text-sm text-foreground mb-6 pb-6 border-b border-border">
           <span className="flex items-center gap-2">
             <User className="w-4 h-4" />
             <Link href={`/profile/${post.authorId}`}>
@@ -346,7 +346,7 @@ export default function BlogPostPage() {
               </h3>
               <button
                 onClick={() => setShowSuggestForm(false)}
-                className="text-muted-foreground hover:text-foreground transition-colors"
+                className="text-foreground hover:text-foreground transition-colors"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -407,13 +407,13 @@ export default function BlogPostPage() {
         <div
           className="prose dark:prose-invert prose-orange max-w-none
             prose-headings:font-orbitron
-            prose-p:text-foreground/80 prose-p:leading-relaxed
+            prose-p:text-foreground prose-p:leading-relaxed
             prose-a:text-neon-cyan prose-a:no-underline hover:prose-a:underline
             prose-strong:text-galactic-gold
-            prose-code:text-galactic-orange prose-code:bg-space-dark prose-code:px-1 prose-code:rounded
-            prose-pre:bg-space-dark prose-pre:border prose-pre:border-border
-            prose-blockquote:border-l-galactic-orange prose-blockquote:text-foreground/60
-            prose-ul:text-foreground/80 prose-ol:text-foreground/80
+            prose-code:text-galactic-orange prose-code:bg-card prose-code:px-1 prose-code:rounded
+            prose-pre:bg-card prose-pre:border prose-pre:border-border
+            prose-blockquote:border-l-galactic-orange prose-blockquote:text-foreground
+            prose-ul:text-foreground prose-ol:text-foreground
             prose-hr:border-border"
           dangerouslySetInnerHTML={{ __html: markdownToHtml(post.content) }}
         />
@@ -448,7 +448,7 @@ export default function BlogPostPage() {
             </div>
           ) : (
             <div className="glass-effect rounded-xl p-5 mb-8 text-center">
-              <p className="text-muted-foreground mb-3">Sign in to leave a comment</p>
+              <p className="text-foreground mb-3">Sign in to leave a comment</p>
               <Link href="/auth">
                 <Button size="sm" className="bg-galactic-orange text-space-black font-orbitron font-bold hover:bg-galactic-gold">
                   Sign In
@@ -458,7 +458,7 @@ export default function BlogPostPage() {
           )}
 
           {comments.length === 0 ? (
-            <p className="text-muted-foreground text-center py-8 text-sm">No comments yet. Be the first!</p>
+            <p className="text-foreground text-center py-8 text-sm">No comments yet. Be the first!</p>
           ) : (
             <div className="space-y-3">
               {comments.map((comment) => (
@@ -470,7 +470,7 @@ export default function BlogPostPage() {
                       </div>
                       <div>
                         <span className="font-orbitron text-sm text-galactic-orange">{comment.username}</span>
-                        <span className="text-muted-foreground text-xs ml-2">
+                        <span className="text-foreground text-xs ml-2">
                           {format(new Date(comment.createdAt), "MMM d, yyyy")}
                         </span>
                       </div>
@@ -485,7 +485,7 @@ export default function BlogPostPage() {
                       </button>
                     )}
                   </div>
-                  <p className="text-foreground/80 text-sm leading-relaxed pl-11">{comment.content}</p>
+                  <p className="text-foreground text-sm leading-relaxed pl-11">{comment.content}</p>
                 </div>
               ))}
             </div>

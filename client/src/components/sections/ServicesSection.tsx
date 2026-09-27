@@ -53,7 +53,7 @@ export default function ServicesSection() {
           <h2 className="font-bold text-3xl sm:text-4xl md:text-5xl mb-6 tracking-tight text-foreground">
             Our Services
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
+          <p className="text-foreground max-w-2xl mx-auto text-lg">
             Strategy, design, and engineering under one roof. Practical solutions that move your business forward.
           </p>
         </div>
@@ -77,7 +77,7 @@ export default function ServicesSection() {
                     </div>
                     <div className="p-6">
                       <h3 className="font-bold text-xl mb-3 text-foreground">{title}</h3>
-                      <p className="text-muted-foreground text-sm leading-relaxed">{description}</p>
+                      <p className="text-foreground text-sm leading-relaxed">{description}</p>
                     </div>
                   </div>
                 </CarouselItem>

@@ -145,7 +145,7 @@ export default function BlogEditorPage() {
   // Show loading while auth check is in progress
   if (authLoading || !user) {
     return (
-      <div className="min-h-screen bg-space-black flex items-center justify-center">
+      <div className="min-h-screen bg-background flex items-center justify-center">
         <Loader2 className="w-10 h-10 animate-spin text-galactic-orange" />
       </div>
     );
@@ -184,14 +184,14 @@ export default function BlogEditorPage() {
 
   if (isEditing && loadingPost) {
     return (
-      <div className="min-h-screen bg-space-black flex items-center justify-center">
+      <div className="min-h-screen bg-background flex items-center justify-center">
         <Loader2 className="w-10 h-10 animate-spin text-galactic-orange" />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-space-black text-white">
+    <div className="min-h-screen bg-background text-white">
       <Navigation />
       <div className="container mx-auto px-6 pt-28 pb-16 max-w-3xl">
         <Link href="/blog">
@@ -211,7 +211,7 @@ export default function BlogEditorPage() {
               value={form.title}
               onChange={(e) => handleTitleChange(e.target.value)}
               required
-              className="bg-space-dark border-galactic-orange/30 text-white focus:border-galactic-orange"
+              className="bg-card border-galactic-orange/30 text-white focus:border-galactic-orange"
               placeholder="Post title"
             />
           </div>
@@ -225,7 +225,7 @@ export default function BlogEditorPage() {
                 setForm({ ...form, slug: slugify(e.target.value) });
               }}
               required
-              className="bg-space-dark border-galactic-orange/30 text-white focus:border-galactic-orange font-mono text-sm"
+              className="bg-card border-galactic-orange/30 text-white focus:border-galactic-orange font-mono text-sm"
               placeholder="my-post-slug"
             />
           </div>
@@ -236,7 +236,7 @@ export default function BlogEditorPage() {
               value={form.category}
               onChange={(e) => setForm({ ...form, category: e.target.value })}
               required
-              className="bg-space-dark border-galactic-orange/30 text-white focus:border-galactic-orange"
+              className="bg-card border-galactic-orange/30 text-white focus:border-galactic-orange"
               placeholder="e.g. AI, Web Dev, Cloud"
             />
           </div>
@@ -248,21 +248,21 @@ export default function BlogEditorPage() {
               onChange={(e) => setForm({ ...form, excerpt: e.target.value })}
               required
               rows={3}
-              className="bg-space-dark border-galactic-orange/30 text-white focus:border-galactic-orange resize-none"
+              className="bg-card border-galactic-orange/30 text-white focus:border-galactic-orange resize-none"
               placeholder="A short description of the post"
             />
           </div>
 
           <div className="space-y-2">
             <Label className="text-galactic-orange font-orbitron text-sm">
-              Content * <span className="text-gray-400 text-xs font-sans">(Markdown supported)</span>
+              Content * <span className="text-foreground text-xs font-sans">(Markdown supported)</span>
             </Label>
             <Textarea
               value={form.content}
               onChange={(e) => setForm({ ...form, content: e.target.value })}
               required
               rows={16}
-              className="bg-space-dark border-galactic-orange/30 text-white focus:border-galactic-orange resize-y font-mono text-sm"
+              className="bg-card border-galactic-orange/30 text-white focus:border-galactic-orange resize-y font-mono text-sm"
               placeholder="Write your post in Markdown..."
             />
           </div>
@@ -296,7 +296,7 @@ export default function BlogEditorPage() {
                 type="url"
                 value={form.coverImage.startsWith("data:") ? "" : form.coverImage}
                 onChange={(e) => setForm({ ...form, coverImage: e.target.value })}
-                className="bg-space-dark border-galactic-orange/30 text-white focus:border-galactic-orange"
+                className="bg-card border-galactic-orange/30 text-white focus:border-galactic-orange"
                 placeholder="https://example.com/image.jpg"
               />
             ) : (
@@ -366,12 +366,12 @@ export default function BlogEditorPage() {
 
           <div className="space-y-2">
             <Label className="text-galactic-orange font-orbitron text-sm">
-              Tags <span className="text-gray-400 text-xs font-sans">(comma-separated)</span>
+              Tags <span className="text-foreground text-xs font-sans">(comma-separated)</span>
             </Label>
             <Input
               value={form.tags}
               onChange={(e) => setForm({ ...form, tags: e.target.value })}
-              className="bg-space-dark border-galactic-orange/30 text-white focus:border-galactic-orange"
+              className="bg-card border-galactic-orange/30 text-white focus:border-galactic-orange"
               placeholder="React, MongoDB, Node.js"
             />
           </div>
@@ -389,7 +389,7 @@ export default function BlogEditorPage() {
             </div>
           )}
           {user.role !== "admin" && (
-            <p className="text-sm text-gray-400 font-orbitron">
+            <p className="text-sm text-foreground font-orbitron">
               Your post will be saved as a draft for admin review before publishing.
             </p>
           )}

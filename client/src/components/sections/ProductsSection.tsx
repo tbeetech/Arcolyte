@@ -18,7 +18,7 @@ export default function ProductsSection() {
             <h2 className="font-orbitron font-bold text-3xl md:text-4xl lg:text-5xl mb-6 text-glow text-cyber-cyan">
               PRODUCT SHOWCASE
             </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-foreground max-w-3xl mx-auto">
               Loading our innovative digital products...
             </p>
           </div>
@@ -93,7 +93,7 @@ export default function ProductsSection() {
                     {product.status}
                   </Badge>
                 </div>
-                <p className="text-gray-300 mb-4" data-testid={`product-description-${product.id}`}>
+                <p className="text-foreground mb-4" data-testid={`product-description-${product.id}`}>
                   {product.description}
                 </p>
                 <div className="flex items-center justify-between">
@@ -136,7 +136,7 @@ export default function ProductsSection() {
                     {product.status}
                   </Badge>
                 </div>
-                <p className="text-gray-300 mb-4">
+                <p className="text-foreground mb-4">
                   {product.description}
                 </p>
                 <div className="flex items-center justify-between">

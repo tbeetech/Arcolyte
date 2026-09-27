@@ -8,7 +8,7 @@ export default function FounderSection() {
           <h2 className="font-bold text-3xl sm:text-4xl md:text-5xl mb-6 tracking-tight text-foreground uppercase">
             Founder
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
+          <p className="text-foreground max-w-2xl mx-auto text-lg">
             The person building the products and driving every client's success.
           </p>
         </div>
@@ -22,11 +22,11 @@ export default function FounderSection() {
               </div>
               <div>
                 <h3 className="font-bold text-xl text-foreground">Tobi Oyebade</h3>
-                <p className="text-muted-foreground text-sm font-medium">Founder & Lead Engineer</p>
+                <p className="text-foreground text-sm font-medium">Founder & Lead Engineer</p>
               </div>
             </div>
 
-            <p className="text-foreground/80 leading-relaxed text-base flex-1">
+            <p className="text-foreground leading-relaxed text-base flex-1">
               Tech entrepreneur and digital engineer with deep experience in AI, automation, and building
               web and mobile products. Tobi leads the team and takes founder-level ownership on
               every project ARCOLYTE TECHNOLOGIES handles.

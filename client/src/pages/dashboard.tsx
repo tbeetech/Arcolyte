@@ -259,7 +259,7 @@ export default function DashboardPage() {
   // Loading state
   if (authLoading) {
     return (
-      <div className="min-h-screen bg-space-black flex items-center justify-center">
+      <div className="min-h-screen bg-background flex items-center justify-center">
         <Loader2 className="w-10 h-10 animate-spin text-galactic-orange" />
       </div>
     );
@@ -268,10 +268,10 @@ export default function DashboardPage() {
   // Not authenticated
   if (!user) {
     return (
-      <div className="min-h-screen bg-space-black text-white">
+      <div className="min-h-screen bg-background text-white">
         <Navigation />
         <div className="container mx-auto px-6 pt-28 text-center">
-          <p className="text-gray-400 mb-4">You need to be signed in.</p>
+          <p className="text-foreground mb-4">You need to be signed in.</p>
           <Link href="/auth">
             <Button className="bg-galactic-orange text-space-black font-orbitron">Sign In</Button>
           </Link>
@@ -283,7 +283,7 @@ export default function DashboardPage() {
   // Admin password gate
   if (!isVerified) {
     return (
-      <div className="min-h-screen bg-space-black text-white">
+      <div className="min-h-screen bg-background text-white">
         <Navigation />
         <div className="min-h-screen flex items-center justify-center px-4">
           <div className="w-full max-w-md">
@@ -292,7 +292,7 @@ export default function DashboardPage() {
                 <LayoutDashboard className="w-8 h-8 text-space-black" />
               </div>
               <h1 className="text-3xl font-orbitron font-bold gradient-text">Admin Dashboard</h1>
-              <p className="text-gray-400 mt-2">Enter the dashboard access password</p>
+              <p className="text-foreground mt-2">Enter the dashboard access password</p>
             </div>
             <div className="glass-effect rounded-2xl p-8">
               <form onSubmit={handleVerify} className="space-y-5">
@@ -306,14 +306,14 @@ export default function DashboardPage() {
                       value={dashPassword}
                       onChange={(e) => setDashPassword(e.target.value)}
                       required
-                      className="bg-space-dark border-galactic-orange/30 text-white focus:border-galactic-orange h-11 pr-10"
+                      className="bg-card border-galactic-orange/30 text-white focus:border-galactic-orange h-11 pr-10"
                       placeholder="Enter dashboard password"
                       autoFocus
                     />
                     <button
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-galactic-orange transition-colors"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-foreground hover:text-galactic-orange transition-colors"
                     >
                       {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                     </button>
@@ -336,7 +336,7 @@ export default function DashboardPage() {
 
   // Full Dashboard
   return (
-    <div className="min-h-screen bg-space-black text-white">
+    <div className="min-h-screen bg-background text-white">
       <Navigation />
       <div className="container mx-auto px-6 pt-28 pb-16">
         <div className="mb-8 flex items-center justify-between">
@@ -345,7 +345,7 @@ export default function DashboardPage() {
               <LayoutDashboard className="w-8 h-8 text-galactic-orange" />
               Admin Dashboard
             </h1>
-            <p className="text-gray-400 mt-1">Welcome back, {user.displayName || user.username}</p>
+            <p className="text-foreground mt-1">Welcome back, {user.displayName || user.username}</p>
           </div>
           <Badge className="bg-galactic-orange/20 text-galactic-orange border-galactic-orange/30 font-orbitron">
             <Shield className="w-3 h-3 mr-1" /> Admin
@@ -366,7 +366,7 @@ export default function DashboardPage() {
               <div key={label} className="glass-effect rounded-xl p-4 text-center">
                 <Icon className={`w-6 h-6 ${color} mx-auto mb-2`} />
                 <p className={`text-2xl font-orbitron font-bold ${color}`}>{value}</p>
-                <p className="text-gray-400 text-xs mt-1">{label}</p>
+                <p className="text-foreground text-xs mt-1">{label}</p>
               </div>
             ))}
           </div>
@@ -374,7 +374,7 @@ export default function DashboardPage() {
 
         {/* Tabs */}
         <Tabs defaultValue="posts">
-          <TabsList className="bg-space-dark rounded-xl mb-6 flex flex-wrap gap-1 h-auto p-1">
+          <TabsList className="bg-card rounded-xl mb-6 flex flex-wrap gap-1 h-auto p-1">
             <TabsTrigger value="posts" className="font-orbitron text-sm rounded-lg">
               <FileText className="w-4 h-4 mr-1" /> Posts
             </TabsTrigger>
@@ -433,12 +433,12 @@ export default function DashboardPage() {
               {postsLoading ? (
                 <div className="flex justify-center py-8"><Loader2 className="w-6 h-6 animate-spin text-galactic-orange" /></div>
               ) : allPosts.length === 0 ? (
-                <p className="text-gray-400 text-sm text-center py-8">No posts yet.</p>
+                <p className="text-foreground text-sm text-center py-8">No posts yet.</p>
               ) : (
                 <div className="overflow-x-auto">
                   <table className="w-full text-sm">
                     <thead>
-                      <tr className="text-gray-400 border-b border-white/10">
+                      <tr className="text-foreground border-b border-border">
                         <th className="text-left pb-3 font-orbitron text-xs">Title</th>
                         <th className="text-left pb-3 font-orbitron text-xs hidden md:table-cell">Author</th>
                         <th className="text-left pb-3 font-orbitron text-xs hidden sm:table-cell">Date</th>
@@ -455,10 +455,10 @@ export default function DashboardPage() {
                                 {post.title}
                               </span>
                             </Link>
-                            <span className="text-gray-500 text-xs">{post.category}</span>
+                            <span className="text-foreground text-xs">{post.category}</span>
                           </td>
-                          <td className="py-3 pr-4 hidden md:table-cell text-gray-400">{post.authorName}</td>
-                          <td className="py-3 pr-4 hidden sm:table-cell text-gray-500 text-xs">
+                          <td className="py-3 pr-4 hidden md:table-cell text-foreground">{post.authorName}</td>
+                          <td className="py-3 pr-4 hidden sm:table-cell text-foreground text-xs">
                             {format(new Date(post.createdAt), "MMM d, yyyy")}
                           </td>
                           <td className="py-3 pr-4">
@@ -549,18 +549,18 @@ export default function DashboardPage() {
               </div>
               {/* User search */}
               <div className="relative mb-4">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-foreground" />
                 <Input
                   placeholder="Search by username, display name, or email…"
                   value={userSearchQuery}
                   onChange={(e) => setUserSearchQuery(e.target.value)}
-                  className="pl-9 bg-space-dark border-galactic-orange/30 text-white text-sm focus:border-galactic-orange"
+                  className="pl-9 bg-card border-galactic-orange/30 text-white text-sm focus:border-galactic-orange"
                 />
               </div>
               {usersLoading ? (
                 <div className="flex justify-center py-8"><Loader2 className="w-6 h-6 animate-spin text-galactic-orange" /></div>
               ) : allUsers.length === 0 ? (
-                <p className="text-gray-400 text-sm text-center py-8">No users found.</p>
+                <p className="text-foreground text-sm text-center py-8">No users found.</p>
               ) : (
                 (() => {
                   const q = userSearchQuery.toLowerCase().trim();
@@ -573,12 +573,12 @@ export default function DashboardPage() {
                       )
                     : allUsers;
                   return filteredUsers.length === 0 ? (
-                    <p className="text-gray-400 text-sm text-center py-8">No users match "{userSearchQuery}".</p>
+                    <p className="text-foreground text-sm text-center py-8">No users match "{userSearchQuery}".</p>
                   ) : (
                     <div className="overflow-x-auto">
                       <table className="w-full text-sm">
                         <thead>
-                          <tr className="text-gray-400 border-b border-white/10">
+                          <tr className="text-foreground border-b border-border">
                             <th className="text-left pb-3 font-orbitron text-xs">Username</th>
                             <th className="text-left pb-3 font-orbitron text-xs hidden md:table-cell">Display Name</th>
                             <th className="text-left pb-3 font-orbitron text-xs hidden sm:table-cell">Joined</th>
@@ -596,17 +596,17 @@ export default function DashboardPage() {
                                   </span>
                                 </Link>
                               </td>
-                              <td className="py-3 pr-4 hidden md:table-cell text-gray-400">
+                              <td className="py-3 pr-4 hidden md:table-cell text-foreground">
                                 {u.displayName || ""}
                               </td>
-                              <td className="py-3 pr-4 hidden sm:table-cell text-gray-500 text-xs">
+                              <td className="py-3 pr-4 hidden sm:table-cell text-foreground text-xs">
                                 {format(new Date(u.createdAt), "MMM d, yyyy")}
                               </td>
                               <td className="py-3 pr-4">
                                 <Badge
                                   className={u.role === "admin"
                                     ? "bg-galactic-orange/20 text-galactic-orange border-galactic-orange/30 text-xs"
-                                    : "bg-white/10 text-gray-300 border-white/20 text-xs"}
+                                    : "bg-white/10 text-foreground border-border text-xs"}
                                 >
                                   {u.role}
                                 </Badge>
@@ -661,11 +661,11 @@ export default function DashboardPage() {
               {contactsLoading ? (
                 <div className="flex justify-center py-8"><Loader2 className="w-6 h-6 animate-spin text-galactic-orange" /></div>
               ) : contacts.length === 0 ? (
-                <p className="text-gray-400 text-sm text-center py-8">No contact submissions yet.</p>
+                <p className="text-foreground text-sm text-center py-8">No contact submissions yet.</p>
               ) : (
                 <div className="space-y-4">
                   {contacts.map((contact) => (
-                    <div key={contact.id} className="bg-space-dark rounded-xl p-5 border border-white/5">
+                    <div key={contact.id} className="bg-card rounded-xl p-5 border border-white/5">
                       <div className="flex items-start justify-between mb-3">
                         <div>
                           <p className="font-semibold text-white">{contact.name}</p>
@@ -683,14 +683,14 @@ export default function DashboardPage() {
                           >
                             {contact.status}
                           </Badge>
-                          <span className="text-gray-500 text-xs">
+                          <span className="text-foreground text-xs">
                             {format(new Date(contact.createdAt), "MMM d")}
                           </span>
                         </div>
                       </div>
-                      <p className="text-gray-300 text-sm mb-3 line-clamp-2">{contact.message}</p>
+                      <p className="text-foreground text-sm mb-3 line-clamp-2">{contact.message}</p>
                       <div className="flex items-center gap-2 flex-wrap">
-                        <Badge className="bg-white/10 text-gray-300 border-white/20 text-xs">
+                        <Badge className="bg-white/10 text-foreground border-border text-xs">
                           {contact.projectType}
                         </Badge>
                         {contact.status === "new" && (
@@ -742,11 +742,11 @@ export default function DashboardPage() {
               {suggestionsLoading ? (
                 <div className="flex justify-center py-8"><Loader2 className="w-6 h-6 animate-spin text-galactic-orange" /></div>
               ) : suggestions.length === 0 ? (
-                <p className="text-gray-400 text-sm text-center py-8">No edit suggestions yet.</p>
+                <p className="text-foreground text-sm text-center py-8">No edit suggestions yet.</p>
               ) : (
                 <div className="space-y-4">
                   {suggestions.map((suggestion) => (
-                    <div key={suggestion.id} className="bg-space-dark rounded-xl p-5 border border-white/5">
+                    <div key={suggestion.id} className="bg-card rounded-xl p-5 border border-white/5">
                       <div className="flex items-start justify-between mb-2">
                         <p className="text-white font-medium">
                           By <span className="text-galactic-orange">@{suggestion.username}</span>
@@ -763,18 +763,18 @@ export default function DashboardPage() {
                           >
                             {suggestion.status}
                           </Badge>
-                          <span className="text-gray-500 text-xs">
+                          <span className="text-foreground text-xs">
                             {format(new Date(suggestion.createdAt), "MMM d")}
                           </span>
                         </div>
                       </div>
                       {suggestion.suggestedTitle && (
-                        <p className="text-gray-300 text-sm mb-1">
-                          <span className="text-gray-500">Suggested title:</span> {suggestion.suggestedTitle}
+                        <p className="text-foreground text-sm mb-1">
+                          <span className="text-foreground">Suggested title:</span> {suggestion.suggestedTitle}
                         </p>
                       )}
-                      <p className="text-gray-400 text-sm mb-3 line-clamp-2">
-                        <span className="text-gray-500">Reason:</span> {suggestion.reason}
+                      <p className="text-foreground text-sm mb-3 line-clamp-2">
+                        <span className="text-foreground">Reason:</span> {suggestion.reason}
                       </p>
                       {suggestion.status === "pending" && (
                         <div className="flex gap-2">
@@ -852,7 +852,7 @@ export default function DashboardPage() {
                   <p className="font-orbitron text-xl font-bold mb-1" style={{ color: prophetStatusData?.enabled ? "var(--galactic-orange)" : "rgba(255,255,255,0.4)" }}>
                     PROPHET AI
                   </p>
-                  <p className="text-sm text-gray-400 mb-1">
+                  <p className="text-sm text-foreground mb-1">
                     Status:{" "}
                     <span
                       className="font-semibold"
@@ -861,7 +861,7 @@ export default function DashboardPage() {
                       {prophetStatusData?.enabled ? "ACTIVE" : "INACTIVE"}
                     </span>
                   </p>
-                  <p className="text-xs text-gray-500 max-w-xs">
+                  <p className="text-xs text-foreground max-w-xs">
                     When deactivated, the Prophet AI button is hidden from all users and the chat endpoint is disabled.
                   </p>
                 </div>

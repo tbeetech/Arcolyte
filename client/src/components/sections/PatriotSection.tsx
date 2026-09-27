@@ -15,28 +15,28 @@ export default function PatriotSection() {
           <div className="space-y-8">
             <div className="glass-effect p-6 rounded-xl border-2 border-galactic-green/50 hover-glow transition-all duration-300" data-testid="project-cybersecurity">
               <h3 className="font-orbitron text-2xl font-bold mb-4 text-galactic-green">Cybersecurity Infrastructure</h3>
-              <p className="text-gray-300 mb-4">Advanced threat detection and prevention systems for critical government networks</p>
+              <p className="text-foreground mb-4">Advanced threat detection and prevention systems for critical government networks</p>
               <div className="flex items-center space-x-4">
                 <div className="w-4 h-4 bg-galactic-green rounded-full animate-pulse"></div>
-                <span className="text-sm text-gray-400">Classified Security Level: ALPHA</span>
+                <span className="text-sm text-foreground">Classified Security Level: ALPHA</span>
               </div>
             </div>
             
             <div className="glass-effect p-6 rounded-xl border-2 border-galactic-gold/50 hover-glow transition-all duration-300" data-testid="project-smart-city">
               <h3 className="font-orbitron text-2xl font-bold mb-4 text-galactic-gold">Smart City Solutions</h3>
-              <p className="text-gray-300 mb-4">IoT-enabled urban management systems with AI-driven optimization</p>
+              <p className="text-foreground mb-4">IoT-enabled urban management systems with AI-driven optimization</p>
               <div className="flex items-center space-x-4">
                 <div className="w-4 h-4 bg-galactic-gold rounded-full animate-pulse"></div>
-                <span className="text-sm text-gray-400">Deployment Status: Phase 2</span>
+                <span className="text-sm text-foreground">Deployment Status: Phase 2</span>
               </div>
             </div>
             
             <div className="glass-effect p-6 rounded-xl border-2 border-galactic-red/50 hover-glow transition-all duration-300" data-testid="project-digital-identity">
               <h3 className="font-orbitron text-2xl font-bold mb-4 text-galactic-red">Digital Identity Platform</h3>
-              <p className="text-gray-300 mb-4">Blockchain-based citizen identification with biometric security</p>
+              <p className="text-foreground mb-4">Blockchain-based citizen identification with biometric security</p>
               <div className="flex items-center space-x-4">
                 <div className="w-4 h-4 bg-galactic-red rounded-full animate-pulse"></div>
-                <span className="text-sm text-gray-400">Research Phase: OMEGA</span>
+                <span className="text-sm text-foreground">Research Phase: OMEGA</span>
               </div>
             </div>
           </div>

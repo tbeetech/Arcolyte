@@ -47,10 +47,10 @@ const questions = [
 ];
 
 const levels = [
-  { min: 4, max: 6, title: "Digital Beginner", color: "text-galactic-red", bg: "bg-galactic-red/10", desc: "You're at the starting line, great news! There's enormous untapped potential in your business. ARCOLYTE TECHNOLOGIES can automate your core workflows and rapidly modernize your operations.", recommendation: "Start with Automation Systems" },
-  { min: 7, max: 10, title: "Growing Digital", color: "text-galactic-orange", bg: "bg-galactic-orange/10", desc: "You've started your digital journey but there are clear gaps. With the right AI integrations and smarter tooling, you could 3x your output without adding headcount.", recommendation: "Explore AI Integrations + Digital Marketing" },
-  { min: 11, max: 13, title: "Tech-Forward", color: "text-neon-yellow", bg: "bg-neon-yellow/10", desc: "You're ahead of most businesses! Now it's about optimizing, scaling, and turning your digital capabilities into a competitive moat.", recommendation: "Level up with Strategic Consulting" },
-  { min: 14, max: 16, title: "Digital Leader", color: "text-galactic-green", bg: "bg-galactic-green/10", desc: "You're operating at an elite level. ARCOLYTE TECHNOLOGIES can partner with you on advanced AI systems, corporate training programs, and expansion consulting.", recommendation: "Partner with us on Enterprise Solutions" },
+  { min: 4, max: 6, title: "Digital Beginner", desc: "You're at the starting line, great news! There's enormous untapped potential in your business. ARCOLYTE TECHNOLOGIES can automate your core workflows and rapidly modernize your operations.", recommendation: "Start with Automation Systems" },
+  { min: 7, max: 10, title: "Growing Digital", desc: "You've started your digital journey but there are clear gaps. With the right AI integrations and smarter tooling, you could 3x your output without adding headcount.", recommendation: "Explore AI Integrations + Digital Marketing" },
+  { min: 11, max: 13, title: "Tech-Forward", desc: "You're ahead of most businesses! Now it's about optimizing, scaling, and turning your digital capabilities into a competitive moat.", recommendation: "Level up with Strategic Consulting" },
+  { min: 14, max: 16, title: "Digital Leader", desc: "You're operating at an elite level. ARCOLYTE TECHNOLOGIES can partner with you on advanced AI systems, corporate training programs, and expansion consulting.", recommendation: "Partner with us on Enterprise Solutions" },
 ];
 
 export default function SkillsQuizSection() {
@@ -90,63 +90,61 @@ export default function SkillsQuizSection() {
   };
 
   return (
-    <section id="skills-quiz" className="page-section py-20 bg-deep-space">
+    <section id="skills-quiz" className="py-24 bg-background border-y border-border">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-neon-yellow/30 text-neon-yellow text-sm font-orbitron mb-4">
+        <div className="text-center mb-16 max-w-3xl mx-auto">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 border border-border text-foreground text-sm uppercase tracking-widest font-semibold mb-6">
             <Brain className="w-4 h-4" /> Feature 3 of 12
           </div>
-          <h2 className="font-orbitron font-bold text-3xl md:text-4xl mb-4 gradient-text">
+          <h2 className="font-bold text-4xl md:text-5xl mb-6 text-foreground tracking-tight uppercase">
             Digital Skills Assessment
           </h2>
-          <p className="text-gray-300 max-w-2xl mx-auto">
+          <p className="text-foreground text-lg leading-relaxed">
             Answer 4 quick questions to benchmark your business's digital maturity and get a personalised roadmap.
           </p>
         </div>
 
         <div className="max-w-2xl mx-auto">
           {!submitted ? (
-            <div className="glass-effect p-8 rounded-2xl border border-galactic-orange/20">
+            <div className="p-8 border border-border bg-card">
               {/* Progress */}
-              <div className="mb-6">
-                <div className="flex justify-between text-xs font-orbitron text-gray-400 mb-2">
+              <div className="mb-8">
+                <div className="flex justify-between text-xs font-bold uppercase tracking-wider text-foreground mb-3">
                   <span>Question {Math.min(current + 1, questions.length)} of {questions.length}</span>
                   <span>{Math.round(progress)}% complete</span>
                 </div>
-                <div className="h-2 bg-space-dark rounded-full overflow-hidden">
+                <div className="h-1 bg-muted w-full">
                   <div
-                    className="h-full bg-gradient-to-r from-galactic-orange to-galactic-gold transition-all duration-500 rounded-full"
+                    className="h-full bg-foreground transition-all duration-500"
                     style={{ width: `${progress}%` }}
                   />
                 </div>
               </div>
 
               {/* Question */}
-              <div className="mb-6">
-                <h3 className="font-orbitron text-lg text-white mb-4">
+              <div className="mb-8">
+                <h3 className="font-bold text-xl text-foreground mb-6 leading-tight">
                   {questions[current].question}
                 </h3>
-                <div className="space-y-3">
+                <div className="space-y-4">
                   {questions[current].options.map((opt) => {
                     const selected = answers[questions[current].id] === opt.score;
                     return (
                       <button
                         key={opt.text}
                         onClick={() => handleAnswer(questions[current].id, opt.score)}
-                        className={`w-full text-left p-4 rounded-xl border transition-all duration-200 font-orbitron text-sm ${
+                        className={`w-full text-left p-5 border transition-colors duration-200 text-sm font-semibold rounded-none flex items-center gap-4 ${
                           selected
-                            ? "border-galactic-orange bg-galactic-orange/15 text-white"
-                            : "border-white/10 hover:border-galactic-orange/40 text-gray-300 hover:text-white"
+                            ? "border-foreground bg-foreground text-background"
+                            : "border-border text-foreground hover:bg-muted"
                         }`}
                       >
-                        <div className="flex items-center gap-3">
-                          {selected ? (
-                            <CheckCircle className="w-4 h-4 text-galactic-orange flex-shrink-0" />
-                          ) : (
-                            <div className="w-4 h-4 rounded-full border border-white/20 flex-shrink-0" />
-                          )}
-                          {opt.text}
-                        </div>
+                        {selected ? (
+                          <CheckCircle className="w-5 h-5 text-background flex-shrink-0" />
+                        ) : (
+                          <div className="w-5 h-5 rounded-full border border-foreground flex-shrink-0" />
+                        )}
+                        {opt.text}
                       </button>
                     );
                   })}
@@ -154,29 +152,29 @@ export default function SkillsQuizSection() {
               </div>
 
               {/* Navigation */}
-              <div className="flex gap-3 justify-between">
+              <div className="flex gap-4 justify-between items-center mt-8 pt-6 border-t border-border">
                 <Button
                   variant="ghost"
                   onClick={() => setCurrent(c => Math.max(0, c - 1))}
                   disabled={current === 0}
-                  className="text-gray-400 font-orbitron text-xs"
+                  className="text-foreground font-bold text-xs uppercase tracking-wider rounded-none"
                 >
                   Back
                 </Button>
-                <div className="flex gap-3">
+                <div>
                   {current < questions.length - 1 ? (
                     <Button
                       onClick={() => setCurrent(c => c + 1)}
                       disabled={!answers[questions[current].id]}
-                      className="bg-galactic-orange/20 text-galactic-orange hover:bg-galactic-orange/30 font-orbitron text-xs"
+                      className="bg-black text-white hover:bg-zinc-800 dark:bg-white dark:text-black dark:hover:bg-zinc-200 font-bold text-xs uppercase tracking-wider rounded-none px-6"
                     >
-                      Next <ChevronRight className="w-4 h-4 ml-1" />
+                      Next <ChevronRight className="w-4 h-4 ml-2" />
                     </Button>
                   ) : (
                     <Button
                       onClick={handleSubmit}
                       disabled={Object.keys(answers).length < questions.length}
-                      className="bg-gradient-to-r from-galactic-orange to-galactic-gold text-space-black font-orbitron font-bold text-xs"
+                      className="bg-black text-white hover:bg-zinc-800 dark:bg-white dark:text-black dark:hover:bg-zinc-200 font-bold text-xs uppercase tracking-wider rounded-none px-8"
                     >
                       Get My Results
                     </Button>
@@ -185,40 +183,42 @@ export default function SkillsQuizSection() {
               </div>
             </div>
           ) : (
-            <div className={`glass-effect p-8 rounded-2xl border border-galactic-orange/40 ${level.bg}`}>
-              <div className="text-center mb-6">
-                <div className="w-16 h-16 rounded-full bg-galactic-orange/20 border-2 border-galactic-orange flex items-center justify-center mx-auto mb-4">
-                  <Brain className={`w-8 h-8 ${level.color}`} />
-                </div>
-                <p className="text-gray-400 text-sm font-orbitron mb-1">Your Digital Maturity Level</p>
-                <h3 className={`font-orbitron font-black text-3xl ${level.color} mb-2`}>{level.title}</h3>
-                <div className="flex justify-center gap-1 mb-4">
-                  {[...Array(4)].map((_, i) => (
-                    <div
-                      key={i}
-                      className={`h-2 w-10 rounded-full transition-colors ${i < levels.indexOf(level) + 1 ? "bg-galactic-orange" : "bg-white/10"}`}
-                    />
-                  ))}
-                </div>
-                <p className="text-gray-300 text-sm leading-relaxed max-w-md mx-auto">{level.desc}</p>
+            <div className="p-10 border border-foreground bg-foreground text-background text-center">
+              <div className="w-20 h-20 bg-background flex items-center justify-center mx-auto mb-6 rounded-none">
+                <Brain className="w-10 h-10 text-foreground" />
+              </div>
+              <p className="text-background text-sm font-bold uppercase tracking-wider mb-2">Your Digital Maturity Level</p>
+              <h3 className="font-black text-4xl text-background mb-4 uppercase">{level.title}</h3>
+              
+              <div className="flex justify-center gap-2 mb-8">
+                {[...Array(4)].map((_, i) => (
+                  <div
+                    key={i}
+                    className={`h-2 w-12 transition-colors ${i < levels.indexOf(level) + 1 ? "bg-background" : "bg-background/20"}`}
+                  />
+                ))}
+              </div>
+              
+              <p className="text-background text-base leading-relaxed max-w-lg mx-auto mb-10 font-medium">
+                {level.desc}
+              </p>
+
+              <div className="p-6 border border-background bg-background/10 mb-10 text-left">
+                <p className="text-xs font-bold uppercase tracking-wider text-background mb-2">Recommended Next Step</p>
+                <p className="text-background font-black text-lg break-words uppercase">{level.recommendation}</p>
               </div>
 
-              <div className="p-4 rounded-xl border border-galactic-orange/30 bg-galactic-orange/5 mb-6 overflow-hidden">
-                <p className="text-xs font-orbitron text-gray-400 mb-1">Recommended Next Step</p>
-                <p className="text-galactic-orange font-orbitron font-bold break-words">{level.recommendation}</p>
-              </div>
-
-              <div className="flex flex-wrap gap-3 justify-center">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
                   onClick={handleReset}
-                  variant="ghost"
-                  className="text-gray-400 font-orbitron text-xs"
+                  variant="outline"
+                  className="bg-transparent text-background border-background hover:bg-background hover:text-foreground font-bold text-xs uppercase tracking-wider rounded-none px-6 py-6"
                 >
-                  <RotateCcw className="w-4 h-4 mr-1" /> Retake Quiz
+                  <RotateCcw className="w-4 h-4 mr-2" /> Retake Quiz
                 </Button>
                 <Button
                   onClick={() => window.location.href = "/contact"}
-                  className="bg-gradient-to-r from-galactic-orange to-galactic-gold text-space-black font-orbitron font-bold text-xs"
+                  className="bg-background text-foreground hover:bg-muted font-bold text-xs uppercase tracking-wider rounded-none px-8 py-6"
                 >
                   Get a Free Consultation
                 </Button>

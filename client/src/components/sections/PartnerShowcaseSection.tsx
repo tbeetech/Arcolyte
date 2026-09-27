@@ -43,7 +43,7 @@ export default function PartnerShowcaseSection() {
           <h2 className="font-orbitron font-bold text-3xl md:text-4xl mb-4 gradient-text">
             Partner Network
           </h2>
-          <p className="text-gray-300 max-w-2xl mx-auto">
+          <p className="text-foreground max-w-2xl mx-auto">
             We don't build in isolation. Our ecosystem of world-class technology partners means you get enterprise-grade tools at startup-friendly prices.
           </p>
         </div>
@@ -55,7 +55,7 @@ export default function PartnerShowcaseSection() {
               key={partner.name}
               onMouseEnter={() => setHovered(partner.name)}
               onMouseLeave={() => setHovered(null)}
-              className={`glass-effect p-5 rounded-2xl border border-white/10 hover:border-galactic-orange/40 transition-all duration-300 cursor-pointer text-center group ${
+              className={`glass-effect p-5 rounded-2xl border border-border hover:border-galactic-orange/40 transition-all duration-300 cursor-pointer text-center group ${
                 visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
               }`}
               style={{ transitionDelay: `${i * 80}ms` }}
@@ -64,7 +64,7 @@ export default function PartnerShowcaseSection() {
               <p className="font-orbitron font-bold text-sm text-white">{partner.name}</p>
               <p className={`font-orbitron text-xs ${partner.color} mb-2`}>{partner.category}</p>
               {hovered === partner.name && (
-                <p className="text-gray-400 text-xs leading-relaxed">{partner.impact}</p>
+                <p className="text-foreground text-xs leading-relaxed">{partner.impact}</p>
               )}
             </div>
           ))}
@@ -81,7 +81,7 @@ export default function PartnerShowcaseSection() {
               style={{ transitionDelay: `${i * 100 + 400}ms` }}
             >
               <div className="font-orbitron font-black text-2xl gradient-text">{value}</div>
-              <p className="text-gray-400 text-xs font-orbitron mt-1">{label}</p>
+              <p className="text-foreground text-xs font-orbitron mt-1">{label}</p>
             </div>
           ))}
         </div>

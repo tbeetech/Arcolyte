@@ -91,7 +91,7 @@ export default function AuthPage() {
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 text-foreground">
             ARCOLYTE TECHNOLOGIES
           </h1>
-          <p className="text-muted-foreground text-lg font-medium">
+          <p className="text-foreground text-lg font-medium">
             Future Digital Solutions
           </p>
         </div>
@@ -127,7 +127,7 @@ export default function AuthPage() {
                   <div className="space-y-2">
                     <Label
                       htmlFor="login-username"
-                      className="text-xs font-semibold text-muted-foreground uppercase tracking-wider"
+                      className="text-xs font-semibold text-foreground uppercase tracking-wider"
                     >
                       Username or Email
                     </Label>
@@ -144,7 +144,7 @@ export default function AuthPage() {
                   <div className="space-y-2">
                     <Label
                       htmlFor="login-password"
-                      className="text-xs font-semibold text-muted-foreground uppercase tracking-wider"
+                      className="text-xs font-semibold text-foreground uppercase tracking-wider"
                     >
                       Password
                     </Label>
@@ -161,7 +161,7 @@ export default function AuthPage() {
                       <button
                         type="button"
                         onClick={() => setShowLoginPassword((v) => !v)}
-                        className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-foreground hover:text-foreground transition-colors"
                         aria-label={showLoginPassword ? "Hide password" : "Show password"}
                       >
                         {showLoginPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
@@ -178,7 +178,7 @@ export default function AuthPage() {
                   <div className="text-center mt-4">
                     <a
                       href="/forgot-password"
-                      className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
+                      className="text-foreground hover:text-foreground text-sm font-medium transition-colors"
                     >
                       Forgot password?
                     </a>
@@ -191,7 +191,7 @@ export default function AuthPage() {
                   <div className="space-y-2">
                     <Label
                       htmlFor="reg-username"
-                      className="text-xs font-semibold text-muted-foreground uppercase tracking-wider"
+                      className="text-xs font-semibold text-foreground uppercase tracking-wider"
                     >
                       Username
                     </Label>
@@ -208,7 +208,7 @@ export default function AuthPage() {
                   <div className="space-y-2">
                     <Label
                       htmlFor="reg-email"
-                      className="text-xs font-semibold text-muted-foreground uppercase tracking-wider"
+                      className="text-xs font-semibold text-foreground uppercase tracking-wider"
                     >
                       Email
                     </Label>
@@ -225,7 +225,7 @@ export default function AuthPage() {
                   <div className="space-y-2">
                     <Label
                       htmlFor="reg-password"
-                      className="text-xs font-semibold text-muted-foreground uppercase tracking-wider"
+                      className="text-xs font-semibold text-foreground uppercase tracking-wider"
                     >
                       Password
                     </Label>
@@ -243,7 +243,7 @@ export default function AuthPage() {
                       <button
                         type="button"
                         onClick={() => setShowRegPassword((v) => !v)}
-                        className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-foreground hover:text-foreground transition-colors"
                         aria-label={showRegPassword ? "Hide password" : "Show password"}
                       >
                         {showRegPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
@@ -253,7 +253,7 @@ export default function AuthPage() {
                   <div className="space-y-2">
                     <Label
                       htmlFor="reg-confirm-password"
-                      className="text-xs font-semibold text-muted-foreground uppercase tracking-wider"
+                      className="text-xs font-semibold text-foreground uppercase tracking-wider"
                     >
                       Confirm Password
                     </Label>
@@ -274,7 +274,7 @@ export default function AuthPage() {
                       <button
                         type="button"
                         onClick={() => setShowRegConfirmPassword((v) => !v)}
-                        className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-foreground hover:text-foreground transition-colors"
                         aria-label={showRegConfirmPassword ? "Hide password" : "Show password"}
                       >
                         {showRegConfirmPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
@@ -296,7 +296,7 @@ export default function AuthPage() {
             </Tabs>
           </div>
 
-          <p className="text-center text-muted-foreground text-xs mt-6 tracking-widest uppercase">
+          <p className="text-center text-foreground text-xs mt-6 tracking-widest uppercase">
             ARCOLYTE TECHNOLOGIES · Secure · Future · Innovative
           </p>
         </div>

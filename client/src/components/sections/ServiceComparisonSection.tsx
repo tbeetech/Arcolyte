@@ -8,8 +8,6 @@ const tiers = [
     name: "Starter",
     price: "$500",
     period: "/project",
-    color: "text-gray-300",
-    border: "border-white/20",
     highlight: false,
     features: [
       { text: "1 Service Vertical", included: true },
@@ -26,8 +24,6 @@ const tiers = [
     name: "Growth",
     price: "$1,500",
     period: "/month",
-    color: "text-galactic-orange",
-    border: "border-galactic-orange",
     highlight: true,
     tag: "Most Popular",
     features: [
@@ -45,8 +41,6 @@ const tiers = [
     name: "Enterprise",
     price: "Custom",
     period: "",
-    color: "text-galactic-gold",
-    border: "border-galactic-gold",
     highlight: false,
     features: [
       { text: "All Service Verticals", included: true },
@@ -65,65 +59,70 @@ export default function ServiceComparisonSection() {
   const [selected, setSelected] = useState<string | null>(null);
 
   return (
-    <section id="service-comparison" className="page-section py-20">
+    <section id="service-comparison" className="py-24 bg-background">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-neon-cyan/30 text-neon-cyan text-sm font-orbitron mb-4">
+        <div className="text-center mb-16 max-w-3xl mx-auto">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 border border-border text-foreground text-sm uppercase tracking-widest font-semibold mb-6">
             <ArrowRight className="w-4 h-4" /> Feature 9 of 12
           </div>
-          <h2 className="font-orbitron font-bold text-3xl md:text-4xl mb-4 gradient-text">
+          <h2 className="font-bold text-4xl md:text-5xl mb-6 text-foreground tracking-tight uppercase">
             Service Comparison
           </h2>
-          <p className="text-gray-300 max-w-2xl mx-auto">
+          <p className="text-foreground text-lg leading-relaxed">
             Choose the package that fits your growth stage. Every tier is designed to deliver measurable ROI from day one.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {tiers.map((tier) => (
             <div
               key={tier.name}
-              className={`glass-effect p-6 rounded-2xl border transition-all duration-300 cursor-pointer ${
+              className={`p-8 border transition-all duration-300 cursor-pointer rounded-none relative flex flex-col ${
                 tier.highlight
-                  ? `${tier.border} ring-2 ring-galactic-orange/30 scale-105`
+                  ? "border-foreground bg-foreground text-background shadow-xl scale-[1.02]"
                   : selected === tier.name
-                  ? `${tier.border}/60 ring-1 ring-galactic-orange/20`
-                  : `${tier.border}/20 hover:${tier.border}/40`
+                  ? "border-foreground bg-card text-foreground ring-1 ring-foreground"
+                  : "border-border bg-card text-foreground hover:border-foreground"
               }`}
               onClick={() => setSelected(selected === tier.name ? null : tier.name)}
             >
               {tier.highlight && (
-                <div className="text-center mb-3">
-                  <span className="px-3 py-0.5 bg-galactic-orange/20 border border-galactic-orange/40 rounded-full text-galactic-orange text-xs font-orbitron">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                  <span className="px-4 py-1 bg-background border border-foreground text-foreground text-[10px] font-bold uppercase tracking-widest">
                     {tier.tag}
                   </span>
                 </div>
               )}
-              <h3 className={`font-orbitron font-bold text-xl text-center ${tier.color} mb-1`}>{tier.name}</h3>
-              <div className="text-center mb-5">
-                <span className={`font-orbitron font-black text-3xl ${tier.color}`}>{tier.price}</span>
-                {tier.period && <span className="text-gray-500 text-sm ml-1 font-orbitron">{tier.period}</span>}
+              
+              <div className="text-center mb-8 pt-4">
+                <h3 className={`font-bold text-xl uppercase tracking-widest mb-4 ${tier.highlight ? "text-background" : "text-foreground"}`}>{tier.name}</h3>
+                <div className="flex items-baseline justify-center gap-1">
+                  <span className={`font-black text-4xl ${tier.highlight ? "text-background" : "text-foreground"}`}>{tier.price}</span>
+                  {tier.period && <span className={`text-sm font-semibold uppercase tracking-widest ${tier.highlight ? "text-background" : "text-foreground"}`}>{tier.period}</span>}
+                </div>
               </div>
 
-              <ul className="space-y-3 mb-6">
+              <ul className="space-y-4 mb-8 flex-1">
                 {tier.features.map(({ text, included }) => (
-                  <li key={text} className="flex items-center gap-2 text-sm">
+                  <li key={text} className="flex items-start gap-3 text-sm">
                     {included ? (
-                      <Check className="w-4 h-4 text-galactic-green flex-shrink-0" />
+                      <Check className={`w-5 h-5 flex-shrink-0 ${tier.highlight ? "text-background" : "text-foreground"}`} />
                     ) : (
-                      <X className="w-4 h-4 text-gray-600 flex-shrink-0" />
+                      <X className={`w-5 h-5 flex-shrink-0 opacity-30 ${tier.highlight ? "text-background" : "text-foreground"}`} />
                     )}
-                    <span className={included ? "text-gray-200" : "text-gray-600"}>{text}</span>
+                    <span className={`font-medium ${included ? (tier.highlight ? "text-background" : "text-foreground") : (tier.highlight ? "text-background opacity-50 line-through" : "text-foreground opacity-50 line-through")}`}>
+                      {text}
+                    </span>
                   </li>
                 ))}
               </ul>
 
               <Link href={tier.name === "Enterprise" ? "/contact" : "/book-demo"}>
                 <Button
-                  className={`w-full font-orbitron text-xs ${
+                  className={`w-full font-bold text-xs uppercase tracking-wider rounded-none py-6 ${
                     tier.highlight
-                      ? "bg-gradient-to-r from-galactic-orange to-galactic-gold text-space-black font-bold"
-                      : "bg-white/5 text-white border border-white/10 hover:bg-white/10"
+                      ? "bg-background text-foreground hover:bg-muted border border-foreground"
+                      : "bg-black text-white hover:bg-zinc-800 dark:bg-white dark:text-black dark:hover:bg-zinc-200"
                   }`}
                 >
                   {tier.name === "Enterprise" ? "Contact Sales" : "Get Started"}

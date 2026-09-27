@@ -147,7 +147,7 @@ export default function AdminSpeedCrackerPostVideoPage() {
         {/* Back link */}
         <button
           onClick={() => navigate("/admin/speed-cracker/vlog")}
-          className="flex items-center gap-1.5 text-sm text-gray-400 hover:text-gray-200 mb-6 transition-colors"
+          className="flex items-center gap-1.5 text-sm text-foreground hover:text-foreground mb-6 transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
           Back to Vlog Manager
@@ -162,9 +162,9 @@ export default function AdminSpeedCrackerPostVideoPage() {
 
           {/* Step 1: Video URL */}
           <div className="mb-5">
-            <Label className="text-gray-300 text-xs mb-1.5 block">
+            <Label className="text-foreground text-xs mb-1.5 block">
               Step 1, Paste video link *{" "}
-              <span className="text-gray-500">
+              <span className="text-foreground">
                 (YouTube, TikTok, Twitter/X, LinkedIn, Instagram, Threads, Facebook, Vimeo…)
               </span>
             </Label>
@@ -191,7 +191,7 @@ export default function AdminSpeedCrackerPostVideoPage() {
               </Button>
             </div>
             {form.embedUrl && (
-              <p className="text-[11px] text-gray-500 mt-1.5">
+              <p className="text-[11px] text-foreground mt-1.5">
                 Platform detected:{" "}
                 <span className="text-yellow-400 font-medium">{form.embedPlatform}</span>
               </p>
@@ -200,7 +200,7 @@ export default function AdminSpeedCrackerPostVideoPage() {
 
           {/* Step 2: Platform */}
           <div className="mb-5">
-            <Label className="text-gray-300 text-xs mb-1.5 block">Step 2, Confirm platform</Label>
+            <Label className="text-foreground text-xs mb-1.5 block">Step 2, Confirm platform</Label>
             <div className="flex flex-wrap gap-2">
               {EMBED_PLATFORMS.map((p) => (
                 <button
@@ -210,7 +210,7 @@ export default function AdminSpeedCrackerPostVideoPage() {
                   className={`px-3 py-1.5 rounded-lg text-xs border transition-all ${
                     form.embedPlatform === p
                       ? "bg-yellow-500/20 border-yellow-500/60 text-yellow-300"
-                      : "bg-gray-800 border-gray-700 text-gray-400 hover:border-gray-500"
+                      : "bg-gray-800 border-gray-700 text-foreground hover:border-gray-500"
                   }`}
                 >
                   {p}
@@ -222,7 +222,7 @@ export default function AdminSpeedCrackerPostVideoPage() {
           {/* Step 3: Title & Write-up */}
           <div className="mb-5 space-y-4">
             <div>
-              <Label className="text-gray-300 text-xs mb-1.5 block">Step 3, Title *</Label>
+              <Label className="text-foreground text-xs mb-1.5 block">Step 3, Title *</Label>
               <Input
                 value={form.title}
                 onChange={(e) =>
@@ -233,9 +233,9 @@ export default function AdminSpeedCrackerPostVideoPage() {
               />
             </div>
             <div>
-              <Label className="text-gray-300 text-xs mb-1.5 block">
+              <Label className="text-foreground text-xs mb-1.5 block">
                 Write-up / Summary *{" "}
-                <span className="text-gray-500">
+                <span className="text-foreground">
                   (write your own or use Prophet AI to generate)
                 </span>
               </Label>
@@ -252,7 +252,7 @@ export default function AdminSpeedCrackerPostVideoPage() {
           {/* Advanced options */}
           <button
             type="button"
-            className="flex items-center gap-1 text-xs text-gray-500 hover:text-gray-300 mb-4 transition-colors"
+            className="flex items-center gap-1 text-xs text-foreground hover:text-foreground mb-4 transition-colors"
             onClick={() => setShowAdvanced((v) => !v)}
           >
             {showAdvanced ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
@@ -262,7 +262,7 @@ export default function AdminSpeedCrackerPostVideoPage() {
           {showAdvanced && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5 border-t border-gray-800 pt-4">
               <div>
-                <Label className="text-gray-300 text-xs">Category</Label>
+                <Label className="text-foreground text-xs">Category</Label>
                 <Input
                   value={form.category}
                   onChange={(e) => setForm((p) => ({ ...p, category: e.target.value }))}
@@ -271,7 +271,7 @@ export default function AdminSpeedCrackerPostVideoPage() {
                 />
               </div>
               <div>
-                <Label className="text-gray-300 text-xs">Tags (comma-separated)</Label>
+                <Label className="text-foreground text-xs">Tags (comma-separated)</Label>
                 <Input
                   value={form.tags}
                   onChange={(e) => setForm((p) => ({ ...p, tags: e.target.value }))}
@@ -280,7 +280,7 @@ export default function AdminSpeedCrackerPostVideoPage() {
                 />
               </div>
               <div>
-                <Label className="text-gray-300 text-xs">Thumbnail URL</Label>
+                <Label className="text-foreground text-xs">Thumbnail URL</Label>
                 <Input
                   value={form.thumbnail}
                   onChange={(e) => setForm((p) => ({ ...p, thumbnail: e.target.value }))}
@@ -289,7 +289,7 @@ export default function AdminSpeedCrackerPostVideoPage() {
                 />
               </div>
               <div>
-                <Label className="text-gray-300 text-xs">Custom Slug</Label>
+                <Label className="text-foreground text-xs">Custom Slug</Label>
                 <Input
                   value={form.slug}
                   onChange={(e) => setForm((p) => ({ ...p, slug: e.target.value }))}
@@ -298,7 +298,7 @@ export default function AdminSpeedCrackerPostVideoPage() {
                 />
               </div>
               <div>
-                <Label className="text-gray-300 text-xs">SEO Title</Label>
+                <Label className="text-foreground text-xs">SEO Title</Label>
                 <Input
                   value={form.seoTitle}
                   onChange={(e) => setForm((p) => ({ ...p, seoTitle: e.target.value }))}
@@ -306,7 +306,7 @@ export default function AdminSpeedCrackerPostVideoPage() {
                 />
               </div>
               <div>
-                <Label className="text-gray-300 text-xs">SEO Description</Label>
+                <Label className="text-foreground text-xs">SEO Description</Label>
                 <Input
                   value={form.seoDescription}
                   onChange={(e) => setForm((p) => ({ ...p, seoDescription: e.target.value }))}
@@ -325,7 +325,7 @@ export default function AdminSpeedCrackerPostVideoPage() {
                 onChange={(e) => setForm((p) => ({ ...p, published: e.target.checked }))}
                 className="rounded accent-yellow-500"
               />
-              <span className="text-gray-300 text-sm">Publish immediately</span>
+              <span className="text-foreground text-sm">Publish immediately</span>
             </label>
             <Button
               className="bg-yellow-500 hover:bg-yellow-400 text-black font-semibold px-6"
@@ -342,7 +342,7 @@ export default function AdminSpeedCrackerPostVideoPage() {
           </div>
 
           {!canPost && form.embedUrl && (
-            <p className="text-[11px] text-gray-500 mt-3">
+            <p className="text-[11px] text-foreground mt-3">
               {!form.title ? "Add a title" : "Add a description"}, or click{" "}
               <strong className="text-yellow-400">Prophet AI Fill</strong> to auto-generate
             </p>

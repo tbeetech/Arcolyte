@@ -12,7 +12,7 @@ export default function PricingCard({ title, price, features, planId }: Props) {
     <div className="rounded-2xl border border-gray-800 p-6 bg-black/60">
       <h3 className="text-xl text-white">{title}</h3>
       <p className="text-2xl text-yellow-400 mt-2">{price}</p>
-      <ul className="mt-4 text-gray-300 space-y-2">
+      <ul className="mt-4 text-foreground space-y-2">
         {features.map((f) => (
           <li key={f}>• {f}</li>
         ))}

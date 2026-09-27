@@ -1,4 +1,4 @@
-﻿import { Link } from "wouter";
+import { Link } from "wouter";
 import Navigation from "@/components/Navigation";
 import { Button } from "@/components/ui/button";
 import {
@@ -135,7 +135,7 @@ export default function DocPage() {
   };
 
   return (
-    <div className="min-h-screen bg-space-black text-white">
+    <div className="min-h-screen bg-background text-white">
       <title>Contributor Docs, ARCOLYTE TECHNOLOGIES</title>
       <Navigation />
 
@@ -150,7 +150,7 @@ export default function DocPage() {
                 <h1 className="font-orbitron font-black text-4xl md:text-6xl gradient-text mb-4 leading-tight">
                   Build On ARCOLYTE TECHNOLOGIES Without Guesswork
                 </h1>
-                <p className="text-gray-300 text-base md:text-lg leading-relaxed">
+                <p className="text-foreground text-base md:text-lg leading-relaxed">
                   This route is the fast onboarding surface for external contributors. It explains what the project is,
                   where the important backend and frontend entry points live, what changed recently, and what work is
                   worth picking up next.
@@ -166,7 +166,7 @@ export default function DocPage() {
                   </Button>
                 </a>
                 <Link href="/features">
-                  <Button variant="outline" className="border-white/15 text-gray-200 font-orbitron">
+                  <Button variant="outline" className="border-white/15 text-foreground font-orbitron">
                     <ArrowLeft className="w-4 h-4 mr-2" /> Back to Product
                   </Button>
                 </Link>
@@ -178,9 +178,9 @@ export default function DocPage() {
             {stack.map((item) => {
               const Icon = item.icon;
               return (
-                <div key={item.label} className="glass-effect rounded-2xl border border-white/10 p-5">
+                <div key={item.label} className="glass-effect rounded-2xl border border-border p-5">
                   <Icon className="w-5 h-5 text-neon-cyan mb-3" />
-                  <p className="font-orbitron text-xs text-gray-400 mb-1">{item.label}</p>
+                  <p className="font-orbitron text-xs text-foreground mb-1">{item.label}</p>
                   <p className="text-sm text-white leading-relaxed">{item.value}</p>
                 </div>
               );
@@ -188,34 +188,34 @@ export default function DocPage() {
           </section>
 
           <section className="grid lg:grid-cols-[1.2fr_0.8fr] gap-6">
-            <div className="glass-effect rounded-3xl border border-white/10 p-7">
+            <div className="glass-effect rounded-3xl border border-border p-7">
               <h2 className="font-orbitron font-bold text-2xl gradient-text mb-5">Quick Start For Contributors</h2>
               <div className="space-y-4">
                 {quickStart.map((step) => (
                   <div key={step} className="flex items-start gap-3">
                     <CheckCircle className="w-4 h-4 text-galactic-green mt-1 shrink-0" />
-                    <p className="text-gray-300 text-sm leading-relaxed">{step}</p>
+                    <p className="text-foreground text-sm leading-relaxed">{step}</p>
                   </div>
                 ))}
               </div>
               <div className="mt-6 rounded-2xl border border-galactic-orange/20 bg-galactic-orange/5 p-4">
                 <p className="font-orbitron text-xs text-galactic-orange mb-2">Required local baseline</p>
-                <pre className="text-xs text-gray-200 overflow-x-auto whitespace-pre-wrap">{`npm install\nnpm run dev\nnpm run check\nnpx playwright install chromium\nnpm run test:e2e`}</pre>
+                <pre className="text-xs text-foreground overflow-x-auto whitespace-pre-wrap">{`npm install\nnpm run dev\nnpm run check\nnpx playwright install chromium\nnpm run test:e2e`}</pre>
               </div>
             </div>
 
-            <div className="glass-effect rounded-3xl border border-white/10 p-7">
+            <div className="glass-effect rounded-3xl border border-border p-7">
               <h2 className="font-orbitron font-bold text-2xl gradient-text mb-5">Key Entry Points</h2>
               <div className="space-y-4">
                 {backendEntryPoints.map((item) => {
                   const Icon = item.icon;
                   return (
-                    <div key={item.title} className="rounded-2xl border border-white/10 p-4 bg-space-dark/40">
+                    <div key={item.title} className="rounded-2xl border border-border p-4 bg-card/40">
                       <div className="flex items-center gap-2 mb-2">
                         <Icon className="w-4 h-4 text-neon-cyan" />
                         <p className="font-orbitron text-sm text-white">{item.title}</p>
                       </div>
-                      <p className="text-xs text-gray-400">{item.value}</p>
+                      <p className="text-xs text-foreground">{item.value}</p>
                     </div>
                   );
                 })}
@@ -223,43 +223,43 @@ export default function DocPage() {
             </div>
           </section>
 
-          <section className="glass-effect rounded-3xl border border-white/10 p-7">
+          <section className="glass-effect rounded-3xl border border-border p-7">
             <h2 className="font-orbitron font-bold text-2xl gradient-text mb-5">Architecture In Plain English</h2>
             <div className="grid md:grid-cols-2 gap-4">
               {architecture.map((item) => (
-                <div key={item.title} className="rounded-2xl border border-white/10 bg-space-dark/30 p-5">
+                <div key={item.title} className="rounded-2xl border border-border bg-card/30 p-5">
                   <p className="font-orbitron text-sm text-neon-cyan mb-2">{item.title}</p>
-                  <p className="text-sm text-gray-300 leading-relaxed mb-3">{item.body}</p>
-                  <p className="text-xs text-gray-500">{item.path}</p>
+                  <p className="text-sm text-foreground leading-relaxed mb-3">{item.body}</p>
+                  <p className="text-xs text-foreground">{item.path}</p>
                 </div>
               ))}
             </div>
           </section>
 
           <section className="grid lg:grid-cols-[0.95fr_1.05fr] gap-6">
-            <div className="glass-effect rounded-3xl border border-white/10 p-7">
+            <div className="glass-effect rounded-3xl border border-border p-7">
               <h2 className="font-orbitron font-bold text-2xl gradient-text mb-5">Recent Shipped Changes</h2>
               <div className="space-y-4">
                 {recentChanges.map((item) => (
                   <div key={item} className="flex items-start gap-3">
                     <Code2 className="w-4 h-4 text-galactic-orange mt-1 shrink-0" />
-                    <p className="text-sm text-gray-300 leading-relaxed">{item}</p>
+                    <p className="text-sm text-foreground leading-relaxed">{item}</p>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="glass-effect rounded-3xl border border-white/10 p-7">
+            <div className="glass-effect rounded-3xl border border-border p-7">
               <h2 className="font-orbitron font-bold text-2xl gradient-text mb-5">Where Contributors Can Help</h2>
               <div className="space-y-5">
                 {contributorTracks.map((track) => (
-                  <div key={track.title} className="rounded-2xl border border-white/10 bg-space-dark/30 p-5">
+                  <div key={track.title} className="rounded-2xl border border-border bg-card/30 p-5">
                     <p className="font-orbitron text-sm text-white mb-3">{track.title}</p>
                     <div className="space-y-2">
                       {track.tasks.map((task) => (
                         <div key={task} className="flex items-start gap-3">
                           <CheckCircle className="w-4 h-4 text-galactic-green mt-1 shrink-0" />
-                          <p className="text-sm text-gray-300 leading-relaxed">{task}</p>
+                          <p className="text-sm text-foreground leading-relaxed">{task}</p>
                         </div>
                       ))}
                     </div>
@@ -270,26 +270,26 @@ export default function DocPage() {
           </section>
 
           <section className="grid lg:grid-cols-2 gap-6">
-            <div className="glass-effect rounded-3xl border border-white/10 p-7">
+            <div className="glass-effect rounded-3xl border border-border p-7">
               <h2 className="font-orbitron font-bold text-2xl gradient-text mb-5">Good First Issues</h2>
               <div className="space-y-4">
                 {goodFirstIssues.map((item) => (
                   <div key={item} className="flex items-start gap-3">
                     <CheckCircle className="w-4 h-4 text-galactic-green mt-1 shrink-0" />
-                    <p className="text-sm text-gray-300 leading-relaxed">{item}</p>
+                    <p className="text-sm text-foreground leading-relaxed">{item}</p>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="glass-effect rounded-3xl border border-white/10 p-7">
+            <div className="glass-effect rounded-3xl border border-border p-7">
               <h2 className="font-orbitron font-bold text-2xl gradient-text mb-5">Backend Ownership Notes</h2>
               <div className="space-y-4">
                 {backendOwnership.map((item) => (
-                  <div key={item.area} className="rounded-2xl border border-white/10 bg-space-dark/30 p-5">
+                  <div key={item.area} className="rounded-2xl border border-border bg-card/30 p-5">
                     <p className="font-orbitron text-sm text-neon-cyan mb-2">{item.area}</p>
-                    <p className="text-xs text-gray-500 mb-2">{item.owner}</p>
-                    <p className="text-sm text-gray-300 leading-relaxed">{item.note}</p>
+                    <p className="text-xs text-foreground mb-2">{item.owner}</p>
+                    <p className="text-sm text-foreground leading-relaxed">{item.note}</p>
                   </div>
                 ))}
               </div>

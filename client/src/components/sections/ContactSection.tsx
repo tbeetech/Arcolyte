@@ -9,7 +9,7 @@ export default function ContactSection() {
             <h2 className="font-bold text-3xl sm:text-4xl md:text-5xl mb-6 tracking-tight text-foreground">
               Let's Build the Future Together
             </h2>
-            <p className="text-muted-foreground text-lg mb-10 leading-relaxed">
+            <p className="text-foreground text-lg mb-10 leading-relaxed">
               Whether you need to scale your infrastructure, implement AI automation, or redesign your digital presence, our team is ready to deliver.
             </p>
 
@@ -20,7 +20,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <h4 className="font-semibold text-foreground mb-1 text-lg">Email Us</h4>
-                  <a href="mailto:arcolytetech@gmail.com" className="text-muted-foreground hover:text-foreground transition-colors">
+                  <a href="mailto:arcolytetech@gmail.com" className="text-foreground hover:text-foreground transition-colors">
                     arcolytetech@gmail.com
                   </a>
                 </div>
@@ -32,7 +32,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <h4 className="font-semibold text-foreground mb-1 text-lg">Chat with Us</h4>
-                  <a href="https://wa.me/2348122536647" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
+                  <a href="https://wa.me/2348122536647" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-foreground transition-colors">
                     WhatsApp (+234) 812 253 6647
                   </a>
                 </div>
@@ -44,7 +44,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <h4 className="font-semibold text-foreground mb-1 text-lg">Location</h4>
-                  <p className="text-muted-foreground">Global Remote Operations</p>
+                  <p className="text-foreground">Global Remote Operations</p>
                 </div>
               </div>
             </div>

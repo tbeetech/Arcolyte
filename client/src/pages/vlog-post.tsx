@@ -169,7 +169,7 @@ export default function VlogPostPage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-space-black text-foreground">
+      <div className="min-h-screen bg-background text-foreground">
         <Navigation />
         <div className="flex items-center justify-center pt-40">
           <Loader2 className="w-8 h-8 animate-spin text-neon-cyan" />
@@ -180,12 +180,12 @@ export default function VlogPostPage() {
 
   if (isError || !vlog) {
     return (
-      <div className="min-h-screen bg-space-black text-foreground">
+      <div className="min-h-screen bg-background text-foreground">
         <Navigation />
         <div className="max-w-3xl mx-auto px-4 pt-32 text-center">
-          <Video className="w-14 h-14 text-muted-foreground mx-auto mb-4" />
+          <Video className="w-14 h-14 text-foreground mx-auto mb-4" />
           <h1 className="text-2xl font-bold mb-2">Video not found</h1>
-          <p className="text-muted-foreground mb-6">The vlog post you're looking for doesn't exist or has been removed.</p>
+          <p className="text-foreground mb-6">The vlog post you're looking for doesn't exist or has been removed.</p>
           <Link href="/vlog">
             <span className="text-neon-cyan hover:underline cursor-pointer">← Back to Vlog</span>
           </Link>
@@ -205,13 +205,13 @@ export default function VlogPostPage() {
     .slice(0, 4);
 
   return (
-    <div className="min-h-screen bg-space-black text-foreground">
+    <div className="min-h-screen bg-background text-foreground">
       <Navigation />
 
       <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
         {/* Back link */}
         <Link href="/vlog">
-          <div className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground cursor-pointer mb-6 transition-colors w-fit">
+          <div className="flex items-center gap-1.5 text-sm text-foreground hover:text-foreground cursor-pointer mb-6 transition-colors w-fit">
             <ArrowLeft className="w-4 h-4" />
             Back to Vlog
           </div>
@@ -221,15 +221,15 @@ export default function VlogPostPage() {
         <div className="mb-5">
           <div className="flex items-center gap-2 flex-wrap mb-3">
             <span className="text-xs text-neon-cyan font-semibold uppercase tracking-wider">{vlog.category}</span>
-            <span className="text-muted-foreground">·</span>
-            <span className="text-xs text-muted-foreground flex items-center gap-1">
+            <span className="text-foreground">·</span>
+            <span className="text-xs text-foreground flex items-center gap-1">
               <Calendar className="w-3 h-3" />
               {format(new Date(vlog.createdAt), "MMMM d, yyyy")}
             </span>
-            <span className="text-xs px-1.5 py-0.5 bg-muted text-muted-foreground rounded">{vlog.embedPlatform}</span>
+            <span className="text-xs px-1.5 py-0.5 bg-muted text-foreground rounded">{vlog.embedPlatform}</span>
           </div>
           <h1 className="text-2xl md:text-3xl font-black text-foreground mb-3">{vlog.title}</h1>
-          <p className="text-muted-foreground text-base leading-relaxed">{vlog.description}</p>
+          <p className="text-foreground text-base leading-relaxed">{vlog.description}</p>
         </div>
 
         {/* Embedded video player */}
@@ -245,7 +245,7 @@ export default function VlogPostPage() {
             />
           ) : (
             <div className="w-full h-full flex flex-col items-center justify-center gap-3">
-              <Video className="w-12 h-12 text-muted-foreground" />
+              <Video className="w-12 h-12 text-foreground" />
               <a
                 href={vlog.embedUrl}
                 target="_blank"
@@ -300,7 +300,7 @@ export default function VlogPostPage() {
             </div>
             <ul className="space-y-2">
               {keyTakeaways.map((point, i) => (
-                <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
+                <li key={i} className="flex items-start gap-2 text-sm text-foreground">
                   <span className="text-neon-cyan font-bold mt-0.5">→</span>
                   <span>{point}</span>
                 </li>
@@ -313,7 +313,7 @@ export default function VlogPostPage() {
         {vlog.tags.length > 0 && (
           <div className="flex flex-wrap gap-2 mb-10">
             {vlog.tags.map((tag) => (
-              <span key={tag} className="flex items-center gap-1 text-xs text-muted-foreground bg-muted px-2.5 py-1 rounded-full">
+              <span key={tag} className="flex items-center gap-1 text-xs text-foreground bg-muted px-2.5 py-1 rounded-full">
                 <Tag className="w-3 h-3" />
                 {tag}
               </span>
@@ -352,7 +352,7 @@ export default function VlogPostPage() {
             </div>
           ) : (
             <div className="glass-effect rounded-xl p-5 mb-6 text-center">
-              <p className="text-muted-foreground mb-3">Sign in to leave a comment</p>
+              <p className="text-foreground mb-3">Sign in to leave a comment</p>
               <Link href="/auth">
                 <Button size="sm" className="bg-galactic-orange text-space-black font-orbitron font-bold hover:bg-galactic-gold">
                   Sign In
@@ -362,7 +362,7 @@ export default function VlogPostPage() {
           )}
 
           {comments.length === 0 ? (
-            <p className="text-muted-foreground text-center py-8 text-sm">No comments yet. Be the first!</p>
+            <p className="text-foreground text-center py-8 text-sm">No comments yet. Be the first!</p>
           ) : (
             <div className="space-y-3">
               {comments.map((comment) => (
@@ -374,7 +374,7 @@ export default function VlogPostPage() {
                       </div>
                       <div>
                         <span className="text-sm text-neon-cyan font-medium">{comment.username}</span>
-                        <span className="text-muted-foreground text-xs ml-2">
+                        <span className="text-foreground text-xs ml-2">
                           {format(new Date(comment.createdAt), "MMM d, yyyy")}
                         </span>
                       </div>
@@ -389,7 +389,7 @@ export default function VlogPostPage() {
                       </button>
                     )}
                   </div>
-                  <p className="text-foreground/80 text-sm leading-relaxed pl-11">{comment.content}</p>
+                  <p className="text-foreground text-sm leading-relaxed pl-11">{comment.content}</p>
                 </div>
               ))}
             </div>
@@ -409,13 +409,13 @@ export default function VlogPostPage() {
                         <img src={rv.thumbnail} alt={rv.title} className="w-full h-full object-cover" />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center">
-                          <Video className="w-8 h-8 text-muted-foreground" />
+                          <Video className="w-8 h-8 text-foreground" />
                         </div>
                       )}
                     </div>
                     <div className="p-3">
                       <p className="text-xs font-medium text-foreground line-clamp-2 group-hover:text-neon-cyan transition-colors">{rv.title}</p>
-                      <p className="text-[10px] text-muted-foreground mt-1">{format(new Date(rv.createdAt), "MMM d, yyyy")}</p>
+                      <p className="text-[10px] text-foreground mt-1">{format(new Date(rv.createdAt), "MMM d, yyyy")}</p>
                     </div>
                   </div>
                 </Link>

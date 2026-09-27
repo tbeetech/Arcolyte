@@ -11,7 +11,7 @@ export default function AboutPage() {
       <main className="pt-24">
         <div className="container mx-auto px-6 text-center mb-4 pt-12">
           <h1 className="font-bold text-4xl md:text-5xl uppercase tracking-tight mb-6">About ARCOLYTE TECHNOLOGIES</h1>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-lg leading-relaxed">
+          <p className="text-foreground max-w-2xl mx-auto text-lg leading-relaxed">
             A digital agency built on clarity, delivery, and founder-level attention. Here's who we are and how we work.
           </p>
         </div>
@@ -19,7 +19,7 @@ export default function AboutPage() {
         <FounderSection />
         <div className="py-24 text-center bg-muted border-t border-border">
           <h2 className="font-bold text-2xl mb-4 tracking-tight">Want to work with us?</h2>
-          <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
+          <p className="text-foreground mb-8 max-w-lg mx-auto">
             Let's start with a conversation.
           </p>
           <Link href="/contact">

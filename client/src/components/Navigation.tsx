@@ -43,7 +43,7 @@ export default function Navigation() {
         {/* Logo */}
         <Link href="/">
           <div className="flex items-center gap-3 cursor-pointer" data-testid="nav-logo">
-            <span className="font-sans font-bold text-xl tracking-tight text-foreground">ARCOLYTE</span>
+            <img src="/arcolytelogo.png" alt="ARCOLYTE Logo" className="h-8 w-auto object-contain" />
           </div>
         </Link>
 
@@ -51,7 +51,7 @@ export default function Navigation() {
         <div className="hidden md:flex items-center gap-8 flex-1 justify-center">
           {navLinks.map((link) => (
             <Link key={link.href} href={link.href}>
-              <button className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+              <button className="text-sm font-medium text-foreground hover:text-foreground transition-colors">
                 {link.label}
               </button>
             </Link>
