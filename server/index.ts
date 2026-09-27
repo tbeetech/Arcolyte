@@ -1,0 +1,264 @@
+import "dotenv/config.js";
+import * as dotenv from "dotenv";
+import { resolve } from "path";
+
+process.on("unhandledRejection", (reason, promise) => {
+  console.error("[Global] Unhandled Rejection at:", promise, "reason:", reason);
+});
+
+process.on("uncaughtException", (error) => {
+  console.error("[Global] Uncaught Exception:", error);
+});
+
+// Load .env files from project root working directory
+dotenv.config({ path: resolve(process.cwd(), ".env.local") });
+dotenv.config({ path: resolve(process.cwd(), ".env") });
+
+import express, { type Request, Response, NextFunction } from "express";
+import session from "express-session";
+import createMemoryStore from "memorystore";
+import MongoStore from "connect-mongo";
+import passport from "passport";
+import { Strategy as LocalStrategy } from "passport-local";
+import bcrypt from "bcryptjs";
+import { registerRoutes } from "./routes.js";
+import { setupVite, serveStatic, log } from "./vite.js";
+import { initStorage, storage } from "./storage.js";
+import { ensureAdminUser, promoteAdminByEmail, seedDefaultVlogs } from "./seed.js";
+import { getClientPromise } from "./mongodb.js";
+import { startBotWorker, stopBotWorker } from "./botWorker.js";
+import { startVidAggregator } from "./vidAggregator.js";
+import { startSportaScheduler } from "./sportaScheduler.js";
+import {
+  ADMIN_SEED_EMAIL,
+  getSessionSecret,
+  MONGODB_URI,
+  validateRuntimeEnv,
+} from "./env.js";
+
+const app = express();
+
+// Trust the first proxy hop (required on Render and other PaaS platforms that
+// sit behind a reverse-proxy).  Without this:
+//  • req.secure is always false â†’ express-session never sends the `secure` cookie
+//    in production, so sessions are lost after every request.
+//  • req.ip is undefined â†’ express-rate-limit throws / rate-limits all users
+//    under the same "undefined" key, breaking per-IP limiting.
+app.set("trust proxy", 1);
+
+// Increase body size limit to 10 MB to accommodate base64-encoded cover images
+app.use(express.json({ limit: "10mb" }));
+app.use(express.urlencoded({ extended: false, limit: "10mb" }));
+
+// Use MongoDB-backed session storage so that sessions survive server restarts
+// (important on Render.com and other PaaS platforms).  Falls back to
+// memorystore only when the connection cannot be established.
+const MemoryStore = createMemoryStore(session);
+let sessionMiddleware: ReturnType<typeof session> | null = null;
+
+function buildSessionStore() {
+  if (!MONGODB_URI) {
+    return new MemoryStore({ checkPeriod: 86400000 });
+  }
+
+  try {
+    const store = MongoStore.create({
+      // Reuse the same MongoClient that mongoose uses instead of opening a
+      // second connection.  This prevents Atlas free-tier connection exhaustion
+      // and guarantees the session store is available whenever the DB is.
+      clientPromise: getClientPromise(),
+      collectionName: "sessions",
+      ttl: 7 * 24 * 60 * 60, // 7 days (in seconds)
+      autoRemove: "native", // rely on MongoDB TTL index for clean-up
+    });
+    // Log connection errors without crashing — the store will automatically
+    // retry; sessions already in-flight will fail gracefully.
+    store.on("error", (err: Error) => {
+      console.error("[session] MongoStore error:", err.message);
+    });
+    return store;
+  } catch (err) {
+    console.error("[session] Failed to create MongoStore, falling back to MemoryStore:", (err as Error).message ?? err);
+  }
+  // Fallback — prune expired entries every 24 h.
+  return new MemoryStore({ checkPeriod: 86400000 });
+}
+
+function getSessionMiddleware() {
+  if (!sessionMiddleware) {
+    sessionMiddleware = session({
+      name: "ARCOLYTE TECHNOLOGIES.sid",
+      secret: getSessionSecret(),
+      proxy: true,
+      resave: false,
+      saveUninitialized: false,
+      store: buildSessionStore(),
+      cookie: {
+        secure: process.env.NODE_ENV === "production",
+        httpOnly: true,
+        sameSite: "lax",
+        maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+      },
+    });
+  }
+  return sessionMiddleware;
+}
+
+app.use((req, res, next) => getSessionMiddleware()(req, res, next));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+// CSRF protection: validate Origin header for state-mutating API requests
+app.use((req: Request, res: Response, next: NextFunction) => {
+  const mutatingMethods = ["POST", "PUT", "PATCH", "DELETE"];
+  if (req.path.startsWith("/api") && mutatingMethods.includes(req.method)) {
+    const origin = req.get("origin");
+    const host = req.get("host");
+    if (origin) {
+      try {
+        const originHost = new URL(origin).host;
+        if (originHost !== host) {
+          return res.status(403).json({ message: "Forbidden: cross-origin request" });
+        }
+      } catch {
+        return res.status(403).json({ message: "Forbidden: invalid origin" });
+      }
+    }
+  }
+  next();
+});
+
+passport.use(
+  new LocalStrategy(async (username, password, done) => {
+    try {
+      // Allow login via username or email
+      const user =
+        (await storage.getUserByUsername(username)) ||
+        (await storage.getUserByEmail(username));
+      if (!user) return done(null, false, { message: "Incorrect username/email or password" });
+      const isMatch = await bcrypt.compare(password, user.password);
+      if (!isMatch) return done(null, false, { message: "Incorrect username/email or password" });
+      return done(null, user);
+    } catch (err) {
+      return done(err);
+    }
+  })
+);
+
+passport.serializeUser((user: any, done) => {
+  done(null, user.id);
+});
+
+passport.deserializeUser(async (id: string, done) => {
+  try {
+    const user = await storage.getUser(id);
+    done(null, user || false);
+  } catch (err) {
+    const message = err instanceof Error ? err.message : "Unknown error";
+    console.error("[auth] Failed to deserialize session user:", message);
+    done(null, false);
+  }
+});
+
+app.use((req, res, next) => {
+  const start = Date.now();
+  const path = req.path;
+  let capturedJsonResponse: Record<string, any> | undefined = undefined;
+
+  const originalResJson = res.json;
+  res.json = function (bodyJson, ...args) {
+    capturedJsonResponse = bodyJson;
+    return originalResJson.apply(res, [bodyJson, ...args]);
+  };
+
+  res.on("finish", () => {
+    const duration = Date.now() - start;
+    if (path.startsWith("/api")) {
+      let logLine = `${req.method} ${path} ${res.statusCode} in ${duration}ms`;
+      if (capturedJsonResponse) {
+        logLine += ` :: ${JSON.stringify(capturedJsonResponse)}`;
+      }
+
+      if (logLine.length > 80) {
+        logLine = logLine.slice(0, 79) + "…";
+      }
+
+      log(logLine);
+    }
+  });
+
+  next();
+});
+
+(async () => {
+  validateRuntimeEnv();
+  await initStorage();
+  await ensureAdminUser();
+  if (ADMIN_SEED_EMAIL) {
+    await promoteAdminByEmail(ADMIN_SEED_EMAIL);
+  }
+  await seedDefaultVlogs();
+
+  // Start the background bot worker that auto-fetches tech news from RSS feeds
+  // and publishes them to the blog in real-time.
+  if (process.env.BOT_WORKER_ENABLED !== "false") {
+    startBotWorker().catch((err) => {
+      console.error("[startup] Bot worker failed to start (blog auto-posting disabled):", err);
+    });
+  }
+
+  // Auto-start the vid aggregator so new YouTube tech videos are continuously
+  // fetched into the Vlog as published posts (drafts need admin review only
+  // when VID_AGGREGATOR_PUBLISH_DRAFTS is explicitly "false").
+  if (process.env.VID_AGGREGATOR_ENABLED !== "false") {
+    startVidAggregator();
+  }
+
+  // Auto-start the SPORTA scheduler that runs content aggregation for all
+  // active SPORTA campaigns according to their postingFrequency setting.
+  if (process.env.SPORTA_SCHEDULER_ENABLED !== "false") {
+    startSportaScheduler();
+  }
+
+  const server = await registerRoutes(app);
+
+  app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
+    const status = err.status || err.statusCode || 500;
+    const message = err.message || "Internal Server Error";
+
+    // Log the error server-side for diagnostics
+    console.error(err);
+
+    // Only send a response if one hasn't been sent yet.  Re-throwing after
+    // res.json() would cause finalhandler to call req.socket.destroy(),
+    // resulting in ERR_CONNECTION_CLOSED on the client.
+    if (!res.headersSent) {
+      res.status(status).json({ message });
+    }
+  });
+
+  // importantly only setup vite in development and after
+  // setting up all the other routes so the catch-all route
+  // doesn't interfere with the other routes
+  if (app.get("env") === "development") {
+    await setupVite(app, server);
+  } else {
+    serveStatic(app);
+  }
+
+  // ALWAYS serve the app on the port specified in the environment variable PORT.
+  // Default to 6060 for local npm run start usage if PORT is not set.
+  // this serves both the API and the client.
+  // It is the only port that is not firewalled.
+  const port = parseInt(process.env.PORT || '6060', 10);
+  server.listen({
+    port,
+    host: "0.0.0.0",
+  }, () => {
+    log(`serving on port ${port}`);
+  });
+})().catch((err) => {
+  console.error("[startup] Fatal error during server initialization:", err);
+  process.exit(1);
+});

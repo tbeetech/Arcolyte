@@ -1,0 +1,20 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "version": 2,
+  "buildCommand": "npm run vercel-build",
+  "outputDirectory": "dist/public",
+  "functions": {
+    "api/index.ts": {
+      "maxDuration": 60
+    }
+  },
+  "rewrites": [
+    { "source": "/api/:path*", "destination": "/api?path=:path*" },
+    { "source": "/blog/new", "destination": "/index.html" },
+    { "source": "/blog/edit/:id", "destination": "/index.html" },
+    { "source": "/blog/slug/:slug", "destination": "/index.html" },
+    { "source": "/blog/:slug", "destination": "/api?path=blog-html/:slug" },
+    { "source": "/s/:code", "destination": "/api?path=s/:code" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
