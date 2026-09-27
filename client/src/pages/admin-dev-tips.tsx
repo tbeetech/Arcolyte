@@ -71,7 +71,7 @@ const PILLAR_COLORS: Record<string, string> = {  "code-snippet":   "bg-cyan-500/
   "performance":    "bg-yellow-500/20 text-yellow-400 border-yellow-500/30",
   "security":       "bg-red-500/20 text-red-400 border-red-500/30",
   "tool-discovery": "bg-blue-500/20 text-blue-400 border-blue-500/30",
-  "career-mindset": "bg-orange-500/20 text-orange-400 border-orange-500/30",
+  "career-mindset": "bg-gray-500/20 text-gray-400 border-gray-500/30",
   "frontend":       "bg-pink-500/20 text-pink-400 border-pink-500/30",
   "api-design":     "bg-emerald-500/20 text-emerald-400 border-emerald-500/30",
 };

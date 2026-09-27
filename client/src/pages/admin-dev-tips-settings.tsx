@@ -482,7 +482,7 @@ export default function AdminDevTipsSettingsPage() {
                       onClick={() => setAudience(a)}
                       className={`px-3 py-1 rounded-full text-xs border capitalize transition-all ${
                         audience === a
-                          ? "bg-orange-500/20 text-orange-400 border-orange-500/30"
+                          ? "bg-gray-500/20 text-gray-400 border-gray-500/30"
                           : "bg-gray-800 text-gray-500 border-gray-700 hover:border-gray-600"
                       }`}
                     >

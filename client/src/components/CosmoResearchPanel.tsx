@@ -108,7 +108,7 @@ export default function CosmoResearchPanel() {
                 background:
                   "linear-gradient(135deg, rgba(10,10,30,0.97) 0%, rgba(20,15,50,0.97) 100%)",
                 border: "1px solid rgba(99,102,241,0.55)",
-                color: "#a5b4fc",
+                color: "black",
                 boxShadow:
                   "0 0 18px rgba(99,102,241,0.25), inset 0 1px 0 rgba(167,139,250,0.08)",
               }}
@@ -184,13 +184,13 @@ export default function CosmoResearchPanel() {
                 />
                 <span
                   className="font-orbitron font-bold text-xs tracking-widest"
-                  style={{ color: "#a5b4fc" }}
+                  style={{ color: "black" }}
                 >
                   COSMO
                 </span>
                 <span
                   className="font-orbitron text-[10px] tracking-wider opacity-60"
-                  style={{ color: "#c4b5fd" }}
+                  style={{ color: "black" }}
                 >
                   · RESEARCH AI
                 </span>
@@ -199,7 +199,7 @@ export default function CosmoResearchPanel() {
                 <button
                   aria-label={minimized ? "Expand Cosmo" : "Minimize Cosmo"}
                   className="p-1 rounded hover:bg-white/5 transition-colors"
-                  style={{ color: "#a5b4fc" }}
+                  style={{ color: "black" }}
                   onClick={(e) => {
                     e.stopPropagation();
                     setMinimized((v) => !v);
@@ -218,7 +218,7 @@ export default function CosmoResearchPanel() {
                   aria-label="Close Cosmo Research"
                   data-testid="cosmo-research-close"
                   className="p-1 rounded hover:bg-white/5 transition-colors"
-                  style={{ color: "#a5b4fc" }}
+                  style={{ color: "black" }}
                   onClick={(e) => {
                     e.stopPropagation();
                     setOpen(false);
@@ -235,7 +235,7 @@ export default function CosmoResearchPanel() {
               <div
                 className="shrink-0 text-center font-orbitron text-[9px] tracking-[0.22em] py-1 opacity-40"
                 style={{
-                  color: "#c4b5fd",
+                  color: "black",
                   borderBottom: "1px solid rgba(99,102,241,0.1)",
                 }}
               >
@@ -255,9 +255,8 @@ export default function CosmoResearchPanel() {
                 {messages.map((msg, i) => (
                   <div
                     key={i}
-                    className={`flex ${
-                      msg.role === "user" ? "justify-end" : "justify-start"
-                    }`}
+                    className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"
+                      }`}
                   >
                     {msg.role === "assistant" && (
                       <span
@@ -272,22 +271,22 @@ export default function CosmoResearchPanel() {
                       style={
                         msg.role === "assistant"
                           ? {
-                              background: "rgba(99,102,241,0.08)",
-                              border: "1px solid rgba(99,102,241,0.2)",
-                              borderRadius: "2px 8px 8px 8px",
-                              color: "rgba(255,255,255,0.88)",
-                              fontFamily: "var(--font-sans)",
-                              whiteSpace: "pre-wrap",
-                            }
+                            background: "rgba(99,102,241,0.08)",
+                            border: "1px solid rgba(99,102,241,0.2)",
+                            borderRadius: "2px 8px 8px 8px",
+                            color: "rgba(255,255,255,0.88)",
+                            fontFamily: "var(--font-sans)",
+                            whiteSpace: "pre-wrap",
+                          }
                           : {
-                              background: "rgba(99,102,241,0.18)",
-                              border: "1px solid rgba(99,102,241,0.4)",
-                              borderRadius: "8px 2px 8px 8px",
-                              color: "#c4b5fd",
-                              fontFamily: "var(--font-orbitron)",
-                              fontSize: "10px",
-                              letterSpacing: "0.04em",
-                            }
+                            background: "rgba(99,102,241,0.18)",
+                            border: "1px solid rgba(99,102,241,0.4)",
+                            borderRadius: "8px 2px 8px 8px",
+                            color: "black",
+                            fontFamily: "var(--font-orbitron)",
+                            fontSize: "10px",
+                            letterSpacing: "0.04em",
+                          }
                       }
                     >
                       {msg.content}
@@ -317,7 +316,7 @@ export default function CosmoResearchPanel() {
                       />
                       <span
                         className="font-orbitron text-[10px] tracking-widest opacity-70"
-                        style={{ color: "#a5b4fc" }}
+                        style={{ color: "black" }}
                       >
                         ANALYZING…
                       </span>
@@ -336,7 +335,7 @@ export default function CosmoResearchPanel() {
               >
                 <span
                   className="w-full font-orbitron text-[9px] tracking-widest opacity-40 pt-2 pb-0.5"
-                  style={{ color: "#c4b5fd" }}
+                  style={{ color: "black" }}
                 >
                   TRENDING RESEARCH
                 </span>
@@ -375,7 +374,7 @@ export default function CosmoResearchPanel() {
                   className="flex-1 bg-transparent outline-none text-xs placeholder:opacity-30"
                   style={{
                     fontFamily: "var(--font-orbitron)",
-                    color: "#c4b5fd",
+                    color: "black",
                     letterSpacing: "0.04em",
                     caretColor: "#818cf8",
                   }}

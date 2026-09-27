@@ -17,19 +17,16 @@ export default function BackToTop() {
       id="backToTop"
       onClick={scrollToTop}
       aria-label="Back to top"
-      className="fixed z-50 flex items-center justify-center w-11 h-11 rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-galactic-orange"
+      className="fixed z-50 flex items-center justify-center w-12 h-12 rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-foreground bg-foreground shadow-md transition-all duration-300 hover:bg-muted-foreground"
       style={{
         bottom: "32px",
         right: "32px",
-        background: "linear-gradient(135deg, var(--galactic-orange), var(--galactic-gold))",
-        boxShadow: "0 4px 20px rgba(34,130,70,0.4)",
         opacity: visible ? 1 : 0,
         pointerEvents: visible ? "auto" : "none",
         transform: visible ? "translateY(0)" : "translateY(12px)",
-        transition: "opacity 0.3s ease, transform 0.3s ease",
       }}
     >
-      <ChevronUp className="w-5 h-5 text-white" />
+      <ChevronUp className="w-5 h-5 text-background" />
     </button>
   );
 }

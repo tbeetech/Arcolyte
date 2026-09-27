@@ -86,32 +86,34 @@ const cases: CaseStudyCard[] = [
 
 export default function CaseStudiesSection() {
   return (
-    <section id="case-studies" className="page-section py-16 sm:py-20 bg-deep-space">
-      <div className="container mx-auto px-4 sm:px-6">
-        <div className="text-center mb-10 sm:mb-12">
-          <h2 className="font-orbitron font-bold text-2xl sm:text-3xl md:text-4xl mb-4 gradient-text">
+    <section id="case-studies" className="py-24 bg-background">
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-16">
+          <h2 className="font-bold text-3xl sm:text-4xl md:text-5xl mb-6 tracking-tight text-foreground">
             Proof of Impact
           </h2>
-          <p className="text-gray-300 max-w-2xl mx-auto text-sm sm:text-base">
+          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
             Real projects delivering measurable results across industries.
           </p>
         </div>
-        <div className="grid gap-5 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {cases.map(({ title, category, detail, metric, slug, link, linkType }) => (
             <div
               key={slug}
-              className="card"
+              className="flex flex-col border border-border p-6 bg-card transition-shadow hover:shadow-lg"
               data-testid={`case-study-${slug}`}
             >
-              <span className="text-xs text-galactic-orange font-orbitron uppercase tracking-widest mb-2 block">
+              <span className="text-xs font-semibold uppercase tracking-widest mb-4 block text-muted-foreground">
                 {category}
               </span>
-              <h3 className="font-orbitron text-base sm:text-lg mb-2 text-neon-yellow">
+              <h3 className="font-bold text-xl mb-3 text-foreground leading-snug">
                 {title}
               </h3>
-              <p className="text-gray-400 text-sm mb-4 leading-relaxed">{detail}</p>
-              <div className="flex items-center justify-between mt-auto">
-                <span className="px-3 py-1 bg-galactic-green/10 border border-galactic-green/30 rounded-full text-galactic-green text-xs font-orbitron">
+              <p className="text-muted-foreground text-sm mb-8 leading-relaxed flex-grow">
+                {detail}
+              </p>
+              <div className="flex items-center justify-between pt-4 border-t border-border mt-auto">
+                <span className="text-xs font-medium text-foreground">
                   {metric}
                 </span>
                 {link && (
@@ -119,7 +121,7 @@ export default function CaseStudiesSection() {
                     href={link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3 py-1 border border-galactic-orange/40 rounded-full text-galactic-orange hover:bg-galactic-orange/10 transition-colors text-xs font-orbitron"
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-foreground hover:text-muted-foreground transition-colors"
                   >
                     {linkType === "app" ? (
                       <>Access <Smartphone className="w-3 h-3" /></>
@@ -133,10 +135,10 @@ export default function CaseStudiesSection() {
           ))}
         </div>
 
-        <div className="text-center mt-10">
+        <div className="text-center mt-16">
           <a
             href="/case-studies"
-            className="inline-flex items-center gap-2 px-6 py-3 border border-galactic-orange/40 rounded-lg text-galactic-orange hover:bg-galactic-orange/10 transition-colors font-orbitron text-sm"
+            className="inline-flex items-center gap-2 px-8 py-4 border border-foreground text-foreground hover:bg-foreground hover:text-background transition-colors font-medium text-base rounded-none"
           >
             View All Case Studies <ArrowRight className="w-4 h-4" />
           </a>
@@ -145,4 +147,3 @@ export default function CaseStudiesSection() {
     </section>
   );
 }
-

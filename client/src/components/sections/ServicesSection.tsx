@@ -47,49 +47,47 @@ const services = [
 
 export default function ServicesSection() {
   return (
-    <section id="services" className="page-section py-16 sm:py-20">
-      <div className="container mx-auto px-4 sm:px-6">
-        <div className="text-center mb-10 sm:mb-12">
-          <h2 className="font-orbitron font-bold text-2xl sm:text-3xl md:text-4xl mb-4 gradient-text">
+    <section id="services" className="py-24 bg-muted">
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-16">
+          <h2 className="font-bold text-3xl sm:text-4xl md:text-5xl mb-6 tracking-tight text-foreground">
             Our Services
           </h2>
-          <p className="text-gray-300 max-w-2xl mx-auto text-sm sm:text-base">
+          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
             Strategy, design, and engineering under one roof. Practical solutions that move your business forward.
           </p>
         </div>
-        <div className="relative px-10">
+        <div className="relative px-4 sm:px-10">
           <Carousel opts={{ align: "start", loop: true }}>
             <CarouselContent>
               {services.map(({ icon: Icon, title, description, image, imageAlt }) => (
-                <CarouselItem key={title} className="sm:basis-1/2 lg:basis-1/3">
-                  <div className="card hover:border-galactic-orange/50 transition-colors h-full overflow-hidden p-0">
-                    <div className="relative w-full overflow-hidden" style={{ aspectRatio: "4/3" }}>
+                <CarouselItem key={title} className="sm:basis-1/2 lg:basis-1/3 pl-4">
+                  <div className="flex flex-col border border-border h-full bg-card hover:shadow-lg transition-shadow rounded-none overflow-hidden">
+                    <div className="relative w-full aspect-video overflow-hidden">
                       <img
                         src={image}
                         alt={imageAlt}
                         loading="lazy"
-                        className="w-full h-full object-cover"
-                        style={{ maxHeight: "180px" }}
+                        className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-space-dark/90 to-transparent" />
-                      <div className="absolute bottom-3 left-3 w-9 h-9 flex items-center justify-center rounded-full bg-galactic-orange/20 text-galactic-orange border border-galactic-orange/30">
-                        <Icon className="w-4 h-4" />
+                      <div className="absolute inset-0 bg-black/40" />
+                      <div className="absolute bottom-4 left-4 w-10 h-10 flex items-center justify-center bg-background border border-border rounded-none">
+                        <Icon className="w-5 h-5 text-foreground" />
                       </div>
                     </div>
-                    <div className="p-5">
-                      <h3 className="font-orbitron text-base mb-2 text-neon-yellow">{title}</h3>
-                      <p className="text-gray-300 text-sm leading-relaxed">{description}</p>
+                    <div className="p-6">
+                      <h3 className="font-bold text-xl mb-3 text-foreground">{title}</h3>
+                      <p className="text-muted-foreground text-sm leading-relaxed">{description}</p>
                     </div>
                   </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="border-galactic-orange/40 text-galactic-orange hover:bg-galactic-orange/10 bg-space-black/80" />
-            <CarouselNext className="border-galactic-orange/40 text-galactic-orange hover:bg-galactic-orange/10 bg-space-black/80" />
+            <CarouselPrevious className="border-border text-foreground hover:bg-muted bg-background rounded-none -left-4 sm:-left-6" />
+            <CarouselNext className="border-border text-foreground hover:bg-muted bg-background rounded-none -right-4 sm:-right-6" />
           </Carousel>
         </div>
       </div>
     </section>
   );
 }
-

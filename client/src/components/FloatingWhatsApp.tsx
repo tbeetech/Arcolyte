@@ -10,9 +10,9 @@ export default function FloatingWhatsApp() {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-4 right-4 bg-green-500 text-white p-3 rounded-full shadow-lg z-50"
+      className="fixed bottom-4 right-4 bg-foreground text-background font-medium px-4 py-3 shadow-md z-50 hover:bg-muted-foreground transition-colors border border-border"
     >
-      WhatsApp
+      Contact Support
     </a>
   );
 }

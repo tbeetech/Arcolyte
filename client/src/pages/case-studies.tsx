@@ -1,5 +1,6 @@
 import Navigation from "@/components/Navigation";
 import { CheckCircle2, TrendingUp, ExternalLink, Smartphone } from "lucide-react";
+import { Link } from "wouter";
 
 interface CaseStudy {
   title: string;
@@ -207,44 +208,44 @@ const cases: CaseStudy[] = [
 
 export default function CaseStudiesPage() {
   return (
-    <div className="min-h-screen bg-space-black text-white">
+    <div className="min-h-screen bg-background text-foreground">
       <Navigation />
 
-      <section className="py-20 px-6">
+      <section className="py-24 px-6">
         <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <h1 className="font-orbitron font-bold text-4xl md:text-5xl mb-4 gradient-text">Case Studies</h1>
-            <p className="text-gray-300 max-w-2xl mx-auto text-lg">
+          <div className="text-center mb-16 max-w-3xl mx-auto">
+            <h1 className="font-bold text-4xl md:text-5xl mb-6 tracking-tight uppercase">Case Studies</h1>
+            <p className="text-foreground text-lg leading-relaxed">
               Real systems, real results, proof over promises.
             </p>
           </div>
 
-          <div className="space-y-16">
+          <div className="space-y-12">
             {cases.map(({ title, slug, category, client, duration, impact, metricValue, metricLabel, overview, solution, results, tech, link, linkType }) => (
               <div
                 key={slug}
                 id={slug}
-                className="glass-effect rounded-2xl border border-galactic-orange/20 overflow-hidden"
+                className="bg-card border border-border rounded-none overflow-hidden"
                 data-testid={`case-study-detail-${slug}`}
               >
                 {/* Header */}
-                <div className="bg-gradient-to-r from-galactic-orange/10 to-galactic-gold/5 p-8 border-b border-galactic-orange/20">
-                  <div className="flex flex-wrap items-start justify-between gap-4">
-                    <div>
-                      <span className="text-xs text-galactic-orange font-orbitron uppercase tracking-widest mb-2 block">
+                <div className="p-8 border-b border-border bg-muted/30">
+                  <div className="flex flex-col md:flex-row items-start justify-between gap-6">
+                    <div className="flex-1">
+                      <span className="text-xs text-foreground uppercase tracking-widest font-semibold mb-3 block">
                         {category}
                       </span>
-                      <h2 className="font-orbitron font-bold text-2xl md:text-3xl gradient-text mb-2">{title}</h2>
-                      <div className="flex flex-wrap gap-4 text-sm text-gray-400">
-                        <span>Client: <span className="text-gray-300">{client}</span></span>
-                        <span>Duration: <span className="text-gray-300">{duration}</span></span>
+                      <h2 className="font-bold text-2xl md:text-3xl text-foreground mb-4">{title}</h2>
+                      <div className="flex flex-wrap gap-6 text-sm text-foreground">
+                        <span className="font-medium">Client: <span className="font-normal">{client}</span></span>
+                        <span className="font-medium">Duration: <span className="font-normal">{duration}</span></span>
                       </div>
                       {link && (
                         <a
                           href={link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 mt-3 px-4 py-2 bg-gradient-to-r from-galactic-orange to-galactic-gold text-space-black font-orbitron font-bold text-xs rounded-lg hover:shadow-[0_0_16px_rgba(34,197,94,0.4)] transition-all"
+                          className="inline-flex items-center gap-2 mt-6 px-6 py-3 bg-black text-white hover:bg-zinc-800 dark:bg-black dark:text-white dark:border dark:border-zinc-800 dark:hover:bg-zinc-900 font-semibold text-xs transition-colors rounded-none"
                         >
                           {linkType === "app" ? (
                             <>Access App <Smartphone className="w-4 h-4" /></>
@@ -254,46 +255,46 @@ export default function CaseStudiesPage() {
                         </a>
                       )}
                     </div>
-                    <div className="text-center bg-galactic-green/10 border border-galactic-green/30 rounded-xl px-6 py-4">
-                      <div className="font-orbitron font-black text-3xl text-galactic-green">{metricValue}</div>
-                      <div className="text-xs text-galactic-green font-orbitron">{metricLabel}</div>
+                    <div className="text-center bg-background border border-border p-6 min-w-[160px]">
+                      <div className="font-bold text-4xl text-foreground mb-1">{metricValue}</div>
+                      <div className="text-xs text-foreground uppercase font-semibold tracking-wider">{metricLabel}</div>
                     </div>
                   </div>
-                  <p className="mt-4 text-galactic-gold font-orbitron text-sm">"{impact}"</p>
+                  <p className="mt-6 text-foreground font-medium text-sm border-l-2 border-foreground pl-4">"{impact}"</p>
                 </div>
 
                 {/* Body */}
-                <div className="p-8 grid md:grid-cols-2 gap-10">
-                  <div className="space-y-6">
+                <div className="p-8 grid md:grid-cols-2 gap-12 bg-background">
+                  <div className="space-y-8">
                     <div>
-                      <h3 className="font-orbitron font-bold text-neon-yellow mb-2">Challenge</h3>
-                      <p className="text-gray-300 text-sm leading-relaxed">{overview}</p>
+                      <h3 className="font-bold text-lg text-foreground mb-3 uppercase tracking-tight">Challenge</h3>
+                      <p className="text-foreground text-sm leading-relaxed">{overview}</p>
                     </div>
                     <div>
-                      <h3 className="font-orbitron font-bold text-neon-yellow mb-2">Solution</h3>
-                      <p className="text-gray-300 text-sm leading-relaxed">{solution}</p>
+                      <h3 className="font-bold text-lg text-foreground mb-3 uppercase tracking-tight">Solution</h3>
+                      <p className="text-foreground text-sm leading-relaxed">{solution}</p>
                     </div>
                   </div>
 
-                  <div className="space-y-6">
+                  <div className="space-y-8">
                     <div>
-                      <h3 className="font-orbitron font-bold text-neon-yellow mb-3">Results</h3>
-                      <ul className="space-y-2">
+                      <h3 className="font-bold text-lg text-foreground mb-4 uppercase tracking-tight">Results</h3>
+                      <ul className="space-y-3">
                         {results.map((r) => (
-                          <li key={r} className="flex items-start gap-2 text-sm text-gray-300">
-                            <CheckCircle2 className="w-4 h-4 text-galactic-green shrink-0 mt-0.5" />
+                          <li key={r} className="flex items-start gap-3 text-sm text-foreground">
+                            <CheckCircle2 className="w-4 h-4 text-foreground shrink-0 mt-0.5" />
                             {r}
                           </li>
                         ))}
                       </ul>
                     </div>
                     <div>
-                      <h3 className="font-orbitron font-bold text-neon-yellow mb-2">Tech Stack</h3>
+                      <h3 className="font-bold text-lg text-foreground mb-3 uppercase tracking-tight">Tech Stack</h3>
                       <div className="flex flex-wrap gap-2">
                         {tech.map((t) => (
                           <span
                             key={t}
-                            className="px-2 py-1 bg-galactic-orange/10 border border-galactic-orange/20 rounded text-xs font-orbitron text-galactic-orange"
+                            className="px-3 py-1 bg-muted border border-border text-xs font-semibold text-foreground uppercase tracking-wider"
                           >
                             {t}
                           </span>
@@ -306,18 +307,16 @@ export default function CaseStudiesPage() {
             ))}
           </div>
 
-          <div className="text-center mt-16">
-            <a
-              href="/#contact"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-galactic-orange to-galactic-gold text-space-black font-orbitron font-bold rounded-xl hover:shadow-[0_0_24px_rgba(34,197,94,0.4)] transition-all"
-            >
-              <TrendingUp className="w-5 h-5" />
-              Start Your Project
-            </a>
+          <div className="text-center mt-20">
+            <Link href="/contact">
+              <span className="inline-flex items-center justify-center gap-2 px-10 py-5 bg-black text-white hover:bg-zinc-800 dark:bg-black dark:text-white dark:border dark:border-zinc-800 dark:hover:bg-zinc-900 font-bold text-base transition-colors cursor-pointer uppercase tracking-wider rounded-none">
+                <TrendingUp className="w-5 h-5" />
+                Start Your Project
+              </span>
+            </Link>
           </div>
         </div>
       </section>
     </div>
   );
 }
-

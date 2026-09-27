@@ -1,4 +1,4 @@
-﻿import type { Config } from "tailwindcss";
+import type { Config } from "tailwindcss";
 
 export default {
   darkMode: ["class"],
@@ -81,10 +81,10 @@ export default {
       },
       fontFamily: {
         sans: ["var(--font-sans)"],
-        serif: ["var(--font-serif)"],
-        mono: ["var(--font-mono)"],
-        orbitron: ["var(--font-orbitron)"],
-        tech: ["var(--font-mono)"],
+        serif: ["var(--font-sans)"],
+        mono: ["var(--font-sans)"],
+        orbitron: ["var(--font-sans)"],
+        tech: ["var(--font-sans)"],
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",

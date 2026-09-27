@@ -67,7 +67,7 @@ export default function AdminSpeedCrackerPage() {
     { label: "Active Campaigns", value: stats?.activeCampaigns ?? 0, icon: GitBranch, color: "text-green-400", bg: "bg-green-500/10 border-green-500/20" },
     { label: "Pending Approval", value: stats?.pendingContent ?? 0, icon: CheckSquare, color: "text-yellow-400", bg: "bg-yellow-500/10 border-yellow-500/20" },
     { label: "Published Content", value: stats?.publishedContent ?? 0, icon: TrendingUp, color: "text-blue-400", bg: "bg-blue-500/10 border-blue-500/20" },
-    { label: "Total Campaigns", value: stats?.totalCampaigns ?? 0, icon: Zap, color: "text-orange-400", bg: "bg-orange-500/10 border-orange-500/20" },
+    { label: "Total Campaigns", value: stats?.totalCampaigns ?? 0, icon: Zap, color: "text-gray-400", bg: "bg-gray-500/10 border-gray-500/20" },
     { label: "Vlog Posts", value: stats?.totalVlogs ?? 0, icon: Video, color: "text-purple-400", bg: "bg-purple-500/10 border-purple-500/20" },
     { label: "Published Vlogs", value: stats?.publishedVlogs ?? 0, icon: FileText, color: "text-cyan-400", bg: "bg-cyan-500/10 border-cyan-500/20" },
   ];

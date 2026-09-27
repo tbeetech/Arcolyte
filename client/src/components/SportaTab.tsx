@@ -211,7 +211,7 @@ function mediaTypeColor(mediaType: string): string {
     Reviews: "bg-yellow-500/20 text-yellow-400 border-yellow-500/30",
     Threads: "bg-gray-500/20 text-gray-300 border-gray-500/30",
     Podcasts: "bg-green-500/20 text-green-400 border-green-500/30",
-    Memes: "bg-orange-500/20 text-orange-400 border-orange-500/30",
+    Memes: "bg-gray-500/20 text-gray-400 border-gray-500/30",
     Images: "bg-teal-500/20 text-teal-400 border-teal-500/30",
     Quotes: "bg-indigo-500/20 text-indigo-400 border-indigo-500/30",
   };

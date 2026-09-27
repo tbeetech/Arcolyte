@@ -1,4 +1,4 @@
-﻿import { Link } from "wouter";
+import { Link } from "wouter";
 import Navigation from "@/components/Navigation";
 import { Button } from "@/components/ui/button";
 import {
@@ -14,8 +14,6 @@ const features = [
     title: "ROI Calculator",
     description: "Interactive financial model that calculates your exact business ROI from ARCOLYTE TECHNOLOGIES services in real time.",
     tags: ["Interactive", "Finance", "Analytics"],
-    color: "text-galactic-orange",
-    border: "border-galactic-orange",
     anchor: "/feature/roi-calculator",
   },
   {
@@ -24,8 +22,6 @@ const features = [
     title: "Innovation Roadmap",
     description: "Animated milestone timeline showing ARCOLYTE TECHNOLOGIES's journey from startup to Series A and beyond.",
     tags: ["Visual", "Strategy"],
-    color: "text-neon-cyan",
-    border: "border-neon-cyan",
     anchor: "/feature/innovation-roadmap",
   },
   {
@@ -34,8 +30,6 @@ const features = [
     title: "Digital Skills Assessment",
     description: "4-question quiz that benchmarks your business's digital maturity and delivers a personalised roadmap.",
     tags: ["Interactive", "Education", "Quiz"],
-    color: "text-neon-yellow",
-    border: "border-neon-yellow",
     anchor: "/feature/skills-quiz",
   },
   {
@@ -44,8 +38,6 @@ const features = [
     title: "Tech Trends Radar",
     description: "Live technology adoption radar showing where AI, automation, cloud, and cybersecurity are heading.",
     tags: ["Visual", "Data", "Research"],
-    color: "text-neon-purple",
-    border: "border-neon-purple",
     anchor: "/feature/tech-trends",
   },
   {
@@ -54,8 +46,6 @@ const features = [
     title: "Learning Path Recommender",
     description: "3-step quiz that curates a personalised curriculum of courses and services based on your exact goals.",
     tags: ["Education", "Personalized", "AI"],
-    color: "text-galactic-green",
-    border: "border-galactic-green",
     anchor: "/learning-path",
   },
   {
@@ -64,8 +54,6 @@ const features = [
     title: "Free Resource Library",
     description: "Curated e-books, templates, cheat sheets, and video guides, all free, all actionable.",
     tags: ["Education", "Free", "Resources"],
-    color: "text-galactic-green",
-    border: "border-galactic-green",
     anchor: "/feature/resources",
   },
   {
@@ -74,8 +62,6 @@ const features = [
     title: "Service Comparison",
     description: "Interactive 3-tier comparison table helping prospects choose the right service package instantly.",
     tags: ["Interactive", "Sales", "Pricing"],
-    color: "text-neon-cyan",
-    border: "border-neon-cyan",
     anchor: "/feature/service-comparison",
   },
   {
@@ -84,8 +70,6 @@ const features = [
     title: "Startup Digital Toolkit",
     description: "16-point interactive checklist every growing business needs, with expert tips for each item.",
     tags: ["Interactive", "Startup", "Education"],
-    color: "text-galactic-orange",
-    border: "border-galactic-orange",
     anchor: "/feature/startup-toolkit",
   },
   {
@@ -94,8 +78,6 @@ const features = [
     title: "Achievement Badges",
     description: "Gamification system rewarding community participation, from first post to platform mastery.",
     tags: ["Gamification", "Community", "Rewards"],
-    color: "text-neon-yellow",
-    border: "border-neon-yellow",
     anchor: "/profile",
   },
   {
@@ -104,8 +86,6 @@ const features = [
     title: "Career Intelligence Hub",
     description: "Live job listings, curated courses, industry expert recommender, and career strategy cheat codes, all in one place.",
     tags: ["Career", "Jobs", "Education", "AI"],
-    color: "text-neon-cyan",
-    border: "border-neon-cyan",
     anchor: "/career-hub",
   },
   {
@@ -114,8 +94,6 @@ const features = [
     title: "Features Hub",
     description: "This page, a unified, filterable showcase of all platform features for investors and prospects.",
     tags: ["Showcase", "Overview"],
-    color: "text-galactic-gold",
-    border: "border-galactic-gold",
     anchor: "/features",
   },
   {
@@ -124,8 +102,6 @@ const features = [
     title: "SPORTA",
     description: "Enterprise AI agentic social media aggregator, reshaper & mass publishing system. Aggregate 17+ platforms, reshape with AI, and auto-publish everywhere.",
     tags: ["AI", "Automation", "Social Media", "Publishing"],
-    color: "text-galactic-orange",
-    border: "border-galactic-orange",
     anchor: "/feature/sporta",
   },
   {
@@ -134,28 +110,26 @@ const features = [
     title: "EmailOS",
     description: "Multi-tenant email marketing operating system. React-rendered campaigns, SES delivery, cron dispatch, open/click tracking, A/B testing, and 3-tier pricing.",
     tags: ["Email", "Multi-Tenant", "SaaS", "Automation"],
-    color: "text-neon-cyan",
-    border: "border-neon-cyan",
     anchor: "/feature/emailos",
   },
 ];
 
 export default function FeaturesPage() {
   return (
-    <div className="min-h-screen bg-space-black text-white">
+    <div className="min-h-screen bg-background text-foreground">
       <title>13 Interactive Features — ARCOLYTE TECHNOLOGIES</title>
       <Navigation />
 
       <main className="pt-24 pb-20">
         {/* Hero */}
         <div className="container mx-auto px-6 text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-galactic-orange/30 text-galactic-orange text-sm font-orbitron mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 border border-border text-foreground text-sm mb-6 uppercase tracking-widest font-semibold">
             <Layers className="w-4 h-4" /> Real-Time Features
           </div>
-          <h1 className="font-orbitron font-bold text-4xl md:text-6xl gradient-text mb-6">
+          <h1 className="font-bold text-4xl md:text-6xl mb-6 tracking-tight">
             13 Investor-Ready Features
           </h1>
-          <p className="text-gray-300 max-w-3xl mx-auto text-lg leading-relaxed mb-8">
+          <p className="text-muted-foreground max-w-3xl mx-auto text-lg leading-relaxed mb-8">
             ARCOLYTE TECHNOLOGIES isn't just a service agency, it's an interactive digital ecosystem. Every feature below is live, built, and designed to attract users, retain community, and demonstrate platform value to investors.
           </p>
           <div className="flex flex-wrap justify-center gap-4 mb-6">
@@ -165,9 +139,9 @@ export default function FeaturesPage() {
               { label: "User-Facing", value: "✓" },
               { label: "Investor-Ready", value: "✓" },
             ].map(({ label, value }) => (
-              <div key={label} className="px-5 py-3 glass-effect rounded-xl border border-galactic-orange/20">
-                <div className="font-orbitron font-bold text-galactic-orange text-xl">{value}</div>
-                <div className="text-gray-400 text-xs font-orbitron">{label}</div>
+              <div key={label} className="px-5 py-3 bg-muted border border-border rounded-none">
+                <div className="font-bold text-foreground text-xl mb-1">{value}</div>
+                <div className="text-muted-foreground text-xs uppercase tracking-wider font-semibold">{label}</div>
               </div>
             ))}
           </div>
@@ -175,27 +149,27 @@ export default function FeaturesPage() {
 
         {/* Features grid */}
         <div className="container mx-auto px-6">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-7xl mx-auto">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
             {features.map((feature) => {
               const Icon = feature.icon;
               return (
                 <div
                   key={feature.number}
-                  className={`glass-effect p-6 rounded-2xl border ${feature.border}/20 hover:${feature.border}/40 transition-all group relative flex flex-col`}
+                  className="bg-card p-6 border border-border transition-shadow hover:shadow-lg flex flex-col rounded-none"
                 >
-                  <div className="flex items-center justify-between mb-3">
-                    <div className={`w-10 h-10 rounded-xl border ${feature.border}/30 flex items-center justify-center`}>
-                      <Icon className={`w-5 h-5 ${feature.color}`} />
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="w-10 h-10 border border-border flex items-center justify-center bg-muted rounded-none">
+                      <Icon className="w-5 h-5 text-foreground" />
                     </div>
-                    <span className={`font-orbitron font-black text-2xl ${feature.color} opacity-20`}>{feature.number}</span>
+                    <span className="font-black text-2xl text-muted-foreground/30">{feature.number}</span>
                   </div>
 
-                  <h3 className={`font-orbitron font-bold text-sm ${feature.color} mb-2`}>{feature.title}</h3>
-                  <p className="text-gray-400 text-xs leading-relaxed mb-3 flex-1">{feature.description}</p>
+                  <h3 className="font-bold text-lg text-foreground mb-2">{feature.title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-4 flex-1">{feature.description}</p>
 
-                  <div className="flex flex-wrap gap-1.5 mb-4">
+                  <div className="flex flex-wrap gap-2 mb-6">
                     {feature.tags.map(tag => (
-                      <span key={tag} className="text-xs px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-gray-400 font-orbitron">
+                      <span key={tag} className="text-[10px] px-2 py-1 bg-muted border border-border text-foreground uppercase tracking-wider font-semibold">
                         {tag}
                       </span>
                     ))}
@@ -204,9 +178,9 @@ export default function FeaturesPage() {
                   <Link href={feature.anchor}>
                     <Button
                       size="sm"
-                      className={`w-full font-orbitron text-xs bg-gradient-to-r from-galactic-orange/20 to-galactic-gold/20 text-white hover:from-galactic-orange/40 hover:to-galactic-gold/40 border ${feature.border}/20`}
+                      className="w-full text-sm bg-black text-white hover:bg-zinc-800 dark:bg-black dark:text-white dark:border dark:border-zinc-800 dark:hover:bg-zinc-900 rounded-none transition-colors"
                     >
-                      Open Feature <ArrowRight className="w-3 h-3 ml-1" />
+                      Open Feature <ArrowRight className="w-4 h-4 ml-2" />
                     </Button>
                   </Link>
                 </div>
@@ -216,22 +190,22 @@ export default function FeaturesPage() {
         </div>
 
         {/* CTA */}
-        <div className="container mx-auto px-6 mt-16 text-center">
-          <div className="glass-effect max-w-3xl mx-auto p-10 rounded-3xl border border-galactic-orange/30">
-            <h2 className="font-orbitron font-bold text-3xl gradient-text mb-4">
+        <div className="container mx-auto px-6 mt-20 text-center">
+          <div className="max-w-3xl mx-auto p-12 bg-muted border border-border rounded-none">
+            <h2 className="font-bold text-3xl mb-4 text-foreground tracking-tight">
               Ready to Invest or Partner?
             </h2>
-            <p className="text-gray-300 mb-6 max-w-xl mx-auto">
+            <p className="text-muted-foreground mb-8 max-w-xl mx-auto text-lg">
               ARCOLYTE TECHNOLOGIES is raising investment to scale these features globally. Book a call with the founder or request the full investor deck.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link href="/contact">
-                <Button size="lg" className="bg-gradient-to-r from-galactic-orange to-galactic-gold text-space-black font-orbitron font-bold">
+                <Button size="lg" className="bg-black text-white hover:bg-zinc-800 dark:bg-black dark:text-white dark:border dark:border-zinc-800 dark:hover:bg-zinc-900 rounded-none font-semibold px-8 py-6">
                   Request Investor Deck
                 </Button>
               </Link>
               <Link href="/contact">
-                <Button size="lg" variant="outline" className="border-galactic-orange/40 text-galactic-orange hover:bg-galactic-orange/10 font-orbitron">
+                <Button size="lg" variant="outline" className="border-border text-foreground hover:bg-muted font-semibold px-8 py-6 rounded-none">
                   Book a Platform Demo
                 </Button>
               </Link>

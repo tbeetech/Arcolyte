@@ -95,7 +95,7 @@ export default function AdminSpeedCrackerAnalyticsPage() {
           {/* Key metrics */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
             {[
-              { label: "Total Campaigns", value: stats.totalCampaigns, icon: Zap, color: "text-orange-400", bg: "bg-orange-500/10 border-orange-500/20" },
+              { label: "Total Campaigns", value: stats.totalCampaigns, icon: Zap, color: "text-gray-400", bg: "bg-gray-500/10 border-gray-500/20" },
               { label: "Active Campaigns", value: stats.activeCampaigns, icon: TrendingUp, color: "text-green-400", bg: "bg-green-500/10 border-green-500/20" },
               { label: "Published Content", value: stats.publishedContent, icon: CheckCircle, color: "text-blue-400", bg: "bg-blue-500/10 border-blue-500/20" },
               { label: "Publish Success Rate", value: `${publishRate}%`, icon: BarChart3, color: "text-purple-400", bg: "bg-purple-500/10 border-purple-500/20" },

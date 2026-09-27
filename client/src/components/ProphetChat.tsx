@@ -51,7 +51,7 @@ function parseInline(text: string, baseKey: string): ReactNode[] {
         nodes.push(
           <code
             key={`${baseKey}-c${k++}`}
-            style={{ background: "rgba(34,197,94,0.12)", borderRadius: "3px", padding: "0 3px", fontFamily: "monospace" }}
+            className="bg-muted px-1 rounded-sm font-mono text-sm"
           >
             {text.slice(i + 1, end)}
           </code>
@@ -74,26 +74,26 @@ function formatProphetMessage(content: string): ReactNode {
       {lines.map((line, li) => {
         const trimmed = line.trimStart();
 
-        if (trimmed === "") return <div key={li} className="h-1.5" aria-hidden="true" />;
+        if (trimmed === "") return <div key={li} className="h-2" aria-hidden="true" />;
 
         // Headings
         if (trimmed.startsWith("### ")) {
           return (
-            <p key={li} className="font-semibold mt-1.5 mb-0.5" style={{ color: "var(--galactic-gold)", fontSize: "11px" }}>
+            <p key={li} className="font-semibold mt-2 mb-1 text-sm text-foreground">
               {parseInline(trimmed.slice(4), `${li}`)}
             </p>
           );
         }
         if (trimmed.startsWith("## ")) {
           return (
-            <p key={li} className="font-bold mt-2 mb-0.5" style={{ color: "var(--galactic-gold)", fontSize: "11px" }}>
+            <p key={li} className="font-bold mt-3 mb-1 text-sm text-foreground">
               {parseInline(trimmed.slice(3), `${li}`)}
             </p>
           );
         }
         if (trimmed.startsWith("# ")) {
           return (
-            <p key={li} className="font-bold mt-2 mb-1" style={{ color: "var(--galactic-gold)", fontSize: "12px" }}>
+            <p key={li} className="font-bold mt-4 mb-2 text-base text-foreground">
               {parseInline(trimmed.slice(2), `${li}`)}
             </p>
           );
@@ -103,8 +103,8 @@ function formatProphetMessage(content: string): ReactNode {
         const bulletMatch = trimmed.match(/^[-*]\s+(.*)/);
         if (bulletMatch) {
           return (
-            <div key={li} className="flex gap-1.5 items-start ml-1">
-              <span className="mt-0.5 shrink-0 text-[10px]" style={{ color: "var(--galactic-orange)" }}>•</span>
+            <div key={li} className="flex gap-2 items-start ml-2 text-sm text-foreground/90">
+              <span className="shrink-0">•</span>
               <span>{parseInline(bulletMatch[1], `${li}`)}</span>
             </div>
           );
@@ -114,15 +114,15 @@ function formatProphetMessage(content: string): ReactNode {
         const numMatch = trimmed.match(/^(\d+)\.\s+(.*)/);
         if (numMatch) {
           return (
-            <div key={li} className="flex gap-1.5 items-start ml-1">
-              <span className="shrink-0 text-[10px]" style={{ color: "var(--galactic-orange)" }}>{numMatch[1]}.</span>
+            <div key={li} className="flex gap-2 items-start ml-2 text-sm text-foreground/90">
+              <span className="shrink-0">{numMatch[1]}.</span>
               <span>{parseInline(numMatch[2], `${li}`)}</span>
             </div>
           );
         }
 
         return (
-          <p key={li} className={li > 0 ? "mt-0.5" : ""}>
+          <p key={li} className={`text-sm text-foreground/90 ${li > 0 ? "mt-1" : ""}`}>
             {parseInline(line, `${li}`)}
           </p>
         );
@@ -132,23 +132,18 @@ function formatProphetMessage(content: string): ReactNode {
 }
 
 const OPENING_LINES = [
-  "PROPHET ONLINE. I'm your AI assistant, ask me anything.",
-  "I can help with coding, research, analysis, creative writing, and much more.",
+  "Prophet Online. I am your AI assistant.",
+  "I can help with coding, research, analysis, and information about our services.",
 ];
 
 const ALL_STARTER_QUESTIONS = [
   "What services does ARCOLYTE TECHNOLOGIES offer?",
   "How can AI automation help my business?",
-  "What is SPORTA and how does it work?",
   "How do I get started with ARCOLYTE TECHNOLOGIES?",
-  "What makes ARCOLYTE TECHNOLOGIES different from other agencies?",
+  "What makes ARCOLYTE TECHNOLOGIES different?",
   "Can you explain the Digital Maturity Assessment?",
   "How long does a typical project take?",
-  "What industries does ARCOLYTE TECHNOLOGIES work with?",
-  "How much does web development cost?",
-  "What AI tools do you use for clients?",
-  "Tell me about Kingdom Enhancement Corp.",
-  "How do I book a consultation?",
+  "What industries do you work with?",
 ];
 
 function pickRandomQuestions(n = 3): string[] {
@@ -252,29 +247,16 @@ export default function ProphetChat() {
       <AnimatePresence>
         {!open && prophetEnabled && (
           <motion.button
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
+            exit={{ opacity: 0, scale: 0.95 }}
             transition={{ type: "spring", stiffness: 260, damping: 22 }}
             onClick={() => { setOpen(true); setFullscreen(false); setMinimized(false); }}
             data-testid="prophet-chat-trigger"
             aria-label="Open Prophet AI"
-            className="fixed z-40 flex items-center gap-2 cursor-pointer select-none"
-            style={{ top: "76px", right: "18px" }}
+            className="fixed z-40 flex items-center gap-2 cursor-pointer select-none top-20 right-6 bg-foreground text-background border border-border px-4 py-2 hover:bg-muted-foreground transition-colors shadow-sm"
           >
-            <span
-              className="absolute inset-0 rounded-full animate-ping opacity-25"
-              style={{ background: "rgba(34,197,94,0.5)" }}
-            />
-            <span
-              className="relative flex items-center gap-2 px-3 py-1.5 rounded-full font-orbitron text-xs font-bold tracking-widest shadow-lg"
-              style={{
-                background: "linear-gradient(135deg, rgba(20,16,8,0.97) 0%, rgba(40,30,5,0.97) 100%)",
-                border: "1px solid rgba(34,197,94,0.55)",
-                color: "var(--galactic-orange)",
-                boxShadow: "0 0 18px rgba(34,197,94,0.25), inset 0 1px 0 rgba(34,197,94,0.08)",
-              }}
-            >
+            <span className="relative flex items-center gap-2 font-bold tracking-wide text-xs">
               <svg
                 width="14"
                 height="14"
@@ -291,7 +273,7 @@ export default function ProphetChat() {
                 <path d="M12 6v6l4 2" />
                 <circle cx="20" cy="4" r="2" fill="currentColor" />
               </svg>
-              PROPHET
+              PROPHET AI
             </span>
           </motion.button>
         )}
@@ -306,179 +288,96 @@ export default function ProphetChat() {
             exit={{ opacity: 0, y: -12, scale: 0.96 }}
             transition={{ type: "spring", stiffness: 300, damping: 28 }}
             data-testid="prophet-chat-panel"
-            className="fixed z-40 flex flex-col overflow-hidden"
+            className={`fixed z-50 flex flex-col overflow-hidden bg-background border border-border shadow-2xl ${
+              fullscreen
+                ? "top-0 left-0 right-0 bottom-0"
+                : "top-20 right-6 w-[min(420px,calc(100vw-48px))]"
+            }`}
             style={{
-              ...(fullscreen
-                ? {
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    maxHeight: minimized ? "44px" : "100%",
-                    borderRadius: 0,
-                  }
-                : {
-                    top: "76px",
-                    right: "12px",
-                    width: "min(420px, calc(100vw - 24px))",
-                    maxHeight: minimized ? "44px" : "620px",
-                    borderRadius: "10px",
-                  }),
-              background: "linear-gradient(160deg, rgba(14,11,4,0.98) 0%, rgba(26,20,6,0.98) 100%)",
-              border: fullscreen ? "none" : "1px solid rgba(34,197,94,0.4)",
-              boxShadow: fullscreen
-                ? "none"
-                : "0 8px 40px rgba(0,0,0,0.7), 0 0 0 1px rgba(34,197,94,0.06), 0 0 32px rgba(34,197,94,0.08)",
+              maxHeight: minimized ? "48px" : fullscreen ? "100%" : "640px",
               transition: "max-height 0.25s ease",
             }}
           >
             {/* ── Header ── */}
             <div
-              className="flex items-center justify-between px-4 py-2.5 shrink-0 cursor-pointer select-none"
-              style={{
-                background:
-                  "linear-gradient(90deg, rgba(34,197,94,0.12) 0%, rgba(34,197,94,0.04) 100%)",
-                borderBottom: minimized ? "none" : "1px solid rgba(34,197,94,0.2)",
-              }}
+              className="flex items-center justify-between px-5 py-3 shrink-0 cursor-pointer select-none bg-muted border-b border-border"
               onClick={handleMinimize}
             >
               <div className="flex items-center gap-2">
-                <span
-                  className="w-2 h-2 rounded-full animate-pulse"
-                  style={{ background: "#22c55e", boxShadow: "0 0 6px #22c55e" }}
-                />
-                <span
-                  className="font-orbitron font-bold text-xs tracking-widest"
-                  style={{ color: "var(--galactic-orange)" }}
-                >
-                  PROPHET
-                </span>
-                <span
-                  className="font-orbitron text-[10px] tracking-wider opacity-60"
-                  style={{ color: "var(--galactic-gold)" }}
-                >
-                  · AI ASSISTANT
+                <span className="w-2 h-2 rounded-full bg-foreground" />
+                <span className="font-bold text-xs tracking-wider text-foreground">
+                  PROPHET AI
                 </span>
               </div>
-              <div className="flex items-center gap-1">
-                {/* Fullscreen toggle */}
+              <div className="flex items-center gap-2 text-foreground/60">
                 <button
                   aria-label={fullscreen ? "Exit fullscreen" : "Fullscreen"}
-                  className="p-1 rounded hover:bg-white/5 transition-colors"
-                  style={{ color: "var(--galactic-orange)" }}
+                  className="p-1 rounded hover:bg-black/5 hover:text-foreground transition-colors"
                   onClick={(e) => { e.stopPropagation(); setFullscreen((v) => !v); }}
                 >
                   {fullscreen ? (
-                    <Minimize2 className="w-3.5 h-3.5" />
+                    <Minimize2 className="w-4 h-4" />
                   ) : (
-                    <Maximize2 className="w-3.5 h-3.5" />
+                    <Maximize2 className="w-4 h-4" />
                   )}
                 </button>
-                {/* Minimize toggle */}
                 <button
                   aria-label={minimized ? "Expand Prophet" : "Minimize Prophet"}
-                  className="p-1 rounded hover:bg-white/5 transition-colors"
-                  style={{ color: "var(--galactic-orange)" }}
+                  className="p-1 rounded hover:bg-black/5 hover:text-foreground transition-colors"
                   onClick={(e) => { e.stopPropagation(); handleMinimize(); }}
                 >
                   <ChevronDown
-                    className="w-3.5 h-3.5 transition-transform"
+                    className="w-4 h-4 transition-transform"
                     style={{ transform: minimized ? "rotate(180deg)" : "rotate(0deg)" }}
                   />
                 </button>
-                {/* Close / X button */}
                 <button
                   aria-label="Close Prophet"
                   data-testid="prophet-chat-close"
-                  className="p-1 rounded hover:bg-red-500/20 transition-colors"
-                  style={{ color: "var(--galactic-orange)" }}
+                  className="p-1 rounded hover:bg-black/5 hover:text-foreground transition-colors"
                   onClick={(e) => { e.stopPropagation(); handleClose(); }}
                 >
-                  <X className="w-3.5 h-3.5" />
+                  <X className="w-4 h-4" />
                 </button>
               </div>
             </div>
 
-            {/* ── Classified banner ── */}
-            {!minimized && (
-              <div
-                className="shrink-0 text-center font-orbitron text-[9px] tracking-[0.25em] py-1 opacity-40"
-                style={{ color: "var(--galactic-gold)", borderBottom: "1px solid rgba(34,197,94,0.1)" }}
-              >
-                ▌ AGENTIC AI · POWERED BY GEMINI · ARCOLYTE TECHNOLOGIES ▐
-              </div>
-            )}
-
             {/* ── Messages ── */}
             {!minimized && (
               <div
-                className="flex-1 overflow-y-auto px-3 py-3 flex flex-col gap-3"
-                style={{ scrollbarWidth: "thin", scrollbarColor: "rgba(34,197,94,0.3) transparent" }}
+                className="flex-1 overflow-y-auto px-5 py-5 flex flex-col gap-4 bg-background"
+                style={{ scrollbarWidth: "thin" }}
               >
                 {messages.map((msg, i) => (
                   <div
                     key={i}
-                    className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
+                    className={`flex flex-col max-w-[85%] ${
+                      msg.role === "user" ? "self-end items-end" : "self-start items-start"
+                    }`}
                   >
-                    {msg.role === "assistant" && (
-                      <span
-                        className="mr-1.5 mt-0.5 shrink-0 font-orbitron text-[9px] font-bold tracking-wider self-start pt-1"
-                        style={{ color: "var(--galactic-orange)", opacity: 0.7 }}
-                      >
-                        ◈
-                      </span>
-                    )}
+                    <span className="text-[10px] uppercase font-semibold tracking-wider text-muted-foreground mb-1">
+                      {msg.role === "user" ? "You" : "Prophet"}
+                    </span>
                     <div
-                      className="max-w-[85%] px-3 py-2 text-xs leading-relaxed"
-                      style={
-                        msg.role === "assistant"
-                          ? {
-                              background: "rgba(34,197,94,0.07)",
-                              border: "1px solid rgba(34,197,94,0.18)",
-                              borderRadius: "2px 8px 8px 8px",
-                              color: "rgba(255,255,255,0.88)",
-                              fontFamily: "var(--font-sans)",
-                            }
-                          : {
-                              background: "rgba(34,197,94,0.15)",
-                              border: "1px solid rgba(34,197,94,0.35)",
-                              borderRadius: "8px 2px 8px 8px",
-                              color: "var(--galactic-gold)",
-                              fontFamily: "var(--font-orbitron)",
-                              fontSize: "10px",
-                              letterSpacing: "0.04em",
-                            }
-                      }
+                      className={`px-4 py-3 text-sm leading-relaxed ${
+                        msg.role === "user"
+                          ? "bg-foreground text-background"
+                          : "bg-muted text-foreground border border-border"
+                      }`}
                     >
                       {msg.role === "assistant" ? formatProphetMessage(msg.content) : msg.content}
                     </div>
                   </div>
                 ))}
                 {loading && (
-                  <div className="flex justify-start items-center gap-2">
-                    <span
-                      className="font-orbitron text-[9px] font-bold tracking-wider"
-                      style={{ color: "var(--galactic-orange)", opacity: 0.7 }}
-                    >
-                      ◈
+                  <div className="flex flex-col self-start items-start max-w-[85%]">
+                    <span className="text-[10px] uppercase font-semibold tracking-wider text-muted-foreground mb-1">
+                      Prophet
                     </span>
-                    <div
-                      className="flex items-center gap-1.5 px-3 py-2"
-                      style={{
-                        background: "rgba(34,197,94,0.07)",
-                        border: "1px solid rgba(34,197,94,0.18)",
-                        borderRadius: "2px 8px 8px 8px",
-                      }}
-                    >
-                      <Loader2
-                        className="w-3 h-3 animate-spin"
-                        style={{ color: "var(--galactic-orange)" }}
-                      />
-                      <span
-                        className="font-orbitron text-[10px] tracking-widest opacity-70"
-                        style={{ color: "var(--galactic-orange)" }}
-                      >
-                        PROCESSING…
+                    <div className="flex items-center gap-2 px-4 py-3 bg-muted text-foreground border border-border">
+                      <Loader2 className="w-4 h-4 animate-spin text-muted-foreground" />
+                      <span className="text-xs text-muted-foreground tracking-wide uppercase">
+                        Processing
                       </span>
                     </div>
                   </div>
@@ -486,24 +385,15 @@ export default function ProphetChat() {
 
                 {/* Starter questions */}
                 {starterQuestions.length > 0 && !loading && (
-                  <div className="flex flex-col gap-2 mt-1">
-                    <p
-                      className="font-orbitron text-[9px] tracking-widest opacity-50 pl-1"
-                      style={{ color: "var(--galactic-gold)" }}
-                    >
-                      SUGGESTED QUESTIONS
+                  <div className="flex flex-col gap-2 mt-2">
+                    <p className="text-[10px] font-semibold tracking-widest text-muted-foreground uppercase mb-1">
+                      Suggested Questions
                     </p>
                     {starterQuestions.map((q) => (
                       <button
                         key={q}
                         onClick={() => sendMessage(q)}
-                        className="text-left px-3 py-2 rounded-lg text-xs transition-colors"
-                        style={{
-                          background: "rgba(34,197,94,0.05)",
-                          border: "1px solid rgba(34,197,94,0.2)",
-                          color: "rgba(255,255,255,0.75)",
-                          fontFamily: "var(--font-sans)",
-                        }}
+                        className="text-left px-4 py-3 text-sm transition-colors bg-background border border-border text-foreground hover:bg-muted"
                       >
                         {q}
                       </button>
@@ -517,43 +407,30 @@ export default function ProphetChat() {
 
             {/* ── Input bar ── */}
             {!minimized && (
-              <div
-                className="shrink-0 flex items-center gap-2 px-3 py-2.5"
-                style={{ borderTop: "1px solid rgba(34,197,94,0.2)" }}
-              >
+              <div className="shrink-0 flex items-center gap-3 px-5 py-4 border-t border-border bg-background">
                 <input
                   ref={inputRef}
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={handleKey}
-                  placeholder="Ask me anything…"
+                  placeholder="Ask a question..."
                   maxLength={2000}
                   disabled={loading}
                   data-testid="prophet-chat-input"
-                  className="flex-1 bg-transparent outline-none text-xs placeholder:opacity-30"
-                  style={{
-                    fontFamily: "var(--font-orbitron)",
-                    color: "var(--galactic-gold)",
-                    letterSpacing: "0.05em",
-                    caretColor: "var(--galactic-orange)",
-                  }}
+                  className="flex-1 bg-transparent outline-none text-sm placeholder:text-muted-foreground text-foreground"
                 />
                 <Button
                   size="icon"
                   onClick={() => sendMessage()}
                   disabled={loading || !input.trim()}
                   data-testid="prophet-chat-send"
-                  className="w-7 h-7 shrink-0"
-                  style={{
-                    background: input.trim()
-                      ? "linear-gradient(135deg, var(--galactic-orange), var(--galactic-gold))"
-                      : "rgba(34,197,94,0.1)",
-                    border: "1px solid rgba(34,197,94,0.35)",
-                    borderRadius: "4px",
-                    color: input.trim() ? "#000" : "rgba(34,197,94,0.3)",
-                  }}
+                  className={`w-9 h-9 shrink-0 rounded-none transition-colors ${
+                    input.trim()
+                      ? "bg-foreground text-background hover:bg-muted-foreground"
+                      : "bg-muted text-muted-foreground"
+                  }`}
                 >
-                  <Send className="w-3 h-3" />
+                  <Send className="w-4 h-4" />
                 </Button>
               </div>
             )}
@@ -563,4 +440,3 @@ export default function ProphetChat() {
     </>
   );
 }
-
